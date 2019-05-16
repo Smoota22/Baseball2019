@@ -6,7 +6,7 @@ module.exports = {
   deploy: {
     production: {
       user: 'ubuntu',
-      host: 'ec2-3-19-14-165.us-east-2.compute.amazonaws.com',
+      host: 'ec2-3-18-212-179.us-east-2.compute.amazonaws.com',
       key: '~/Desktop/Main/Coding-Stuff/Baseball-Statistics-WebApp-Stuff/Baseball2019.pem',
       ref: 'origin/master',
       repo: 'https://github.com/Smoota22/Baseball2019.git',
