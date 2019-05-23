@@ -3,8 +3,8 @@ import mysql.connector
 
 # File names
 
-input_batting_file = "../RAW-baseballdatabank-2019.2/core/Pitching.csv"
-output_batting_file = "../AUG-baseballdata/AUG_Pitching.csv"
+input_batting_file = "../RAW-baseballdatabank-2019.2/core/Batting.csv"
+output_batting_file = "../AUG-baseballdata/AUG_Batting.csv"
 
 def fix_empty(integer_value):
     if (not integer_value):
