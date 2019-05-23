@@ -4,12 +4,8 @@ FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 
-
-delimiter $
-CREATE TRIGGER convert_date_to_null BEFORE INSERT ON player
-FOR EACH ROW BEGIN
-  IF NEW.birthday = '' THEN
-    SET NEW.birthday = NULL;
-  END IF;  
-END$
-delimiter ;
+LOAD DATA INFILE '/var/lib/mysql-files/AUG_Teams.csv' 
+INTO TABLE real_teams
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'

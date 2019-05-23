@@ -6,8 +6,6 @@ import mysql.connector
 input_people_file = "../RAW-baseballdatabank-2019.2/core/People.csv"
 output_players_file = "../AUG-baseballdata/AUG_Players.csv"
 
-players = {}
-
 def format_birthday(birth_year, birth_month, birth_day):
     if (birth_month and birth_day):
         if (int(birth_month) < 10):
