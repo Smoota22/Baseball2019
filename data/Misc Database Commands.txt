@@ -5,7 +5,13 @@ ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 
 LOAD DATA INFILE '/var/lib/mysql-files/AUG_Teams.csv' 
-INTO TABLE real_teams
+INTO TABLE real_team
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+
+LOAD DATA INFILE '/var/lib/mysql-files/AUG_Pitching.csv' 
+INTO TABLE pitching
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n'

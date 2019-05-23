@@ -23,6 +23,7 @@ with open(input_pitching_file) as f1, open(output_pitching_file, "w") as output:
             player_ID = each_item[0]
             year_ID = each_item[1]
             team_ID = each_item[3]
+            league_ID = each_item[4]
             wins = fix_empty(each_item[5])
             losses = fix_empty(each_item[6])
             games = fix_empty(each_item[7])
@@ -43,5 +44,5 @@ with open(input_pitching_file) as f1, open(output_pitching_file, "w") as output:
             batters_hit = fix_empty(each_item[22])
             balks = fix_empty(each_item[23])
 
-            item = [player_ID,year_ID,team_ID,wins,losses,games,games_started,complete_games,shutouts,saves,total_outs,hits,earned_runs,homeruns,walks,strikeouts,opp_ba,earned_run_avg,intentional_walks,runs_allowed,batters_hit,balks]
+            item = [player_ID,year_ID,team_ID,league_ID,wins,losses,games,games_started,complete_games,shutouts,saves,total_outs,hits,earned_runs,homeruns,walks,strikeouts,opp_ba,earned_run_avg,intentional_walks,runs_allowed,batters_hit,balks]
             pitching_writer.writerow(item)
