@@ -17,7 +17,7 @@ def format_birthday(birth_year, birth_month, birth_day):
 
         return (birth_year + "-" + birth_month + "-" + birth_day)
     else:
-        return "0000-00-01"
+        return "1000-01-01"
 
 def fix_empty(integer_value):
     if (not integer_value):
