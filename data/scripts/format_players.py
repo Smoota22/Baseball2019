@@ -19,6 +19,10 @@ def format_birthday(birth_year, birth_month, birth_day):
     else:
         return ""
 
+def fix_empty(integer_value):
+    if (not integer_value):
+        integer_value = -1
+    return integer_value
 
 with open(input_people_file) as f1, open(output_players_file, "w") as output:
     people_reader = csv.reader(f1, delimiter=",")
@@ -33,8 +37,8 @@ with open(input_people_file) as f1, open(output_players_file, "w") as output:
             first_name = each_person[13]
             last_name = each_person[14]
             birthday = format_birthday(each_person[1], each_person[2], each_person[3])
-            weight = each_person[16]
-            height = each_person[17]
+            weight = fix_empty(each_person[16])
+            height = fix_empty(each_person[17])
             bats = each_person[18]
             throws = each_person[19]
             person = [ID, first_name, last_name, birthday, weight, height, bats, throws]

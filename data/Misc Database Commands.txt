@@ -3,3 +3,30 @@ INTO TABLE player
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
+
+
+delimiter $
+CREATE TRIGGER convert_empty_to_null BEFORE INSERT ON player
+FOR EACH ROW BEGIN
+  DECLARE curr_calories, curr_carbs, curr_sugar, curr_protein, curr_fat, curr_sodium, curr_cholesterol INT;
+  
+
+  IF EXISTS(SELECT * FROM products WHERE foodID = NEW.product_foodID) THEN
+    SELECT calories, total_carbs, sugars, protein, total_fat, sodium, cholesterol 
+    INTO curr_calories, curr_carbs, curr_sugar, curr_protein, curr_fat, curr_sodium, curr_cholesterol 
+    FROM products WHERE foodID = NEW.product_foodID;
+  END IF;
+
+
+  IF EXISTS(SELECT * FROM recipes WHERE foodID = NEW.product_foodID) THEN
+    SELECT calories, total_carbs, sugar, protein, total_fat, sodium, cholesterol 
+    INTO curr_calories, curr_carbs, curr_sugar, curr_protein, curr_fat, curr_sodium, curr_cholesterol 
+    FROM products WHERE foodID = NEW.product_foodID;
+  END IF;
+
+
+  UPDATE recipes
+  SET calories = calories + NEW.quantity * curr_calories, total_carbs = total_carbs + NEW.quantity * curr_carbs, sugar = sugar + NEW.quantity * curr_sugar, protein = protein + NEW.quantity * curr_protein, total_fat = total_fat + NEW.quantity * curr_fat, sodium = sodium + NEW.quantity * curr_sodium, cholesterol = cholesterol + NEW.quantity * curr_cholesterol
+  WHERE foodID = NEW.recipe_foodID;
+END$
+delimiter ;
