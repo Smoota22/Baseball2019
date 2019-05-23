@@ -25,7 +25,7 @@ with open(input_fielding_file) as f1, open(output_fielding_file, "w") as output:
             stint = each_item[2]
             team_ID = each_item[3]
             league_ID = each_item[4]
-            position = fix_empty(each_item[5])
+            position = each_item[5]
             games = fix_empty(each_item[6])
             games_started = fix_empty(each_item[7])
             putouts = fix_empty(each_item[9])

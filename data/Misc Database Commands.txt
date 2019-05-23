@@ -2,22 +2,28 @@ LOAD DATA INFILE '/var/lib/mysql-files/AUG_Players.csv'
 INTO TABLE player
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY '"'
-LINES TERMINATED BY '\n'
+LINES TERMINATED BY '\n';
 
 LOAD DATA INFILE '/var/lib/mysql-files/AUG_Teams.csv' 
 INTO TABLE real_team
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY '"'
-LINES TERMINATED BY '\n'
+LINES TERMINATED BY '\n';
 
 LOAD DATA INFILE '/var/lib/mysql-files/AUG_Pitching.csv' 
 INTO TABLE pitching
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY '"'
-LINES TERMINATED BY '\n'
+LINES TERMINATED BY '\n';
 
 LOAD DATA INFILE '/var/lib/mysql-files/AUG_Batting.csv' 
 INTO TABLE batting
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY '"'
-LINES TERMINATED BY '\n'
+LINES TERMINATED BY '\n';
+
+LOAD DATA INFILE '/var/lib/mysql-files/AUG_Fielding.csv' 
+INTO TABLE fielding
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n';
