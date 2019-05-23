@@ -1,0 +1,5 @@
+LOAD DATA INFILE '/var/lib/mysql-files/AUG_Players.csv' 
+INTO TABLE player
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'

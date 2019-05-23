@@ -29,7 +29,7 @@ with open(input_people_file) as f1, open(output_players_file, "w") as output:
         if i == 0:
             i += 1
         else:
-            ID = 0
+            ID = each_person[23]
             first_name = each_person[13]
             last_name = each_person[14]
             birthday = format_birthday(each_person[1], each_person[2], each_person[3])
