@@ -2,7 +2,10 @@ const LoadTeamData = document.querySelector('.LoadTeamData')
 LoadTeamData.addEventListener('submit', (e) => {
   e.preventDefault()
   response = get('/load_team_data', {})
-  document.write(response)
+
+  response.then(function(result) {
+    document.write(result)
+});
 })
 
 function get (path) {
