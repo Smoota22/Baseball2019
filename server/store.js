@@ -27,6 +27,7 @@ module.exports = {
   },
     load_team_data () {
       console.log(`Loading team data`)
+      document.write(knex.select('ID', 'first_name').from('user'))
       return knex.select('ID', 'first_name').from('user')
     }
 }
