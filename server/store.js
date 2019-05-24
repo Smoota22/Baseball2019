@@ -6,10 +6,12 @@ module.exports = {
     console.log(`Add user ${username}`)
     const { salt, hash } = saltHashPassword({ password })
     return knex('user').insert({
-      salt,
-      encrypted_password: hash,
-      username
-    })
+        first_name: first_name,
+        last_name: last_name,
+        email: email,
+        salt: salt,
+        encrypted_password: hash
+  })
   },
   authenticate ({ username, password }) {
     console.log(`Authenticating user ${username}`)
