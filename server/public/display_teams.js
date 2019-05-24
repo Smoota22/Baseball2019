@@ -4,13 +4,12 @@ LoadTeamData.addEventListener('submit', (e) => {
   get('/load_team_data', {})
 })
 
-function get (path, data) {
+function get (path) {
   return window.fetch(path, {
     method: 'GET',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
+    }
   })
 }
