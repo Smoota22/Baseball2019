@@ -1,20 +1,19 @@
-const crypto = require('crypto')
-const knex = require('knex')(require('./knexfile'))
-
-module.exports = {
-  createUser ({first_name, last_name, username, password}) {
-    console.log(`Add user ${username}`)
-    const { salt, hash } = saltHashPassword({ password })
-    return knex('user').insert({
-        // ID: 0,
-        // first_name: first_name,
-        // last_name: last_name,
-        // email: email,
-        username: username
-        salt: salt,
-        encrypted_password: hash
-  })
-}}
+// const crypto = require('crypto')
+// const knex = require('knex')(require('./knexfile'))
+//
+// module.exports = {
+//   createUser ({first_name, last_name, email, password}) {
+//     console.log(`Add user ${email}`)
+//     const { salt, hash } = saltHashPassword({ password })
+//     return knex('user').insert({
+//         ID: 0,
+//         first_name: first_name,
+//         last_name: last_name,
+//         email: email,
+//         salt: salt,
+//         encrypted_password: hash
+//   })
+//   },
 //   authenticate ({ username, password }) {
 //     console.log(`Authenticating user ${username}`)
 //     return knex('user').where({ username })
@@ -28,11 +27,41 @@ module.exports = {
 //       })
 //   }
 // }
+//
+// function saltHashPassword ({
+//   password,
+//   salt = randomString()
+// }) {
+//   const hash = crypto
+//     .createHmac('sha512', salt)
+//     .update(password)
+//   return {
+//     salt,
+//     hash: hash.digest('hex')
+//   }
+// }
+//
+// function randomString () {
+//   return crypto.randomBytes(4).toString('hex')
+// }
 
-function saltHashPassword ({
-  password,
-  salt = randomString()
-}) {
+
+const crypto = require('crypto')
+const knex = require('knex')(require('./knexfile'))
+module.exports = {
+  saltHashPassword,
+  createUser ({ username, password }) {
+    console.log(`Add user ${username}`)
+    const { salt, hash } = saltHashPassword(password)
+    return knex('user').insert({
+      salt,
+      encrypted_password: hash,
+      username
+    })
+  }
+}
+function saltHashPassword (password) {
+  const salt = randomString()
   const hash = crypto
     .createHmac('sha512', salt)
     .update(password)
@@ -41,23 +70,6 @@ function saltHashPassword ({
     hash: hash.digest('hex')
   }
 }
-
 function randomString () {
   return crypto.randomBytes(4).toString('hex')
 }
-
-
-// const crypto = require('crypto')
-// const knex = require('knex')(require('./knexfile'))
-// module.exports = {
-//   saltHashPassword,
-//   createUser ({ username, password }) {
-//     console.log(`Add user ${username}`)
-//     const { salt, hash } = saltHashPassword(password)
-//     return knex('user').insert({
-//       salt,
-//       encrypted_password: hash,
-//       username
-//     })
-//   }
-// }

@@ -5,7 +5,7 @@ CreateUser.addEventListener('submit', (e) => {
   const last_name = CreateUser.querySelector('.last_name').value
   const username = CreateUser.querySelector('.email').value
   const password = CreateUser.querySelector('.password').value
-  post('/createUser', {first_name, last_name, username, password})
+  post('/createUser', {username, password})
 })
 
 // const Login = document.querySelector('.Login')
