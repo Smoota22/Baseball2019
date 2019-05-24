@@ -47,17 +47,17 @@ function randomString () {
 }
 
 
-const crypto = require('crypto')
-const knex = require('knex')(require('./knexfile'))
-module.exports = {
-  saltHashPassword,
-  createUser ({ username, password }) {
-    console.log(`Add user ${username}`)
-    const { salt, hash } = saltHashPassword(password)
-    return knex('user').insert({
-      salt,
-      encrypted_password: hash,
-      username
-    })
-  }
-}
+// const crypto = require('crypto')
+// const knex = require('knex')(require('./knexfile'))
+// module.exports = {
+//   saltHashPassword,
+//   createUser ({ username, password }) {
+//     console.log(`Add user ${username}`)
+//     const { salt, hash } = saltHashPassword(password)
+//     return knex('user').insert({
+//       salt,
+//       encrypted_password: hash,
+//       username
+//     })
+//   }
+// }
