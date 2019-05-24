@@ -14,6 +14,8 @@ app.use(bodyParser.json())
 app.post('/createUser', (req, res) => {
   store
     .createUser({
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
       email: req.body.email,
       password: req.body.password
     })
