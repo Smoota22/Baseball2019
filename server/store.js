@@ -12,20 +12,20 @@ module.exports = {
         salt: salt,
         encrypted_password: hash
   }).debug()
-}}
-//   authenticate ({ username, password }) {
-//     console.log(`Authenticating user ${username}`)
-//     return knex('user').where({ username })
-//       .then(([user]) => {
-//         if (!user) return { success: false }
-//         const { hash } = saltHashPassword({
-//           password,
-//           salt: user.salt
-//         })
-//         return { success: hash === user.encrypted_password }
-//       })
-//   }
-// }
+},
+  authenticate ({ email, password }) {
+    console.log(`Authenticating user ${email}`)
+    return knex('user').where({ email })
+      .then(([user]) => {
+        if (!user) return { success: false }
+        const { hash } = saltHashPassword({
+          password,
+          salt: user.salt
+        })
+        return { success: hash === user.encrypted_password }
+      })
+  }
+}
 
 function saltHashPassword ({
   password,

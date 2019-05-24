@@ -25,7 +25,7 @@ app.post('/createUser', (req, res) => {
 app.post('/login', (req, res) => {
   store
     .authenticate({
-      username: req.body.username,
+      email: req.body.email,
       password: req.body.password
     })
     .then(({ success }) => {
