@@ -26,8 +26,8 @@ module.exports = {
       })
   },
     load_team_data () {
-      log: {warn(`Loading team data`)}
-      return knex('user').where({email: 'smitdesai@sbcglobal.net'})
+      console.log(`Loading team data`)
+      return knex.select('ID', 'first_name').from('user')
     }
 }
 
