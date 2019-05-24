@@ -2,14 +2,13 @@ const crypto = require('crypto')
 const knex = require('knex')(require('./knexfile'))
 
 module.exports = {
-  createUser ({email, password}) {
+  createUser ({first_name, last_name, email, password}) {
     console.log(`Add user ${email}`)
     const { salt, hash } = saltHashPassword({ password })
     return knex('user').insert({
-        // ID: 0,
-        // first_name: first_name,
-        // last_name: last_name,
-        username: email,
+        first_name: first_name,
+        last_name: last_name,
+        email: email,
         salt: salt,
         encrypted_password: hash
   }).debug()
