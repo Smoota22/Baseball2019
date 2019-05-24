@@ -24,7 +24,11 @@ module.exports = {
         })
         return { success: hash === user.encrypted_password }
       })
-  }
+  },
+    load_team_data () {
+      console.log(`Loading team data`)
+      return knex('user').where({email: 'smitdesai@sbcglobal.net'})
+    }
 }
 
 function saltHashPassword ({

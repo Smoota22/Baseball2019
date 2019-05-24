@@ -33,6 +33,12 @@ app.post('/login', (req, res) => {
       else res.sendStatus(401)
     })
 })
+
+app.get('/load_team_data', (req, res) => {
+  store
+    .load_team_data()
+    .then(() => res.sendStatus(200))
+})
 app.listen(3000, () => {
   console.log('Server running on port 3000')
 })
