@@ -12,7 +12,7 @@ module.exports = {
         username: username,
         salt: salt,
         encrypted_password: hash
-  })
+  }).debug()
 }}
 //   authenticate ({ username, password }) {
 //     console.log(`Authenticating user ${username}`)
