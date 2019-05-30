@@ -51,12 +51,6 @@ app.post('/login', (req, res) => {
 })
 
 app.get('/load_team_data', (req, res) => {
-  store
-    .load_team_data()
-    .then(() => res.sendStatus(200))
-})
-
-app.get('/load_team_data', (req, res) => {
     let sql = 'SELECT * FROM user';
     let query = db.query(sql, (err, results) => {
         if(err) throw err;
