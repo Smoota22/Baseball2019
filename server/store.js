@@ -24,12 +24,7 @@ module.exports = {
         })
         return { success: hash === user.encrypted_password }
       })
-  },
-    load_team_data () {
-      console.log(`Loading team data`)
-      document.write(knex.select('ID', 'first_name').from('user'))
-      return knex.select('ID', 'first_name').from('user')
-    }
+  }
 }
 
 function saltHashPassword ({
