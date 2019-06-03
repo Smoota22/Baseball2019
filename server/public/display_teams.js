@@ -2,6 +2,7 @@ const LoadTeamData = document.querySelector('.LoadTeamData')
 LoadTeamData.addEventListener('submit', (e) => {
   e.preventDefault()
   response = get('/load_team_data', {})
+  alert("HEY")
   document.getElementById("display_btn").innerHTML = "response";
 })
 
