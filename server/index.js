@@ -50,15 +50,17 @@ app.post('/login', (req, res) => {
     })
 })
 
-app.get('/load_team_data', (req, res) => {
-    let sql = 'SELECT * FROM user';
-    let query = db.query(sql, (err, results) => {
-        if(err) throw err;
-        console.log(results);
-        alert(results)
-        res.send(results);
-    });
-});
+app.get('/load_team_data', load_team_data);
+
+function load_team_data(req, res) {
+    // let sql = 'SELECT * FROM user';
+    // let query = db.query(sql, (err, results) => {
+    //     if(err) throw err;
+    //     console.log(results);
+    //     alert(results)
+    //     res.send(results);
+    //     });
+}
 
 app.listen(3000, () => {
   console.log('Server running on port 3000')
