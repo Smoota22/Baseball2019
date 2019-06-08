@@ -53,13 +53,11 @@ app.post('/login', (req, res) => {
 app.get('/load_team_data/:teamID/:yearID', load_team_data);
 
 function load_team_data(req, res) {
-    window.alert(req.params.teamID)
-    window.alert(req.params.yearID)
     let sql = 'SELECT games FROM real_team WHERE team_ID =' + req.params.teamID + ' AND year_ID = ' + req.params.yearID;
     let query = db.query(sql, (err, results) => {
         if(err) throw err;
         console.log(results);
-        res.send(results);
+        res.send(sql);
     });
 }
 
