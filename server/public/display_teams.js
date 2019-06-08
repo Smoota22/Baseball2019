@@ -1,6 +1,7 @@
 const LoadTeamData = document.querySelector('.LoadTeamData')
 LoadTeamData.addEventListener('submit', (e) => {
   e.preventDefault()
+  var myRequest = Request()
   response = post('/load_team_data', {})
   alert(JSON.stringify(response))
   // document.getElementById("display_btn").innerHTML = "response";
