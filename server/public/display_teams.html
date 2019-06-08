@@ -8,8 +8,10 @@
 <body>
 
     <div class="container">
-        <form class="LoadTeamData" action="/">
-            <input type="submit" value="Display" id="display_btn">
+        <form class="LoadTeamData" action="/load_team_data/submit" method="post">
+            <input type="text" name = "txt_teamID">
+            <input type="text" name = "txt_yearID">
+            <input type="submit" value="Load" id="display_btn">
         </form>
     </div>
 

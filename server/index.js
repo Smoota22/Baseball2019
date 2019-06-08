@@ -51,7 +51,6 @@ app.post('/login', (req, res) => {
 })
 
 app.get('/load_team_data/:teamID/:yearID', load_team_data);
-
 function load_team_data(req, res) {
     let sql = 'SELECT games FROM real_team WHERE team_ID = "' + req.params.teamID + '" AND year_ID = ' + req.params.yearID;
     // res.send(sql)
@@ -60,6 +59,13 @@ function load_team_data(req, res) {
         console.log(results);
         res.send(results);
     });
+}
+
+app.post('/load_team_data/submit', load_team_data_submit);
+function load_team_data_submit(req, res) {
+    var teamID = req.body.txt_teamID;
+    var yearID = req.body.txt_yearID;
+    res.redirect('/load_team_data/' + teamID + '/' + yearID);
 }
 
 app.listen(3000, () => {
