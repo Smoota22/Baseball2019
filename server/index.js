@@ -54,12 +54,14 @@ app.get('/load_team_data', load_team_data);
 
 function load_team_data(req, res) {
     let sql = 'SELECT * FROM user';
-    let query = db.query(sql, (err, results) => {
-        if(err) throw err;
-        console.log(results);
-        alert(results)
-        res.send(results);
-        });
+    // let query = db.query(sql, (err, results) => {
+    //     if(err) throw err;
+    //     console.log(results);
+    //     alert(results)
+    //     res.send(results);
+    //     });
+    res.send(sql);
+
 }
 
 app.listen(3000, () => {
