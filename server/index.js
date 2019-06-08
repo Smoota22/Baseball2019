@@ -55,7 +55,8 @@ app.get('/load_team_data', (req, res) => {
     let query = db.query(sql, (err, results) => {
         if(err) throw err;
         console.log(results);
-        res.send('Posts fetched...');
+        alert(results)
+        res.send(results);
     });
 });
 
