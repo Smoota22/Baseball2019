@@ -1,8 +1,8 @@
-const LoadTeamData = document.querySelector('.LoadTeamData')
-LoadTeamData.addEventListener('submit', (e) => {
+const LoadTeamDat = document.querySelector('.LoadTeamData')
+LoadTeamDat.addEventListener('submit', (e) => {
   e.preventDefault()
-  const teamID = LoadTeamData.querySelector('.txt_teamID').value
-  const yearID = LoadTeamData.querySelector('.txt_yearID').value
+  const teamID = LoadTeamDat.querySelector('.txt_teamID').value
+  const yearID = LoadTeamDat.querySelector('.txt_yearID').value
   post('/load_team_data/submit', {teamID, yearID})
 })
 
