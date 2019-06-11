@@ -3,7 +3,8 @@ LoadTeamData.addEventListener('submit', (e) => {
   e.preventDefault()
   const teamID = LoadTeamData.querySelector('.txt_teamID').value
   const yearID = LoadTeamData.querySelector('.txt_yearID').value
-  var response = post('/load_team_data/submit', {teamID, yearID})
+  var promise = post('/load_team_data/submit', {teamID, yearID})
+  var response = promise.json()
   alert(response)
 })
 
