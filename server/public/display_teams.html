@@ -6,13 +6,14 @@
 
 </head>
 <body>
+    <form class="LoadTeamData" action="/load_team_data/submit" method="POST">
+        <input type="text" name="txt_teamID">
+        <input type="text" name="txt_yearID">
+        <button type="submit">Load</button>
+    </form>
 
-    <div class="container">
-        <form action="/load_team_data/submit" method="post">
-            <input type="text" name="txt_teamID">
-            <!-- <input type="text" name = "txt_yearID"> -->
-            <button type="submit">Load</button>
-        </form>
+    <div class="container" name="ID_getter">
+
     </div>
 
   <script src="/display_teams.js"></script>
