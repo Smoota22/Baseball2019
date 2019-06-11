@@ -1,4 +1,4 @@
-const LoadTeamData = document.querySelector('.LoadTeamData')
+const LoadTeamDatasdasadsa = document.querySelector('.LoadTeamData')
 // LoadTeamDat.addEventListener('submit', (e) => {
 //   e.preventDefault()
 //   const teamID = LoadTeamDat.querySelector('.txt_teamID').value
