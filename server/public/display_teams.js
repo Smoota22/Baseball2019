@@ -1,10 +1,10 @@
-const LoadTeamDat = document.querySelector('.LoadTeamData')
-LoadTeamDat.addEventListener('submit', (e) => {
-  e.preventDefault()
-  const teamID = LoadTeamDat.querySelector('.txt_teamID').value
-  const yearID = LoadTeamDat.querySelector('.txt_yearID').value
-  post('/load_team_data/submit', {teamID, yearID})
-})
+const LoadTeamData = document.querySelector('.LoadTeamData')
+// LoadTeamDat.addEventListener('submit', (e) => {
+//   e.preventDefault()
+//   const teamID = LoadTeamDat.querySelector('.txt_teamID').value
+//   const yearID = LoadTeamDat.querySelector('.txt_yearID').value
+//   post('/load_team_data/submit', {teamID, yearID})
+// })
 
 function post (path, data) {
   return window.fetch(path, {
