@@ -15,7 +15,5 @@ function post (path, data) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(data)
-  }).then(function(response) {
-    return response.json();
-  })
+  }).then(response => response.json())
 }
