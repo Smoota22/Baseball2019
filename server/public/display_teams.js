@@ -27,6 +27,6 @@ function post (path, data) {
         return response.json();
     }
 }).then(function(myBlob) {
-    alert(myBlob);
+    alert(myBlob.games);
 })
 }
