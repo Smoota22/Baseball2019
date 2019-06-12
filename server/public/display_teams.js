@@ -27,6 +27,6 @@ function post (path, data) {
         return response.blob();
     }
 }).then(function(myBlob) {
-    alert(myBlob);
+    alert(myBlob.size);
 })
 }
