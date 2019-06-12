@@ -8,6 +8,13 @@ LoadTeamData.addEventListener('submit', (e) => {
 })
 
 function post (path, data) {
+  var myInit = {
+      method: 'POST',
+      headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+  }}
+  
   return window.fetch(path, {
     method: 'POST',
     headers: {
