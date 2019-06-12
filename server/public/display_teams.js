@@ -28,6 +28,6 @@ function post (path, data) {
     }
 }).then(function(json) {
     var obj = JSON.parse(json);
-    alert(obj.games);
+    alert(obj);
 })
 }
