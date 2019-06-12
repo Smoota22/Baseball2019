@@ -24,9 +24,9 @@ function post (path, data) {
     body: JSON.stringify(data)
 }).then(function(response) {
     if (response.ok) {
-        return response.blob();
+        return response.json();
     }
 }).then(function(myBlob) {
-    alert(myBlob.text());
+    alert(myBlob);
 })
 }
