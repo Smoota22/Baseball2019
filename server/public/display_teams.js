@@ -26,7 +26,8 @@ function post (path, data) {
     if (response.ok) {
         return response.text();
     }
-}).then(function(myBlob) {
-    alert(myBlob);
+}).then(function(json) {
+    var obj = JSON.parse(json);
+    alert(obj.games);
 })
 }
