@@ -14,7 +14,7 @@ function post (path, data) {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
   }}
-  
+
   return window.fetch(path, {
     method: 'POST',
     headers: {
@@ -27,6 +27,6 @@ function post (path, data) {
         return response.blob();
     }
 }).then(function(myBlob) {
-    alert(myBlob)
+    alert(myBlob.stream())
 })
 }
