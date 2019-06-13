@@ -46,6 +46,7 @@ $(document).ready(function () {
   $('#team-menu li').click(function() {
       curr_team_id = team_dict[$(this).text()];
       if (curr_year != "") {
+          alert(curr_team_id + curr_year);
           post('/load_team_data/submit', {curr_team_id, curr_year})
             .then(function(json) {
               var obj = JSON.parse(json);
@@ -57,6 +58,7 @@ $(document).ready(function () {
   $('#year-menu li').click(function() {
       curr_year = $(this).text();
       if (curr_team_id != "") {
+          alert(curr_team_id + curr_year);
           post('/load_team_data/submit', {curr_team_id, curr_year})
             .then(function(json) {
               var obj = JSON.parse(json);
