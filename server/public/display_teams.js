@@ -55,8 +55,7 @@ $(document).ready(function () {
   });
 
   $('#year-menu li').click(function() {
-      curr_team_name = $(this).text();
-      curr_year =
+      curr_year = $(this).text();
       if (curr_team_id != "") {
           post('/load_team_data/submit', {curr_team_id, curr_year})
             .then(function(json) {
