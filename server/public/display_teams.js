@@ -49,7 +49,7 @@ $(document).ready(function () {
   //Selecting Team From Dropdown
   $('ul.dropdown-menu li').click(function() {
       curr_team_name = $(this).text();
-      var curr_team_id =
+      var curr_team_id = team_dict[curr_team_name];
   });
 });
 
