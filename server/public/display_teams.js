@@ -44,7 +44,7 @@ var curr_year = ""
 $(document).ready(function () {
   //Selecting Team From Dropdown
   $('#team-menu li').click(function() {
-      curr_team_id = team_dict[$(this).text();];
+      curr_team_id = team_dict[$(this).text()];
       if (curr_year != "") {
           post('/load_team_data/submit', {curr_team_id, curr_year})
             .then(function(json) {
