@@ -7,14 +7,13 @@ LoadTeamData.addEventListener('submit', (e) => {
   alert(response)
 })
 
-// const LoadTeamDataSelect = document.querySelector('.LoadTeamData')
-// LoadTeamData.addEventListener('submit', (e) => {
-//   e.preventDefault()
-//   const teamID = LoadTeamData.querySelector('.txt_teamID').value
-//   const yearID = LoadTeamData.querySelector('.txt_yearID').value
-//   var response = post('/load_team_data/submit', {teamID, yearID})
-//   alert(response)
-// })
+const LoadTeamDataSelect = document.querySelector('.LoadTeamDataSelect')
+LoadTeamDataSelect.addEventListener('submit', (e) => {
+  e.preventDefault()
+  const teamName = LoadTeamDataSelect.value
+  // var response = post('/load_team_data/submit', {teamID, yearID})
+  alert(teamName)
+})
 
 function post (path, data) {
   var myInit = {
