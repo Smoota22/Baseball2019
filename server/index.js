@@ -63,9 +63,8 @@ function load_team_data(req, res) {
 
 app.post('/load_team_data/submit', load_team_data_submit);
 function load_team_data_submit(req, res) {
-    var teamID = req.body.teamID;
-    var yearID = req.body.yearID;
-    res.send(teamID + "," + yearID);
+    var teamID = req.body.curr_team_id;
+    var yearID = req.body.curr_year;
     res.redirect('/load_team_data/' + teamID + '/' + yearID);
 }
 
