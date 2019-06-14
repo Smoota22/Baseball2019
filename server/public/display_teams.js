@@ -44,7 +44,7 @@ var curr_year = ""
 
 function search_years() {
     var search_team_name = $("#search_team").val();
-    var path = '/load_team_IDs/' + search_team_name;
+    var path = '/autofill_team_names/' + search_team_name;
     get(path)
     // .then(function(json) {
     //               var obj = JSON.parse(json);
