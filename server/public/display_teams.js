@@ -7,38 +7,38 @@
 //   post('/load_team_data/submit', {teamID, yearID})
 // })
 
-var team_dict = {
-    "Arizona Diamondbacks" : "ARI",
-    "Atlanta Braves" : "ATL",
-    "Baltimore Orioles" : "BAL",
-    "Boston Red Sox" : "BOS",
-    "Chicago Cubs" : "CHN",
-    "Chicago White Sox" : "CHA",
-    "Cincinnati Reds" : "CIN",
-    "Cleveland Indians" : "CLE",
-    "Colorado Rockies" : "COL",
-    "Detroit Tigers" : "DET",
-    "Houston Astros" : "HOU",
-    "Kansas City Royals" : "KCA",
-    "Los Angeles Angels" : "LAA",
-    "Los Angeles Dodgers" : "LAN",
-    "Miami Marlins" : "MIA",
-    "Milwaukee Brewers" : "MIL",
-    "Minnesota Twins" : "MIN",
-    "New York Mets" : "NYN",
-    "New York Yankees" : "NYA",
-    "Oakland Athletics" : "OAK",
-    "Philadelphia Phillies" : "PHI",
-    "Pittsburgh Pirates" : "PIT",
-    "San Diego Padres" : "SDN",
-    "Seattle Mariners" : "SEA",
-    "San Francisco Giants" : "SFN",
-    "St. Louis Cardinals" : "SLN",
-    "Tampa Bay Rays" : "TBA",
-    "Texas Rangers" : "TEX",
-    "Toronto Blue Jays" : "TOR",
-    "Washington Nationals" : "WAS",
-};
+// var team_dict = {
+//     "Arizona Diamondbacks" : "ARI",
+//     "Atlanta Braves" : "ATL",
+//     "Baltimore Orioles" : "BAL",
+//     "Boston Red Sox" : "BOS",
+//     "Chicago Cubs" : "CHN",
+//     "Chicago White Sox" : "CHA",
+//     "Cincinnati Reds" : "CIN",
+//     "Cleveland Indians" : "CLE",
+//     "Colorado Rockies" : "COL",
+//     "Detroit Tigers" : "DET",
+//     "Houston Astros" : "HOU",
+//     "Kansas City Royals" : "KCA",
+//     "Los Angeles Angels" : "LAA",
+//     "Los Angeles Dodgers" : "LAN",
+//     "Miami Marlins" : "MIA",
+//     "Milwaukee Brewers" : "MIL",
+//     "Minnesota Twins" : "MIN",
+//     "New York Mets" : "NYN",
+//     "New York Yankees" : "NYA",
+//     "Oakland Athletics" : "OAK",
+//     "Philadelphia Phillies" : "PHI",
+//     "Pittsburgh Pirates" : "PIT",
+//     "San Diego Padres" : "SDN",
+//     "Seattle Mariners" : "SEA",
+//     "San Francisco Giants" : "SFN",
+//     "St. Louis Cardinals" : "SLN",
+//     "Tampa Bay Rays" : "TBA",
+//     "Texas Rangers" : "TEX",
+//     "Toronto Blue Jays" : "TOR",
+//     "Washington Nationals" : "WAS",
+// };
 var curr_team_id = ""
 var curr_year = ""
 
@@ -54,7 +54,7 @@ function search_years() {
     var search_team_name = $("#search_team").val();
     var regex = format_query_string_regex(search_team_name);
     var path = '/load_team_IDs/' + search_team_name;
-    post(path)
+    get(path)
     // .then(function(json) {
     //               var obj = JSON.parse(json);
     //               alert(obj[0].team_ID);
@@ -104,6 +104,19 @@ function post (path, data) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(data)
+}).then(function(response) {
+    if (response.ok) {
+        return response.text();  //To retrieve raw response data
+    }
+})
+
+function get (path) {
+  return window.fetch(path, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
 }).then(function(response) {
     if (response.ok) {
         return response.text();  //To retrieve raw response data
