@@ -1,4 +1,4 @@
-Loading team data from inputted team ID and year
+// Loading team data from inputted team ID and year
 const LoadTeamData = document.querySelector('.LoadTeamData')
 LoadTeamData.addEventListener('submit', (e) => {
   e.preventDefault()
