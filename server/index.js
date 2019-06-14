@@ -52,8 +52,9 @@ app.post('/login', (req, res) => {
 
 app.get('/load_team_IDs/:teamName', load_team_IDs);
 function load_team_IDs(req, res) {
+    var regex = format_query_string_regex(req.params.teamName);
     // let sql = 'SELECT team_ID FROM real_team WHERE team_name = "' + req.params.teamName + '"';
-    let sql = 'SELECT team_ID FROM real_team WHERE team_name LIKE "' + req.params.teamName + '" GROUP BY LENGTH(team_name)';
+    let sql = 'SELECT team_ID FROM real_team WHERE team_name LIKE "' + regex + '" GROUP BY LENGTH(team_name)';
     res.send(sql)
     // let query = db.query(sql, (err, results) => {
     //     if(err) throw err;
@@ -94,3 +95,11 @@ function load_team_data_submit(req, res) {
 app.listen(3000, () => {
   console.log('Server running on port 3000')
 })
+
+function format_query_string_regex(query_string) {
+    var query_string = query_string.toLowerCase();
+    var split_string = query_string.split(" ");
+    var regex = split_string.join('%');
+    var regex = "%" + regex + "%";
+    return regex;
+}

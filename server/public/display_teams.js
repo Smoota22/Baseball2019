@@ -42,17 +42,8 @@ LoadTeamData.addEventListener('submit', (e) => {
 var curr_team_id = ""
 var curr_year = ""
 
-function format_query_string_regex(query_string) {
-    var query_string = query_string.toLowerCase();
-    var split_string = query_string.split(" ");
-    var regex = split_string.join('%');
-    var regex = "%" + regex + "%";
-    return regex;
-}
-
 function search_years() {
     var search_team_name = $("#search_team").val();
-    var regex = format_query_string_regex(search_team_name);
     var path = '/load_team_IDs/' + search_team_name;
     get(path)
     // .then(function(json) {
