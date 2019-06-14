@@ -52,8 +52,8 @@ app.post('/login', (req, res) => {
 
 app.get('/load_team_IDs/:teamName', load_team_IDs);
 function load_team_IDs(req, res) {
-    // let sql = 'SELECT team_ID FROM real_team WHERE team_name = "' + req.params.teamName + '"';
-    let sql = 'SELECT team_ID FROM real_team WHERE team_name LIKE "' + req.params.teamName + '" GROUP BY LENGTH(name)';
+    let sql = 'SELECT team_ID FROM real_team WHERE team_name = "' + req.params.teamName + '"';
+    let sql = 'SELECT team_ID FROM real_team WHERE team_name LIKE "' + req.params.teamName + '" GROUP BY LENGTH(teatm_name)';
     // res.send(sql)
     let query = db.query(sql, (err, results) => {
         if(err) throw err;
