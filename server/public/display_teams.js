@@ -54,7 +54,7 @@ function search_years() {
     var search_team_name = $("#search_team").val();
     var regex = format_query_string_regex(search_team_name);
     var path = '/load_team_IDs/' + search_team_name;
-    post(path)
+    get(path)
     // .then(function(json) {
     //               var obj = JSON.parse(json);
     //               alert(obj[0].team_ID);

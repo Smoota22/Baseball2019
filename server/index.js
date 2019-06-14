@@ -50,7 +50,7 @@ app.post('/login', (req, res) => {
     })
 })
 
-app.post('/load_team_IDs/:teamName', load_team_IDs);
+app.get('/load_team_IDs/:teamName', load_team_IDs);
 function load_team_IDs(req, res) {
     let sql = 'SELECT games FROM real_team WHERE team_ID = "BL4" AND year_ID = 1873';
     // let sql = 'SELECT team_ID FROM real_team WHERE team_name LIKE' + req.params.teamName + 'GROUP BY LENGTH(name)';
