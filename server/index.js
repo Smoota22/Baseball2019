@@ -54,8 +54,8 @@ app.get('/load_team_IDs/:teamName', load_team_IDs);
 function load_team_IDs(req, res) {
     var regex = format_query_string_regex(req.params.teamName);
     // let sql = 'SELECT team_ID FROM real_team WHERE team_name = "' + req.params.teamName + '"';
-    let sql = 'SELECT team_ID FROM real_team WHERE team_name LIKE "' + regex + '" GROUP BY LENGTH(team_name)';
-    res.send(sql)
+    let sql = "SELECT team_ID FROM real_team WHERE team_name LIKE '" + regex + "' GROUP BY LENGTH(team_name)";
+    // res.send(sql);
     let query = db.query(sql, (err, results) => {
         if(err) throw err;
         console.log(results);
