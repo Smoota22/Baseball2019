@@ -109,6 +109,11 @@ function post (path, data) {
         return response.text();  //To retrieve raw response data
     }
 })
+// .then(function(json) {
+//     var obj = JSON.parse(json);
+//     alert(obj[0].games);
+// })
+}
 
 function get (path) {
   return window.fetch(path, {
@@ -122,8 +127,4 @@ function get (path) {
         return response.text();  //To retrieve raw response data
     }
 })
-// .then(function(json) {
-//     var obj = JSON.parse(json);
-//     alert(obj[0].games);
-// })
 }
