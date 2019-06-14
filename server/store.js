@@ -11,7 +11,7 @@ module.exports = {
         email: email,
         salt: salt,
         encrypted_password: hash
-  }).debug()
+  })
 },
   authenticate ({ email, password }) {
     console.log(`Authenticating user ${email}`)

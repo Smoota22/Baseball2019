@@ -41,36 +41,59 @@ var team_dict = {
 };
 var curr_team_id = ""
 var curr_year = ""
-$(document).ready(function () {
-  //Selecting Team From Dropdown
-  $('#team-menu li').click(function() {
-      curr_team_id = team_dict[$(this).text()];
-      if (curr_year != "") {
-          alert(curr_team_id + curr_year);
-          post('/load_team_data/submit', {curr_team_id, curr_year})
-            .then(function(json) {
-              var obj = JSON.parse(json);
-              display_team(obj);
-          })
-      }
-  });
 
-  $('#year-menu li').click(function() {
-      curr_year = $(this).text();
-      if (curr_team_id != "") {
-          alert(curr_team_id + curr_year);
-          post('/load_team_data/submit', {curr_team_id, curr_year})
-            .then(function(json) {
-              var obj = JSON.parse(json);
-              display_team(obj);
-          })
-      }
-  });
+function format_query_string_regex(query_string) {
+    var query_string = query_string.toLowerCase();
+    var split_string = query_string.split(" ");
+    var regex = split_string.join('%');
+    var regex = "%" + regex + "%";
+    return regex;
+}
+
+function search_years() {
+    var search_team_name = $("#search_team").val();
+    var regex = format_query_string_regex(search_team_name);
+    var path = '/load_team_IDs/' + regex;
+    post(path).then(function(json) {
+                  var obj = JSON.parse(json);
+                  alert(obj[0].team_ID);
+              });
+}
+
+$(document).ready(function () {
+    $("#search_team").bind("keyup mouseenter", search_years);
+
+
+  //Selecting Team From Dropdown
+//   $('#team-menu li').click(function() {
+//       curr_team_id = team_dict[$(this).text()];
+//       if (curr_year != "") {
+//           alert(curr_team_id + curr_year);
+//           post('/load_team_data/submit', {curr_team_id, curr_year})
+//             .then(function(json) {
+//               var obj = JSON.parse(json);
+//               display_team(obj);
+//           })
+//       }
+//   });
+//
+//   $('#year-menu li').click(function() {
+//       curr_year = $(this).text();
+//       if (curr_team_id != "") {
+//           alert(curr_team_id + curr_year);
+//           post('/load_team_data/submit', {curr_team_id, curr_year})
+//             .then(function(json) {
+//               var obj = JSON.parse(json);
+//               display_team(obj);
+//           })
+//       }
+//   });
 });
 
-function display_team(jsObj) {
-    alert(jsObj[0].games)
-}
+//TODO: display all the returned data into nice looking HTML structures.
+// function display_team(jsObj) {
+//     alert(jsObj[0].games)
+// }
 
 function post (path, data) {
   return window.fetch(path, {
