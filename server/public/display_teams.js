@@ -53,8 +53,8 @@ function search_years() {
 
         for (i = 0; i < obj.length; i++) {
 
-            $name_and_id = str_replace(' ', '_', obj[i].team_name) + "*" + str_replace(' ', '_', obj[i].team_ID);
-            console.log($name_and_id);
+            // $name_and_id = str_replace(' ', '_', obj[i].team_name) + "*" + str_replace(' ', '_', obj[i].team_ID);
+            // console.log($name_and_id);
             // echo "<div class='team_name_item' id=$name_and_id><p>" . $row['name'] . ", " . $row['foodId'] . "</p></div>";
         }
     });
