@@ -50,7 +50,7 @@ function autofill_team_names() {
     get(path)
     .then(function(json) {
         // alert(json);
-        if (json === "undefined") {
+        if (json === undefined) {
             alert("UNDEFEIND")
             $("#team_suggestions").replaceWith(RESET_TEAM_SUGGESTIONS);
             return;
