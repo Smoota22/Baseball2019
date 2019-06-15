@@ -41,6 +41,7 @@
 // };
 const RESET_TEAM_SUGGESTIONS = '<div id="team_suggestions"></div>';
 const RESET_YEAR_SUGGESTIONS = '<div id="year_suggestions"></div>';
+const MAX_SUGGESTIONS = 10;
 var curr_team_id = ""
 var curr_year = ""
 
@@ -54,26 +55,27 @@ function autofill_team_names() {
             $("#team_suggestions").replaceWith(RESET_TEAM_SUGGESTIONS);
             return;
         }
-        var obj = JSON.parse(json);
-        // alert(obj.length);
+        var query_result_obj = JSON.parse(json);
+        // alert(query_result_obj.length);
         var $team_suggestions = $("#team_suggestions");
         // console.log($team_suggestions);
         $team_suggestions.replaceWith(RESET_TEAM_SUGGESTIONS);
         $team_suggestions = $("#team_suggestions");
 
-        for (i = 0; i < obj.length; i++) {
-            if (obj[i].team_name.toLowerCase() === $("#search_team").val().toLowerCase()) {
-                lock_in_team_name(obj[i].team_name, obj[i].team_ID);
+        var num_suggestions = Math.min(query_result_obj.length, MAX_SUGGESTIONS);
+        for (i = 0; i < num_suggestions; i++) {
+            if (query_result_obj[i].team_name.toLowerCase() === $("#search_team").val().toLowerCase()) {
+                lock_in_team_name(query_result_obj[i].team_name, query_result_obj[i].team_ID);
                 return;
             }
 
             $("#search_team_year").val("");
             $("#search_team_year").prop("disabled", true);
 
-            var team_name_id = obj[i].team_name + "*" + obj[i].team_ID;
+            var team_name_id = query_result_obj[i].team_name + "*" + query_result_obj[i].team_ID;
             team_name_id = team_name_id.replace(/ /g, "_");
 
-            var str = "<div class='team_name_item' id=" + team_name_id + "><p>" + obj[i].team_name + "</p></div>";
+            var str = "<div class='team_name_item' id=" + team_name_id + "><p>" + query_result_obj[i].team_name + "</p></div>";
             var html = $.parseHTML(str);
             $team_suggestions.append(html);
 
@@ -107,20 +109,21 @@ function autofill_years() {
             $("#year_suggestions").replaceWith(RESET_YEAR_SUGGESTIONS);
             return;
         }
-        var obj = JSON.parse(json);
+        var query_result_obj = JSON.parse(json);
         var $year_suggestions = $("#year_suggestions");
         $year_suggestions.replaceWith(RESET_YEAR_SUGGESTIONS);
         $year_suggestions = $("#year_suggestions");
 
-        for (i = 0; i < obj.length; i++) {
-            if (obj[i].year_ID === $("#search_team_year").val()) {
-                lock_in_team_year(curr_team_id, obj[i].year_ID);
+        var num_suggestions = Math.min(query_result_obj.length, MAX_SUGGESTIONS);
+        for (i = 0; i < num_suggestions; i++) {
+            if (query_result_obj[i].year_ID === $("#search_team_year").val()) {
+                lock_in_team_year(curr_team_id, query_result_obj[i].year_ID);
                 return;//TODO
             }
 
-            var year_id = obj[i].year_ID;
+            var year_id = query_result_obj[i].year_ID;
 
-            var str = "<div class='year_item' id=" + year_id + "><p>" + obj[i].year_ID + "</p></div>";
+            var str = "<div class='year_item' id=" + year_id + "><p>" + query_result_obj[i].year_ID + "</p></div>";
             var html = $.parseHTML(str);
             $year_suggestions.append(html);
 
@@ -191,8 +194,8 @@ $(document).ready(function () {
 //           alert(curr_team_id + curr_year);
 //           post('/load_team_data/submit', {curr_team_id, curr_year})
 //             .then(function(json) {
-//               var obj = JSON.parse(json);
-//               display_team(obj);
+//               var query_result_obj = JSON.parse(json);
+//               display_team(query_result_obj);
 //           })
 //       }
 //   });
@@ -203,16 +206,16 @@ $(document).ready(function () {
 //           alert(curr_team_id + curr_year);
 //           post('/load_team_data/submit', {curr_team_id, curr_year})
 //             .then(function(json) {
-//               var obj = JSON.parse(json);
-//               display_team(obj);
+//               var query_result_obj = JSON.parse(json);
+//               display_team(query_result_obj);
 //           })
 //       }
 //   });
 });
 
 //TODO: display all the returned data into nice looking HTML structures.
-// function display_team(jsObj) {
-//     alert(jsObj[0].games)
+// function display_team(jsquery_result_obj) {
+//     alert(jsquery_result_obj[0].games)
 // }
 
 function post (path, data) {
@@ -229,8 +232,8 @@ function post (path, data) {
     }
 })
 // .then(function(json) {
-//     var obj = JSON.parse(json);
-//     alert(obj[0].games);
+//     var query_result_obj = JSON.parse(json);
+//     alert(query_result_obj[0].games);
 // })
 }
 
