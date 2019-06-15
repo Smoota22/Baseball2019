@@ -131,7 +131,7 @@ function autofill_years() {
 }
 
 function lock_in_team_year(locked_team_ID, locked_year_ID) {
-    $("#year_suggestions")replaceWith(RESET_YEAR_SUGGESTIONS);
+    $("#year_suggestions").replaceWith(RESET_YEAR_SUGGESTIONS);
     $("#search_team_year").val(locked_year_ID);
     curr_year = locked_year_ID;
 }
