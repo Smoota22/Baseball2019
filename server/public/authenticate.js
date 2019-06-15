@@ -1,22 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 const Login = document.querySelector('.Login')
-=======
-const CreateUser = document.querySelector('.CreateUser')
-CreateUser.addEventListener('submit', (e) => {
-  e.preventDefault()
-  const first_name = CreateUser.querySelector('.first_name').value
-  const last_name = CreateUser.querySelector('.last_name').value
-  const email = CreateUser.querySelector('.email').value
-  const password = CreateUser.querySelector('.password').value
-  post('/createUser', {first_name, last_name, email, password})
-})
-
-const Login = document.querySelector('.Login') 
->>>>>>> de94337a4270488b098aaadaa006b96cb14ad0ae
-=======
-const Login = document.querySelector('.Login')
->>>>>>> d742bed468077dd5cbec8448fa71c0352000d88d
 Login.addEventListener('submit', (e) => {
   e.preventDefault()
   const email = Login.querySelector('.email').value
@@ -29,7 +11,7 @@ Login.addEventListener('submit', (e) => {
     // .then(function(json) {
     //     var obj = JSON.parse(json);
     //     alert(json);
-    // }) 
+    // })
 })
 
 function post (path, data) {
