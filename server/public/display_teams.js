@@ -43,6 +43,56 @@ const RESET_TEAM_SUGGESTIONS = '<div id="team_suggestions"></div>';
 var curr_team_id = ""
 var curr_year = ""
 
+function autofill_team_names() {
+    var search_team_name = $("#search_team").val();
+    var path = '/autofill_team_names/' + search_team_name;
+    get(path)
+    .then(function(json) {
+        // alert(json);
+        var obj = JSON.parse(json);
+        // alert(obj.length);
+        var $team_suggestions = $("#team_suggestions");
+        // console.log($team_suggestions);
+        $team_suggestions.replaceWith(RESET_TEAM_SUGGESTIONS);
+        $team_suggestions = $("#team_suggestions");
+
+        for (i = 0; i < obj.length; i++) {
+            if (obj[i].team_name.toLowerCase() === $("#search_team").val().toLowerCase()) {
+                lock_in_team_name(obj[i].team_name, obj[i].team_ID);
+            }
+
+            var team_name_id = obj[i].team_name + "*" + obj[i].team_ID;
+            team_name_id = team_name_id.replace(/ /g, "_");
+
+            var str = "<div class='team_name_item' id=" + team_name_id + "><p>" + obj[i].team_name + "</p></div>";
+            var html = $.parseHTML(str);
+            $team_suggestions.append(html);
+
+            // var nodeNames = [];
+            // // Gather the parsed HTML's node names
+            // $.each( html, function( i, el ) {
+            //   nodeNames[ i ] = "<li>" + el.nodeName + "</li>";
+            // });
+            //
+            // // Insert the node names
+            // $team_suggestions.append( "<h3>Node Names:</h3>" );
+            // $( "<ol></ol>" )
+            //   .append( nodeNames.join( "" ) )
+            //   .appendTo( $team_suggestions );
+        }
+    });
+}
+
+function lock_in_team_name(locked_team_name, locked_team_ID) {
+    var $team_suggestions = $("#team_suggestions");
+    $team_suggestions.replaceWith(RESET_TEAM_SUGGESTIONS);
+
+    var $search_team_input = $("#search_team");
+    $search_team_input.val(locked_team_name);
+
+    curr_team_id = locked_team_ID;
+}
+
 function search_years() {
     var search_team_name = $("#search_team").val();
     var path = '/autofill_team_names/' + search_team_name;
@@ -90,12 +140,10 @@ $(document).ready(function () {
         team_name = param_arr[0];
         team_ID = param_arr[1];
 
-        var $search_team_input = $("#search_team");
-        $search_team_input.val(team_name);
-        var $team_suggestions = $("#team_suggestions");
-        $team_suggestions.replaceWith(RESET_TEAM_SUGGESTIONS);
+        lock_in_team_name(team_name, team_ID);
     });
-    $("#search_team").bind("keyup mouseenter", search_years);
+
+    $("#search_team").bind("keyup mouseenter", autofill_team_names);
 
 
   //Selecting Team From Dropdown
