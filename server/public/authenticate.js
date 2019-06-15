@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 const Login = document.querySelector('.Login')
 =======
 const CreateUser = document.querySelector('.CreateUser')
@@ -13,6 +14,9 @@ CreateUser.addEventListener('submit', (e) => {
 
 const Login = document.querySelector('.Login') 
 >>>>>>> de94337a4270488b098aaadaa006b96cb14ad0ae
+=======
+const Login = document.querySelector('.Login')
+>>>>>>> d742bed468077dd5cbec8448fa71c0352000d88d
 Login.addEventListener('submit', (e) => {
   e.preventDefault()
   const email = Login.querySelector('.email').value
