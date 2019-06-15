@@ -103,6 +103,7 @@ function autofill_years() {
     get(path)
     .then(function(json) {
         if (json === "undefined") {
+            alert("UNDEFEIND")
             $("#year_suggestions").replaceWith(RESET_YEAR_SUGGESTIONS);
             return;
         }
