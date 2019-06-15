@@ -79,6 +79,10 @@ function search_years() {
 }
 
 $(document).ready(function () {
+    $(document).on("click", ".team_name_item", function(event) {
+        div_elem = event.target.id;
+        alert(div_elem);
+    });
     $("#search_team").bind("keyup mouseenter", search_years);
 
 
