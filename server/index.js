@@ -45,10 +45,9 @@ app.post('/login', (req, res) => {
       password: req.body.password
     })
     // .then(({ success }) => {
-        // res.send(req.body.email + "," + req.body.password);
+        res.send(req.body.email + "," + req.body.password);
       // if (success) res.sendStatus(200)
       // else res.sendStatus(401)
-      return true;
   // });
   // let sql = 'SELECT first_name FROM user WHERE email = "' + req.body.email + '"';
   // // res.send(sql);
