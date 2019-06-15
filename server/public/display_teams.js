@@ -49,10 +49,10 @@ function search_years() {
     .then(function(json) {
         // alert(json);
         var obj = JSON.parse(json);
-        alert(obj.length);
+        // alert(obj.length);
 
         for (i = 0; i < obj.length; i++) {
-            
+
         //     $name_and_id = str_replace(' ', '_', $row['name']) . "*" . str_replace(' ', '_', $row['foodId']);
         //     echo "<div class='food_search_item' id=$name_and_id><p>" . $row['name'] . ", " . $row['foodId'] . "</p></div>";
         }
