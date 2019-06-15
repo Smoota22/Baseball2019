@@ -50,16 +50,16 @@ function search_years() {
         // alert(json);
         var obj = JSON.parse(json);
         // alert(obj.length);
+        var $log = $("#team_name_form");
 
         for (i = 0; i < obj.length; i++) {
-            var teamID = obj[i].team_ID;
+            var team_name_id = obj[i].team_name + "*" + obj[i].team_ID;
 
-            var $log = $("#team_name_form");
-            var str = "hello, <b>my name is</b> jQuery.";
+            var str = "<div class='team_name_item' id=" + team_name_id + "><p>" + obj[i].team_name + "</p></div>";
             var html = $.parseHTML(str);
-            // var nodeNames = [];
             $log.append(html);
 
+            // var nodeNames = [];
             // // Gather the parsed HTML's node names
             // $.each( html, function( i, el ) {
             //   nodeNames[ i ] = "<li>" + el.nodeName + "</li>";
