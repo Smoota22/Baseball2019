@@ -47,14 +47,15 @@ function search_years() {
     var path = '/autofill_team_names/' + search_team_name;
     get(path)
     .then(function(json) {
-        alert(json);
+        // alert(json);
         var obj = JSON.parse(json);
         alert(obj.length);
 
-        // while ($row = mysql_fetch_assoc($searchResults)) {
+        for (i = 0; i < obj.length; i++) {
+            alert(i);
         //     $name_and_id = str_replace(' ', '_', $row['name']) . "*" . str_replace(' ', '_', $row['foodId']);
         //     echo "<div class='food_search_item' id=$name_and_id><p>" . $row['name'] . ", " . $row['foodId'] . "</p></div>";
-        // }
+        }
     });
 }
 
