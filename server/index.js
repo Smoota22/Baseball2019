@@ -73,8 +73,8 @@ function autofill_team_names(req, res) {
     });
 }
 
-app.get('/autofill_team_years/:teamID', autofill_team_years);
-function autofill_team_years(req, res) {
+app.get('/autofill_years/:teamID', autofill_years);
+function autofill_years(req, res) {
     let sql = 'SELECT year_ID FROM real_team WHERE team_ID = "' + req.params.teamID;
     // res.send(sql)
     let query = db.query(sql, (err, results) => {
