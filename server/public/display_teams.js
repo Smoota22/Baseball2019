@@ -49,7 +49,7 @@ function search_years() {
     .then(function(json) {
                   alert(json);
                   var obj = JSON.parse(json);
-                  alert(obj[0].team_ID);
+                  alert(obj[0].team_name);
               });
 }
 
