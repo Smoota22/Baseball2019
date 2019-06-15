@@ -51,7 +51,7 @@ function search_years() {
         var obj = JSON.parse(json);
         // alert(obj.length);
         var $log = $("#team_suggestions");
-        console.log($log);
+        // console.log($log);
         $log.replaceWith('<div id="team_suggestions">/<div>');
 
         for (i = 0; i < obj.length; i++) {
