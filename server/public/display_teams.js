@@ -59,6 +59,7 @@ function autofill_team_names() {
         for (i = 0; i < obj.length; i++) {
             if (obj[i].team_name.toLowerCase() === $("#search_team").val().toLowerCase()) {
                 lock_in_team_name(obj[i].team_name, obj[i].team_ID);
+                return;
             }
 
             var team_name_id = obj[i].team_name + "*" + obj[i].team_ID;
