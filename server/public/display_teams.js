@@ -48,12 +48,7 @@ function search_years() {
     get(path)
     .then(function(json) {
                   var obj = JSON.parse(json);
-                  alert(obj.length);
-
-                  // while ($row = mysql_fetch_assoc($searchResults)) {
-                  //     $name_and_id = str_replace(' ', '_', $row['name']) . "*" . str_replace(' ', '_', $row['foodId']);
-                  //     echo "<div class='food_search_item' id=$name_and_id><p>" . $row['name'] . ", " . $row['foodId'] . "</p></div>";
-                  // }
+                  alert(obj[0].team_ID);
               });
 }
 
