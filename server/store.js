@@ -15,7 +15,7 @@ module.exports = {
 },
   authenticate ({ email, password }) {
     // console.log(`Authenticating user ${email}`)
-    return knex('user').insert({ email })
+    // return knex('user').insert({ email })
       // .then(([user]) => {
       //   if (!user) return { success: false }
       //   const { hash } = saltHashPassword({
