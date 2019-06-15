@@ -63,7 +63,7 @@ function autofill_team_names() {
             }
 
             var team_name_id = obj[i].team_name + "*" + obj[i].team_ID;
-            team_name_id = team_name_id.replace(/_/g, " ");
+            team_name_id = team_name_id.replace(/ /g, "_");
 
             var str = "<div class='team_name_item' id=" + team_name_id + "><p>" + obj[i].team_name + "</p></div>";
             var html = $.parseHTML(str);
@@ -137,6 +137,7 @@ $(document).ready(function () {
             div_elem = event.target.id;
         }
 
+        div_elem = div_elem.replace(/_/g, " ");
         param_arr = div_elem.split("*");
         team_name = param_arr[0];
         team_ID = param_arr[1];
