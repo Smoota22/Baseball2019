@@ -52,7 +52,7 @@ function search_years() {
         alert(obj.length);
 
         for (i = 0; i < obj.length; i++) {
-            alert(i);
+            
         //     $name_and_id = str_replace(' ', '_', $row['name']) . "*" . str_replace(' ', '_', $row['foodId']);
         //     echo "<div class='food_search_item' id=$name_and_id><p>" . $row['name'] . ", " . $row['foodId'] . "</p></div>";
         }
