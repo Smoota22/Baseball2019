@@ -47,8 +47,8 @@ function search_years() {
     var path = '/autofill_team_names/' + search_team_name;
     get(path)
     .then(function(json) {
-                  var obj = JSON.parse(json);
                   alert(json);
+                  var obj = JSON.parse(json);
                   alert(obj[0].team_ID);
               });
 }
