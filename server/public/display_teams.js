@@ -59,7 +59,7 @@ function search_years() {
             var team_name_id = obj[i].team_name + "*" + obj[i].team_ID;
             team_name_id = team_name_id.replace(/ /g, "_");
 
-            var str = "<div style='border:1px solid black;' class='team_name_item' id=" + team_name_id + ">" + obj[i].team_name + "</div>";
+            var str = "<div class='team_name_item' id=" + team_name_id + "><p>" + obj[i].team_name + "</p></div>";
             var html = $.parseHTML(str);
             $log.append(html);
 
@@ -81,6 +81,9 @@ function search_years() {
 $(document).ready(function () {
     $(document).on("click", ".team_name_item", function(event) {
         div_elem = event.target.parentNode.id;
+        if (div_elem === "team_suggestions") {
+            div_elem = event.target.id;
+        }
         alert(div_elem);
     });
     $("#search_team").bind("keyup mouseenter", search_years);
