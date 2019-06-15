@@ -24,7 +24,7 @@ module.exports = {
       //   })
       //   return { success: hash === user.encrypted_password }
       // })
-      return true;
+      return 4;
   }
 }
 
