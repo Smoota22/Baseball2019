@@ -22,8 +22,7 @@ module.exports = {
           password,
           salt: user.salt
         })
-        // return { success: hash === user.encrypted_password }
-        return {success: hash + '\n' + user.encrypted_password}
+        return { success: hash === user.encrypted_password }
       })
   }
 }
