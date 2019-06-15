@@ -51,7 +51,6 @@ function autofill_team_names() {
     .then(function(json) {
         // alert(json);
         if (json === undefined) {
-            alert("UNDEFEIND")
             $("#team_suggestions").replaceWith(RESET_TEAM_SUGGESTIONS);
             return;
         }
@@ -103,7 +102,7 @@ function autofill_years() {
     var path = '/autofill_years/' + curr_team_id;
     get(path)
     .then(function(json) {
-        if (json === "undefined") {
+        if (json === undefined) {
             $("#year_suggestions").replaceWith(RESET_YEAR_SUGGESTIONS);
             return;
         }
