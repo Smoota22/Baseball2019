@@ -39,23 +39,23 @@ app.post('/createUser', (req, res) => {
 })
 
 app.post('/login', (req, res) => {
-  // store
-  //   .authenticate({
-  //     email: req.body.email,
-  //     password: req.body.password
-  //   })
-  //   .then(({ success }) => {
-  //       res.send(email + "," + password);
-  //     if (success) res.sendStatus(200)
-  //     else res.sendStatus(401)
-  //   })
-  let sql = 'SELECT first_name FROM user WHERE email = "' + req.body.email + '"';
-  // res.send(sql);
-  let query = db.query(sql, (err, results) => {
-      if(err) throw err;
-      console.log(results);
-      res.send(results);
-  });
+  store
+    .authenticate({
+      email: req.body.email,
+      password: req.body.password
+    })
+    .then(({ success }) => {
+        res.send(email + "," + password);
+      // if (success) res.sendStatus(200)
+      // else res.sendStatus(401)
+    })
+  // let sql = 'SELECT first_name FROM user WHERE email = "' + req.body.email + '"';
+  // // res.send(sql);
+  // let query = db.query(sql, (err, results) => {
+  //     if(err) throw err;
+  //     console.log(results);
+  //     res.send(results);
+  // });
 })
 
 app.get('/autofill_team_names/:teamName', autofill_team_names);
