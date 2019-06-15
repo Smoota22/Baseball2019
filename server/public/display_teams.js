@@ -84,7 +84,13 @@ $(document).ready(function () {
         if (div_elem === "team_suggestions") {
             div_elem = event.target.id;
         }
-        alert(div_elem);
+
+        param_arr = div_elem.split("*");
+        team_name = param_arr[0];
+        team_ID = param_arr[1];
+
+        var $search_team_input = $("#search_team");
+        $search_team_input.val(team_name);
     });
     $("#search_team").bind("keyup mouseenter", search_years);
 
