@@ -45,10 +45,43 @@ app.post('/login', (req, res) => {
       password: req.body.password
     })
     .then(({ success }) => {
-      if (success) res.sendStatus(200)
-      else res.sendStatus(401)
-    })
+        // res.send(req.body.email + "," + req.body.password);
+      // if (success) res.sendStatus(200)
+      // else res.sendStatus(401)
+      return true;
+  });
+  // let sql = 'SELECT first_name FROM user WHERE email = "' + req.body.email + '"';
+  // // res.send(sql);
+  // let query = db.query(sql, (err, results) => {
+  //     if(err) throw err;
+  //     console.log(results);
+  //     res.send(results);
+  // });
 })
+
+app.get('/autofill_team_names/:teamName', autofill_team_names);
+function autofill_team_names(req, res) {
+    var regex = format_query_string_regex(req.params.teamName);
+    // let sql = 'SELECT team_ID FROM real_team WHERE team_name = "' + req.params.teamName + '"';
+    let sql = 'SELECT team_name FROM real_team WHERE team_name LIKE "' + regex + '"';
+    res.send(sql);
+    let query = db.query(sql, (err, results) => {
+        if(err) throw err;
+        console.log(results);
+        res.send(results);
+    });
+}
+
+app.get('/load_team_years/:teamID', load_team_years);
+function load_team_years(req, res) {
+    let sql = 'SELECT year_ID FROM real_team WHERE team_ID = "' + req.params.teamID;
+    // res.send(sql)
+    let query = db.query(sql, (err, results) => {
+        if(err) throw err;
+        console.log(results);
+        res.send(results);
+    });
+}
 
 app.get('/load_team_data/:teamID/:yearID', load_team_data);
 function load_team_data(req, res) {
@@ -61,13 +94,21 @@ function load_team_data(req, res) {
     });
 }
 
-app.post('/load_team_data/submit', load_team_data_submit);
+app.post('/load_team_data/submit_team', load_team_data_submit);
 function load_team_data_submit(req, res) {
-    var teamID = req.body.curr_team_id;
-    var yearID = req.body.curr_year;
+    var teamID = req.body.team_ID;
+    var yearID = req.body.yearID;
     res.redirect('/load_team_data/' + teamID + '/' + yearID);
 }
 
 app.listen(3000, () => {
   console.log('Server running on port 3000')
 })
+
+function format_query_string_regex(query_string) {
+    var query_string = query_string.toLowerCase();
+    var split_string = query_string.split(" ");
+    var regex = split_string.join('%');
+    var regex = "%" + regex + "%";
+    return regex;
+}
