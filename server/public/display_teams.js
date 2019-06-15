@@ -168,7 +168,7 @@ $(document).ready(function () {
         team_ID = curr_team_id;
         year_ID = div_elem;
 
-        lock_in_team_year(team_name, team_ID);
+        lock_in_team_year(team_ID, year_ID);
     });
 
     $("#search_team").bind("keyup mouseenter", autofill_team_names);
