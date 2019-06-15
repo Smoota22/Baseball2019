@@ -10,7 +10,7 @@ Login.addEventListener('submit', (e) => {
     // })
     .then(function(json) {
         var obj = JSON.parse(json);
-        alert(obj[0]);
+        alert(json);
     })
 })
 
