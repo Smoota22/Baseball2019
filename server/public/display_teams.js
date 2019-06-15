@@ -1,11 +1,11 @@
 // Loading team data from inputted team ID and year
-const LoadTeamData = document.querySelector('.LoadTeamData')
-LoadTeamData.addEventListener('submit', (e) => {
-  e.preventDefault()
-  const teamID = LoadTeamData.querySelector('.txt_teamID').value
-  const yearID = LoadTeamData.querySelector('.txt_yearID').value
-  post('/load_team_data/submit_team', {teamID, yearID})
-})
+// const LoadTeamData = document.querySelector('.LoadTeamData')
+// LoadTeamData.addEventListener('submit', (e) => {
+//   e.preventDefault()
+//   const teamID = LoadTeamData.querySelector('.txt_teamID').value
+//   const yearID = LoadTeamData.querySelector('.txt_yearID').value
+//   post('/load_team_data/submit_team', {teamID, yearID})
+// })
 
 // var team_dict = {
 //     "Arizona Diamondbacks" : "ARI",
@@ -39,6 +39,7 @@ LoadTeamData.addEventListener('submit', (e) => {
 //     "Toronto Blue Jays" : "TOR",
 //     "Washington Nationals" : "WAS",
 // };
+const RESET_TEAM_SUGGESTIONS = '<div id="team_suggestions"></div>';
 var curr_team_id = ""
 var curr_year = ""
 
@@ -50,10 +51,10 @@ function search_years() {
         // alert(json);
         var obj = JSON.parse(json);
         // alert(obj.length);
-        var $log = $("#team_suggestions");
-        // console.log($log);
-        $log.replaceWith('<div id="team_suggestions"></div>');
-        $log = $("#team_suggestions");
+        var $team_suggestions = $("#team_suggestions");
+        // console.log($team_suggestions);
+        $team_suggestions.replaceWith(RESET_TEAM_SUGGESTIONS);
+        $team_suggestions = $("#team_suggestions");
 
         for (i = 0; i < obj.length; i++) {
             var team_name_id = obj[i].team_name + "*" + obj[i].team_ID;
@@ -61,7 +62,7 @@ function search_years() {
 
             var str = "<div class='team_name_item' id=" + team_name_id + "><p>" + obj[i].team_name + "</p></div>";
             var html = $.parseHTML(str);
-            $log.append(html);
+            $team_suggestions.append(html);
 
             // var nodeNames = [];
             // // Gather the parsed HTML's node names
@@ -70,10 +71,10 @@ function search_years() {
             // });
             //
             // // Insert the node names
-            // $log.append( "<h3>Node Names:</h3>" );
+            // $team_suggestions.append( "<h3>Node Names:</h3>" );
             // $( "<ol></ol>" )
             //   .append( nodeNames.join( "" ) )
-            //   .appendTo( $log );
+            //   .appendTo( $team_suggestions );
         }
     });
 }
@@ -91,6 +92,8 @@ $(document).ready(function () {
 
         var $search_team_input = $("#search_team");
         $search_team_input.val(team_name);
+        var $team_suggestions = $("#team_suggestions");
+        $team_suggestions.replaceWith(RESET_TEAM_SUGGESTIONS);
     });
     $("#search_team").bind("keyup mouseenter", search_years);
 
