@@ -51,6 +51,7 @@ function search_years() {
         var obj = JSON.parse(json);
         // alert(obj.length);
         var $log = $("#display_item_container");
+        log = ""
 
         for (i = 0; i < obj.length; i++) {
             var team_name_id = obj[i].team_name + "*" + obj[i].team_ID;
