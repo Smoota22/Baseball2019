@@ -23,11 +23,9 @@ function post (path, data) {
     },
     body: JSON.stringify(data)
   })
+    .then(function(response) {
+      if (response.ok) {
+          return response.text();  //To retrieve raw response data
+      }
+  })
 }
-
-
-//   .then(function(response) {
-//     if (response.ok) {
-//         return response.text();  //To retrieve raw response data
-//     }
-// })
