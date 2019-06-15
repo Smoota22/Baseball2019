@@ -22,8 +22,6 @@ module.exports = {
           password,
           salt: user.salt
         })
-        alert(salt);
-        alert(hash);
         return { success: hash === user.encrypted_password }
       })
   }
