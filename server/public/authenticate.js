@@ -11,7 +11,7 @@ Login.addEventListener('submit', (e) => {
     // .then(function(json) {
     //     var obj = JSON.parse(json);
     //     alert(json);
-    // })
+    // }) 
 })
 
 function post (path, data) {
