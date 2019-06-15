@@ -88,7 +88,7 @@ function autofill_team_names() {
 }
 
 function lock_in_team_name(locked_team_name, locked_team_ID) {
-    $("#team_suggestions")replaceWith(RESET_TEAM_SUGGESTIONS);
+    $("#team_suggestions").replaceWith(RESET_TEAM_SUGGESTIONS);
     $("#search_team").val(locked_team_name);
     curr_team_id = locked_team_ID;
     $("#year_suggestions").prop("disabled", false);
