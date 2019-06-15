@@ -53,6 +53,7 @@ function search_years() {
         var $log = $("#team_suggestions");
         // console.log($log);
         $log.replaceWith('<div id="team_suggestions"></div>');
+        $log = $("#team_suggestions");
 
         for (i = 0; i < obj.length; i++) {
             var team_name_id = obj[i].team_name + "*" + obj[i].team_ID;
