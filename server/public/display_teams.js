@@ -51,6 +51,7 @@ function autofill_team_names() {
     .then(function(json) {
         // alert(json);
         if (json === "undefined") {
+            alert("UNDEFEIND")
             $("#team_suggestions").replaceWith(RESET_TEAM_SUGGESTIONS);
             return;
         }
@@ -103,7 +104,6 @@ function autofill_years() {
     get(path)
     .then(function(json) {
         if (json === "undefined") {
-            alert("UNDEFEIND")
             $("#year_suggestions").replaceWith(RESET_YEAR_SUGGESTIONS);
             return;
         }
