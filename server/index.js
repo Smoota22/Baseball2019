@@ -50,7 +50,7 @@ app.post('/login', (req, res) => {
   //     else res.sendStatus(401)
   //   })
   let sql = 'SELECT first_name FROM user WHERE email = "' + req.body.email + '"';
-  res.send(sql);
+  // res.send(sql);
   let query = db.query(sql, (err, results) => {
       if(err) throw err;
       console.log(results);
