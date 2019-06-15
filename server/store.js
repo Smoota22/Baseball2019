@@ -15,16 +15,16 @@ module.exports = {
 },
   authenticate ({ email, password }) {
     // console.log(`Authenticating user ${email}`)
-    // return knex('user').insert({ email })
-      // .then(([user]) => {
-      //   if (!user) return { success: false }
-      //   const { hash } = saltHashPassword({
-      //     password,
-      //     salt: user.salt
-      //   })
-      //   return { success: hash === user.encrypted_password }
-      // })
-      return true;
+    return knex('user').insert({ email })
+      .then(([user]) => {
+        if (!user) return { success: false }
+        const { hash } = saltHashPassword({
+          password,
+          salt: user.salt
+        })
+        return { success: hash === user.encrypted_password }
+      })
+      // return true;
   }
 }
 
