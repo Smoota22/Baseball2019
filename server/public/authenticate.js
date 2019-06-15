@@ -7,8 +7,6 @@ Login.addEventListener('submit', (e) => {
     .then(({ status }) => {
       if (status === 200) alert('login success')
       else alert('login failed')
-
-      console.log("TESTTTTTTT")
     })
     // .then(function(json) {
     //     var obj = JSON.parse(json);
