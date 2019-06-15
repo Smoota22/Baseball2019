@@ -64,7 +64,7 @@ function autofill_team_names() {
             }
 
             $("#year_suggestions").val("");
-            $("#year_suggestions").prop("disabled", true);
+            // $("#year_suggestions").prop("disabled", true);
             var team_name_id = obj[i].team_name + "*" + obj[i].team_ID;
             team_name_id = team_name_id.replace(/ /g, "_");
 
