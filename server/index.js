@@ -63,8 +63,8 @@ app.get('/autofill_team_names/:teamName', autofill_team_names);
 function autofill_team_names(req, res) {
     var regex = format_query_string_regex(req.params.teamName);
     // let sql = 'SELECT team_ID FROM real_team WHERE team_name = "' + req.params.teamName + '"';
-    let sql = 'SELECT team_name FROM real_team WHERE team_name = "sdas"';
-    // let sql = 'SELECT team_name FROM real_team WHERE team_name LIKE "' + regex + '"';
+    // let sql = 'SELECT team_name FROM real_team WHERE team_name = "sdas"';
+    let sql = 'SELECT team_name FROM real_team WHERE team_name LIKE "' + regex + '"';
     // res.send(sql);
     let query = db.query(sql, (err, results) => {
         if(err) throw err;
