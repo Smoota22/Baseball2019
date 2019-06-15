@@ -69,7 +69,7 @@ function search_years() {
               .append( nodeNames.join( "" ) )
               .appendTo( $log );
 
-            echo "<div class='food_search_item' id=$name_and_id><p>" . $row['name'] . ", " . $row['foodId'] . "</p></div>";
+            // echo "<div class='food_search_item' id=$name_and_id><p>" . $row['name'] . ", " . $row['foodId'] . "</p></div>";
         }
     });
 }
