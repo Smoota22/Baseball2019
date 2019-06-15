@@ -52,10 +52,24 @@ function search_years() {
         // alert(obj.length);
 
         for (i = 0; i < obj.length; i++) {
+            var teamID = obj[i].team_ID;
 
-            $name_and_id = str_replace(' ', '_', obj[i].team_name) + "*" + str_replace(' ', '_', obj[i].tead_ID);
-            console.log($name_and_id);
-        //     echo "<div class='food_search_item' id=$name_and_id><p>" . $row['name'] . ", " . $row['foodId'] . "</p></div>";
+            var $log = $( "#team_name_form" ),
+              str = "hello, <b>my name is</b> jQuery.",
+              html = $.parseHTML( str ),
+              nodeNames = [];
+            $log.append( html );
+            $.each( html, function( i, el ) {
+              nodeNames[ i ] = "<li>" + el.nodeName + "</li>";
+            });
+
+            // Insert the node names
+            $log.append( "<h3>Node Names:</h3>" );
+            $( "<ol></ol>" )
+              .append( nodeNames.join( "" ) )
+              .appendTo( $log );
+
+            echo "<div class='food_search_item' id=$name_and_id><p>" . $row['name'] . ", " . $row['foodId'] . "</p></div>";
         }
     });
 }
