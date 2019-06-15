@@ -48,6 +48,7 @@ function search_years() {
     get(path)
     .then(function(json) {
                   var obj = JSON.parse(json);
+                  alert(json);
                   alert(obj[0].team_ID);
               });
 }

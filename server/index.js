@@ -65,7 +65,7 @@ function autofill_team_names(req, res) {
     // let sql = 'SELECT team_ID FROM real_team WHERE team_name = "' + req.params.teamName + '"';
     let sql = 'SELECT team_name FROM real_team WHERE team_name = "sdas"';
     // let sql = 'SELECT team_name FROM real_team WHERE team_name LIKE "' + regex + '"';
-    res.send(sql);
+    // res.send(sql);
     let query = db.query(sql, (err, results) => {
         if(err) throw err;
         console.log(results);
