@@ -8,10 +8,10 @@ Login.addEventListener('submit', (e) => {
     //   if (status === 200) alert('login success')
     //   else alert('login failed')
     // })
-    .then(function(json) {
-        var obj = JSON.parse(json);
-        alert(json);
-    })
+    // .then(function(json) {
+    //     var obj = JSON.parse(json);
+    //     alert(json);
+    // })
 })
 
 function post (path, data) {
