@@ -54,22 +54,22 @@ function search_years() {
         for (i = 0; i < obj.length; i++) {
             var teamID = obj[i].team_ID;
 
-            var $log = $( "#team_name_form" ),
-              str = "hello, <b>my name is</b> jQuery.",
-              html = $.parseHTML( str ),
-              nodeNames = [];
-            $log.append( html );
-            $.each( html, function( i, el ) {
-              nodeNames[ i ] = "<li>" + el.nodeName + "</li>";
-            });
+            var $log = $("#team_name_form");
+            var str = "hello, <b>my name is</b> jQuery.";
+            var html = $.parseHTML(str);
+            // var nodeNames = [];
+            $log.append(html);
 
-            // Insert the node names
-            $log.append( "<h3>Node Names:</h3>" );
-            $( "<ol></ol>" )
-              .append( nodeNames.join( "" ) )
-              .appendTo( $log );
-
-            // echo "<div class='food_search_item' id=$name_and_id><p>" . $row['name'] . ", " . $row['foodId'] . "</p></div>";
+            // // Gather the parsed HTML's node names
+            // $.each( html, function( i, el ) {
+            //   nodeNames[ i ] = "<li>" + el.nodeName + "</li>";
+            // });
+            //
+            // // Insert the node names
+            // $log.append( "<h3>Node Names:</h3>" );
+            // $( "<ol></ol>" )
+            //   .append( nodeNames.join( "" ) )
+            //   .appendTo( $log );
         }
     });
 }
