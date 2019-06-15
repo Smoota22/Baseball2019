@@ -59,7 +59,7 @@ function search_years() {
             var team_name_id = obj[i].team_name + "*" + obj[i].team_ID;
             team_name_id = team_name_id.replace(/ /g, "_");
 
-            var str = "<div style='border:1px solid black;' class='team_name_item' id=" + team_name_id + "><p>" + obj[i].team_name + "</p></div>";
+            var str = "<div style='border:1px solid black;' class='team_name_item' id=" + team_name_id + ">" + obj[i].team_name + "</div>";
             var html = $.parseHTML(str);
             $log.append(html);
 
