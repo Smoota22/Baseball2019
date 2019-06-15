@@ -63,7 +63,7 @@ function autofill_team_names() {
             }
 
             var team_name_id = obj[i].team_name + "*" + obj[i].team_ID;
-            team_name_id = team_name_id.replace(/ /g, "_");
+            team_name_id = team_name_id.replace(/_/g, " ");
 
             var str = "<div class='team_name_item' id=" + team_name_id + "><p>" + obj[i].team_name + "</p></div>";
             var html = $.parseHTML(str);
@@ -109,7 +109,7 @@ function search_years() {
 
         for (i = 0; i < obj.length; i++) {
             var team_name_id = obj[i].team_name + "*" + obj[i].team_ID;
-            team_name_id = team_name_id.replace(/_/g, " ");
+            team_name_id = team_name_id.replace(/ /g, "_");
 
             var str = "<div class='team_name_item' id=" + team_name_id + "><p>" + obj[i].team_name + "</p></div>";
             var html = $.parseHTML(str);
