@@ -49,8 +49,11 @@ function autofill_team_names() {
     var path = '/autofill_team_names/' + search_team_name;
     get(path)
     .then(function(json) {
-        alert(json);
-        // if (json == )
+        // alert(json);
+        if (json === "undefined") {
+            $("#team_suggestions").replaceWith(RESET_TEAM_SUGGESTIONS);
+            return;
+        }
         var obj = JSON.parse(json);
         // alert(obj.length);
         var $team_suggestions = $("#team_suggestions");
@@ -99,6 +102,10 @@ function autofill_years() {
     var path = '/autofill_years/' + curr_team_id;
     get(path)
     .then(function(json) {
+        if (json === "undefined") {
+            $("#year_suggestions").replaceWith(RESET_YEAR_SUGGESTIONS);
+            return;
+        }
         var obj = JSON.parse(json);
         var $year_suggestions = $("#year_suggestions");
         $year_suggestions.replaceWith(RESET_YEAR_SUGGESTIONS);
