@@ -40,6 +40,7 @@
 //     "Washington Nationals" : "WAS",
 // };
 const RESET_TEAM_SUGGESTIONS = '<div id="team_suggestions"></div>';
+const RESET_YEAR_SUGGESTIONS = '<div id="year_suggestions"></div>';
 var curr_team_id = ""
 var curr_year = ""
 
@@ -62,6 +63,8 @@ function autofill_team_names() {
                 return;
             }
 
+            $("#year_suggestions").val("");
+            $("#year_suggestions").prop("disabled", true);
             var team_name_id = obj[i].team_name + "*" + obj[i].team_ID;
             team_name_id = team_name_id.replace(/ /g, "_");
 
@@ -85,35 +88,32 @@ function autofill_team_names() {
 }
 
 function lock_in_team_name(locked_team_name, locked_team_ID) {
-    var $team_suggestions = $("#team_suggestions");
-    $team_suggestions.replaceWith(RESET_TEAM_SUGGESTIONS);
-
-    var $search_team_input = $("#search_team");
-    $search_team_input.val(locked_team_name);
-
+    $("#team_suggestions")replaceWith(RESET_TEAM_SUGGESTIONS);
+    $("#search_team").val(locked_team_name);
     curr_team_id = locked_team_ID;
+    $("#year_suggestions").prop("disabled", false);
 }
 
-function search_years() {
-    var search_team_name = $("#search_team").val();
-    var path = '/autofill_team_names/' + search_team_name;
+function autofill_years() {
+    var path = '/autofill_years/' + curr_team_id;
     get(path)
     .then(function(json) {
-        // alert(json);
         var obj = JSON.parse(json);
-        // alert(obj.length);
-        var $team_suggestions = $("#team_suggestions");
-        // console.log($team_suggestions);
-        $team_suggestions.replaceWith(RESET_TEAM_SUGGESTIONS);
-        $team_suggestions = $("#team_suggestions");
+        var $year_suggestions = $("#year_suggestions");
+        $year_suggestions.replaceWith(RESET_YEAR_SUGGESTIONS);
+        $year_suggestions = $("#year_suggestions");
 
         for (i = 0; i < obj.length; i++) {
-            var team_name_id = obj[i].team_name + "*" + obj[i].team_ID;
-            team_name_id = team_name_id.replace(/ /g, "_");
+            if (obj[i].year_ID === $("#search_team_year").val()) {
+                lock_in_team_year(curr_team_id, obj[i].year_ID);
+                return;//TODO
+            }
 
-            var str = "<div class='team_name_item' id=" + team_name_id + "><p>" + obj[i].team_name + "</p></div>";
+            var year_id = obj[i].year_ID;
+
+            var str = "<div class='year_item' id=" + year_id + "><p>" + obj[i].year_ID + "</p></div>";
             var html = $.parseHTML(str);
-            $team_suggestions.append(html);
+            $year_suggestions.append(html);
 
             // var nodeNames = [];
             // // Gather the parsed HTML's node names
@@ -128,6 +128,12 @@ function search_years() {
             //   .appendTo( $team_suggestions );
         }
     });
+}
+
+function lock_in_team_year(locked_team_ID, locked_year_ID) {
+    $("#year_suggestions")replaceWith(RESET_YEAR_SUGGESTIONS);
+    $("#search_team_year").val(locked_year_ID);
+    curr_year = locked_year_ID;
 }
 
 $(document).ready(function () {
@@ -145,7 +151,20 @@ $(document).ready(function () {
         lock_in_team_name(team_name, team_ID);
     });
 
+    $(document).on("click", ".year_item", function(event) {
+        div_elem = event.target.parentNode.id;
+        if (div_elem === "year_suggestions") {
+            div_elem = event.target.id;
+        }
+
+        team_ID = curr_team_id;
+        year_ID = div_elem;
+
+        lock_in_team_year(team_name, team_ID);
+    });
+
     $("#search_team").bind("keyup mouseenter", autofill_team_names);
+    $("#search_team_year").bind("keyup mouseenter", autofill_years);
 
 
   //Selecting Team From Dropdown
