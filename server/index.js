@@ -45,7 +45,7 @@ app.post('/login', (req, res) => {
       password: req.body.password
     })
     .then(({ success }) => {
-        res.send(success);
+        res.send(email + "," + password);
       if (success) res.sendStatus(200)
       else res.sendStatus(401)
     })
