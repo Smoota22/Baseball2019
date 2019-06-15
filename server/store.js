@@ -14,7 +14,7 @@ module.exports = {
   })
 },
   authenticate ({ email, password }) {
-    console.log(`Authenticating user ${email}`)
+    console.debug(`Authenticating user ${email}`)
     return knex('user').where({ email })
       .then(([user]) => {
         if (!user) return { success: false }
