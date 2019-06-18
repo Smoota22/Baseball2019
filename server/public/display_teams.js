@@ -158,7 +158,7 @@ function lock_in_season(team_id, team_year) {
 function display_stats(season) {
     //Reset table
     var $display_team_tables = $("#display_team_tables");
-    $display_team_tables.replaceWith(RESET_DISPLAY_TEAM_TABLES);
+    $display_team_tables.replaceWith($.parseHTML(RESET_DISPLAY_TEAM_TABLES));
     $display_team_tables = $("#display_team_tables");
 
     //Display Team name and Season
