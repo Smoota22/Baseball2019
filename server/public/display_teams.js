@@ -51,6 +51,8 @@ function autofill_team_names() {
     get(path)
     .then(function(json) {
         // alert(json);
+        $("#search_team_year").val("");
+        $("#search_team_year").prop("disabled", true);
         if (json === undefined) {
             $("#team_suggestions").replaceWith(RESET_TEAM_SUGGESTIONS);
             return;
@@ -68,9 +70,6 @@ function autofill_team_names() {
                 lock_in_team_name(query_result_obj[i].team_name, query_result_obj[i].team_ID);
                 return;
             }
-
-            $("#search_team_year").val("");
-            $("#search_team_year").prop("disabled", true);
 
             var team_name_id = query_result_obj[i].team_name + "*" + query_result_obj[i].team_ID;
             team_name_id = team_name_id.replace(/ /g, "_");
