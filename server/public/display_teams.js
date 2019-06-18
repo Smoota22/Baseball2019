@@ -167,11 +167,11 @@ function display_stats(season) {
 
     //Display General Statistics
     var $display_team_stats_general = $("#display_team_stats_general");
-    for (int i = TEAM_STAT_GENERAL_START_INDEX; i < TEAM_STAT_OFFENSE_START_INDEX; i++) {
+    // for (int i = TEAM_STAT_GENERAL_START_INDEX; i < TEAM_STAT_OFFENSE_START_INDEX; i++) {}
         // var row = generate_table_row(TEAM_STAT_ATTRIBUTES_VERBOSE[i], season[TEAM_STAT_ATTRIBUTES_MYSQL[i]]);
         // var html = $.parseHTML(row);
         // display_team_stats_general.append(html);
-    }
+
 }
 
 generate_table_row(item_verbose, item_stat) {
