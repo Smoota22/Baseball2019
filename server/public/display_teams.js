@@ -116,7 +116,7 @@ function autofill_years() {
 
         var num_suggestions = Math.min(query_result_obj.length, MAX_SUGGESTIONS);
         for (i = 0; i < num_suggestions; i++) {
-            if (query_result_obj[i].year_ID === $("#search_team_year").val()) {
+            if (query_result_obj[i].year_ID == $("#search_team_year").val()) {
                 lock_in_team_year(curr_team_id, query_result_obj[i].year_ID);
                 return;
             }
@@ -126,24 +126,12 @@ function autofill_years() {
             var str = "<div class='year_item' id=" + year_id + "><p>" + query_result_obj[i].year_ID + "</p></div>";
             var html = $.parseHTML(str);
             $year_suggestions.append(html);
-
-            // var nodeNames = [];
-            // // Gather the parsed HTML's node names
-            // $.each( html, function( i, el ) {
-            //   nodeNames[ i ] = "<li>" + el.nodeName + "</li>";
-            // });
-            //
-            // // Insert the node names
-            // $team_suggestions.append( "<h3>Node Names:</h3>" );
-            // $( "<ol></ol>" )
-            //   .append( nodeNames.join( "" ) )
-            //   .appendTo( $team_suggestions );
         }
     });
 }
 
 function lock_in_team_year(locked_team_ID, locked_year_ID) {
-    alert("AHA")
+    alert("AHA");
     $("#year_suggestions").replaceWith(RESET_YEAR_SUGGESTIONS);
     $("#search_team_year").val(locked_year_ID);
     curr_year = locked_year_ID;
