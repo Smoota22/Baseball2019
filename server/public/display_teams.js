@@ -102,7 +102,8 @@ function lock_in_team_name(locked_team_name, locked_team_ID) {
 }
 
 function autofill_years() {
-    var path = '/autofill_years/' + curr_team_id;
+    var search_year = $("#search_team_year").val();
+    var path = '/autofill_years/' + curr_team_id + '/' + search_year;
     get(path)
     .then(function(json) {
         if (json === undefined) {
