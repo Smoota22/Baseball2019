@@ -41,9 +41,12 @@
 // };
 const RESET_TEAM_SUGGESTIONS = '<div id="team_suggestions"></div>';
 const RESET_YEAR_SUGGESTIONS = '<div id="year_suggestions"></div>';
-const MAX_SUGGESTIONS = 10;
-var curr_team_id = ""
-var curr_year = ""
+const RESET_DISPLAY_TEAM_TABLES = '<div id="display_team_tables" class="container"> <div class="jumbotron" id="display_team_season"></div><div class="row"> <div class="col-md-4"> <table id="display_team_stats_general" class="table table-striped"></table> </div><div class="col-md-4"> <table id="display_team_stats_offense" class="table table-striped"></table> </div><div class="col-md-4"> <table id="display_team_stats_defense" class="table table-striped"></table> </div></div></div>';
+const TEAM_STAT_ATTRIBUTES_MYSQL = ["park", "attendance_total", "rank", "games", "home_games", "wins", "losses", "runs", "at_bats", "hits", "doubles", "triples", "homeruns", "walks", "stolen_bases", "caught_stealing", "batters_hit", "opponent_runs", "opponent_earned_runs", "complete games", "shutouts", "saves", "outs_pitched", "hits_allowed", "homeruns_allowed", "walks_allowed", "errors", "double_plays"];
+const TEAM_STAT_ATTRIBUTES_VERBOSE = ["Park Name", "Season Total Attendance", "Rank", "Games Played", "Home Games", "Wins", "Losses", "Runs Scored", "At-Bats", "Hits", "Doubles", "Triples", "Homeruns", "Walks", "Stolen Bases", "Caught Stealing", "Batters Hit", "Opponent Scored Runs", "Opponent Earned Runs", "Complete Games", "Shutouts", "Saves", "Outs Pitched", "Hits Allowed", "Homeruns Allowed", "Walks Allowed", "Errors", "Double Plays"];
+const TEAM_STAT_GENERAL_START_INDEX = 0;
+const TEAM_STAT_OFFENSE_START_INDEX = 7;
+const TEAM_STAT_DEFENSE_START_INDEX = 17;
 
 function autofill_team_names() {
     var search_team_name = $("#search_team").val();
@@ -147,7 +150,36 @@ function lock_in_season(team_id, team_year) {
         }
         var query_result_obj = JSON.parse(json);
         alert(query_result_obj[0]["games"]);
+        display_stats(query_result_obj[0]);
     });
+}
+
+display_stats(season) {
+    //Reset table
+    var $display_team_tables = $("#display_team_tables");
+    $display_team_tables.replaceWith(RESET_DISPLAY_TEAM_TABLES);
+    $display_team_tables = $("#display_team_tables");
+
+    //Display Team name and Season
+    var $display_team_season = $("#display_team_season");
+    var team_season = season.team_name + "'s " + season.year_ID + " Season Statistics";
+    display_team_season.append(team_season);
+
+    //Display General Statistics
+    var $display_team_stats_general = $("#display_team_stats_general");
+    for (int i = TEAM_STAT_GENERAL_START_INDEX; i < TEAM_STAT_OFFENSE_START_INDEX; i++) {
+        var row = generate_table_row(TEAM_STAT_ATTRIBUTES_VERBOSE[i], season[TEAM_STAT_ATTRIBUTES_MYSQL[i]]);
+        var html = $.parseHTML(row);
+        display_team_stats_general.append(html);
+    }
+}
+
+generate_table_row(item_verbose, item_stat) {
+    str = "<tr>";
+    str += "<th>" + item_verbose + "</th>";
+    str += "<th>" + item_stat + "</th>";
+    str += "</tr>";
+    return str;
 }
 
 $(document).ready(function () {
