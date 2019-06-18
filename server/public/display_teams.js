@@ -131,10 +131,23 @@ function autofill_years() {
 }
 
 function lock_in_team_year(locked_team_ID, locked_year_ID) {
-    alert("AHA");
     $("#year_suggestions").replaceWith(RESET_YEAR_SUGGESTIONS);
     $("#search_team_year").val(locked_year_ID);
     curr_year = locked_year_ID;
+    lock_in_season(curr_team_id, curr_year);
+}
+
+function lock_in_season(team_id, team_year) {
+    var path = '/load_team_data/' + team_id + '/' + team_year;
+    get(path)
+    .then(function(json) {
+        if (json === undefined) {
+            alert("ERROR THIS SHOULD NOT HAPPEN!!!");
+            return;
+        }
+        var query_result_obj = JSON.parse(json);
+        alert(query_result_obj["games"]);
+    }
 }
 
 $(document).ready(function () {
