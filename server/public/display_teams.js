@@ -118,7 +118,7 @@ function autofill_years() {
         for (i = 0; i < num_suggestions; i++) {
             if (query_result_obj[i].year_ID === $("#search_team_year").val()) {
                 lock_in_team_year(curr_team_id, query_result_obj[i].year_ID);
-                return;//TODO
+                return;
             }
 
             var year_id = query_result_obj[i].year_ID;
@@ -143,6 +143,7 @@ function autofill_years() {
 }
 
 function lock_in_team_year(locked_team_ID, locked_year_ID) {
+    alert("AHA")
     $("#year_suggestions").replaceWith(RESET_YEAR_SUGGESTIONS);
     $("#search_team_year").val(locked_year_ID);
     curr_year = locked_year_ID;
