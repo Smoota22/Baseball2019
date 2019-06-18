@@ -154,7 +154,7 @@ function lock_in_season(team_id, team_year) {
     });
 }
 
-display_stats(season) {
+function display_stats(season) {
     //Reset table
     var $display_team_tables = $("#display_team_tables");
     $display_team_tables.replaceWith(RESET_DISPLAY_TEAM_TABLES);
