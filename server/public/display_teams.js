@@ -146,7 +146,7 @@ function lock_in_season(team_id, team_year) {
             return;
         }
         var query_result_obj = JSON.parse(json);
-        alert(json["games"]);
+        alert(query_result_obj["games"]);
     });
 }
 
