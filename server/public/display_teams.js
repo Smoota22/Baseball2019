@@ -177,8 +177,8 @@ function display_stats(season) {
 
 function generate_table_row(item_verbose, item_stat) {
     str = "<tr>";
-    str += "<th>" + item_verbose + "</th>";
-    str += "<th>" + item_stat + "</th>";
+    str += "<td>" + item_verbose + "</td>";
+    str += "<td>" + item_stat + "</td>";
     str += "</tr>";
     return str;
 }
