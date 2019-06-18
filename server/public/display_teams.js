@@ -163,7 +163,7 @@ function display_stats(season) {
 
     //Display Team name and Season
     var $display_team_season = $("#display_team_season");
-    var team_season = season.team_name + "'s " + season.year_ID + " Season Statistics";
+    var team_season = "<h1>" + season.team_name + "'s " + season.year_ID + " Season Statistics </h1>";
     display_team_season.append(team_season);
 
     //Display General Statistics
