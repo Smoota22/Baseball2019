@@ -155,7 +155,7 @@ function lock_in_season(team_id, team_year) {
             return;
         }
         var query_result_obj = JSON.parse(json);
-        alert(query_result_obj[0]["games"]);
+        // alert(query_result_obj[0]["games"]);
         display_stats(query_result_obj[0]);
     });
 }
@@ -199,7 +199,7 @@ $(document).ready(function () {
         param_arr = div_elem.split("*");
         team_name = param_arr[0];
         team_ID = param_arr[1];
-        alert(team_name + ", " + team_ID);
+        // alert(team_name + ", " + team_ID);
 
         lock_in_team_name(team_name, team_ID);
     });
