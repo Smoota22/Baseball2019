@@ -49,6 +49,10 @@ const TEAM_STAT_GENERAL_START_INDEX = 0;
 const TEAM_STAT_OFFENSE_START_INDEX = 7;
 const TEAM_STAT_DEFENSE_START_INDEX = 17;
 
+var curr_team_id;
+var curr_team_name;
+var curr_year;
+
 function autofill_team_names() {
     var search_team_name = $("#search_team").val();
     var path = '/autofill_team_names/' + search_team_name;
@@ -101,12 +105,13 @@ function lock_in_team_name(locked_team_name, locked_team_ID) {
     $("#team_suggestions").replaceWith(RESET_TEAM_SUGGESTIONS);
     $("#search_team").val(locked_team_name);
     curr_team_id = locked_team_ID;
+    curr_team_name = locked_team_name;
     $("#search_team_year").prop("disabled", false);
 }
 
 function autofill_years() {
     var search_year = $("#search_team_year").val();
-    var path = '/autofill_years/' + curr_team_id + '/' + search_year;
+    var path = '/autofill_years/' + curr_team_id + '/' + curr_team_name + '/' + search_year;
     get(path)
     .then(function(json) {
         if (json === undefined) {

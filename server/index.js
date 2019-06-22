@@ -73,14 +73,14 @@ function autofill_team_names(req, res) {
     });
 }
 
-app.get('/autofill_years/:teamID/:yearID', autofill_years);
+app.get('/autofill_years/:teamID/:teamName/:yearID', autofill_years);
 function autofill_years(req, res) {
     var regex = req.params.yearID + "%";
     let sql;
     if (regex === "%") {
-        sql = 'SELECT year_ID FROM real_team WHERE team_ID = "' + req.params.teamID + '"';
+        sql = 'SELECT year_ID FROM real_team WHERE team_ID = "' + req.params.teamID + '" AND team_name = "' + req.params.teamName + '"';
     } else {
-        sql = 'SELECT year_ID FROM real_team WHERE team_ID = "' + req.params.teamID + '" AND year_ID LIKE "' + regex + '"';
+        sql = 'SELECT year_ID FROM real_team WHERE team_ID = "' + req.params.teamID + '" AND team_name = "' + req.params.teamName + '" AND year_ID LIKE "' + regex + '"';
     }
     // res.send(sql)
     let query = db.query(sql, (err, results) => {
