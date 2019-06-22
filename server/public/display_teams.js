@@ -194,6 +194,7 @@ $(document).ready(function () {
         param_arr = div_elem.split("*");
         team_name = param_arr[0];
         team_ID = param_arr[1];
+        alert(team_name + ", " + team_ID);
 
         lock_in_team_name(team_name, team_ID);
     });
