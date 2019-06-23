@@ -204,7 +204,8 @@ $(document).ready(function () {
         $("#team_suggestions").replaceWith(RESET_TEAM_SUGGESTIONS);
     });
 
-    $("#search_team").bind("keyup mouseenter", autofill_team_names);
+    // $("#search_team").bind("keyup mouseenter", autofill_team_names); //for keyup AND mouse enter/hover
+    $("#search_team").bind("keyup", autofill_team_names);
     $("#search_team_year").bind("keyup mouseenter", autofill_years);
 
 
