@@ -2,6 +2,7 @@ const RESET_TEAM_SUGGESTIONS = '<div id="team_suggestions"></div>';
 const RESET_YEAR_SUGGESTIONS = '<div id="year_suggestions"></div>';
 const MAX_SUGGESTIONS = 10;
 const RESET_DISPLAY_TEAM_TABLES = '<div id="display_team_tables" class="container"> <div class="jumbotron" id="display_team_season"></div><div class="row"> <div class="col-md-4"> <table id="display_team_stats_general" class="table table-striped"> <tbody ng-repeat="e in data.events" id="display_team_stats_general_body"></tbody> </table> </div><div class="col-md-4"> <table id="display_team_stats_offense" class="table table-striped"> <tbody ng-repeat="e in data.events" id="display_team_stats_offense_body"></tbody> </table> </div><div class="col-md-4"> <table id="display_team_stats_defense" class="table table-striped"> <tbody ng-repeat="e in data.events" id="display_team_stats_defense_body"></tbody> </table> </div></div></div>';
+const RESET_HIDE_TEAM_TABLES = '<div id="display_team_tables" class="container"></div>';
 const TEAM_STAT_ATTRIBUTES_MYSQL = ["park", "attendance_total", "rank", "games", "home_games", "wins", "losses", "runs", "at_bats", "hits", "doubles", "triples", "homeruns", "walks", "stolen_bases", "caught_stealing", "batters_hit", "opponent_runs", "opponent_earned_runs", "complete_games", "shutouts", "saves", "outs_pitched", "hits_allowed", "homeruns_allowed", "walks_allowed", "errors", "double_plays"];
 const TEAM_STAT_ATTRIBUTES_VERBOSE = ["Park Name", "Season Total Attendance", "Rank", "Games Played", "Home Games", "Wins", "Losses", "Runs Scored", "At-Bats", "Hits", "Doubles", "Triples", "Homeruns", "Walks", "Stolen Bases", "Caught Stealing", "Batters Hit", "Opponent Scored Runs", "Opponent Earned Runs", "Complete Games", "Shutouts", "Saves", "Outs Pitched", "Hits Allowed", "Homeruns Allowed", "Walks Allowed", "Errors", "Double Plays"];
 const TEAM_STAT_GENERAL_START_INDEX = 0;
@@ -20,6 +21,7 @@ function autofill_team_names() {
         // alert(json);
         $("#search_team_year").val("");
         $("#search_team_year").prop("disabled", true);
+        reset_html_element("#display_team_tables", RESET_HIDE_TEAM_TABLES);
         if (json === undefined) {
             reset_html_element("#team_suggestions", RESET_TEAM_SUGGESTIONS);
             return;
@@ -57,6 +59,7 @@ function autofill_years() {
     var path = '/autofill_years/' + curr_team_id + '/' + curr_team_name + '/' + search_year;
     get(path)
     .then(function(json) {
+        reset_html_element("#display_team_tables", RESET_HIDE_TEAM_TABLES);
         if (json === undefined) {
             reset_html_element("#year_suggestions", RESET_YEAR_SUGGESTIONS);
             return;
