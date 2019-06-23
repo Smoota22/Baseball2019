@@ -21,16 +21,14 @@ function autofill_team_names() {
         $("#search_team_year").val("");
         $("#search_team_year").prop("disabled", true);
         if (json === undefined) {
-            // $("#team_suggestions").replaceWith(RESET_TEAM_SUGGESTIONS);
             reset_html_element("#team_suggestions", RESET_TEAM_SUGGESTIONS);
             return;
         }
         var query_result_obj = JSON.parse(json);
-        // alert(query_result_obj.length);
-        var $team_suggestions = $("#team_suggestions");
-        // console.log($team_suggestions);
-        $team_suggestions.replaceWith(RESET_TEAM_SUGGESTIONS);
-        $team_suggestions = $("#team_suggestions");
+        var $team_suggestions = reset_html_element("#team_suggestions", RESET_TEAM_SUGGESTIONS);
+        // var $team_suggestions = $("#team_suggestions");
+        // $team_suggestions.replaceWith(RESET_TEAM_SUGGESTIONS);
+        // $team_suggestions = $("#team_suggestions");
 
         var num_suggestions = Math.min(query_result_obj.length, MAX_SUGGESTIONS);
         for (i = 0; i < num_suggestions; i++) {
