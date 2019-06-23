@@ -13,6 +13,7 @@ var curr_team_name;
 var curr_year;
 
 function autofill_team_names() {
+    alert("Running");
     var search_team_name = $("#search_team").val();
     var path = '/autofill_team_names/' + search_team_name;
     get(path)
