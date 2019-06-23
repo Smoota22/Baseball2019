@@ -1,49 +1,8 @@
-// Loading team data from inputted team ID and year
-// const LoadTeamData = document.querySelector('.LoadTeamData')
-// LoadTeamData.addEventListener('submit', (e) => {
-//   e.preventDefault()
-//   const teamID = LoadTeamData.querySelector('.txt_teamID').value
-//   const yearID = LoadTeamData.querySelector('.txt_yearID').value
-//   post('/load_team_data/submit_team', {teamID, yearID})
-// })
-
-// var team_dict = {
-//     "Arizona Diamondbacks" : "ARI",
-//     "Atlanta Braves" : "ATL",
-//     "Baltimore Orioles" : "BAL",
-//     "Boston Red Sox" : "BOS",
-//     "Chicago Cubs" : "CHN",
-//     "Chicago White Sox" : "CHA",
-//     "Cincinnati Reds" : "CIN",
-//     "Cleveland Indians" : "CLE",
-//     "Colorado Rockies" : "COL",
-//     "Detroit Tigers" : "DET",
-//     "Houston Astros" : "HOU",
-//     "Kansas City Royals" : "KCA",
-//     "Los Angeles Angels" : "LAA",
-//     "Los Angeles Dodgers" : "LAN",
-//     "Miami Marlins" : "MIA",
-//     "Milwaukee Brewers" : "MIL",
-//     "Minnesota Twins" : "MIN",
-//     "New York Mets" : "NYN",
-//     "New York Yankees" : "NYA",
-//     "Oakland Athletics" : "OAK",
-//     "Philadelphia Phillies" : "PHI",
-//     "Pittsburgh Pirates" : "PIT",
-//     "San Diego Padres" : "SDN",
-//     "Seattle Mariners" : "SEA",
-//     "San Francisco Giants" : "SFN",
-//     "St. Louis Cardinals" : "SLN",
-//     "Tampa Bay Rays" : "TBA",
-//     "Texas Rangers" : "TEX",
-//     "Toronto Blue Jays" : "TOR",
-//     "Washington Nationals" : "WAS",
-// };
 const RESET_TEAM_SUGGESTIONS = '<div id="team_suggestions"></div>';
 const RESET_YEAR_SUGGESTIONS = '<div id="year_suggestions"></div>';
 const MAX_SUGGESTIONS = 10;
 const RESET_DISPLAY_TEAM_TABLES = '<div id="display_team_tables" class="container"> <div class="jumbotron" id="display_team_season"></div><div class="row"> <div class="col-md-4"> <table id="display_team_stats_general" class="table table-striped"> <tbody ng-repeat="e in data.events" id="display_team_stats_general_body"></tbody> </table> </div><div class="col-md-4"> <table id="display_team_stats_offense" class="table table-striped"> <tbody ng-repeat="e in data.events" id="display_team_stats_offense_body"></tbody> </table> </div><div class="col-md-4"> <table id="display_team_stats_defense" class="table table-striped"> <tbody ng-repeat="e in data.events" id="display_team_stats_defense_body"></tbody> </table> </div></div></div>';
-const TEAM_STAT_ATTRIBUTES_MYSQL = ["park", "attendance_total", "rank", "games", "home_games", "wins", "losses", "runs", "at_bats", "hits", "doubles", "triples", "homeruns", "walks", "stolen_bases", "caught_stealing", "batters_hit", "opponent_runs", "opponent_earned_runs", "complete games", "shutouts", "saves", "outs_pitched", "hits_allowed", "homeruns_allowed", "walks_allowed", "errors", "double_plays"];
+const TEAM_STAT_ATTRIBUTES_MYSQL = ["park", "attendance_total", "rank", "games", "home_games", "wins", "losses", "runs", "at_bats", "hits", "doubles", "triples", "homeruns", "walks", "stolen_bases", "caught_stealing", "batters_hit", "opponent_runs", "opponent_earned_runs", "complete_games", "shutouts", "saves", "outs_pitched", "hits_allowed", "homeruns_allowed", "walks_allowed", "errors", "double_plays"];
 const TEAM_STAT_ATTRIBUTES_VERBOSE = ["Park Name", "Season Total Attendance", "Rank", "Games Played", "Home Games", "Wins", "Losses", "Runs Scored", "At-Bats", "Hits", "Doubles", "Triples", "Homeruns", "Walks", "Stolen Bases", "Caught Stealing", "Batters Hit", "Opponent Scored Runs", "Opponent Earned Runs", "Complete Games", "Shutouts", "Saves", "Outs Pitched", "Hits Allowed", "Homeruns Allowed", "Walks Allowed", "Errors", "Double Plays"];
 const TEAM_STAT_GENERAL_START_INDEX = 0;
 const TEAM_STAT_OFFENSE_START_INDEX = 7;
@@ -199,7 +158,10 @@ function display_stats(season) {
 function generate_table_row(item_verbose, item_stat) {
     if (item_stat === -1) {
         item_stat = "N/A";
+    } else if (item_stat === undefined) {
+
     }
+
     str = "<tr>";
     str += "<td>" + item_verbose + "</td>";
     str += "<td>" + item_stat + "</td>";
