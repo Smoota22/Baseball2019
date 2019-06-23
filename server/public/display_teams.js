@@ -62,7 +62,7 @@ function autofill_years() {
             return;
         }
         var query_result_obj = JSON.parse(json);
-        var $year_suggestions = reset_html_element("#year_suggestions", RESET_TEAM_SUGGESTIONS);
+        var $year_suggestions = reset_html_element("#year_suggestions", RESET_YEAR_SUGGESTIONS);
 
         var num_suggestions = Math.min(query_result_obj.length, MAX_SUGGESTIONS);
         for (i = 0; i < num_suggestions; i++) {
