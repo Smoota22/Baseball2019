@@ -18,7 +18,7 @@ function autofill_team_names() {
     get(path)
     .then(function(json) {
         // alert(json);
-        $("#search_team_year").val("");
+        // $("#search_team_year").val("");
         $("#search_team_year").prop("disabled", true);
         if (json === undefined) {
             $("#team_suggestions").replaceWith(RESET_TEAM_SUGGESTIONS);
