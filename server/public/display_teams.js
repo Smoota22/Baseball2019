@@ -13,13 +13,12 @@ var curr_team_name;
 var curr_year;
 
 function autofill_team_names() {
-    alert("Running");
     var search_team_name = $("#search_team").val();
     var path = '/autofill_team_names/' + search_team_name;
     get(path)
     .then(function(json) {
         // alert(json);
-        // $("#search_team_year").val("");
+        $("#search_team_year").val("");
         $("#search_team_year").prop("disabled", true);
         if (json === undefined) {
             $("#team_suggestions").replaceWith(RESET_TEAM_SUGGESTIONS);
