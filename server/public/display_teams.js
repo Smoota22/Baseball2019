@@ -158,8 +158,6 @@ function display_stats(season) {
 function generate_table_row(item_verbose, item_stat) {
     if (item_stat === -1) {
         item_stat = "N/A";
-    } else if (item_stat === undefined) {
-
     }
 
     str = "<tr>";
