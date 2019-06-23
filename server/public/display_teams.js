@@ -26,9 +26,6 @@ function autofill_team_names() {
         }
         var query_result_obj = JSON.parse(json);
         var $team_suggestions = reset_html_element("#team_suggestions", RESET_TEAM_SUGGESTIONS);
-        // var $team_suggestions = $("#team_suggestions");
-        // $team_suggestions.replaceWith(RESET_TEAM_SUGGESTIONS);
-        // $team_suggestions = $("#team_suggestions");
 
         var num_suggestions = Math.min(query_result_obj.length, MAX_SUGGESTIONS);
         for (i = 0; i < num_suggestions; i++) {
@@ -43,24 +40,12 @@ function autofill_team_names() {
             var str = "<div class='team_name_item' id=" + team_name_id + "><p>" + query_result_obj[i].team_name + "</p></div>";
             var html = $.parseHTML(str);
             $team_suggestions.append(html);
-
-            // var nodeNames = [];
-            // // Gather the parsed HTML's node names
-            // $.each( html, function( i, el ) {
-            //   nodeNames[ i ] = "<li>" + el.nodeName + "</li>";
-            // });
-            //
-            // // Insert the node names
-            // $team_suggestions.append( "<h3>Node Names:</h3>" );
-            // $( "<ol></ol>" )
-            //   .append( nodeNames.join( "" ) )
-            //   .appendTo( $team_suggestions );
         }
     });
 }
 
 function lock_in_team_name(locked_team_name, locked_team_ID) {
-    $("#team_suggestions").replaceWith(RESET_TEAM_SUGGESTIONS);
+    reset_html_element("#team_suggestions", RESET_TEAM_SUGGESTIONS);
     $("#search_team").val(locked_team_name);
     curr_team_id = locked_team_ID;
     curr_team_name = locked_team_name;
@@ -73,13 +58,11 @@ function autofill_years() {
     get(path)
     .then(function(json) {
         if (json === undefined) {
-            $("#year_suggestions").replaceWith(RESET_YEAR_SUGGESTIONS);
+            reset_html_element("#year_suggestions", RESET_YEAR_SUGGESTIONS);
             return;
         }
         var query_result_obj = JSON.parse(json);
-        var $year_suggestions = $("#year_suggestions");
-        $year_suggestions.replaceWith(RESET_YEAR_SUGGESTIONS);
-        $year_suggestions = $("#year_suggestions");
+        var $year_suggestions = reset_html_element("#year_suggestions", RESET_TEAM_SUGGESTIONS);
 
         var num_suggestions = Math.min(query_result_obj.length, MAX_SUGGESTIONS);
         for (i = 0; i < num_suggestions; i++) {
@@ -98,7 +81,7 @@ function autofill_years() {
 }
 
 function lock_in_team_year(locked_team_ID, locked_year_ID) {
-    $("#year_suggestions").replaceWith(RESET_YEAR_SUGGESTIONS);
+    reset_html_element("#year_suggestions", RESET_YEAR_SUGGESTIONS);
     $("#search_team_year").val(locked_year_ID);
     curr_year = locked_year_ID;
     lock_in_season(curr_team_id, curr_year);
@@ -120,9 +103,7 @@ function lock_in_season(team_id, team_year) {
 
 function display_stats(season) {
     //Reset table
-    var $display_team_tables = $("#display_team_tables");
-    $display_team_tables.replaceWith($.parseHTML(RESET_DISPLAY_TEAM_TABLES));
-    $display_team_tables = $("#display_team_tables");
+    var $display_team_tables = reset_html_element("#display_team_tables", RESET_DISPLAY_TEAM_TABLES);
 
     //Display Team name and Season
     var $display_team_season = $("#display_team_season");
@@ -201,11 +182,11 @@ $(document).ready(function () {
     });
 
     $("#search_team").focus(function() {
-        $("#year_suggestions").replaceWith(RESET_YEAR_SUGGESTIONS);
+        reset_html_element("#year_suggestions", RESET_YEAR_SUGGESTIONS);
     });
 
     $("#search_team_year").focus(function() {
-        $("#team_suggestions").replaceWith(RESET_TEAM_SUGGESTIONS);
+        reset_html_element("#team_suggestions", RESET_TEAM_SUGGESTIONS);
     });
 
     // $("#search_team").bind("keyup mouseenter", autofill_team_names); //for keyup AND mouse enter/hover
