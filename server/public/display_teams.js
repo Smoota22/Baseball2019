@@ -23,15 +23,15 @@ function autofill_team_names() {
     $("#search_team_year").val("");
     $("#search_team_year").prop("disabled", true);
     reset_html_element("#display_team_tables", RESET_HIDE_TEAM_TABLES);
-    reset_html_element("#team_suggestions", RESET_TEAM_SUGGESTIONS);
 
     get(path)
     .then(function(json) {
         if (json === undefined) {
+            reset_html_element("#team_suggestions", RESET_TEAM_SUGGESTIONS);
             return;
         }
         var query_result_obj = JSON.parse(json);
-        var $team_suggestions = $("#team_suggestions");
+        var $team_suggestions = reset_html_element("#team_suggestions", RESET_TEAM_SUGGESTIONS);
 
         var num_suggestions = Math.min(query_result_obj.length, MAX_SUGGESTIONS);
         for (i = 0; i < num_suggestions; i++) {
@@ -61,9 +61,11 @@ function lock_in_team_name(locked_team_name, locked_team_ID) {
 function autofill_years() {
     var search_year = $("#search_team_year").val();
     var path = '/autofill_years/' + curr_team_id + '/' + curr_team_name + '/' + search_year;
+
+    reset_html_element("#display_team_tables", RESET_HIDE_TEAM_TABLES);
+
     get(path)
     .then(function(json) {
-        reset_html_element("#display_team_tables", RESET_HIDE_TEAM_TABLES);
         if (json === undefined) {
             reset_html_element("#year_suggestions", RESET_YEAR_SUGGESTIONS);
             return;
