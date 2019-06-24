@@ -185,7 +185,7 @@ $(document).ready(function () {
     });
 
     $(document).on("click", ".stat_item", function(event) {
-        div_elem = event.target.id;
+        div_elem = event.target.parentNode.id;
         alert(div_elem);
     });
 
