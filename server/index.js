@@ -9,8 +9,12 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const mysql = require('mysql')
 const store = require('./store')
-const engines = require('consolidate');
 const app = express()
+var engines = require('consolidate');
+
+// app.engine('html', engines.mustache);
+// app.set('view engine', 'html');
+
 
 const db = mysql.createConnection({
     host     : 'localhost',
@@ -28,9 +32,7 @@ db.connect((err) => {
 
 app.use(express.static(__dirname + '/public'))
 app.use(bodyParser.json())
-app.engine('html', engines.mustache);
 app.set('view engine', 'html');
-
 app.post('/createUser', (req, res) => {
   store
     .createUser({
