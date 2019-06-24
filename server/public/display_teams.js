@@ -116,7 +116,7 @@ function display_stats(season) {
     //Display General Statistics
     var $display_team_stats_general_body = $("#display_team_stats_general_body");
     for (i = TEAM_STAT_GENERAL_START_INDEX; i < TEAM_STAT_OFFENSE_START_INDEX; i++) {
-        var row = generate_table_row(TEAM_STAT_ATTRIBUTES_VERBOSE[i], season[TEAM_STAT_ATTRIBUTES_MYSQL[i]]);
+        var row = generate_table_row(TEAM_STAT_ATTRIBUTES_VERBOSE[i], TEAM_STAT_ATTRIBUTES_MYSQL[i], season[TEAM_STAT_ATTRIBUTES_MYSQL[i]]);
         var html = $.parseHTML(row);
         $display_team_stats_general_body.append(html);
     }
@@ -124,7 +124,7 @@ function display_stats(season) {
     //Display Offense Statistics
     var $display_team_stats_offense_body = $("#display_team_stats_offense_body");
     for (i = TEAM_STAT_OFFENSE_START_INDEX; i < TEAM_STAT_DEFENSE_START_INDEX; i++) {
-        var row = generate_table_row(TEAM_STAT_ATTRIBUTES_VERBOSE[i], season[TEAM_STAT_ATTRIBUTES_MYSQL[i]]);
+        var row = generate_table_row(TEAM_STAT_ATTRIBUTES_VERBOSE[i], TEAM_STAT_ATTRIBUTES_MYSQL[i], season[TEAM_STAT_ATTRIBUTES_MYSQL[i]]);
         var html = $.parseHTML(row);
         $display_team_stats_offense_body.append(html);
     }
@@ -132,18 +132,18 @@ function display_stats(season) {
     //Display Defense Statistics
     var $display_team_stats_defense_body = $("#display_team_stats_defense_body");
     for (i = TEAM_STAT_DEFENSE_START_INDEX; i < TEAM_STAT_ATTRIBUTES_VERBOSE.length; i++) {
-        var row = generate_table_row(TEAM_STAT_ATTRIBUTES_VERBOSE[i], season[TEAM_STAT_ATTRIBUTES_MYSQL[i]]);
+        var row = generate_table_row(TEAM_STAT_ATTRIBUTES_VERBOSE[i], TEAM_STAT_ATTRIBUTES_MYSQL[i], season[TEAM_STAT_ATTRIBUTES_MYSQL[i]]);
         var html = $.parseHTML(row);
         $display_team_stats_defense_body.append(html);
     }
 }
 
-function generate_table_row(item_verbose, item_stat) {
+function generate_table_row(item_verbose, item_attribute, item_stat) {
     if (item_stat === -1) {
         item_stat = "N/A";
     }
 
-    str = "<tr class=\"stat_item\" id=\"tr_" + item_verbose + "\">";
+    str = "<tr class=\"stat_item\" id=\"tr_" + item_attribute + "\">";
     str += "<td>" + item_verbose + "</td>";
     str += "<td>" + item_stat + "</td>";
     str += "</tr>";
@@ -185,7 +185,7 @@ $(document).ready(function () {
     });
 
     $(document).on("click", ".stat_item", function(event) {
-        div_elem = event.target.id;
+        div_elem = event.target.parentNode.id;
         alert(div_elem);
     });
 
@@ -201,38 +201,6 @@ $(document).ready(function () {
     $("#search_team").bind("keyup", autofill_team_names);
     // $("#search_team_year").bind("keyup mouseenter", autofill_years); //for keyup AND mouse enter/hover
     $("#search_team_year").bind("keyup", autofill_years);
-
-
-  //Selecting Team From Dropdown
-//   $('#team-menu li').click(function() {
-//       curr_team_id = team_dict[$(this).text()];
-//       if (curr_year != "") {
-//           alert(curr_team_id + curr_year);
-//           post('/load_team_data/submit', {curr_team_id, curr_year})
-//             .then(function(json) {
-//               var query_result_obj = JSON.parse(json);
-//               display_team(query_result_obj);
-//           })
-//       }
-//   });
-//
-//   $('#year-menu li').click(function() {
-//       curr_year = $(this).text();
-//       if (curr_team_id != "") {
-//           alert(curr_team_id + curr_year);
-//           post('/load_team_data/submit', {curr_team_id, curr_year})
-//             .then(function(json) {
-//               var query_result_obj = JSON.parse(json);
-//               display_team(query_result_obj);
-//           })
-//       }
-//   });
-});
-
-//TODO: display all the returned data into nice looking HTML structures.
-// function display_team(jsquery_result_obj) {
-//     alert(jsquery_result_obj[0].games)
-// }
 
 function post (path, data) {
   return window.fetch(path, {
