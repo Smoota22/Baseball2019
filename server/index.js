@@ -103,7 +103,7 @@ function load_team_data(req, res) {
 
 app.get('/ranking_page/:attribute/:teamID/:yearID', open_ranking_page);
 function open_ranking_page(req, res) {
-    res.sendFile('ranking.html');
+    res.sendFile(__dirname + '/public/ranking.html');
 }
 
 app.listen(3000, () => {
