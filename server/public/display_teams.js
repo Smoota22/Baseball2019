@@ -149,7 +149,7 @@ function generate_table_row(item_verbose, item_attribute, item_stat) {
         item_stat = "N/A";
     }
 
-    str = "<tr class=\"stat_item\" id=\"tr_" + item_attribute + "\">";
+    str = "<tr class=\"stat_item\" id=\"" + item_attribute + "\">";
     str += "<td>" + item_verbose + "</td>";
     str += "<td>" + item_stat + "</td>";
     str += "</tr>";
@@ -164,35 +164,36 @@ function reset_html_element(element_name, reset_const) {
 
 $(document).ready(function () {
     $(document).on("click", ".team_name_item", function(event) {
-        div_elem = event.target.parentNode.id;
+        var div_elem = event.target.parentNode.id;
         if (div_elem === "team_suggestions") {
             div_elem = event.target.id;
         }
 
-        div_elem = div_elem.replace(/_/g, " ");
-        param_arr = div_elem.split("*");
-        team_name = param_arr[0];
-        team_ID = param_arr[1];
+        var div_elem = div_elem.replace(/_/g, " ");
+        var param_arr = div_elem.split("*");
+        var team_name = param_arr[0];
+        var team_ID = param_arr[1];
         // alert(team_name + ", " + team_ID);
 
         lock_in_team_name(team_name, team_ID);
     });
 
     $(document).on("click", ".year_item", function(event) {
-        div_elem = event.target.parentNode.id;
+        var div_elem = event.target.parentNode.id;
         if (div_elem === "year_suggestions") {
             div_elem = event.target.id;
         }
 
-        team_ID = curr_team_id;
-        year_ID = div_elem;
+        var team_ID = curr_team_id;
+        var year_ID = div_elem;
 
         lock_in_team_year(team_ID, year_ID);
     });
 
     $(document).on("click", ".stat_item", function(event) {
-        div_elem = event.target.parentNode.id;
-        alert(div_elem);
+        var div_elem = event.target.parentNode.id;
+        var path = '/ranking_page/' + div_elem + '/' + curr_team_id + '/' + curr_year;
+        get(path);
     });
 
     $("#search_team").focus(function() {

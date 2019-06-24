@@ -101,11 +101,8 @@ function load_team_data(req, res) {
     });
 }
 
-app.post('/load_team_data/submit_team', load_team_data_submit);
-function load_team_data_submit(req, res) {
-    var teamID = req.body.team_ID;
-    var yearID = req.body.yearID;
-    res.redirect('/load_team_data/' + teamID + '/' + yearID);
+app.get('/ranking_page/:attribute/:teamID/:yearID', open_ranking_page) {
+    res.render('ranking.html');
 }
 
 app.listen(3000, () => {
