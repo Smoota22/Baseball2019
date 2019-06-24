@@ -31,7 +31,7 @@ function autofill_team_names() {
             return;
         }
         var query_result_obj = JSON.parse(json);
-        var $team_suggestions = $(#team_suggestions);
+        var $team_suggestions = $("#team_suggestions");
 
         var num_suggestions = Math.min(query_result_obj.length, MAX_SUGGESTIONS);
         for (i = 0; i < num_suggestions; i++) {
