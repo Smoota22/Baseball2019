@@ -101,7 +101,8 @@ function load_team_data(req, res) {
     });
 }
 
-app.get('/ranking_page/:attribute/:teamID/:yearID', open_ranking_page) {
+app.get('/ranking_page/:attribute/:teamID/:yearID', open_ranking_page);
+function open_ranking_page(req, res) {
     res.render('ranking.html');
 }
 
