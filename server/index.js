@@ -27,6 +27,7 @@ db.connect((err) => {
 
 app.use(express.static(__dirname + '/public'))
 app.use(bodyParser.json())
+app.set('view engine', 'html');
 app.post('/createUser', (req, res) => {
   store
     .createUser({
