@@ -10,11 +10,6 @@ const bodyParser = require('body-parser')
 const mysql = require('mysql')
 const store = require('./store')
 const app = express()
-// var engines = require('consolidate');
-
-// app.engine('html', engines.mustache);
-// app.set('view engine', 'html');
-
 
 const db = mysql.createConnection({
     host     : 'localhost',
@@ -32,7 +27,6 @@ db.connect((err) => {
 
 app.use(express.static(__dirname + '/public'))
 app.use(bodyParser.json())
-app.set('view engine', 'html');
 app.post('/createUser', (req, res) => {
   store
     .createUser({
@@ -109,7 +103,7 @@ function load_team_data(req, res) {
 
 app.get('/ranking_page/:attribute/:teamID/:yearID', open_ranking_page);
 function open_ranking_page(req, res) {
-    res.render('ranking');
+    res.sendFile('ranking.html');
 }
 
 app.listen(3000, () => {
