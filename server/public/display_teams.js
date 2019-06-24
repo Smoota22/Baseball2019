@@ -23,15 +23,15 @@ function autofill_team_names() {
     $("#search_team_year").val("");
     $("#search_team_year").prop("disabled", true);
     reset_html_element("#display_team_tables", RESET_HIDE_TEAM_TABLES);
+    reset_html_element("#team_suggestions", RESET_TEAM_SUGGESTIONS);
 
     get(path)
     .then(function(json) {
         if (json === undefined) {
-            reset_html_element("#team_suggestions", RESET_TEAM_SUGGESTIONS);
             return;
         }
         var query_result_obj = JSON.parse(json);
-        var $team_suggestions = reset_html_element("#team_suggestions", RESET_TEAM_SUGGESTIONS);
+        var $team_suggestions = $(#team_suggestions);
 
         var num_suggestions = Math.min(query_result_obj.length, MAX_SUGGESTIONS);
         for (i = 0; i < num_suggestions; i++) {
