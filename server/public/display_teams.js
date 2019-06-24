@@ -185,7 +185,7 @@ $(document).ready(function () {
     });
 
     $(document).on("click", ".stat_item", function(event) {
-        div_elem = event.target.parentNode.id;
+        div_elem = event.target.id;
         alert(div_elem);
     });
 
@@ -201,6 +201,7 @@ $(document).ready(function () {
     $("#search_team").bind("keyup", autofill_team_names);
     // $("#search_team_year").bind("keyup mouseenter", autofill_years); //for keyup AND mouse enter/hover
     $("#search_team_year").bind("keyup", autofill_years);
+});
 
 function post (path, data) {
   return window.fetch(path, {
