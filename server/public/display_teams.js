@@ -143,7 +143,7 @@ function generate_table_row(item_verbose, item_stat) {
         item_stat = "N/A";
     }
 
-    str = "<tr>";
+    str = "<tr class=\"stat_item\" id=\"tr_" + item_verbose + "\">";
     str += "<td>" + item_verbose + "</td>";
     str += "<td>" + item_stat + "</td>";
     str += "</tr>";
@@ -182,6 +182,11 @@ $(document).ready(function () {
         year_ID = div_elem;
 
         lock_in_team_year(team_ID, year_ID);
+    });
+
+    $(document).on("click", ".stat_item", function(event) {
+        div_elem = event.target.id;
+        alert(div_elem);
     });
 
     $("#search_team").focus(function() {
