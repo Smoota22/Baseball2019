@@ -12,6 +12,7 @@ const TEAM_STAT_DEFENSE_START_INDEX = 17;
 var curr_team_id;
 var curr_team_name;
 var curr_year;
+var ranking_attribute;
 
 function autofill_team_names() {
     var search_team_name = $("#search_team").val();
@@ -191,8 +192,8 @@ $(document).ready(function () {
     });
 
     $(document).on("click", ".stat_item", function(event) {
+        ranking_attribute = event.target.parentNode.id;
         location.href = "ranking.html";
-        // var div_elem = event.target.parentNode.id;
         // var path = '/ranking_page/' + div_elem + '/' + curr_team_id + '/' + curr_year;
         // get(path);
     });
