@@ -150,7 +150,7 @@ function generate_table_row(item_verbose, item_attribute, item_stat) {
     }
 
     // var str = "<tr class=\"stat_item\" id=\"" + item_attribute + "\">";
-    var str = "<tr><a href=\"ranking.html\"></a></tr>";
+    var str = "<tr><a href=\"ranking.html\"></a>";
     str += "<td>" + item_verbose + "</td>";
     str += "<td>" + item_stat + "</td>";
     str += "</tr>";
