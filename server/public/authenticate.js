@@ -13,19 +13,3 @@ Login.addEventListener('submit', (e) => {
     //     alert(json);
     // })
 })
-
-function post (path, data) {
-  return window.fetch(path, {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  })
-  //   .then(function(response) {
-  //     if (response.ok) {
-  //         return response.text();  //To retrieve raw response data
-  //     }
-  // })
-}

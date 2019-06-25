@@ -7,14 +7,3 @@ CreateUser.addEventListener('submit', (e) => {
   const password = CreateUser.querySelector('.password').value
   post('/createUser', {first_name, last_name, email, password})
 })
-
-function post (path, data) {
-  return window.fetch(path, {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  })
-}

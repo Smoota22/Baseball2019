@@ -101,9 +101,15 @@ function load_team_data(req, res) {
     });
 }
 
-app.get('/ranking/:attribute/:teamID/:yearID', open_ranking_page);
-function open_ranking_page(req, res) {
-    res.sendFile(__dirname + '/public/ranking.html');
+app.get('/ranking/:attribute', ranking);
+function ranking(req, res) {
+    let sql = 'SELECT ' + req.params.attribute + ',team_ID FROM real_team ORDER BY ' + req.params.attribute;
+    // res.send(sql)
+    let query = db.query(sql, (err, results) => {
+        if(err) throw err;
+        console.log(results);
+        res.send(results);
+    });
 }
 
 app.listen(3000, () => {
