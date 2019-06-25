@@ -191,7 +191,7 @@ $(document).ready(function () {
     });
 
     $(document).on("click", ".stat_item", function(event) {
-        location.replace("ranking.html");
+        location.href = "ranking.html";
         // var div_elem = event.target.parentNode.id;
         // var path = '/ranking_page/' + div_elem + '/' + curr_team_id + '/' + curr_year;
         // get(path);
