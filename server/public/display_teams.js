@@ -149,11 +149,10 @@ function generate_table_row(item_verbose, item_attribute, item_stat) {
         item_stat = "N/A";
     }
 
-    // var str = "<tr class=\"stat_item\" id=\"" + item_attribute + "\">";
-    var str = "<a href=\"ranking.html\"><tr>";
+    var str = "<tr class=\"stat_item\" id=\"" + item_attribute + "\">";
     str += "<td>" + item_verbose + "</td>";
     str += "<td>" + item_stat + "</td>";
-    str += "</tr></a>";
+    str += "</tr>";
     return str;
 }
 
@@ -192,9 +191,10 @@ $(document).ready(function () {
     });
 
     $(document).on("click", ".stat_item", function(event) {
-        var div_elem = event.target.parentNode.id;
-        var path = '/ranking_page/' + div_elem + '/' + curr_team_id + '/' + curr_year;
-        get(path);
+        location.replace("ranking.html");
+        // var div_elem = event.target.parentNode.id;
+        // var path = '/ranking_page/' + div_elem + '/' + curr_team_id + '/' + curr_year;
+        // get(path);
     });
 
     $("#search_team").focus(function() {
