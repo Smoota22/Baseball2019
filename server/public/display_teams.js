@@ -12,7 +12,6 @@ const TEAM_STAT_DEFENSE_START_INDEX = 17;
 var curr_team_id;
 var curr_team_name;
 var curr_year;
-var ranking_attribute;
 
 function autofill_team_names() {
     var search_team_name = $("#search_team").val();
@@ -192,7 +191,10 @@ $(document).ready(function () {
     });
 
     $(document).on("click", ".stat_item", function(event) {
-        ranking_attribute = event.target.parentNode.id;
+        var ranking_attribute = event.target.parentNode.id;
+        localStorage.setItem("curr_team_id", curr_team_id);
+        localStorage.setItem("curr_year", curr_year);
+        localStorage.setItem("ranking_attribute", ranking_attribute);
         location.href = "ranking.html";
         // var path = '/ranking_page/' + div_elem + '/' + curr_team_id + '/' + curr_year;
         // get(path);
