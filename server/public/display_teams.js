@@ -188,13 +188,11 @@ $(document).ready(function () {
         var param_arr = ranking_attribute_both.split("*");
         var ranking_attribute_mysql = param_arr[0];
         var ranking_attribute_verbose = param_arr[1];
-        alert(ranking_attribute_mysql);
-        alert(ranking_attribute_verbose);
         localStorage.setItem("curr_team_id", curr_team_id);
         localStorage.setItem("curr_year", curr_year);
         localStorage.setItem("ranking_attribute_mysql", ranking_attribute_mysql);
         localStorage.setItem("ranking_attribute_verbose", ranking_attribute_verbose);
-        // location.href = "ranking.html";
+        location.href = "ranking.html";
     });
 
     $("#search_team").focus(function() {
