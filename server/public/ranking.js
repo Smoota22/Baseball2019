@@ -10,17 +10,20 @@ function load_rankings() {
     get(path)
     .then(function(json) {
         if (json === undefined) {
+            alert("undefined");
             return;
         }
         var query_result_obj = JSON.parse(json);
         for (i = 0; i < query_result_obj.length; i++) {
             if (query_result_obj[i].team_ID === curr_team_id) {
+                alert("found!");
                 var page_num = (i / 10) + 1;
                 var idx_on_page = i % 10;
                 display_rankings(query_result_obj, page_num, idx_on_page);
                 return;
             }
         }
+        alert("not found");
     });
 }
 
