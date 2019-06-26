@@ -19,6 +19,8 @@ function load_rankings() {
                 return;
             }
         }
+        alert("not found");
+        alert(curr_year);
     });
 }
 
