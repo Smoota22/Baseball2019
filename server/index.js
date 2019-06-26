@@ -112,7 +112,7 @@ function ranking(req, res) {
     });
 }
 
-app.get('/ranking_dropdown', ranking_dropdown);
+app.get('/ranking_dropdown/:param', ranking_dropdown);
 function ranking_dropodown(req, res) {
 //     let sql = 'DESCRIBE real_team';
 //     // res.send(sql)
