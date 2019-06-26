@@ -103,7 +103,7 @@ function load_team_data(req, res) {
 
 app.get('/ranking/:attribute', ranking);
 function ranking(req, res) {
-    let sql = 'SELECT ' + req.params.attribute + ',team_ID FROM real_team ORDER BY ' + req.params.attribute;
+    let sql = 'SELECT ' + req.params.attribute + ',team_ID,year_ID FROM real_team ORDER BY ' + req.params.attribute;
     // res.send(sql)
     let query = db.query(sql, (err, results) => {
         if(err) throw err;
