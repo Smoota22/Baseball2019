@@ -2,6 +2,7 @@ const RESET_DISPLAY_RANKINGS = '<div id="display_rankings_container" class="cont
 var curr_team_id = localStorage.getItem("curr_team_id"); //do null check when creating ranking table because could be null if page is user loaded
 var curr_year = localStorage.getItem("curr_year");
 var curr_team_name = localStorage.getItem("curr_team_name");
+alert(curr_team_name);
 var ranking_attribute_mysql = localStorage.getItem("ranking_attribute_mysql");
 var ranking_attribute_verbose = localStorage.getItem("ranking_attribute_verbose");
 var query_result_obj;
