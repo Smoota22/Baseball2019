@@ -28,12 +28,12 @@ function display_rankings(query_result_obj, i) {
     alert(ranking_attribute_verbose);
     $attribute_header.append($.parseHTML(ranking_attribute_verbose));
 
-    var $display_rankings_body = $("#display_rankings_body");
-    var start_idx = (i / 10) * 10;
-    for (var i = start_idx; i < start_idx + 10; i++) {
-        var ranking_table_row = generate_ranking_table_row(query_result_obj[i], i);
-        $display_rankings_body.append($.parseHTML(ranking_table_row));
-    }
+    // var $display_rankings_body = $("#display_rankings_body");
+    // var start_idx = (i / 10) * 10;
+    // for (var i = start_idx; i < start_idx + 10; i++) {
+    //     var ranking_table_row = generate_ranking_table_row(query_result_obj[i], i);
+    //     $display_rankings_body.append($.parseHTML(ranking_table_row));
+    // }
 
 }
 
