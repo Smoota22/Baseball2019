@@ -14,10 +14,8 @@ function load_rankings() {
         }
         var query_result_obj = JSON.parse(json);
         for (i = 0; i < query_result_obj.length; i++) {
-            if (query_result_obj[i].team_ID === curr_team_id) {
+            if (query_result_obj[i].team_ID === curr_team_id && query_result_obj[i].year_ID === curr_year) {
                 display_rankings(query_result_obj, i);
-                alert(query_result_obj[i].team_ID);
-                alert(query_result_obj[i].year_ID);
                 return;
             }
         }
