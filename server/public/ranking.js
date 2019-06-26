@@ -67,4 +67,4 @@ $(document).ready(function () {
         var curr_idx = param_arr[2];
         display_rankings(curr_idx);
     });
-}
+});
