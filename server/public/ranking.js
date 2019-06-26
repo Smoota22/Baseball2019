@@ -59,11 +59,18 @@ function generate_ranking_table_row(idx) {
 }
 
 $(document).ready(function () {
+    curr_team_id = localStorage.getItem("curr_team_id"); //do null check when creating ranking table because could be null if page is user loaded
+    curr_year = localStorage.getItem("curr_year");
+    ranking_attribute_mysql = localStorage.getItem("ranking_attribute_mysql");
+    ranking_attribute_verbose = localStorage.getItem("ranking_attribute_verbose");
+
     $(document).on("click", ".ranking_item", function(event) {
         var curr_team_year = event.target.parentNode.id;
         var param_arr = curr_team_year.split("*");
         curr_team_id = param_arr[0];
         curr_year = param_arr[1];
+        localStorage.setItem("curr_team_id", curr_team_id);
+        localStorage.setItem("curr_year", curr_year);
         var curr_idx = param_arr[2];
         display_rankings(curr_idx);
     });

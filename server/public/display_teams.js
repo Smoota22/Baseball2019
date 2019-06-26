@@ -157,7 +157,12 @@ function generate_table_row(item_verbose, item_attribute, item_stat) {
 }
 
 $(document).ready(function () {
-    alert("TEST");
+    var curr_team_id = localStorage.getItem("curr_team_id");
+    var curr_year = localStorage.getItem("curr_year");
+    if (curr_team_id != null && curr_year != null) {
+        lock_in_season(curr_team_id, curr_year);
+    }
+
     $(document).on("click", ".team_name_item", function(event) {
         var div_elem = event.target.parentNode.id;
         if (div_elem === "team_suggestions") {
