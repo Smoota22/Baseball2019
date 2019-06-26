@@ -30,6 +30,7 @@ function load_rankings() {
 function display_rankings(query_result_obj, page_num, idx_on_page) {
     reset_html_element("#display_rankings_container", RESET_DISPLAY_RANKINGS);
     var $attribute_header = $("#attribute_header");
+    alert(ranking_attribute_verbose);
     var html = $.parseHTML(ranking_attribute_verbose);
     $attribute_header.append(html);
 }
