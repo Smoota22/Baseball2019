@@ -51,7 +51,7 @@ function generate_ranking_table_row(idx) {
         str += " table-info";
     }
     str += "\" ";
-    str += "id=\"" + item_team_ID + "*" + item_year_ID + "*" + idk + "\">";
+    str += "id=\"" + item_team_ID + "*" + item_year_ID + "*" + idx + "\">";
     str += "<td>" + (idx+1) + "</td>";
     str += "<td>" + item_stat + "</td>";
     str += "</tr>";
