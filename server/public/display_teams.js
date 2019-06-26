@@ -157,6 +157,7 @@ function generate_table_row(item_verbose, item_attribute, item_stat) {
 }
 
 $(document).ready(function () {
+    alert("TEST");
     $(document).on("click", ".team_name_item", function(event) {
         var div_elem = event.target.parentNode.id;
         if (div_elem === "team_suggestions") {
