@@ -2,7 +2,6 @@ const RESET_DISPLAY_RANKINGS = '<div id="display_rankings_container" class="cont
 var curr_team_id = localStorage.getItem("curr_team_id"); //do null check when creating ranking table because could be null if page is user loaded
 var curr_year = localStorage.getItem("curr_year");
 var curr_team_name = localStorage.getItem("curr_team_name");
-alert(curr_team_name);
 var ranking_attribute_mysql = localStorage.getItem("ranking_attribute_mysql");
 var ranking_attribute_verbose = localStorage.getItem("ranking_attribute_verbose");
 var query_result_obj;
@@ -54,7 +53,7 @@ function generate_ranking_table_row(idx) {
         str += " table-info";
     }
     str += "\" ";
-    str += "id=\"" + item_team_ID + "*" + item_year_ID + "*" + idx + "\">";
+    str += "id=\"" + item_team_ID + "*" + item_year_ID + "*" + item_team_name + "*" + idx + "\">";
     str += "<td>" + item_team_name + "</td>";
     str += "<td>" + item_year_ID + "</td>";
     str += "<td>" + (idx+1) + "</td>";
@@ -74,10 +73,11 @@ $(document).ready(function () {
         var param_arr = curr_team_year.split("*");
         curr_team_id = param_arr[0];
         curr_year = param_arr[1];
+        curr_team_name = param_arr[2];
         localStorage.setItem("curr_team_id", curr_team_id);
         localStorage.setItem("curr_year", curr_year);
         localStorage.setItem("curr_team_name", curr_team_name);
-        var curr_idx = param_arr[2];
+        var curr_idx = param_arr[3];
         display_rankings(curr_idx);
     });
 });
