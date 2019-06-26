@@ -16,6 +16,8 @@ function load_rankings() {
         for (i = 0; i < query_result_obj.length; i++) {
             if (query_result_obj[i].team_ID === curr_team_id) {
                 display_rankings(query_result_obj, i);
+                alert(query_result_obj[i].team_ID);
+                alert(query_result_obj[i].year_ID);
                 return;
             }
         }
@@ -31,13 +33,13 @@ function display_rankings(query_result_obj, i) {
     var $display_rankings_body = $("#display_rankings_body");
     var start_idx = Math.floor(i / 10) * 10;
     for (var i = start_idx; i < start_idx + 10; i++) {
-        var ranking_table_row = generate_ranking_table_row(query_result_obj[i], i);
+        var ranking_table_row = generate_ranking_table_row(query_result_obj[i]);
         $display_rankings_body.append($.parseHTML(ranking_table_row));
     }
 
 }
 
-function generate_ranking_table_row(query_row, idx) {
+function generate_ranking_table_row(query_row) {
     item_stat = query_row[ranking_attribute_mysql];
     item_team_ID = query_row.team_ID;
     item_year_ID = query_row.year_ID;
