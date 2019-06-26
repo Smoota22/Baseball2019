@@ -4,7 +4,7 @@ var curr_year = localStorage.getItem("curr_year");
 var curr_team_name = localStorage.getItem("curr_team_name");
 var ranking_attribute_mysql = localStorage.getItem("ranking_attribute_mysql");
 var ranking_attribute_verbose = localStorage.getItem("ranking_attribute_verbose");
-var query_result_obj;
+var rankings_obj;
 load_rankings();
 //do query and load rankings
 function load_rankings() {
@@ -14,9 +14,9 @@ function load_rankings() {
         if (json === undefined) {
             return;
         }
-        query_result_obj = JSON.parse(json);
-        for (i = 0; i < query_result_obj.length; i++) {
-            if (query_result_obj[i].team_ID === curr_team_id && query_result_obj[i].year_ID == curr_year) {
+        rankings_obj = JSON.parse(json);
+        for (i = 0; i < rankings_obj.length; i++) {
+            if (rankings_obj[i].team_ID === curr_team_id && rankings_obj[i].year_ID == curr_year) {
                 display_rankings(i);
                 return;
             }
@@ -39,7 +39,7 @@ function display_rankings(i) {
 }
 
 function generate_ranking_table_row(idx) {
-    var query_row = query_result_obj[idx];
+    var query_row = rankings_obj[idx];
     item_stat = query_row[ranking_attribute_mysql];
     item_team_ID = query_row.team_ID;
     item_year_ID = query_row.year_ID;
@@ -67,6 +67,19 @@ $(document).ready(function () {
     curr_year = localStorage.getItem("curr_year");
     ranking_attribute_mysql = localStorage.getItem("ranking_attribute_mysql");
     ranking_attribute_verbose = localStorage.getItem("ranking_attribute_verbose");
+
+    var path = "/ranking_dropdown";
+    get(path)
+    .then(function(json) {
+        if (json === undefined) {
+            return;
+        }
+        var attributes_obj = JSON.parse(json);
+        for (i = 0; i < attributes.length; i++) {
+            alert(attributes[i]);
+        }
+    });
+
 
     $(document).on("click", ".ranking_item", function(event) {
         var curr_team_year = event.target.parentNode.id;
