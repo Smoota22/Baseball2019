@@ -19,8 +19,6 @@ function load_rankings() {
                 return;
             }
         }
-        alert("not found");
-        alert(curr_year);
     });
 }
 
@@ -48,7 +46,7 @@ function generate_ranking_table_row(query_row, idx) {
     }
 
     var str = "<tr class=\"ranking_item";
-    if (item_team_ID === curr_team_id && item_year_ID === curr_year) {
+    if (item_team_ID === curr_team_id && item_year_ID == curr_year) {
         str += " table-info";
     }
     str += "\" ";
