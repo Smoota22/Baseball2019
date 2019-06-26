@@ -33,13 +33,13 @@ function display_rankings(query_result_obj, i) {
     var $display_rankings_body = $("#display_rankings_body");
     var start_idx = Math.floor(i / 10) * 10;
     for (var i = start_idx; i < start_idx + 10; i++) {
-        var ranking_table_row = generate_ranking_table_row(query_result_obj[i]);
+        var ranking_table_row = generate_ranking_table_row(query_result_obj[i], i);
         $display_rankings_body.append($.parseHTML(ranking_table_row));
     }
 
 }
 
-function generate_ranking_table_row(query_row) {
+function generate_ranking_table_row(query_row, idx) {
     item_stat = query_row[ranking_attribute_mysql];
     item_team_ID = query_row.team_ID;
     item_year_ID = query_row.year_ID;
