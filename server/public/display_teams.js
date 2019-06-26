@@ -149,7 +149,7 @@ function generate_table_row(item_verbose, item_attribute, item_stat) {
         item_stat = "N/A";
     }
 
-    var str = "<tr class=\"stat_item\" id=\"" + item_attribute + "\">";
+    var str = "<tr class=\"stat_item\" id=\"" + item_attribute + "*" + item_verbose + "\">";
     str += "<td>" + item_verbose + "</td>";
     str += "<td>" + item_stat + "</td>";
     str += "</tr>";
@@ -167,7 +167,6 @@ $(document).ready(function () {
         var param_arr = div_elem.split("*");
         var team_name = param_arr[0];
         var team_ID = param_arr[1];
-        // alert(team_name + ", " + team_ID);
 
         lock_in_team_name(team_name, team_ID);
     });
@@ -185,13 +184,15 @@ $(document).ready(function () {
     });
 
     $(document).on("click", ".stat_item", function(event) {
-        var ranking_attribute = event.target.parentNode.id;
+        var ranking_attribute_both = event.target.parentNode.id;
+        var param_arr = ranking_attribute_both.split("*");
+        var ranking_attribute_mysql = param_arr[0];
+        var ranking_attribute_verbose = param_arr[1];
         localStorage.setItem("curr_team_id", curr_team_id);
         localStorage.setItem("curr_year", curr_year);
-        localStorage.setItem("ranking_attribute", ranking_attribute);
+        localStorage.setItem("ranking_attribute_mysql", ranking_attribute_mysql);
+        localStorage.setItem("ranking_attribute_verbose", ranking_attribute_verbose);
         location.href = "ranking.html";
-        // var path = '/ranking_page/' + div_elem + '/' + curr_team_id + '/' + curr_year;
-        // get(path);
     });
 
     $("#search_team").focus(function() {
