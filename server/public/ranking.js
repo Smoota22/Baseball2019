@@ -37,7 +37,7 @@ function display_rankings(query_result_obj, i) {
 
 }
 
-generate_ranking_table_row(query_row, idx) {
+function generate_ranking_table_row(query_row, idx) {
     item_stat = query_row[ranking_attribute_mysql];
     item_team_ID = query_row.team_ID;
     item_year_ID = query_row.year_ID;
