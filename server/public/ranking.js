@@ -3,6 +3,7 @@ var curr_team_id = localStorage.getItem("curr_team_id"); //do null check when cr
 var curr_year = localStorage.getItem("curr_year");
 var ranking_attribute_mysql = localStorage.getItem("ranking_attribute_mysql");
 var ranking_attribute_verbose = localStorage.getItem("ranking_attribute_verbose");
+var query_result_obj;
 load_rankings();
 //do query and load rankings
 function load_rankings() {
@@ -12,7 +13,7 @@ function load_rankings() {
         if (json === undefined) {
             return;
         }
-        var query_result_obj = JSON.parse(json);
+        query_result_obj = JSON.parse(json);
         for (i = 0; i < query_result_obj.length; i++) {
             if (query_result_obj[i].team_ID === curr_team_id && query_result_obj[i].year_ID == curr_year) {
                 display_rankings(query_result_obj, i);
@@ -22,22 +23,22 @@ function load_rankings() {
     });
 }
 
-function display_rankings(query_result_obj, i) {
+function display_rankings(i) {
     reset_html_element("#display_rankings_container", RESET_DISPLAY_RANKINGS);
     var $attribute_header = $("#attribute_header");
-    alert(ranking_attribute_verbose);
     $attribute_header.append($.parseHTML(ranking_attribute_verbose));
 
     var $display_rankings_body = $("#display_rankings_body");
     var start_idx = Math.floor(i / 10) * 10;
     for (var i = start_idx; i < start_idx + 10; i++) {
-        var ranking_table_row = generate_ranking_table_row(query_result_obj[i], i);
+        var ranking_table_row = generate_ranking_table_row(i);
         $display_rankings_body.append($.parseHTML(ranking_table_row));
     }
 
 }
 
-function generate_ranking_table_row(query_row, idx) {
+function generate_ranking_table_row(idx) {
+    var query_row = query_result_obj[idx];
     item_stat = query_row[ranking_attribute_mysql];
     item_team_ID = query_row.team_ID;
     item_year_ID = query_row.year_ID;
@@ -50,9 +51,20 @@ function generate_ranking_table_row(query_row, idx) {
         str += " table-info";
     }
     str += "\" ";
-    str += "id=\"" + item_team_ID + "*" + item_year_ID + "\">";
+    str += "id=\"" + item_team_ID + "*" + item_year_ID + "*" + idk + "\">";
     str += "<td>" + (idx+1) + "</td>";
     str += "<td>" + item_stat + "</td>";
     str += "</tr>";
     return str;
+}
+
+$(document).ready(function () {
+    $(document).on("click", ".ranking_item", function(event) {
+        var curr_team_year = event.target.parentNode.id;
+        var param_arr = curr_team_year.split("*");
+        curr_team_id = param_arr[0];
+        curr_year = param_arr[1];
+        var curr_idx = param_arr[2];
+        display_rankings(curr_idx);
+    });
 }
