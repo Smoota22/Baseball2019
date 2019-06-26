@@ -160,7 +160,6 @@ $(document).ready(function () {
     var search_team_name = $("#search_team").val();
     var search_year = $("#search_team_year").val();
     if (search_team_name != null && search_year != null) {
-        autofill_team_names();
         autofill_years();
     }
 
