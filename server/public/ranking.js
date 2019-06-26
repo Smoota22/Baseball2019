@@ -1,4 +1,4 @@
-const RESET_DISPLAY_RANKINGS = '<div id="display_rankings_container" class="container"> <table id="display_rankings_table" class="table table-striped table-hover"> <thead> <tr> <th>Overall Ranking</th> <th id="attribute_header"></th> </tr></thead> <tbody ng-repeat="e in data.events" id="display_rankings_body"></tbody> </table> </div>'
+const RESET_DISPLAY_RANKINGS = '<div id="display_rankings_container" class="container"> <table id="display_rankings_table" class="table table-striped table-hover table-sm"> <thead> <tr> <th>Overall Ranking</th> <th id="attribute_header"></th> </tr></thead> <tbody ng-repeat="e in data.events" id="display_rankings_body"></tbody> </table> </div>'
 var curr_team_id = localStorage.getItem("curr_team_id"); //do null check when creating ranking table because could be null if page is user loaded
 var curr_year = localStorage.getItem("curr_year");
 var ranking_attribute_mysql = localStorage.getItem("ranking_attribute_mysql");
@@ -45,7 +45,12 @@ function generate_ranking_table_row(query_row, idx) {
         item_stat = "N/A";
     }
 
-    var str = "<tr class=\"ranking_item\" id=\"" + item_team_ID + "*" + item_year_ID + "\">";
+    var str = "<tr class=\"ranking_item";
+    if (item_team_ID === curr_team_id && item_year_ID === curr_year) {
+        str += " table-info";
+    }
+    str += "\" ";
+    str += "id=\"" + item_team_ID + "*" + item_year_ID + "\">";
     str += "<td>" + (idx+1) + "</td>";
     str += "<td>" + item_stat + "</td>";
     str += "</tr>";
