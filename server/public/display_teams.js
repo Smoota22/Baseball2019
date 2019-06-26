@@ -188,6 +188,8 @@ $(document).ready(function () {
         var param_arr = ranking_attribute_both.split("*");
         var ranking_attribute_mysql = param_arr[0];
         var ranking_attribute_verbose = param_arr[1];
+        alert(param_arr[0]);
+        alert(param_arr[1]);
         localStorage.setItem("curr_team_id", curr_team_id);
         localStorage.setItem("curr_year", curr_year);
         localStorage.setItem("ranking_attribute_mysql", ranking_attribute_mysql);
