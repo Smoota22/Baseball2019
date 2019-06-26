@@ -168,6 +168,9 @@ $(document).ready(function () {
         $("#search_team_year").prop("disabled", false);
         $("#search_team_year").val(curr_year);
         lock_in_season(curr_team_id, curr_year);
+    } else {
+        $("#search_team").val("");
+        $("#search_team_year").val("");
     }
 
     $(document).on("click", ".team_name_item", function(event) {
