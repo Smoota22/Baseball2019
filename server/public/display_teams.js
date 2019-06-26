@@ -157,12 +157,13 @@ function generate_table_row(item_verbose, item_attribute, item_stat) {
 }
 
 $(document).ready(function () {
-    var search_team_name = $("#search_team").val();
-    var search_year = $("#search_team_year").val();
-    if (search_team_name != null && search_year != null) {
-        autofill_team_names();
-        $("#search_team_year").val(search_year);
-        autofill_years();
+    curr_team_id = localStorage.getItem("curr_team_id");
+    curr_year = localStorage.getItem("curr_year");
+    localStorage.removeItem("curr_team_id");
+    localStorage.removeItem("curr_year");
+    if (curr_team_id != null && curr_year != null) {
+        $("#search_team_year").prop("disabled", false);
+        lock_in_season(curr_team_id, curr_year);
     }
 
     $(document).on("click", ".team_name_item", function(event) {
