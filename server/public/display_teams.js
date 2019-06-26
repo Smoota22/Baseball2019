@@ -194,7 +194,7 @@ $(document).ready(function () {
         localStorage.setItem("curr_year", curr_year);
         localStorage.setItem("ranking_attribute_mysql", ranking_attribute_mysql);
         localStorage.setItem("ranking_attribute_verbose", ranking_attribute_verbose);
-        location.href = "ranking.html";
+        // location.href = "ranking.html";
     });
 
     $("#search_team").focus(function() {
