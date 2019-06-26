@@ -112,8 +112,19 @@ function ranking(req, res) {
     });
 }
 
-app.get('/ranking_dropdown/:param', ranking_dropdown);
-function ranking_dropodown(req, res) {
+app.get('/rankings/:attribute', rankings);
+function rankings(req, res) {
+    let sql = 'SELECT ' + req.params.attribute + ',team_ID,year_ID,team_name FROM real_team ORDER BY ' + req.params.attribute;
+    // res.send(sql)
+    let query = db.query(sql, (err, results) => {
+        if(err) throw err;
+        console.log(results);
+        res.send(results);
+    });
+}
+
+// app.get('/ranking_dropdown', ranking_dropdown);
+// function ranking_dropodown(req, res) {
 //     let sql = 'DESCRIBE real_team';
 //     // res.send(sql)
 //     let query = db.query(sql, (err, results) => {
@@ -121,7 +132,7 @@ function ranking_dropodown(req, res) {
 //         console.log(results);
 //         res.send(results);
 //     });
-}
+// }
 
 app.listen(3000, () => {
   console.log('Server running on port 3000')
