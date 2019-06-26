@@ -97,6 +97,7 @@ function lock_in_team_year(locked_team_ID, locked_year_ID) {
 }
 
 function lock_in_season(team_id, team_year) {
+    alert("TEST");
     var path = '/load_team_data/' + team_id + '/' + team_year;
     get(path)
     .then(function(json) {
