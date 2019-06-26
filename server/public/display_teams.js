@@ -97,7 +97,6 @@ function lock_in_team_year(locked_team_ID, locked_year_ID) {
 }
 
 function lock_in_season(team_id, team_year) {
-    alert("TEST");
     var path = '/load_team_data/' + team_id + '/' + team_year;
     get(path)
     .then(function(json) {
@@ -160,10 +159,14 @@ function generate_table_row(item_verbose, item_attribute, item_stat) {
 $(document).ready(function () {
     curr_team_id = localStorage.getItem("curr_team_id");
     curr_year = localStorage.getItem("curr_year");
+    curr_team_name = localStorage.getItem("curr_team_name");
     localStorage.removeItem("curr_team_id");
     localStorage.removeItem("curr_year");
-    if (curr_team_id != null && curr_year != null) {
+    localStorage.removeItem("curr_team_name");
+    if (curr_team_id != null && curr_year != null && curr_team_name != null) {
+        $("#search_team").val(curr_team_name);
         $("#search_team_year").prop("disabled", false);
+        $("#search_team_year").val(curr_year);
         lock_in_season(curr_team_id, curr_year);
     }
 
@@ -200,6 +203,7 @@ $(document).ready(function () {
         var ranking_attribute_verbose = param_arr[1];
         localStorage.setItem("curr_team_id", curr_team_id);
         localStorage.setItem("curr_year", curr_year);
+        localStorage.setItem("curr_team_name", curr_team_name);
         localStorage.setItem("ranking_attribute_mysql", ranking_attribute_mysql);
         localStorage.setItem("ranking_attribute_verbose", ranking_attribute_verbose);
         location.href = "ranking.html";
