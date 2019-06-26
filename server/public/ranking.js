@@ -3,6 +3,7 @@ var curr_team_id = localStorage.getItem("curr_team_id"); //do null check when cr
 var curr_year = localStorage.getItem("curr_year");
 var ranking_attribute_mysql = localStorage.getItem("ranking_attribute_mysql");
 var ranking_attribute_verbose = localStorage.getItem("ranking_attribute_verbose");
+load_rankings();
 //do query and load rankings
 function load_rankings() {
     var path = "ranking/" + ranking_attribute_mysql;
