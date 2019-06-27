@@ -90,6 +90,19 @@ function load_pages(idx) {
 }
 
 function load_attributes() {
+    var path = "/ranking_dropdown";
+    get(path)
+    .then(function(json) {
+        if (json === undefined) {
+            alert("DESCRIBE query undefined")
+            return;
+        }
+        var attributes_obj = JSON.parse(json);
+        for (i = 0; i < attributes_obj.length; i++) {
+            alert(attributes_obj[i]);
+        }
+    });
+
     var $ranking_attribute_dropdown_menu = $("#ranking_attribute_dropdown_menu");
     var attribute_item = generate_attribute_item();
     $ranking_attribute_dropdown_menu.append($.parseHTML(attribute_item));
@@ -110,18 +123,6 @@ $(document).ready(function () {
     load_rankings();
     // $(".pagination").rPage();
 
-    var path = "/ranking_dropdown";
-    get(path)
-    .then(function(json) {
-        if (json === undefined) {
-            alert("DESCRIBE query undefined")
-            return;
-        }
-        var attributes_obj = JSON.parse(json);
-        for (i = 0; i < attributes.length; i++) {
-            alert(attributes[i]);
-        }
-    });
 
     $(document).on("click", ".ranking_item", function(event) {
         var curr_team_year = event.target.parentNode.id;
