@@ -87,8 +87,8 @@ $(document).ready(function () {
     curr_team_name = localStorage.getItem("curr_team_name");
     ranking_attribute_mysql = localStorage.getItem("ranking_attribute_mysql");
     ranking_attribute_verbose = localStorage.getItem("ranking_attribute_verbose");
-    load_rankings();
     $("#ranking_pagination").rPage();
+    load_rankings();
 
     var path = "/ranking_dropdown";
     get(path)
