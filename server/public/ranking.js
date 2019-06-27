@@ -17,7 +17,6 @@ function load_rankings() {
         for (i = 0; i < rankings_obj.length; i++) {
             if (rankings_obj[i].team_ID === curr_team_id && rankings_obj[i].year_ID == curr_year) {
                 display_rankings(i);
-                load_pages(Math.ceil(rankings_obj.length / 10), Math.floor($("#display_rankings_table").width()/55), Math.floor(i / 10) + 1);
                 return;
             }
         }
@@ -36,6 +35,8 @@ function display_rankings(i) {
         var ranking_table_row = generate_ranking_table_row(i);
         $display_rankings_body.append($.parseHTML(ranking_table_row));
     }
+
+    load_pages();
 }
 
 function generate_ranking_table_row(idx) {
@@ -62,7 +63,12 @@ function generate_ranking_table_row(idx) {
     return str;
 }
 
-function load_pages(num_pages, visible_pages, curr_page) {
+function load_pages(idx) {
+    var num_pages = Math.ceil(rankings_obj.length / 10);
+    var curr_page = Math.floor(idx / 10) + 1;
+    var num_page_digits = curr_page.toString().length;
+    var visible_pages = Math.floor($("#display_rankings_table").width()/55/(0.3 * num_page_digits));
+
     window.pagObj = $('#ranking_pagination').twbsPagination({
         totalPages: num_pages,
         visiblePages: visible_pages,
