@@ -98,9 +98,9 @@ function load_attributes() {
             return;
         }
         var attributes_obj = JSON.parse(json);
-        for (i = 0; i < attributes_obj.length; i++) {
-            alert(attributes_obj[i].Field);
-        }
+        // for (i = 0; i < attributes_obj.length; i++) {
+            // alert(attributes_obj[i].Field);
+        // }
     });
 
     var $ranking_attribute_dropdown_menu = $("#ranking_attribute_dropdown_menu");
