@@ -36,7 +36,7 @@ function display_rankings(i) {
         $display_rankings_body.append($.parseHTML(ranking_table_row));
     }
 
-    // load_pages(Math.ceil(rankings_obj.length / 10), Math.floor($("#display_rankings_table").width()/75));
+    load_pages(Math.ceil(rankings_obj.length / 10), Math.floor($("#display_rankings_table").width()/75));
 }
 
 function generate_ranking_table_row(idx) {
@@ -70,6 +70,7 @@ function load_pages(num_pages, visible_pages) {
         onPageClick: function (event, page) {
             // console.info(page + ' (from options)');
             var start_idx = (page - 1) * 10;
+            alert("TEST");
             // display_rankings(start_idx);
         }
     })
