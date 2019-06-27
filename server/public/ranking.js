@@ -74,9 +74,10 @@ function load_pages(num_pages, visible_pages) {
             // display_rankings(start_idx);
         }
     })
-    // .on('page', function (event, page) {
-    //     console.info(page + ' (from event listening)');
-    // });
+    .on('page', function (event, page) {
+        // console.info(page + ' (from event listening)');
+        alert("TEST2");
+    });
 }
 
 $(document).ready(function () {
