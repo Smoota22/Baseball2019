@@ -96,7 +96,7 @@ function load_attributes() {
 }
 
 function generate_attribute_item() {
-    var str = "<a class="dropdown-item" href="#">Link 1</a>";
+    var str = "<a class=\"dropdown-item\" href=\"#\">Link 1</a>";
     return str;
 }
 
