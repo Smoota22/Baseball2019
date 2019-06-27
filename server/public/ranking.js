@@ -88,7 +88,7 @@ $(document).ready(function () {
     ranking_attribute_mysql = localStorage.getItem("ranking_attribute_mysql");
     ranking_attribute_verbose = localStorage.getItem("ranking_attribute_verbose");
     load_rankings();
-    $(".pagination").rPage();
+    // $(".pagination").rPage();
 
     var path = "/ranking_dropdown";
     get(path)
