@@ -347,7 +347,7 @@
         loop: false,
         beforePageClick: null,
         onPageClick: null,
-        paginationClass: 'pagination',
+        paginationClass: 'pagination pagination-circle pg-blue',
         nextClass: 'page-item next',
         prevClass: 'page-item prev',
         lastClass: 'page-item last',
