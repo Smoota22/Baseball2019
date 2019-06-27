@@ -19,6 +19,7 @@ function load_rankings() {
             if (rankings_obj[i].team_ID === curr_team_id && rankings_obj[i].year_ID == curr_year) {
                 curr_idx = i;
                 display_rankings(curr_idx);
+                load_pages(curr_idx);
                 return;
             }
         }
@@ -37,8 +38,6 @@ function display_rankings(idx) {
         var ranking_table_row = generate_ranking_table_row(i);
         $display_rankings_body.append($.parseHTML(ranking_table_row));
     }
-
-    load_pages(idx);
 }
 
 function generate_ranking_table_row(idx) {
