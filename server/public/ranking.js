@@ -81,12 +81,12 @@ function load_pages(num_pages, visible_pages, curr_page) {
 }
 
 $(document).ready(function () {
-    load_rankings();
     curr_team_id = localStorage.getItem("curr_team_id"); //do null check when creating ranking table because could be null if page is user loaded
     curr_year = localStorage.getItem("curr_year");
     curr_team_name = localStorage.getItem("curr_team_name");
     ranking_attribute_mysql = localStorage.getItem("ranking_attribute_mysql");
     ranking_attribute_verbose = localStorage.getItem("ranking_attribute_verbose");
+    load_rankings();
 
     var path = "/ranking_dropdown";
     get(path)
