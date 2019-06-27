@@ -17,7 +17,7 @@ function load_rankings() {
         for (i = 0; i < rankings_obj.length; i++) {
             if (rankings_obj[i].team_ID === curr_team_id && rankings_obj[i].year_ID == curr_year) {
                 display_rankings(i);
-                load_pages(Math.ceil(rankings_obj.length / 10), Math.floor($("#display_rankings_table").width()/75), Math.floor(i / 10) + 1);
+                load_pages(Math.ceil(rankings_obj.length / 10), Math.floor($("#display_rankings_table").width()/65), Math.floor(i / 10) + 1);
                 return;
             }
         }
