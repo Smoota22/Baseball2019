@@ -1,11 +1,10 @@
 const RESET_DISPLAY_RANKINGS = '<div id="display_rankings_container" class="container"> <table id="display_rankings_table" class="table table-striped table-hover table-sm"> <thead> <tr> <th>Team Name</th> <th>Year</th> <th>Overall Ranking</th> <th id="attribute_header"></th> </tr></thead> <tbody ng-repeat="e in data.events" id="display_rankings_body"></tbody> </table> </div>';
-var curr_team_id = localStorage.getItem("curr_team_id"); //do null check when creating ranking table because could be null if page is user loaded
-var curr_year = localStorage.getItem("curr_year");
-var curr_team_name = localStorage.getItem("curr_team_name");
-var ranking_attribute_mysql = localStorage.getItem("ranking_attribute_mysql");
-var ranking_attribute_verbose = localStorage.getItem("ranking_attribute_verbose");
+var curr_team_id; //do null check when creating ranking table because could be null if page is user loaded
+var curr_year;
+var curr_team_name;
+var ranking_attribute_mysql;
+var ranking_attribute_verbose;
 var rankings_obj;
-load_rankings();
 //do query and load rankings
 function load_rankings() {
     var path = "ranking/" + ranking_attribute_mysql;
@@ -18,6 +17,7 @@ function load_rankings() {
         for (i = 0; i < rankings_obj.length; i++) {
             if (rankings_obj[i].team_ID === curr_team_id && rankings_obj[i].year_ID == curr_year) {
                 display_rankings(i);
+                load_pages(Math.ceil(rankings_obj.length / 10), Math.floor($("#display_rankings_table").width()/75), Math.floor(i / 10) + 1);
                 return;
             }
         }
@@ -35,8 +35,6 @@ function display_rankings(i) {
         var ranking_table_row = generate_ranking_table_row(i);
         $display_rankings_body.append($.parseHTML(ranking_table_row));
     }
-
-    load_pages(Math.ceil(rankings_obj.length / 10), Math.floor($("#display_rankings_table").width()/75));
 }
 
 function generate_ranking_table_row(idx) {
@@ -63,10 +61,11 @@ function generate_ranking_table_row(idx) {
     return str;
 }
 
-function load_pages(num_pages, visible_pages) {
+function load_pages(num_pages, visible_pages, curr_page) {
     window.pagObj = $('#ranking_pagination').twbsPagination({
         totalPages: num_pages,
         visiblePages: visible_pages,
+        startPage: curr_page,
         // onPageClick: function (event, page) {
         //     // console.info(page + ' (from options)');
         //     var start_idx = (page - 1) * 10;
@@ -82,8 +81,10 @@ function load_pages(num_pages, visible_pages) {
 }
 
 $(document).ready(function () {
+    load_rankings();
     curr_team_id = localStorage.getItem("curr_team_id"); //do null check when creating ranking table because could be null if page is user loaded
     curr_year = localStorage.getItem("curr_year");
+    curr_team_name = localStorage.getItem("curr_team_name");
     ranking_attribute_mysql = localStorage.getItem("ranking_attribute_mysql");
     ranking_attribute_verbose = localStorage.getItem("ranking_attribute_verbose");
 

@@ -6,6 +6,7 @@
  * Released under Apache 2.0 license
  * http://apache.org/licenses/LICENSE-2.0.html
  */
+ show
 (function ($, window, document, undefined) {
 
     'use strict';
@@ -29,6 +30,11 @@
 
         this.options.visiblePages = parseInt(this.options.visiblePages);
         if (isNaN(this.options.visiblePages)) {
+            throw new Error('Visible pages option is not correct!');
+        }
+
+        this.options.startPage = parseInt(this.options.startPage);
+        if (isNaN(this.options.startPage)) {
             throw new Error('Visible pages option is not correct!');
         }
 
