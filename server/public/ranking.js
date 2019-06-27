@@ -5,6 +5,7 @@ var curr_team_name;
 var ranking_attribute_mysql;
 var ranking_attribute_verbose;
 var rankings_obj;
+var curr_idx;
 //do query and load rankings
 function load_rankings() {
     var path = "ranking/" + ranking_attribute_mysql;
@@ -16,20 +17,21 @@ function load_rankings() {
         rankings_obj = JSON.parse(json);
         for (i = 0; i < rankings_obj.length; i++) {
             if (rankings_obj[i].team_ID === curr_team_id && rankings_obj[i].year_ID == curr_year) {
-                display_rankings(i);
+                curr_idx = i;
+                display_rankings();
                 return;
             }
         }
     });
 }
 
-function display_rankings(i) {
+function display_rankings() {
     reset_html_element("#display_rankings_container", RESET_DISPLAY_RANKINGS);
     var $attribute_header = $("#attribute_header");
     $attribute_header.append($.parseHTML(ranking_attribute_verbose));
 
     var $display_rankings_body = $("#display_rankings_body");
-    var start_idx = Math.floor(i / 10) * 10;
+    var start_idx = Math.floor(curr_idx / 10) * 10;
     var end_idx = Math.min(start_idx + 10, rankings_obj.length);
     for (var i = start_idx; i < end_idx; i++) {
         var ranking_table_row = generate_ranking_table_row(i);
@@ -87,12 +89,24 @@ function load_pages(idx) {
     });
 }
 
+function load_attributes() {
+    var $ranking_attribute_dropdown_menu = $("#ranking_attribute_dropdown_menu");
+    var attribute_item = generate_attribute_item();
+    $ranking_attribute_dropdown_menu.append($.parseHTML(attribute_item));
+}
+
+function generate_attribute_item() {
+    var str = "<a class="dropdown-item" href="#">Link 1</a>";
+    return str;
+}
+
 $(document).ready(function () {
     curr_team_id = localStorage.getItem("curr_team_id"); //do null check when creating ranking table because could be null if page is user loaded
     curr_year = localStorage.getItem("curr_year");
     curr_team_name = localStorage.getItem("curr_team_name");
     ranking_attribute_mysql = localStorage.getItem("ranking_attribute_mysql");
     ranking_attribute_verbose = localStorage.getItem("ranking_attribute_verbose");
+    load_attributes();
     load_rankings();
     // $(".pagination").rPage();
 
@@ -120,5 +134,9 @@ $(document).ready(function () {
         localStorage.setItem("curr_team_name", curr_team_name);
         var curr_idx = param_arr[3];
         display_rankings(curr_idx);
+    });
+
+    $(window).resize(function(){
+        //reload pagination??
     });
 });
