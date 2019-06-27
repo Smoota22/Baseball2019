@@ -114,7 +114,7 @@ function ranking(req, res) {
 
 app.get('/ranking_dropdown', ranking_dropdown);
 function ranking_dropdown(req, res) {
-    let sql = 'SELECT ' + req.params.attribute + ',team_ID,year_ID,team_name FROM real_team ORDER BY ' + req.params.attribute;
+    let sql = 'DESCRIBE real_team';
     // res.send(sql)
     let query = db.query(sql, (err, results) => {
         if(err) throw err;
