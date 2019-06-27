@@ -68,6 +68,8 @@ function load_pages(idx) {
     var curr_page = Math.floor(idx / 10) + 1;
     var num_page_digits = curr_page.toString().length;
     var visible_pages = Math.floor($("#display_rankings_table").width()/55/(0.3 * num_page_digits));
+    alert(num_page_digits);
+    alert(visible_pages);
 
     window.pagObj = $('#ranking_pagination').twbsPagination({
         totalPages: num_pages,
