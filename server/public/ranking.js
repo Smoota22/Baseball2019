@@ -80,6 +80,17 @@ $(document).ready(function () {
         }
     });
 
+    $(function () {
+        window.pagObj = $('#ranking_pagination').twbsPagination({
+            totalPages: 35,
+            visiblePages: 10,
+            onPageClick: function (event, page) {
+                console.info(page + ' (from options)');
+            }
+        }).on('page', function (event, page) {
+            console.info(page + ' (from event listening)');
+        });
+    });
 
     $(document).on("click", ".ranking_item", function(event) {
         var curr_team_year = event.target.parentNode.id;
