@@ -112,7 +112,7 @@ function ranking(req, res) {
     });
 }
 
-app.get('/rankings', rankings);
+app.get('/ranking_dropdown', rankings);
 function rankings(req, res) {
     let sql = 'SELECT ' + req.params.attribute + ',team_ID,year_ID,team_name FROM real_team ORDER BY ' + req.params.attribute;
     // res.send(sql)
