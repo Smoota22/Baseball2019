@@ -31,7 +31,8 @@ function display_rankings(i) {
 
     var $display_rankings_body = $("#display_rankings_body");
     var start_idx = Math.floor(i / 10) * 10;
-    for (var i = start_idx; i < start_idx + 10; i++) {
+    var end_idx = Math.min(start_idx + 10, rankings_obj.length);
+    for (var i = start_idx; i < end_idx; i++) {
         var ranking_table_row = generate_ranking_table_row(i);
         $display_rankings_body.append($.parseHTML(ranking_table_row));
     }
