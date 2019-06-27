@@ -99,7 +99,7 @@ function load_attributes() {
         }
         var attributes_obj = JSON.parse(json);
         for (i = 0; i < attributes_obj.length; i++) {
-            alert(attributes_obj[i]);
+            alert(attributes_obj[i].Field);
         }
     });
 
