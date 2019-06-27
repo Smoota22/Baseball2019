@@ -70,7 +70,7 @@ function load_pages(num_pages, visible_pages) {
         onPageClick: function (event, page) {
             // console.info(page + ' (from options)');
             var start_idx = (page - 1) * 10;
-            display_rankings(start_idx);
+            // display_rankings(start_idx);
         }
     })
     // .on('page', function (event, page) {
