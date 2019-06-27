@@ -18,20 +18,20 @@ function load_rankings() {
         for (i = 0; i < rankings_obj.length; i++) {
             if (rankings_obj[i].team_ID === curr_team_id && rankings_obj[i].year_ID == curr_year) {
                 curr_idx = i;
-                display_rankings();
+                display_rankings(curr_idx);
                 return;
             }
         }
     });
 }
 
-function display_rankings() {
+function display_rankings(idx) {
     reset_html_element("#display_rankings_container", RESET_DISPLAY_RANKINGS);
     var $attribute_header = $("#attribute_header");
     $attribute_header.append($.parseHTML(ranking_attribute_verbose));
 
     var $display_rankings_body = $("#display_rankings_body");
-    var start_idx = Math.floor(curr_idx / 10) * 10;
+    var start_idx = Math.floor(idx / 10) * 10;
     var end_idx = Math.min(start_idx + 10, rankings_obj.length);
     for (var i = start_idx; i < end_idx; i++) {
         var ranking_table_row = generate_ranking_table_row(i);
