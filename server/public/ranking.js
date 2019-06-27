@@ -36,7 +36,7 @@ function display_rankings(i) {
         $display_rankings_body.append($.parseHTML(ranking_table_row));
     }
 
-    load_pages(Math.ceil(rankings_obj.length / 10), Math.floor($("#display_rankings_table").width()/75));
+    // load_pages(Math.ceil(rankings_obj.length / 10), Math.floor($("#display_rankings_table").width()/75));
 }
 
 function generate_ranking_table_row(idx) {
