@@ -4,10 +4,41 @@ const MAX_SUGGESTIONS = 10;
 const RESET_DISPLAY_TEAM_TABLES = '<div id="display_team_tables" class="container"> <div class="jumbotron" id="display_team_season"></div><div class="row"> <div class="col-md-4"> <table id="display_team_stats_general" class="table table-striped table-hover"> <tbody ng-repeat="e in data.events" id="display_team_stats_general_body"></tbody> </table> </div><div class="col-md-4"> <table id="display_team_stats_offense" class="table table-striped table-hover"> <tbody ng-repeat="e in data.events" id="display_team_stats_offense_body"></tbody> </table> </div><div class="col-md-4"> <table id="display_team_stats_defense" class="table table-striped table-hover"> <tbody ng-repeat="e in data.events" id="display_team_stats_defense_body"></tbody> </table> </div></div></div>';
 const RESET_HIDE_TEAM_TABLES = '<div id="display_team_tables" class="container"></div>';
 const TEAM_STAT_ATTRIBUTES_MYSQL = ["park", "attendance_total", "rank", "games", "home_games", "wins", "losses", "runs", "at_bats", "hits", "doubles", "triples", "homeruns", "walks", "stolen_bases", "caught_stealing", "batters_hit", "opponent_runs", "opponent_earned_runs", "complete_games", "shutouts", "saves", "outs_pitched", "hits_allowed", "homeruns_allowed", "walks_allowed", "errors", "double_plays"];
-const TEAM_STAT_ATTRIBUTES_VERBOSE = ["Park Name", "Season Total Attendance", "Rank", "Games Played", "Home Games", "Wins", "Losses", "Runs Scored", "At-Bats", "Hits", "Doubles", "Triples", "Homeruns", "Walks", "Stolen Bases", "Caught Stealing", "Batters Hit", "Opponent Scored Runs", "Opponent Earned Runs", "Complete Games", "Shutouts", "Saves", "Outs Pitched", "Hits Allowed", "Homeruns Allowed", "Walks Allowed", "Errors", "Double Plays"];
 const TEAM_STAT_GENERAL_START_INDEX = 0;
 const TEAM_STAT_OFFENSE_START_INDEX = 7;
 const TEAM_STAT_DEFENSE_START_INDEX = 17;
+var sql_dict = {"team_ID": "Team ID",
+"year_ID": "Season Year",
+"team_name": "Team Name",
+"rank": "Rank",
+"games": "Games",
+"home_games": "Home Games",
+"wins": "Wins",
+"losses": "Losses",
+"runs": "Runs",
+"at_bats": "At Bats",
+"hits": "Hits",
+"doubles": "Doubles",
+"triples": "Triples",
+"homeruns": "Homeruns",
+"walks": "Walks",
+"stolen_bases": "Stolen Bases",
+"caught_stealing": "Caught Stealing",
+"batters_hit": "Batters Hit",
+"opponent_runs": "Opponent Runs",
+"opponent_earned_runs": "Opponent Earned Runs",
+"complete_games": "Complete Games",
+"shutouts": "Shutouts",
+"saves": "Saves",
+"outs_pitched": "Outs Pitched",
+"hits_allowed": "Hits Allowed",
+"homeruns_allowed": "Homeruns Allowed",
+"walks_allowed": "Walks Allowed",
+"errors": "Errors",
+"double_plays": "Double Plays",
+"fielding_pct": "Fielding Percentage",
+"park": "Park Name",
+"attendance_total": "Season Total Attendance"};
 
 var curr_team_id;
 var curr_team_name;
@@ -122,7 +153,7 @@ function display_stats(season) {
     //Display General Statistics
     var $display_team_stats_general_body = $("#display_team_stats_general_body");
     for (i = TEAM_STAT_GENERAL_START_INDEX; i < TEAM_STAT_OFFENSE_START_INDEX; i++) {
-        var row = generate_table_row(TEAM_STAT_ATTRIBUTES_VERBOSE[i], TEAM_STAT_ATTRIBUTES_MYSQL[i], season[TEAM_STAT_ATTRIBUTES_MYSQL[i]]);
+        var row = generate_table_row(TEAM_STAT_ATTRIBUTES_MYSQL[i], season[TEAM_STAT_ATTRIBUTES_MYSQL[i]]);
         var html = $.parseHTML(row);
         $display_team_stats_general_body.append(html);
     }
@@ -130,24 +161,25 @@ function display_stats(season) {
     //Display Offense Statistics
     var $display_team_stats_offense_body = $("#display_team_stats_offense_body");
     for (i = TEAM_STAT_OFFENSE_START_INDEX; i < TEAM_STAT_DEFENSE_START_INDEX; i++) {
-        var row = generate_table_row(TEAM_STAT_ATTRIBUTES_VERBOSE[i], TEAM_STAT_ATTRIBUTES_MYSQL[i], season[TEAM_STAT_ATTRIBUTES_MYSQL[i]]);
+        var row = generate_table_row(TEAM_STAT_ATTRIBUTES_MYSQL[i], season[TEAM_STAT_ATTRIBUTES_MYSQL[i]]);
         var html = $.parseHTML(row);
         $display_team_stats_offense_body.append(html);
     }
 
     //Display Defense Statistics
     var $display_team_stats_defense_body = $("#display_team_stats_defense_body");
-    for (i = TEAM_STAT_DEFENSE_START_INDEX; i < TEAM_STAT_ATTRIBUTES_VERBOSE.length; i++) {
-        var row = generate_table_row(TEAM_STAT_ATTRIBUTES_VERBOSE[i], TEAM_STAT_ATTRIBUTES_MYSQL[i], season[TEAM_STAT_ATTRIBUTES_MYSQL[i]]);
+    for (i = TEAM_STAT_DEFENSE_START_INDEX; i < TEAM_STAT_ATTRIBUTES_MYSQL.length; i++) {
+        var row = generate_table_row(TEAM_STAT_ATTRIBUTES_MYSQL[i], season[TEAM_STAT_ATTRIBUTES_MYSQL[i]]);
         var html = $.parseHTML(row);
         $display_team_stats_defense_body.append(html);
     }
 }
 
-function generate_table_row(item_verbose, item_attribute, item_stat) {
+function generate_table_row(item_attribute, item_stat) {
     if (item_stat === -1) {
         item_stat = "N/A";
     }
+    item_verbose = sql_dict[item_attribute];
 
     var str = "<tr class=\"stat_item\" id=\"" + item_attribute + "*" + item_verbose + "\">";
     str += "<td>" + item_verbose + "</td>";
