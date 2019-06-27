@@ -67,9 +67,7 @@ function load_pages(idx) {
     var num_pages = Math.ceil(rankings_obj.length / 10);
     var curr_page = Math.floor(idx / 10) + 1;
     var num_page_digits = curr_page.toString().length;
-    var visible_pages = Math.floor($("#display_rankings_table").width()/55/(0.3 * num_page_digits));
-    alert(num_page_digits);
-    alert(visible_pages);
+    var visible_pages = Math.floor($("#display_rankings_table").width()/55);
 
     window.pagObj = $('#ranking_pagination').twbsPagination({
         totalPages: num_pages,
