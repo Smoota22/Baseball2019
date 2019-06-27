@@ -1,4 +1,5 @@
 const RESET_DISPLAY_RANKINGS = '<div id="display_rankings_container" class="container"> <table id="display_rankings_table" class="table table-striped table-hover table-sm"> <thead> <tr> <th>Team Name</th> <th>Year</th> <th>Overall Ranking</th> <th id="attribute_header"></th> </tr></thead> <tbody ng-repeat="e in data.events" id="display_rankings_body"></tbody> </table> </div>';
+const NUM_PAGES_DISPLAY = Math.floor($(window).width()/75);
 var curr_team_id = localStorage.getItem("curr_team_id"); //do null check when creating ranking table because could be null if page is user loaded
 var curr_year = localStorage.getItem("curr_year");
 var curr_team_name = localStorage.getItem("curr_team_name");
@@ -36,6 +37,7 @@ function display_rankings(i) {
         $display_rankings_body.append($.parseHTML(ranking_table_row));
     }
 
+    load_pages(Math.ceil(rankings_obj.length / 10));
 }
 
 function generate_ranking_table_row(idx) {
@@ -62,6 +64,18 @@ function generate_ranking_table_row(idx) {
     return str;
 }
 
+function load_pages(num_pages) {
+    window.pagObj = $('#ranking_pagination').twbsPagination({
+        totalPages: num_pages,
+        visiblePages: NUM_PAGES_DISPLAY,
+        onPageClick: function (event, page) {
+            console.info(page + ' (from options)');
+        }
+    }).on('page', function (event, page) {
+        console.info(page + ' (from event listening)');
+    });
+}
+
 $(document).ready(function () {
     curr_team_id = localStorage.getItem("curr_team_id"); //do null check when creating ranking table because could be null if page is user loaded
     curr_year = localStorage.getItem("curr_year");
@@ -72,24 +86,13 @@ $(document).ready(function () {
     get(path)
     .then(function(json) {
         if (json === undefined) {
+            alert("DESCRIBE query undefined")
             return;
         }
         var attributes_obj = JSON.parse(json);
         for (i = 0; i < attributes.length; i++) {
             alert(attributes[i]);
         }
-    });
-
-    $(function () {
-        window.pagObj = $('#ranking_pagination').twbsPagination({
-            totalPages: 35,
-            visiblePages: 10,
-            onPageClick: function (event, page) {
-                console.info(page + ' (from options)');
-            }
-        }).on('page', function (event, page) {
-            console.info(page + ' (from event listening)');
-        });
     });
 
     $(document).on("click", ".ranking_item", function(event) {
