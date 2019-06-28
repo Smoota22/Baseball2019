@@ -24,7 +24,7 @@ function load_rankings() {
                 break;
             }
         }
-
+        alert("loaded and displaying " + ranking_attribute_mysql);
         display_rankings(curr_idx);
         load_pages(curr_idx);
     });
@@ -164,6 +164,7 @@ $(document).ready(function () {
         var new_attribute = event.target.id;
         ranking_attribute_mysql = new_attribute;
         ranking_attribute_verbose = sql_dict[ranking_attribute_mysql];
+        alert(ranking_attribute_mysql);
         load_rankings();
     });
 
