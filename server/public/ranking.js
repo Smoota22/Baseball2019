@@ -15,6 +15,7 @@ function load_rankings() {
             return;
         }
         rankings_obj = JSON.parse(json);
+        filter_invalid_values();
         for (i = 0; i < rankings_obj.length; i++) {
             if (rankings_obj[i].team_ID === curr_team_id && rankings_obj[i].year_ID == curr_year) {
                 curr_idx = i;
@@ -46,9 +47,9 @@ function generate_ranking_table_row(idx) {
     item_team_ID = query_row.team_ID;
     item_year_ID = query_row.year_ID;
     item_team_name = query_row.team_name;
-    if (item_stat === -1) {
-        item_stat = "N/A";
-    }
+    // if (item_stat === -1) {
+    //     item_stat = "N/A";
+    // }
 
     var str = "<tr class=\"ranking_item";
     if (item_team_ID === curr_team_id && item_year_ID == curr_year) {
@@ -109,6 +110,17 @@ function load_attributes() {
 function generate_attribute_item() {
     var str = "<a class=\"dropdown-item\" href=\"#\">Link 1</a>";
     return str;
+}
+
+function filter_invalid_values() {
+    var list_length = rankings_obj.length;
+    for (var i = 0; i < list_length; i++) {
+        if (rankings_obj[i] === -1) {
+            rankings_obj.splice(i, 1);
+            i -= 1;
+            list_length -= 1;
+        }
+    }
 }
 
 $(document).ready(function () {
