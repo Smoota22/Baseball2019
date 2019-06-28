@@ -159,7 +159,7 @@ function generate_table_row(item_attribute, item_stat) {
 }
 
 $(document).ready(function () {
-    sql_dict = localStorage.getItem("sql_dict");
+    // sql_dict = localStorage.getItem("sql_dict");
     sql_ranking_dict = localStorage.getItem("sql_ranking_dict");
     curr_team_id = localStorage.getItem("curr_team_id");
     curr_year = localStorage.getItem("curr_year");
