@@ -7,38 +7,8 @@ const TEAM_STAT_ATTRIBUTES_MYSQL = ["park", "attendance_total", "rank", "games",
 const TEAM_STAT_GENERAL_START_INDEX = 0;
 const TEAM_STAT_OFFENSE_START_INDEX = 7;
 const TEAM_STAT_DEFENSE_START_INDEX = 17;
-var sql_dict = {"team_ID": "Team ID",
-"year_ID": "Season Year",
-"team_name": "Team Name",
-"rank": "Rank",
-"games": "Games",
-"home_games": "Home Games",
-"wins": "Wins",
-"losses": "Losses",
-"runs": "Runs",
-"at_bats": "At Bats",
-"hits": "Hits",
-"doubles": "Doubles",
-"triples": "Triples",
-"homeruns": "Homeruns",
-"walks": "Walks",
-"stolen_bases": "Stolen Bases",
-"caught_stealing": "Caught Stealing",
-"batters_hit": "Batters Hit",
-"opponent_runs": "Opponent Runs",
-"opponent_earned_runs": "Opponent Earned Runs",
-"complete_games": "Complete Games",
-"shutouts": "Shutouts",
-"saves": "Saves",
-"outs_pitched": "Outs Pitched",
-"hits_allowed": "Hits Allowed",
-"homeruns_allowed": "Homeruns Allowed",
-"walks_allowed": "Walks Allowed",
-"errors": "Errors",
-"double_plays": "Double Plays",
-"fielding_pct": "Fielding Percentage",
-"park": "Park Name",
-"attendance_total": "Season Total Attendance"};
+var sql_dict;
+var sql_ranking_dict;
 
 var curr_team_id;
 var curr_team_name;
@@ -189,6 +159,8 @@ function generate_table_row(item_attribute, item_stat) {
 }
 
 $(document).ready(function () {
+    sql_dict = localStorage.getItem("sql_dict");
+    sql_ranking_dict = localStorage.getItem("sql_ranking_dict");
     curr_team_id = localStorage.getItem("curr_team_id");
     curr_year = localStorage.getItem("curr_year");
     curr_team_name = localStorage.getItem("curr_team_name");
@@ -236,6 +208,11 @@ $(document).ready(function () {
         var param_arr = ranking_attribute_both.split("*");
         var ranking_attribute_mysql = param_arr[0];
         var ranking_attribute_verbose = param_arr[1];
+        if (sql_ranking_dict[ranking_attribute_mysql] == 0) {
+            alert("NOT RANKABLE");
+            return;
+        }
+
         localStorage.setItem("curr_team_id", curr_team_id);
         localStorage.setItem("curr_year", curr_year);
         localStorage.setItem("curr_team_name", curr_team_name);
