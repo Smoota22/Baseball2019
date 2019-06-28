@@ -73,6 +73,8 @@ function load_pages(idx) {
     // var num_page_digits = curr_page.toString().length;
     var visible_pages = Math.floor($("#display_rankings_table").width()/100);
     load_pages_helper(idx, visible_pages);
+    alert($("#ranking_pagination").width());
+    alert($("#display_rankings_table").width());
 
     while ($("#ranking_pagination").width() < $("#display_rankings_table").width()) {
         alert($("#ranking_pagination").width());
