@@ -78,9 +78,6 @@ function load_pages(idx) {
         visible_pages += 1;
         load_pages_helper(idx, visible_pages);
     }
-
-    alert($("#last_page_item").position().left);
-    alert($("#display_rankings_table").width());
 }
 
 function load_pages_helper(idx, visible_pages) {
