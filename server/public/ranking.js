@@ -24,7 +24,7 @@ function load_rankings() {
                 break;
             }
         }
-        
+
         display_rankings(curr_idx);
         load_pages(curr_idx);
     });
@@ -107,8 +107,11 @@ function load_attributes() {
         var $ranking_attribute_dropdown_menu = $("#ranking_attribute_dropdown_menu");
         for (i = 0; i < attributes_obj.length; i++) {
             // alert(attributes_obj[i].Field);
-            var attribute_item = generate_attribute_item(attributes_obj[i].Field);
-            $ranking_attribute_dropdown_menu.append($.parseHTML(attribute_item));
+            var field = attributes_obj[i].Field;
+            if (sql_ranking_dict[field] != 0) {
+                var attribute_item = generate_attribute_item(field);
+                $ranking_attribute_dropdown_menu.append($.parseHTML(attribute_item));
+            }
         }
     });
 }
