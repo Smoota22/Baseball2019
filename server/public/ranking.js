@@ -173,5 +173,6 @@ $(document).ready(function () {
 
     $(window).resize(function(){
         //reload pagination??
+        load_pages(curr_idx);
     });
 });
