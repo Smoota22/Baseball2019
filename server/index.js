@@ -101,9 +101,14 @@ function load_team_data(req, res) {
     });
 }
 
-app.get('/ranking/:attribute', ranking);
+app.get('/ranking/:attribute/:direction', ranking);
 function ranking(req, res) {
     let sql = 'SELECT ' + req.params.attribute + ',team_ID,year_ID,team_name FROM real_team ORDER BY ' + req.params.attribute;
+    if (req.params.direction < 0) {
+        sql += ' DESC';
+    } else {
+        sql += ' ASC';
+    }
     // res.send(sql)
     let query = db.query(sql, (err, results) => {
         if(err) throw err;

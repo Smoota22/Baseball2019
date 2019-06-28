@@ -8,7 +8,7 @@ var rankings_obj;
 var curr_idx;
 //do query and load rankings
 function load_rankings() {
-    var path = "ranking/" + ranking_attribute_mysql;
+    var path = "ranking/" + ranking_attribute_mysql + "/" + sql_ranking_dict[ranking_attribute_mysql];
     get(path)
     .then(function(json) {
         if (json === undefined) {
