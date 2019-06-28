@@ -1,5 +1,6 @@
 const RESET_DISPLAY_RANKINGS = '<div id="display_rankings_container" class="container"> <table id="display_rankings_table" class="table table-striped table-hover table-sm"> <thead> <tr> <th>Team Name</th> <th>Year</th> <th>Overall Ranking</th> <th id="attribute_header"></th> </tr></thead> <tbody ng-repeat="e in data.events" id="display_rankings_body"></tbody> </table> </div>';
 const RESET_ATTRIBUTES_DROPDOWN_TITLE = '<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" id="ranking_attribute_dropdown_title"></button>';
+const RESET_RANKING_PAGINATION = '<ul class="pagination pagination-sm" id="ranking_pagination"></ul>';
 var curr_team_id; //do null check when creating ranking table because could be null if page is user loaded
 var curr_year;
 var curr_team_name;
@@ -68,6 +69,8 @@ function generate_ranking_table_row(idx) {
 }
 
 function load_pages(idx) {
+    var $ranking_pagination = reset_html_element("#ranking_pagination", RESET_RANKING_PAGINATION);
+
     var num_pages = Math.ceil(rankings_obj.length / 10);
     var curr_page = Math.floor(idx / 10) + 1;
     var num_page_digits = curr_page.toString().length;
@@ -155,6 +158,13 @@ $(document).ready(function () {
         localStorage.setItem("curr_team_name", curr_team_name);
         var curr_idx = param_arr[3];
         display_rankings(curr_idx);
+    });
+
+    $(document).on("click", ".dropdown_item", function(event) {
+        var new_attribute = event.target.id;
+        ranking_attribute_mysql = new_attribute;
+        ranking_attribute_verbose = sql_dict[ranking_attribute_mysql];
+        load_rankings();
     });
 
     $(window).resize(function(){
