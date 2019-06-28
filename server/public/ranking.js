@@ -72,7 +72,9 @@ function generate_ranking_table_row(idx) {
 
 function load_pages(idx) {
     // var num_page_digits = curr_page.toString().length;
+    alert("displaying rankings1");
     var visible_pages = Math.floor($("#display_rankings_table").width()/100);
+    alert("displaying rankings2");
     while ($("#ranking_pagination").width() < $("#display_rankings_table").width()) {
         alert($("#ranking_pagination").width());
         alert($("#display_rankings_table").width());
