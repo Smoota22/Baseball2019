@@ -7,9 +7,9 @@ const TEAM_STAT_ATTRIBUTES_MYSQL = ["park", "attendance_total", "rank", "games",
 const TEAM_STAT_GENERAL_START_INDEX = 0;
 const TEAM_STAT_OFFENSE_START_INDEX = 7;
 const TEAM_STAT_DEFENSE_START_INDEX = 17;
-var sql_dict;
+// var sql_dict;
 var sql_ranking_dict;
-
+// 
 var curr_team_id;
 var curr_team_name;
 var curr_year;
