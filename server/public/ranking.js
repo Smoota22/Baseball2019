@@ -74,7 +74,7 @@ function load_pages(idx) {
     var visible_pages = Math.floor($("#display_rankings_table").width()/100);
     load_pages_helper(idx, visible_pages);
 
-    while ($("#last_page_item").position().left < $("#display_rankings_table").position().left + $("#display_rankings_table").width()) {
+    while ($("#last_page_item").position().left + $("#last_page_item").width() < $("#display_rankings_table").position().left + $("#display_rankings_table").width()) {
         visible_pages += 1;
         load_pages_helper(idx, visible_pages);
     }
