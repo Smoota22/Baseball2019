@@ -160,7 +160,7 @@ $(document).ready(function () {
         display_rankings(curr_idx);
     });
 
-    $(document).on("click", ".dropdown_item", function(event) {
+    $(document).on("click", ".dropdown-item", function(event) {
         var new_attribute = event.target.id;
         ranking_attribute_mysql = new_attribute;
         ranking_attribute_verbose = sql_dict[ranking_attribute_mysql];
