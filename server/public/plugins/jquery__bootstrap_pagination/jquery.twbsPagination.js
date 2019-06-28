@@ -146,7 +146,7 @@
 
             if (this.options.prev) {
                 var prev = pages.currentPage > 1 ? pages.currentPage - 1 : this.options.loop ? this.options.totalPages  : 1;
-                listItems.push(this.buildItem('', prev));
+                listItems.push(this.buildItem('prev', prev));
             }
 
             for (var i = 0; i < pages.numeric.length; i++) {
@@ -155,7 +155,7 @@
 
             if (this.options.next) {
                 var next = pages.currentPage < this.options.totalPages ? pages.currentPage + 1 : this.options.loop ? 1 : this.options.totalPages;
-                listItems.push(this.buildItem('', next));
+                listItems.push(this.buildItem('next', next));
             }
 
             if (this.options.last) {
@@ -341,15 +341,15 @@
         totalPagesVariable: '{{total_pages}}',
         page: null,
         first: 'First',
-        prev: '<span aria-hidden="true">&laquo;</span>',
-        next: '<span aria-hidden="true">&raquo;</span>',
+        prev: 'Previous',
+        next: 'Next',
         last: 'Last',
         loop: false,
         beforePageClick: null,
         onPageClick: null,
         paginationClass: 'pagination pagination-circle pg-blue',
-        nextClass: 'page-item',
-        prevClass: 'page-item',
+        nextClass: 'page-item next',
+        prevClass: 'page-item prev',
         lastClass: 'page-item last',
         firstClass: 'page-item first',
         pageClass: 'page-item',
