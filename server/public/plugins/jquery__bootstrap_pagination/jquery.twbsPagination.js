@@ -6,7 +6,7 @@
  * Released under Apache 2.0 license
  * http://apache.org/licenses/LICENSE-2.0.html
  */
- show
+
 (function ($, window, document, undefined) {
 
     'use strict';
@@ -351,8 +351,8 @@
         beforePageClick: null,
         onPageClick: null,
         paginationClass: 'pagination pagination-circle pg-blue',
-        nextClass: 'page-item next',
-        prevClass: 'page-item prev',
+        nextClass: 'page-item',
+        prevClass: 'page-item',
         lastClass: 'page-item last',
         firstClass: 'page-item first',
         pageClass: 'page-item',
