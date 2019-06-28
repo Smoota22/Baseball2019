@@ -1,4 +1,5 @@
 const RESET_DISPLAY_RANKINGS = '<div id="display_rankings_container" class="container"> <table id="display_rankings_table" class="table table-striped table-hover table-sm"> <thead> <tr> <th>Team Name</th> <th>Year</th> <th>Overall Ranking</th> <th id="attribute_header"></th> </tr></thead> <tbody ng-repeat="e in data.events" id="display_rankings_body"></tbody> </table> </div>';
+const RESET_ATTRIBUTES_DROPDOWN_TITLE = '<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" id="ranking_attribute_dropdown_title"></button>';
 var curr_team_id; //do null check when creating ranking table because could be null if page is user loaded
 var curr_year;
 var curr_team_name;
@@ -98,6 +99,7 @@ function load_attributes() {
             return;
         }
         var attributes_obj = JSON.parse(json);
+        set_attribute_dropdown_title();
 
         var $ranking_attribute_dropdown_menu = $("#ranking_attribute_dropdown_menu");
         for (i = 0; i < attributes_obj.length; i++) {
@@ -105,7 +107,7 @@ function load_attributes() {
             var attribute_item = generate_attribute_item(attributes_obj[i].Field);
             $ranking_attribute_dropdown_menu.append($.parseHTML(attribute_item));
         }
-    });    
+    });
 }
 
 function generate_attribute_item(attribute_mysql) {
@@ -113,6 +115,11 @@ function generate_attribute_item(attribute_mysql) {
     str += sql_dict[attribute_mysql]
     str += "</a>";
     return str;
+}
+
+function set_attribute_dropdown_title() {
+    var $ranking_attribute_dropdown_title = reset_html_element("#ranking_attribute_dropdown_title", RESET_ATTRIBUTES_DROPDOWN_TITLE);
+    $ranking_attribute_dropdown_title.append(ranking_attribute_verbose)
 }
 
 function filter_invalid_values() {
