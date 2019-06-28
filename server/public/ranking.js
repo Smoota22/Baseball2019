@@ -98,18 +98,20 @@ function load_attributes() {
             return;
         }
         var attributes_obj = JSON.parse(json);
+
+        var $ranking_attribute_dropdown_menu = $("#ranking_attribute_dropdown_menu");
         for (i = 0; i < attributes_obj.length; i++) {
             // alert(attributes_obj[i].Field);
+            var attribute_item = generate_attribute_item(attributes_obj[i].Field);
+            $ranking_attribute_dropdown_menu.append($.parseHTML(attribute_item));
         }
-    });
-
-    var $ranking_attribute_dropdown_menu = $("#ranking_attribute_dropdown_menu");
-    var attribute_item = generate_attribute_item();
-    $ranking_attribute_dropdown_menu.append($.parseHTML(attribute_item));
+    });    
 }
 
-function generate_attribute_item() {
-    var str = "<a class=\"dropdown-item\" href=\"#\">Link 1</a>";
+function generate_attribute_item(attribute_mysql) {
+    var str = "<a class=\"dropdown-item\" id=\"" + attribute_mysql + "\">";
+    str += sql_dict[attribute_mysql]
+    str += "</a>";
     return str;
 }
 
