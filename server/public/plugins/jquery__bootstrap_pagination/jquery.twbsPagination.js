@@ -166,19 +166,19 @@
         },
 
         buildItem: function (type, page) {
-            var $itemContainer = $('<li></li>'),
-                $itemContent = $('<a></a>'),
-                itemText = this.options[type] ? this.makeText(this.options[type], page) : page;
-
-            $itemContainer.addClass(this.options[type + 'Class']);
-            alert(type);
-            // if (type === )
-            // $itemContainer.attr('id', 'last_page_item');
-            $itemContainer.data('page', page);
-            $itemContainer.data('page-type', type);
-            $itemContainer.append($itemContent.attr('href', this.makeHref(page)).addClass(this.options.anchorClass).html(itemText));
-
-            return $itemContainer;
+            // var $itemContainer = $('<li></li>'),
+            //     $itemContent = $('<a></a>'),
+            //     itemText = this.options[type] ? this.makeText(this.options[type], page) : page;
+            //
+            // $itemContainer.addClass(this.options[type + 'Class']);
+            // alert(type);
+            // // if (type === )
+            // // $itemContainer.attr('id', 'last_page_item');
+            // $itemContainer.data('page', page);
+            // $itemContainer.data('page-type', type);
+            // $itemContainer.append($itemContent.attr('href', this.makeHref(page)).addClass(this.options.anchorClass).html(itemText));
+            //
+            // return $itemContainer;
         },
 
         getPages: function (currentPage) {
