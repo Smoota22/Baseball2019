@@ -73,7 +73,7 @@ function load_pages(idx) {
     // var num_page_digits = curr_page.toString().length;
     var visible_pages = Math.floor($("#display_rankings_table").width()/100);
     load_pages_helper(idx, visible_pages);
-    
+
     while ($("#ranking_pagination").width() < $("#display_rankings_table").width()) {
         alert($("#ranking_pagination").width());
         alert($("#display_rankings_table").width());
@@ -83,7 +83,7 @@ function load_pages(idx) {
 }
 
 function load_pages_helper(idx, visible_pages) {
-    alert(retrying);
+    alert("retrying");
     var $ranking_pagination = reset_html_element("#ranking_pagination", RESET_RANKING_PAGINATION);
 
     var num_pages = Math.ceil(rankings_obj.length / 10);
