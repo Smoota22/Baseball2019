@@ -115,7 +115,7 @@ function generate_attribute_item() {
 function filter_invalid_values() {
     var list_length = rankings_obj.length;
     for (var i = 0; i < list_length; i++) {
-        if (rankings_obj[i] === -1) {
+        if (rankings_obj[i][ranking_attribute_mysql] === -1) {
             rankings_obj.splice(i, 1);
             i -= 1;
             list_length -= 1;
