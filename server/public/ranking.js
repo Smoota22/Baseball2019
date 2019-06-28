@@ -84,7 +84,6 @@ function load_pages(idx) {
 }
 
 function load_pages_helper(idx, visible_pages) {
-    alert("retrying");
     var $ranking_pagination = reset_html_element("#ranking_pagination", RESET_RANKING_PAGINATION);
 
     var num_pages = Math.ceil(rankings_obj.length / 10);

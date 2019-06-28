@@ -172,7 +172,6 @@
 
             $itemContainer.addClass(this.options[type + 'Class']);
             if (type === 'last') {
-                alert(type);
                 $itemContainer.attr('id', 'last_page_item');
             }
             $itemContainer.data('page', page);
