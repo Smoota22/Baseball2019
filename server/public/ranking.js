@@ -73,15 +73,14 @@ function load_pages(idx) {
     // var num_page_digits = curr_page.toString().length;
     var visible_pages = Math.floor($("#display_rankings_table").width()/100);
     load_pages_helper(idx, visible_pages);
-    alert($("#last_page_item").position().left);
-    alert($("#display_rankings_table").width());
 
-    while ($("#last_page_item").position().left < $("#display_rankings_table").width()) {
-        alert($("#last_page_item").position().left);
-        alert($("#display_rankings_table").width());
+    while ($("#last_page_item").position().left < $("#display_rankings_table").position().left + $("#display_rankings_table").width()) {
         visible_pages += 1;
         load_pages_helper(idx, visible_pages);
     }
+
+    alert($("#last_page_item").position().left);
+    alert($("#display_rankings_table").width());
 }
 
 function load_pages_helper(idx, visible_pages) {
