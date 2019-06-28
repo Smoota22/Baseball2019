@@ -146,7 +146,7 @@
 
             if (this.options.prev) {
                 var prev = pages.currentPage > 1 ? pages.currentPage - 1 : this.options.loop ? this.options.totalPages  : 1;
-                listItems.push(this.buildItem('prev', prev));
+                listItems.push(this.buildItem('', prev));
             }
 
             for (var i = 0; i < pages.numeric.length; i++) {
@@ -155,7 +155,7 @@
 
             if (this.options.next) {
                 var next = pages.currentPage < this.options.totalPages ? pages.currentPage + 1 : this.options.loop ? 1 : this.options.totalPages;
-                listItems.push(this.buildItem('next', next));
+                listItems.push(this.buildItem('', next));
             }
 
             if (this.options.last) {
