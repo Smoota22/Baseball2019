@@ -24,7 +24,7 @@ function load_rankings() {
                 break;
             }
         }
-
+        alert("displaying rankings");
         display_rankings(curr_idx);
     });
 }
@@ -42,7 +42,7 @@ function display_rankings(idx) {
         $display_rankings_body.append($.parseHTML(ranking_table_row));
     }
 
-    load_pages(curr_idx);
+    load_pages(idx);
 }
 
 function generate_ranking_table_row(idx) {
