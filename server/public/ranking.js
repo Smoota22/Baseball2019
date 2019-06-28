@@ -69,6 +69,7 @@ function generate_ranking_table_row(idx) {
     return str;
 }
 
+// Makes pagination responsive
 function load_pages(idx) {
     // var num_page_digits = curr_page.toString().length;
     var visible_pages = Math.floor($("#display_rankings_table").width()/100);
