@@ -5,7 +5,7 @@ var curr_team_name;
 var ranking_attribute_mysql;
 var ranking_attribute_verbose;
 var rankings_obj;
-var curr_idx;
+var curr_idx = 0;
 //do query and load rankings
 function load_rankings() {
     var path = "ranking/" + ranking_attribute_mysql + "/" + sql_ranking_dict[ranking_attribute_mysql];
@@ -19,11 +19,12 @@ function load_rankings() {
         for (i = 0; i < rankings_obj.length; i++) {
             if (rankings_obj[i].team_ID === curr_team_id && rankings_obj[i].year_ID == curr_year) {
                 curr_idx = i;
-                display_rankings(curr_idx);
-                load_pages(curr_idx);
-                return;
+                break;
             }
         }
+
+        display_rankings(curr_idx);
+        load_pages(curr_idx);
     });
 }
 
