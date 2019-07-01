@@ -15,7 +15,6 @@ var curr_year;
 function autofill_team_names() {
     var search_team_name = $("#search_team").val();
     if (search_team_name === "") {
-        alert("RETURNING");
         return;
     }
     var path = '/autofill_team_names/' + search_team_name;
@@ -60,8 +59,10 @@ function lock_in_team_name(locked_team_name, locked_team_ID) {
 
 function autofill_team_years() {
     var search_year = $("#search_team_year").val();
-    if (!search_year) {
-        search_year = '.';
+    if (search_year === "") {
+        alert("WORKING!");
+        return;
+        // search_year = '.';
     }
     var path = '/autofill_team_years/' + curr_team_id + '/' + curr_team_name + '/' + search_year;
 
