@@ -117,9 +117,9 @@ app.get('/autofill_player_years/:playerID/:yearID', autofill_player_years);
 function autofill_player_years(req, res) {
     var regex = req.params.yearID + "%";
     let sql = 'SELECT year_ID FROM pitching WHERE player_ID = "' + req.params.playerID + '" UNION SELECT year_ID FROM batting WHERE player_ID = "' + req.params.playerID + '" UNION SELECT year_ID FROM fielding WHERE player_ID = "' + req.params.playerID + '"';
-    if (regex != "NULL%") {
-        sql += ' AND year_ID LIKE "' + regex + '"';
-    }
+    // if (regex != "NULL%") {
+    //     sql += ' AND year_ID LIKE "' + regex + '"';
+    // }
     res.send(sql);
     // let query = db.query(sql, (err, results) => {
     //     if(err) throw err;
