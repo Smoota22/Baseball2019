@@ -231,7 +231,7 @@ $(document).ready(function () {
     });
 
     // $("#search_team").bind("keyup mouseenter", autofill_team_names); //for keyup AND mouse enter/hover
-    $("#search_team").bind("keyup", autofill_team_names);
+    $("#search_team").bind("keyup click", autofill_team_names);
     // $("#search_team_year").bind("keyup mouseenter", autofill_team_years); //for keyup AND mouse enter/hover
-    $("#search_team_year").bind("keyup", autofill_team_years);
+    $("#search_team_year").bind("keyup click", autofill_team_years);
 });
