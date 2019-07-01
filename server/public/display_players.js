@@ -236,7 +236,7 @@ $(document).ready(function () {
     });
 
     // $("#search_player").bind("keyup mouseenter", autofill_player_names); //for keyup AND mouse enter/hover
-    $("#search_player").bind("keyup", autofill_player_names);
+    $("#search_player").bind("keyup click", autofill_player_names);
     // $("#search_player_year").bind("keyup mouseenter", autofill_years); //for keyup AND mouse enter/hover
-    $("#search_player_year").bind("keyup", autofill_years);
+    $("#search_player_year").bind("keyup click", autofill_years);
 });
