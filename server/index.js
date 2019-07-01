@@ -121,11 +121,11 @@ function autofill_player_years(req, res) {
         sql += ' AND year_ID LIKE "' + regex + '"';
     }
     res.send(sql)
-    let query = db.query(sql, (err, results) => {
-        if(err) throw err;
-        console.log(results);
-        res.send(results);
-    });
+    // let query = db.query(sql, (err, results) => {
+    //     if(err) throw err;
+    //     console.log(results);
+    //     res.send(results);
+    // });
 }
 
 app.get('/autofill_player_stint/:playerID/:yearID/:stint', autofill_player_years);
