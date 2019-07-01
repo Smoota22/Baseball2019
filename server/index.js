@@ -115,7 +115,7 @@ function autofill_player_names(req, res) {
     });
 }
 
-app.get('/autofill_player_years/:playerID//:yearID', autofill_player_years);
+app.get('/autofill_player_years/:playerID/:yearID', autofill_player_years);
 function autofill_player_years(req, res) {
     var regex = req.params.yearID + "%";
     let sql;
