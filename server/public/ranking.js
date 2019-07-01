@@ -135,8 +135,8 @@ function generate_attribute_item(attribute_mysql) {
 }
 
 function set_attribute_dropdown_title() {
-    var $ranking_attribute_dropdown_title = reset_html_element("#ranking_attribute_dropdown_title", RESET_ATTRIBUTES_DROPDOWN_TITLE);
-    $ranking_attribute_dropdown_title.append(ranking_attribute_verbose)
+    var $ranking_attribute_dropdown_title = $("#ranking_attribute_dropdown_title");
+    $ranking_attribute_dropdown_title.val(ranking_attribute_verbose)
 }
 
 function filter_invalid_values() {
