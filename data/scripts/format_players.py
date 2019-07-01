@@ -39,6 +39,11 @@ with open(input_people_file) as f1, open(output_players_file, "w") as output:
             height = fix_empty(each_person[17])
             bats = each_person[18]
             throws = each_person[19]
+
+            if first_name == "":
+                first_name = "(Unknown)"
+            if last_name == "":
+                last_name = "(Unknown)"
             full_name = first_name + " " + last_name;
 
             person = [ID, first_name, last_name, full_name, birthday, weight, height, bats, throws]

@@ -52,6 +52,6 @@ with open(input_teams_file) as f1, open(output_teams_file, "w") as output:
             fielding_pct = fix_empty(each_team[39])
             park = each_team[41]
             attendance_total = fix_empty(each_team[42])
-            
+
             team = [team_ID,year_ID,team_name,rank,games,home_games,wins,losses,runs,at_bats,hits,doubles,triples,homeruns,walks,stolen_bases,caught_stealing,batters_hit,opponent_runs,opponent_earned_runs,complete_games,shutouts,saves,outs_pitched,hits_allowed,homeruns_allowed,walks_allowed,errors,double_plays,fielding_pct,park,attendance_total]
             team_writer.writerow(team)
