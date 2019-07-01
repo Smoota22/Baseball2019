@@ -27,6 +27,7 @@ function autofill_player_names() {
     $("#search_player_year").prop("disabled", true);
     reset_html_element("#display_player_tables", RESET_HIDE_PLAYER_TABLES);
 
+    alert("Getting " + path);
     get(path)
     .then(function(json) {
         if (json === undefined) {
