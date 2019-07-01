@@ -59,7 +59,7 @@ function lock_in_team_name(locked_team_name, locked_team_ID) {
 
 function autofill_years() {
     var search_year = $("#search_team_year").val();
-    var path = '/autofill_years/' + curr_team_id + '/' + curr_team_name + '/' + search_year;
+    var path = '/autofill_teams_years/' + curr_team_id + '/' + curr_team_name + '/' + search_year;
 
     reset_html_element("#display_team_tables", RESET_HIDE_TEAM_TABLES);
 

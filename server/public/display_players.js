@@ -17,55 +17,55 @@ var curr_league_id;
 
 
 function autofill_player_names() {
-    var search_team_name = $("#search_player").val();
-    if (search_team_name === "") {
+    var search_player_name = $("#search_player").val();
+    if (search_player_name === "") {
         return;
     }
-    var path = '/autofill_player_names/' + search_team_name;
+    var path = '/autofill_player_names/' + search_player_name;
 
-    $("#search_team_year").val("");
-    $("#search_team_year").prop("disabled", true);
-    reset_html_element("#display_team_tables", RESET_HIDE_PLAYER_TABLES);
+    $("#search_player_year").val("");
+    $("#search_player_year").prop("disabled", true);
+    reset_html_element("#display_player_tables", RESET_HIDE_PLAYER_TABLES);
 
     get(path)
     .then(function(json) {
         if (json === undefined) {
-            reset_html_element("#team_suggestions", RESET_PLAYER_SUGGESTIONS);
+            reset_html_element("#player_suggestions", RESET_PLAYER_SUGGESTIONS);
             return;
         }
         var query_result_obj = JSON.parse(json);
-        var $team_suggestions = reset_html_element("#team_suggestions", RESET_PLAYER_SUGGESTIONS);
+        var $player_suggestions = reset_html_element("#player_suggestions", RESET_PLAYER_SUGGESTIONS);
 
         var num_suggestions = Math.min(query_result_obj.length, MAX_SUGGESTIONS);
         for (i = 0; i < num_suggestions; i++) {
-            if (query_result_obj[i].team_name.toLowerCase() === $("#search_team").val().toLowerCase()) {
-                lock_in_team_name(query_result_obj[i].team_name, query_result_obj[i].team_ID);
+            if (query_result_obj[i].full_name.toLowerCase() === $("#search_player").val().toLowerCase()) {
+                lock_in_full_name(query_result_obj[i].full_name, query_result_obj[i].ID);
                 return;
             }
 
-            var team_name_id = query_result_obj[i].team_name + "*" + query_result_obj[i].team_ID;
-            team_name_id = team_name_id.replace(/ /g, "_");
+            var full_name_id = query_result_obj[i].full_name + "*" + query_result_obj[i].ID;
+            full_name_id = full_name_id.replace(/ /g, "_");
 
-            var str = "<div class='team_name_item' id=" + team_name_id + "><p>" + query_result_obj[i].team_name + "</p></div>";
+            var str = "<div class='full_name_item' id=" + full_name_id + "><p>" + query_result_obj[i].full_name + "</p></div>";
             var html = $.parseHTML(str);
-            $team_suggestions.append(html);
+            $player_suggestions.append(html);
         }
     });
 }
 
-function lock_in_team_name(locked_team_name, locked_team_ID) {
-    reset_html_element("#team_suggestions", RESET_PLAYER_SUGGESTIONS);
-    $("#search_team").val(locked_team_name);
-    curr_player_id = locked_team_ID;
-    curr_player_name = locked_team_name;
-    $("#search_team_year").prop("disabled", false);
+function lock_in_full_name(locked_full_name, locked_player_ID) {
+    reset_html_element("#player_suggestions", RESET_PLAYER_SUGGESTIONS);
+    $("#search_player").val(locked_full_name);
+    curr_player_id = locked_player_ID;
+    curr_player_name = locked_full_name;
+    $("#search_player_year").prop("disabled", false);
 }
 
 function autofill_years() {
-    var search_year = $("#search_team_year").val();
-    var path = '/autofill_years/' + curr_player_id + '/' + curr_player_name + '/' + search_year;
+    var search_year = $("#search_player_year").val();
+    var path = '/autofill_player_years/' + curr_player_id + '/' + search_year;
 
-    reset_html_element("#display_team_tables", RESET_HIDE_PLAYER_TABLES);
+    reset_html_element("#display_player_tables", RESET_HIDE_PLAYER_TABLES);
 
     get(path)
     .then(function(json) {
@@ -78,8 +78,8 @@ function autofill_years() {
 
         var num_suggestions = Math.min(query_result_obj.length, MAX_SUGGESTIONS);
         for (i = 0; i < num_suggestions; i++) {
-            if (query_result_obj[i].year_ID == $("#search_team_year").val()) {
-                lock_in_team_year(curr_player_id, query_result_obj[i].year_ID);
+            if (query_result_obj[i].year_ID == $("#search_player_year").val()) {
+                lock_in_player_year(curr_player_id, query_result_obj[i].year_ID);
                 return;
             }
 
@@ -92,15 +92,16 @@ function autofill_years() {
     });
 }
 
-function lock_in_team_year(locked_team_ID, locked_year_ID) {
+function lock_in_player_year(locked_player_ID, locked_year_ID) {
     reset_html_element("#year_suggestions", RESET_YEAR_SUGGESTIONS);
-    $("#search_team_year").val(locked_year_ID);
+    $("#search_player_year").val(locked_year_ID);
     curr_year = locked_year_ID;
-    lock_in_season(curr_player_id, curr_year);
+    alert("name and year locked!")
+    // lock_in_season(curr_player_id, curr_year);
 }
 
-function lock_in_season(team_id, team_year) {
-    var path = '/load_team_data/' + team_id + '/' + team_year;
+function lock_in_season(player_id, team_year) {
+    var path = '/load_team_data/' + player_id + '/' + team_year;
     get(path)
     .then(function(json) {
         if (json === undefined) {
@@ -115,12 +116,12 @@ function lock_in_season(team_id, team_year) {
 
 function display_stats(season) {
     //Reset table
-    var $display_team_tables = reset_html_element("#display_team_tables", RESET_DISPLAY_TEAM_TABLES);
+    var $display_player_tables = reset_html_element("#display_player_tables", RESET_display_player_tables);
 
     //Display Team name and Season
-    var $display_team_season = $("#display_team_season");
-    var team_season = "<div><h1>" + season.team_name + "'s " + season.year_ID + " Season Statistics </h1></div>";
-    $display_team_season.append($.parseHTML(team_season));
+    var $display_player_season = $("#display_player_season");
+    var player_season = "<div><h1>" + season.full_name + "'s " + season.year_ID + " Season Statistics </h1></div>";
+    $display_player_season.append($.parseHTML(player_season));
 
     //Display General Statistics
     var $display_team_stats_general_body = $("#display_team_stats_general_body");
@@ -170,27 +171,27 @@ $(document).ready(function () {
     localStorage.removeItem("curr_year");
     localStorage.removeItem("curr_player_name");
     if (curr_player_id != null && curr_year != null && curr_player_name != null) {
-        $("#search_team").val(curr_player_name);
-        $("#search_team_year").prop("disabled", false);
-        $("#search_team_year").val(curr_year);
-        lock_in_season(curr_player_id, curr_year);
+        $("#search_player").val(curr_player_name);
+        $("#search_player_year").prop("disabled", false);
+        $("#search_player_year").val(curr_year);
+        // lock_in_season(curr_player_id, curr_year);
     } else {
-        $("#search_team").val("");
-        $("#search_team_year").val("");
+        $("#search_player").val("");
+        $("#search_player_year").val("");
     }
 
-    $(document).on("click", ".team_name_item", function(event) {
+    $(document).on("click", ".full_name_item", function(event) {
         var div_elem = event.target.parentNode.id;
-        if (div_elem === "team_suggestions") {
+        if (div_elem === "player_suggestions") {
             div_elem = event.target.id;
         }
 
         var div_elem = div_elem.replace(/_/g, " ");
         var param_arr = div_elem.split("*");
-        var team_name = param_arr[0];
-        var team_ID = param_arr[1];
+        var full_name = param_arr[0];
+        var player_ID = param_arr[1];
 
-        lock_in_team_name(team_name, team_ID);
+        lock_in_full_name(full_name, player_ID);
     });
 
     $(document).on("click", ".year_item", function(event) {
@@ -199,10 +200,10 @@ $(document).ready(function () {
             div_elem = event.target.id;
         }
 
-        var team_ID = curr_player_id;
+        var player_ID = curr_player_id;
         var year_ID = div_elem;
 
-        lock_in_team_year(team_ID, year_ID);
+        lock_in_player_year(player_ID, year_ID);
     });
 
     $(document).on("click", ".stat_item", function(event) {
@@ -223,16 +224,16 @@ $(document).ready(function () {
         location.href = "ranking.html";
     });
 
-    $("#search_team").focus(function() {
+    $("#search_player").focus(function() {
         reset_html_element("#year_suggestions", RESET_YEAR_SUGGESTIONS);
     });
 
-    $("#search_team_year").focus(function() {
-        reset_html_element("#team_suggestions", RESET_PLAYER_SUGGESTIONS);
+    $("#search_player_year").focus(function() {
+        reset_html_element("#player_suggestions", RESET_PLAYER_SUGGESTIONS);
     });
 
-    // $("#search_team").bind("keyup mouseenter", autofill_player_names); //for keyup AND mouse enter/hover
-    $("#search_team").bind("keyup", autofill_player_names);
-    // $("#search_team_year").bind("keyup mouseenter", autofill_years); //for keyup AND mouse enter/hover
-    $("#search_team_year").bind("keyup", autofill_years);
+    // $("#search_player").bind("keyup mouseenter", autofill_player_names); //for keyup AND mouse enter/hover
+    $("#search_player").bind("keyup", autofill_player_names);
+    // $("#search_player_year").bind("keyup mouseenter", autofill_years); //for keyup AND mouse enter/hover
+    $("#search_player_year").bind("keyup", autofill_years);
 });
