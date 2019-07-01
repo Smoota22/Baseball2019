@@ -1,14 +1,14 @@
 const RESET_PLAYER_SUGGESTIONS = '<div id="player_suggestions"></div>';
 const RESET_YEAR_SUGGESTIONS = '<div id="year_suggestions"></div>';
 const MAX_SUGGESTIONS = 10;
-TODO:const RESET_DISPLAY_TEAM_TABLES = '<div id="display_team_tables" class="container"> <div class="jumbotron" id="display_team_season"></div><div class="row"> <div class="col-md-4"> <table id="display_team_stats_general" class="table table-striped table-hover"> <tbody ng-repeat="e in data.events" id="display_team_stats_general_body"></tbody> </table> </div><div class="col-md-4"> <table id="display_team_stats_offense" class="table table-striped table-hover"> <tbody ng-repeat="e in data.events" id="display_team_stats_offense_body"></tbody> </table> </div><div class="col-md-4"> <table id="display_team_stats_defense" class="table table-striped table-hover"> <tbody ng-repeat="e in data.events" id="display_team_stats_defense_body"></tbody> </table> </div></div></div>';
+const RESET_DISPLAY_PLAYER_TABLES = '<div id="display_player_tables" class="container"> <div class="jumbotron" id="display_player_season"></div><div> <table id="display_player_stats_general" class="table table-striped table-hover"> <tbody ng-repeat="e in data.events" id="display_player_stats_general_body"></tbody> </table> </div><div class="row"> <div class="col-md-4"> <table id="display_player_stats_pitching" class="table table-striped table-hover"> <tbody ng-repeat="e in data.events" id="display_player_stats_pitching_body"></tbody> </table> </div><div class="col-md-4"> <table id="display_player_stats_batting" class="table table-striped table-hover"> <tbody ng-repeat="e in data.events" id="display_player_stats_batting_body"></tbody> </table> </div><div class="col-md-4"> <table id="display_player_stats_fielding" class="table table-striped table-hover"> <tbody ng-repeat="e in data.events" id="display_player_stats_fielding_body"></tbody> </table> </div></div></div>';
 const RESET_HIDE_PLAYER_TABLES = '<div id="display_player_tables" class="container"></div>';
-const TEAM_STAT_ATTRIBUTES_MYSQL = ["park", "attendance_total", "rank", "games", "home_games", "wins", "losses", "runs", "at_bats", "hits", "doubles", "triples", "homeruns", "walks", "stolen_bases", "caught_stealing", "batters_hit", "opponent_runs", "opponent_earned_runs", "complete_games", "shutouts", "saves", "outs_pitched", "hits_allowed", "homeruns_allowed", "walks_allowed", "errors", "double_plays"];
-const TEAM_STAT_GENERAL_START_INDEX = 0;
-const TEAM_STAT_OFFENSE_START_INDEX = 7;
-const TEAM_STAT_DEFENSE_START_INDEX = 17;
-
-var curr_team_id;
+const PLAYER_STAT_ATTRIBUTES_MYSQL = ["ID", "first_name", "last_name", "birthday", "weight", "height", "bats", "throws"];
+const PITCHING_STAT_ATTRIBUTES_MYSQL = ["player_ID", "year_ID", "stint", "team_ID", "league_ID", "wins", "losses", "games", "games_started", "complete_games", "shutouts", "saves", "total_outs", "hits", "earned_runs", "homeruns", "walks", "strikeouts", "opp_ba", "earned_run_avg", "intentional_walks", "runs_allowed", "batters_hit", "balks"];
+const BATTING_STAT_ATTRIBUTES_MYSQL = ["player_ID", "year_ID", "stint", "team_ID", "league_ID", "games", "at_bats", "runs", "hits", "doubles", "triples", "homeruns", "rbis", "stolen_bases", "caught_stealing", "strikeouts", "intentional_walks", "hit_by_pitch"];
+const FIELDING_STAT_ATTRIBUTES_MYSQL = ["player_ID", "year_ID", "stint", "team_ID", "league_ID", "position", "games", "games_started", "putouts", "assists", "errors", "double_plays", "catcher_stolen", "catcher_caught"];
+TODO: refactor here down
+var curr_id;
 var curr_team_name;
 var curr_year;
 

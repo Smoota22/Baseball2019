@@ -10,7 +10,7 @@ var rankings_obj;
 var curr_idx = 0;
 //do query and load rankings
 function load_rankings() {
-    var path = "ranking/" + ranking_attribute_mysql + "/" + sql_ranking_dict[ranking_attribute_mysql];
+    var path = "ranking/" + ranking_attribute_mysql + "/" + teams_mysql_ranking_dict[ranking_attribute_mysql];
     get(path)
     .then(function(json) {
         if (json === undefined) {
@@ -119,7 +119,7 @@ function load_attributes() {
         for (i = 0; i < attributes_obj.length; i++) {
             // alert(attributes_obj[i].Field);
             var field = attributes_obj[i].Field;
-            if (sql_ranking_dict[field] != 0) {
+            if (teams_mysql_ranking_dict[field] != 0) {
                 var attribute_item = generate_attribute_item(field);
                 $ranking_attribute_dropdown_menu.append($.parseHTML(attribute_item));
             }
@@ -129,7 +129,7 @@ function load_attributes() {
 
 function generate_attribute_item(attribute_mysql) {
     var str = "<a class=\"dropdown-item\" id=\"" + attribute_mysql + "\">";
-    str += sql_dict[attribute_mysql]
+    str += mysql_dict[attribute_mysql]
     str += "</a>";
     return str;
 }
@@ -178,7 +178,7 @@ $(document).ready(function () {
     $(document).on("click", ".dropdown-item", function(event) {
         var new_attribute = event.target.id;
         ranking_attribute_mysql = new_attribute;
-        ranking_attribute_verbose = sql_dict[ranking_attribute_mysql];
+        ranking_attribute_verbose = mysql_dict[ranking_attribute_mysql];
         set_attribute_dropdown_title();
         load_rankings();
     });

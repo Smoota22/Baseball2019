@@ -147,7 +147,7 @@ function generate_table_row(item_attribute, item_stat) {
     if (item_stat === -1) {
         item_stat = "N/A";
     }
-    item_verbose = sql_dict[item_attribute];
+    item_verbose = mysql_dict[item_attribute];
 
     var str = "<tr class=\"stat_item\" id=\"" + item_attribute + "*" + item_verbose + "\">";
     str += "<td>" + item_verbose + "</td>";
@@ -157,8 +157,8 @@ function generate_table_row(item_attribute, item_stat) {
 }
 
 $(document).ready(function () {
-    // sql_dict = localStorage.getItem("sql_dict");
-    // sql_ranking_dict = localStorage.getItem("sql_ranking_dict");
+    // mysql_dict = localStorage.getItem("mysql_dict");
+    // teams_mysql_ranking_dict = localStorage.getItem("teams_mysql_ranking_dict");
     curr_team_id = localStorage.getItem("curr_team_id");
     curr_year = localStorage.getItem("curr_year");
     curr_team_name = localStorage.getItem("curr_team_name");
@@ -206,7 +206,7 @@ $(document).ready(function () {
         var param_arr = ranking_attribute_both.split("*");
         var ranking_attribute_mysql = param_arr[0];
         var ranking_attribute_verbose = param_arr[1];
-        if (sql_ranking_dict[ranking_attribute_mysql] == 0) {
+        if (teams_mysql_ranking_dict[ranking_attribute_mysql] == 0) {
             alert("NOT RANKABLE");
             return;
         }
