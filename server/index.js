@@ -120,7 +120,7 @@ function autofill_player_years(req, res) {
     if (regex != "NULL%") {
         sql += ' AND year_ID LIKE "' + regex + '"';
     }
-    res.send(sql)
+    res.send(sql);
     // let query = db.query(sql, (err, results) => {
     //     if(err) throw err;
     //     console.log(results);
