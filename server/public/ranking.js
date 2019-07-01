@@ -136,7 +136,7 @@ function generate_attribute_item(attribute_mysql) {
 
 function set_attribute_dropdown_title() {
     var $ranking_attribute_dropdown_title = $("#ranking_attribute_dropdown_title");
-    $ranking_attribute_dropdown_title.val(ranking_attribute_verbose)
+    $ranking_attribute_dropdown_title.prop('value', ranking_attribute_verbose);
 }
 
 function filter_invalid_values() {
@@ -178,8 +178,8 @@ $(document).ready(function () {
         var new_attribute = event.target.id;
         ranking_attribute_mysql = new_attribute;
         ranking_attribute_verbose = sql_dict[ranking_attribute_mysql];
-        load_rankings();
         set_attribute_dropdown_title();
+        load_rankings();
     });
 
     $(window).resize(function(){
