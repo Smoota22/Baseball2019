@@ -77,7 +77,7 @@ app.get('/autofill_team_years/:teamID/:teamName/:yearID', autofill_team_years);
 function autofill_team_years(req, res) {
     var regex = req.params.yearID + "%";
     let sql;
-    if (regex === "%.%") {
+    if (regex === ".%") {
         sql = 'SELECT year_ID FROM real_team WHERE team_ID = "' + req.params.teamID + '" AND team_name = "' + req.params.teamName + '"';
     } else {
         sql = 'SELECT year_ID FROM real_team WHERE team_ID = "' + req.params.teamID + '" AND team_name = "' + req.params.teamName + '" AND year_ID LIKE "' + regex + '"';
