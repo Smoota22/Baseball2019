@@ -15,6 +15,7 @@ var curr_year;
 function autofill_team_names() {
     var search_team_name = $("#search_team").val();
     if (search_team_name === "") {
+        alert("RETURNING");
         return;
     }
     var path = '/autofill_team_names/' + search_team_name;
