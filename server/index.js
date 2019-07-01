@@ -101,6 +101,20 @@ function load_team_data(req, res) {
     });
 }
 
+app.get('/autofill_player_names/:playerName', autofill_player_names);
+function autofill_player_names(req, res) {
+    var regex = format_query_string_regex(req.params.playerName);
+    // let sql = 'SELECT team_ID FROM real_team WHERE team_name = "' + req.params.teamName + '"';
+    // let sql = 'SELECT team_name FROM real_team WHERE team_name = "sdas"';
+    let sql = 'SELECT first_name, ID FROM player WHERE first_name LIKE "' + regex + '" GROUP BY team_name, team_ID';
+    // res.send(sql);
+    let query = db.query(sql, (err, results) => {
+        if(err) throw err;
+        console.log(results);
+        res.send(results);
+    });
+}
+
 app.get('/ranking/:attribute/:direction', ranking);
 function ranking(req, res) {
     let sql = 'SELECT ' + req.params.attribute + ',team_ID,year_ID,team_name FROM real_team ORDER BY ' + req.params.attribute;

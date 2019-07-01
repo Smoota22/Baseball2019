@@ -7,17 +7,21 @@ const PLAYER_STAT_ATTRIBUTES_MYSQL = ["ID", "first_name", "last_name", "birthday
 const PITCHING_STAT_ATTRIBUTES_MYSQL = ["player_ID", "year_ID", "stint", "team_ID", "league_ID", "wins", "losses", "games", "games_started", "complete_games", "shutouts", "saves", "total_outs", "hits", "earned_runs", "homeruns", "walks", "strikeouts", "opp_ba", "earned_run_avg", "intentional_walks", "runs_allowed", "batters_hit", "balks"];
 const BATTING_STAT_ATTRIBUTES_MYSQL = ["player_ID", "year_ID", "stint", "team_ID", "league_ID", "games", "at_bats", "runs", "hits", "doubles", "triples", "homeruns", "rbis", "stolen_bases", "caught_stealing", "strikeouts", "intentional_walks", "hit_by_pitch"];
 const FIELDING_STAT_ATTRIBUTES_MYSQL = ["player_ID", "year_ID", "stint", "team_ID", "league_ID", "position", "games", "games_started", "putouts", "assists", "errors", "double_plays", "catcher_stolen", "catcher_caught"];
-TODO: refactor here down///////////
-var curr_id;
-var curr_team_name;
-var curr_year;
 
-function autofill_team_names() {
-    var search_team_name = $("#search_team").val();
+var curr_player_id;
+var curr_player_name;
+var curr_year;
+var curr_team_id;
+var curr_stint_id;
+var curr_league_id;
+
+
+function autofill_player_names() {
+    var search_team_name = $("#search_player").val();
     if (search_team_name === "") {
         return;
     }
-    var path = '/autofill_team_names/' + search_team_name;
+    var path = '/autofill_player_names/' + search_team_name;
 
     $("#search_team_year").val("");
     $("#search_team_year").prop("disabled", true);
@@ -52,14 +56,14 @@ function autofill_team_names() {
 function lock_in_team_name(locked_team_name, locked_team_ID) {
     reset_html_element("#team_suggestions", RESET_PLAYER_SUGGESTIONS);
     $("#search_team").val(locked_team_name);
-    curr_team_id = locked_team_ID;
-    curr_team_name = locked_team_name;
+    curr_player_id = locked_team_ID;
+    curr_player_name = locked_team_name;
     $("#search_team_year").prop("disabled", false);
 }
 
 function autofill_years() {
     var search_year = $("#search_team_year").val();
-    var path = '/autofill_years/' + curr_team_id + '/' + curr_team_name + '/' + search_year;
+    var path = '/autofill_years/' + curr_player_id + '/' + curr_player_name + '/' + search_year;
 
     reset_html_element("#display_team_tables", RESET_HIDE_PLAYER_TABLES);
 
@@ -75,7 +79,7 @@ function autofill_years() {
         var num_suggestions = Math.min(query_result_obj.length, MAX_SUGGESTIONS);
         for (i = 0; i < num_suggestions; i++) {
             if (query_result_obj[i].year_ID == $("#search_team_year").val()) {
-                lock_in_team_year(curr_team_id, query_result_obj[i].year_ID);
+                lock_in_team_year(curr_player_id, query_result_obj[i].year_ID);
                 return;
             }
 
@@ -92,7 +96,7 @@ function lock_in_team_year(locked_team_ID, locked_year_ID) {
     reset_html_element("#year_suggestions", RESET_YEAR_SUGGESTIONS);
     $("#search_team_year").val(locked_year_ID);
     curr_year = locked_year_ID;
-    lock_in_season(curr_team_id, curr_year);
+    lock_in_season(curr_player_id, curr_year);
 }
 
 function lock_in_season(team_id, team_year) {
@@ -159,17 +163,17 @@ function generate_table_row(item_attribute, item_stat) {
 $(document).ready(function () {
     // sql_dict = localStorage.getItem("sql_dict");
     // sql_ranking_dict = localStorage.getItem("sql_ranking_dict");
-    curr_team_id = localStorage.getItem("curr_team_id");
+    curr_player_id = localStorage.getItem("curr_player_id");
     curr_year = localStorage.getItem("curr_year");
-    curr_team_name = localStorage.getItem("curr_team_name");
-    localStorage.removeItem("curr_team_id");
+    curr_player_name = localStorage.getItem("curr_player_name");
+    localStorage.removeItem("curr_player_id");
     localStorage.removeItem("curr_year");
-    localStorage.removeItem("curr_team_name");
-    if (curr_team_id != null && curr_year != null && curr_team_name != null) {
-        $("#search_team").val(curr_team_name);
+    localStorage.removeItem("curr_player_name");
+    if (curr_player_id != null && curr_year != null && curr_player_name != null) {
+        $("#search_team").val(curr_player_name);
         $("#search_team_year").prop("disabled", false);
         $("#search_team_year").val(curr_year);
-        lock_in_season(curr_team_id, curr_year);
+        lock_in_season(curr_player_id, curr_year);
     } else {
         $("#search_team").val("");
         $("#search_team_year").val("");
@@ -195,7 +199,7 @@ $(document).ready(function () {
             div_elem = event.target.id;
         }
 
-        var team_ID = curr_team_id;
+        var team_ID = curr_player_id;
         var year_ID = div_elem;
 
         lock_in_team_year(team_ID, year_ID);
@@ -211,9 +215,9 @@ $(document).ready(function () {
             return;
         }
 
-        localStorage.setItem("curr_team_id", curr_team_id);
+        localStorage.setItem("curr_player_id", curr_player_id);
         localStorage.setItem("curr_year", curr_year);
-        localStorage.setItem("curr_team_name", curr_team_name);
+        localStorage.setItem("curr_player_name", curr_player_name);
         localStorage.setItem("ranking_attribute_mysql", ranking_attribute_mysql);
         localStorage.setItem("ranking_attribute_verbose", ranking_attribute_verbose);
         location.href = "ranking.html";
@@ -227,8 +231,8 @@ $(document).ready(function () {
         reset_html_element("#team_suggestions", RESET_PLAYER_SUGGESTIONS);
     });
 
-    // $("#search_team").bind("keyup mouseenter", autofill_team_names); //for keyup AND mouse enter/hover
-    $("#search_team").bind("keyup", autofill_team_names);
+    // $("#search_team").bind("keyup mouseenter", autofill_player_names); //for keyup AND mouse enter/hover
+    $("#search_team").bind("keyup", autofill_player_names);
     // $("#search_team_year").bind("keyup mouseenter", autofill_years); //for keyup AND mouse enter/hover
     $("#search_team_year").bind("keyup", autofill_years);
 });

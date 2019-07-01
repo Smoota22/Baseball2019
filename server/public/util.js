@@ -44,7 +44,7 @@ const mysql_dict = {
 "runs_allowed": "Runs Allowed",
 "batters_hit": "Batters Hit",
 "balks": "Balks",
-"position": "Position"
+"position": "Position",
 "putouts": "Putouts",
 "assists": "Assists",
 "catcher_stolen": "Stolen Bases (Catcher)",
