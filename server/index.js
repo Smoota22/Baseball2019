@@ -76,11 +76,9 @@ function autofill_team_names(req, res) {
 app.get('/autofill_team_years/:teamID/:teamName/:yearID', autofill_team_years);
 function autofill_team_years(req, res) {
     var regex = req.params.yearID + "%";
-    let sql;
-    if (regex === "NULL%") {
-        sql = 'SELECT year_ID FROM real_team WHERE team_ID = "' + req.params.teamID + '" AND team_name = "' + req.params.teamName + '"';
-    } else {
-        sql = 'SELECT year_ID FROM real_team WHERE team_ID = "' + req.params.teamID + '" AND team_name = "' + req.params.teamName + '" AND year_ID LIKE "' + regex + '"';
+    let sql = 'SELECT year_ID FROM real_team WHERE team_ID = "' + req.params.teamID + '" AND team_name = "' + req.params.teamName + '"';
+    if (regex != "NULL%") {
+        sql += ' AND year_ID LIKE "' + regex + '"';
     }
     // res.send(sql)
     let query = db.query(sql, (err, results) => {
@@ -118,11 +116,24 @@ function autofill_player_names(req, res) {
 app.get('/autofill_player_years/:playerID/:yearID', autofill_player_years);
 function autofill_player_years(req, res) {
     var regex = req.params.yearID + "%";
-    let sql;
-    if (regex == "NULL%") {
-        sql = 'SELECT year_ID FROM pitching WHERE player_ID = "' + req.params.playerID + '" UNION SELECT year_ID FROM batting WHERE player_ID = "' + req.params.playerID + '" UNION SELECT year_ID FROM fielding WHERE player_ID = "' + req.params.playerID + '"';
-    } else {
-        sql = sql = 'SELECT year_ID FROM pitching WHERE player_ID = "' + req.params.playerID + '" UNION SELECT year_ID FROM batting WHERE player_ID = "' + req.params.playerID + '" UNION SELECT year_ID FROM fielding WHERE player_ID = "' + req.params.playerID + '" AND year_ID LIKE "' + regex + '"';
+    let sql = 'SELECT year_ID FROM pitching WHERE player_ID = "' + req.params.playerID + '" UNION SELECT year_ID FROM batting WHERE player_ID = "' + req.params.playerID + '" UNION SELECT year_ID FROM fielding WHERE player_ID = "' + req.params.playerID + '"';
+    if (regex != "NULL%") {
+        sql += ' AND year_ID LIKE "' + regex + '"';
+    }
+    // res.send(sql)
+    let query = db.query(sql, (err, results) => {
+        if(err) throw err;
+        console.log(results);
+        res.send(results);
+    });
+}
+
+app.get('/autofill_player_stint/:playerID/:yearID/:stint', autofill_player_years);
+function autofill_player_years(req, res) {
+    var regex = req.params.stint + "%";
+    let sql = 'SELECT stint FROM pitching WHERE player_ID = "' + req.params.playerID + '" AND year_ID = "' + req.params.yearID + '" UNION SELECT stint FROM batting WHERE player_ID = "' + req.params.playerID + '" AND year_ID = "' + req.params.yearID + '" UNION SELECT stint FROM fielding WHERE player_ID = "' + req.params.playerID + '" AND year_ID = "' + req.params.yearID + '"';
+    if (regex != "NULL%") {
+        sql += ' AND stint LIKE "' + regex + '"';
     }
     // res.send(sql)
     let query = db.query(sql, (err, results) => {

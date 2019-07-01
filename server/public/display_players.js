@@ -1,5 +1,6 @@
 const RESET_PLAYER_SUGGESTIONS = '<div id="player_suggestions"></div>';
 const RESET_YEAR_SUGGESTIONS = '<div id="year_suggestions"></div>';
+const RESET_STINT_SUGGESTIONS = '<div id="stint_suggestions"></div>';
 const MAX_SUGGESTIONS = 10;
 const RESET_DISPLAY_PLAYER_TABLES = '<div id="display_player_tables" class="container"> <div class="jumbotron" id="display_player_season"></div><div> <table id="display_player_stats_general" class="table table-striped table-hover"> <tbody ng-repeat="e in data.events" id="display_player_stats_general_body"></tbody> </table> </div><div class="row"> <div class="col-md-4"> <table id="display_player_stats_pitching" class="table table-striped table-hover"> <tbody ng-repeat="e in data.events" id="display_player_stats_pitching_body"></tbody> </table> </div><div class="col-md-4"> <table id="display_player_stats_batting" class="table table-striped table-hover"> <tbody ng-repeat="e in data.events" id="display_player_stats_batting_body"></tbody> </table> </div><div class="col-md-4"> <table id="display_player_stats_fielding" class="table table-striped table-hover"> <tbody ng-repeat="e in data.events" id="display_player_stats_fielding_body"></tbody> </table> </div></div></div>';
 const RESET_HIDE_PLAYER_TABLES = '<div id="display_player_tables" class="container"></div>';
@@ -61,7 +62,7 @@ function lock_in_full_name(locked_full_name, locked_player_ID) {
     $("#search_player_year").prop("disabled", false);
 }
 
-function autofill_years() {
+function autofill_player_years() {
     var search_year = $("#search_player_year").val();
     if (search_year === "") {
         search_year = "NULL"
@@ -82,7 +83,7 @@ function autofill_years() {
         var num_suggestions = Math.min(query_result_obj.length, MAX_SUGGESTIONS);
         for (i = 0; i < num_suggestions; i++) {
             if (query_result_obj[i].year_ID == $("#search_player_year").val()) {
-                lock_in_player_year(curr_player_id, query_result_obj[i].year_ID);
+                lock_in_player_year(query_result_obj[i].year_ID);
                 return;
             }
 
@@ -95,12 +96,53 @@ function autofill_years() {
     });
 }
 
-function lock_in_player_year(locked_player_ID, locked_year_ID) {
+function lock_in_player_year(locked_year_ID) {
     reset_html_element("#year_suggestions", RESET_YEAR_SUGGESTIONS);
     $("#search_player_year").val(locked_year_ID);
     curr_year = locked_year_ID;
-    alert("name and year locked!")
-    // lock_in_season(curr_player_id, curr_year);
+    $("#search_player_stint").prop("disabled", false);
+}
+
+function autofill_player_stint() {
+    var search_stint = $("#search_player_stint").val();
+    if (search_stint === "") {
+        search_stint = "NULL"
+    }
+    var path = '/autofill_player_stint/' + curr_player_id + '/' + search_stint;
+
+    reset_html_element("#display_player_tables", RESET_HIDE_PLAYER_TABLES);
+
+    get(path)
+    .then(function(json) {
+        if (json === undefined) {
+            reset_html_element("#stint_suggestions", RESET_STINT_SUGGESTIONS);
+            return;
+        }
+        var query_result_obj = JSON.parse(json);
+        var $stint_suggestions = reset_html_element("#stint_suggestions", RESET_STINT_SUGGESTIONS);
+
+        var num_suggestions = Math.min(query_result_obj.length, MAX_SUGGESTIONS);
+        for (i = 0; i < num_suggestions; i++) {
+            if (query_result_obj[i].stint == $("#search_player_stint").val()) {
+                lock_in_player_stint(query_result_obj[i].stint);
+                return;
+            }
+
+            var stint = query_result_obj[i].stint;
+
+            var str = "<div class='stint_item' id=" + stint + "><p>" + query_result_obj[i].stint + "</p></div>";
+            var html = $.parseHTML(str);
+            $stint_suggestions.append(html);
+        }
+    });
+}
+
+function lock_in_player_stint(locked_stint) {
+    reset_html_element("#stint_suggestions", RESET_STINT_SUGGESTIONS);
+    $("#search_player_stint").val(locked_stint);
+    curr_stint = locked_stint;
+    alert("Stint locked!")
+    // $("#search_player_teamID").prop("disabled", false);TODO
 }
 
 function lock_in_season(player_id, team_year) {
@@ -203,10 +245,18 @@ $(document).ready(function () {
             div_elem = event.target.id;
         }
 
-        var player_ID = curr_player_id;
         var year_ID = div_elem;
 
-        lock_in_player_year(player_ID, year_ID);
+        lock_in_player_year(year_ID);
+    });
+
+    $(document).on("click", ".stint_item", function(event) {
+        var stint = event.target.parentNode.id;
+        if (stint === "stint_suggestions") {
+            stint = event.target.id;
+        }
+
+        lock_in_player_stint(stint);
     });
 
     $(document).on("click", ".stat_item", function(event) {
@@ -238,5 +288,5 @@ $(document).ready(function () {
     // $("#search_player").bind("keyup mouseenter", autofill_player_names); //for keyup AND mouse enter/hover
     $("#search_player").bind("keyup click", autofill_player_names);
     // $("#search_player_year").bind("keyup mouseenter", autofill_years); //for keyup AND mouse enter/hover
-    $("#search_player_year").bind("keyup click", autofill_years);
+    $("#search_player_year").bind("keyup click", autofill_player_years);
 });
