@@ -57,9 +57,9 @@ function lock_in_team_name(locked_team_name, locked_team_ID) {
     $("#search_team_year").prop("disabled", false);
 }
 
-function autofill_years() {
+function autofill_team_years() {
     var search_year = $("#search_team_year").val();
-    var path = '/autofill_teams_years/' + curr_team_id + '/' + curr_team_name + '/' + search_year;
+    var path = '/autofill_team_years/' + curr_team_id + '/' + curr_team_name + '/' + search_year;
 
     reset_html_element("#display_team_tables", RESET_HIDE_TEAM_TABLES);
 
@@ -229,6 +229,6 @@ $(document).ready(function () {
 
     // $("#search_team").bind("keyup mouseenter", autofill_team_names); //for keyup AND mouse enter/hover
     $("#search_team").bind("keyup", autofill_team_names);
-    // $("#search_team_year").bind("keyup mouseenter", autofill_years); //for keyup AND mouse enter/hover
-    $("#search_team_year").bind("keyup", autofill_years);
+    // $("#search_team_year").bind("keyup mouseenter", autofill_team_years); //for keyup AND mouse enter/hover
+    $("#search_team_year").bind("keyup", autofill_team_years);
 });
