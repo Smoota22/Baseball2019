@@ -1577,7 +1577,7 @@ boitada01,Dan,Boitano,Dan Boitano,1953-03-22,185,72,R,R
 bokeldi01,Dick,Bokelmann,Dick Bokelmann,1926-10-26,180,72,R,R
 bokenbo01,Bob,Boken,Bob Boken,1908-02-23,165,74,R,R
 bokinjo01,Joe,Bokina,Joe Bokina,1910-04-04,184,72,R,R
-bolan01,(Unknown),Boland,(Unknown) Boland,1000-01-01,-1,-1,,
+bolan01,{Unknown},Boland,{Unknown} Boland,1000-01-01,-1,-1,,
 bolanbe01,Bernie,Boland,Bernie Boland,1892-01-21,168,68,R,R
 bolaned01,Ed,Boland,Ed Boland,1908-04-18,165,70,L,L
 boldch01,Charlie,Bold,Charlie Bold,1894-10-27,185,74,R,R
@@ -1645,7 +1645,7 @@ booneik01,Ike,Boone,Ike Boone,1897-02-17,195,72,L,R
 boonelu01,Luke,Boone,Luke Boone,1890-05-06,160,69,R,R
 boonera01,Ray,Boone,Ray Boone,1923-07-27,172,72,R,R
 bootcch01,Chris,Bootcheck,Chris Bootcheck,1978-10-24,210,77,R,R
-booth01,(Unknown),Booth,(Unknown) Booth,1000-01-01,-1,-1,,
+booth01,{Unknown},Booth,{Unknown} Booth,1000-01-01,-1,-1,,
 bootham01,Amos,Booth,Amos Booth,1848-09-04,159,69,R,R
 boothed01,Eddie,Booth,Eddie Booth,1000-01-01,-1,-1,,
 bootyjo01,Josh,Booty,Josh Booty,1975-04-29,210,75,R,R
@@ -2730,7 +2730,7 @@ carrido01,Don,Carrithers,Don Carrithers,1949-09-15,180,74,R,R
 carrima01,Matias,Carrillo,Matias Carrillo,1963-02-24,185,71,L,L
 carrle01,Lew,Carr,Lew Carr,1872-08-15,200,74,R,R
 carrobr01,Brett,Carroll,Brett Carroll,1982-10-03,210,71,R,R
-carroch01,(Unknown),Carroll,(Unknown) Carroll,1000-01-01,-1,-1,,
+carroch01,{Unknown},Carroll,{Unknown} Carroll,1000-01-01,-1,-1,,
 carrocl01,Cliff,Carroll,Cliff Carroll,1859-10-18,163,68,B,R
 carrocl02,Clay,Carroll,Clay Carroll,1941-05-02,178,73,R,R
 carroco01,Cody,Carroll,Cody Carroll,1992-10-15,215,77,R,R
@@ -4996,7 +4996,7 @@ edmonge01,George,Edmondson,George Edmondson,1896-05-18,179,73,R,R
 edmonji01,Jim,Edmonds,Jim Edmonds,1970-06-27,190,73,L,L
 edmonpa01,Paul,Edmondson,Paul Edmondson,1943-02-12,195,77,R,R
 edmonsa01,Sam,Edmonston,Sam Edmonston,1883-08-30,185,71,L,L
-edwar01,(Unknown),Edwards,(Unknown) Edwards,1000-01-01,-1,-1,,
+edwar01,{Unknown},Edwards,{Unknown} Edwards,1000-01-01,-1,-1,,
 edwarbr01,Bruce,Edwards,Bruce Edwards,1923-07-15,180,68,R,R
 edwarca01,Carl,Edwards,Carl Edwards,1991-09-03,170,75,R,R
 edwarda01,Dave,Edwards,Dave Edwards,1954-02-24,170,72,R,R
@@ -5235,7 +5235,7 @@ eufemfr01,Frank,Eufemia,Frank Eufemia,1959-12-23,185,71,R,R
 eunicfr01,Ferd,Eunick,Ferd Eunick,1892-04-22,148,66,R,R
 eusebto01,Tony,Eusebio,Tony Eusebio,1967-04-27,180,74,R,R
 eustafr01,Frank,Eustace,Frank Eustace,1873-11-07,160,69,,
-evans01,(Unknown),Evans,(Unknown) Evans,1000-01-01,-1,-1,,
+evans01,{Unknown},Evans,{Unknown} Evans,1000-01-01,-1,-1,,
 evansal01,Al,Evans,Al Evans,1916-09-28,190,71,R,R
 evansar01,Art,Evans,Art Evans,1911-08-03,181,73,B,L
 evansba01,Barry,Evans,Barry Evans,1955-11-30,180,73,R,R
@@ -5806,7 +5806,7 @@ francra01,Ray,Francis,Ray Francis,1893-03-08,182,73,L,L
 francte01,Terry,Francona,Terry Francona,1959-04-22,190,73,L,L
 francti01,Tito,Francona,Tito Francona,1933-11-04,190,71,L,L
 frandke01,Kevin,Frandsen,Kevin Frandsen,1982-05-24,190,72,R,R
-frank01,(Unknown),Franklin,(Unknown) Franklin,1000-01-01,-1,-1,,
+frank01,{Unknown},Franklin,{Unknown} Franklin,1000-01-01,-1,-1,,
 frankch01,Charlie,Frank,Charlie Frank,1870-05-30,170,70,L,L
 frankfr01,Fred,Frank,Fred Frank,1873-03-11,162,69,R,
 frankfr02,Fred,Frankhouse,Fred Frankhouse,1904-04-09,175,71,R,R
@@ -6216,7 +6216,7 @@ gaulemi01,Mike,Gaule,Mike Gaule,1869-08-04,-1,74,L,L
 gausmke01,Kevin,Gausman,Kevin Gausman,1991-01-06,190,75,L,R
 gautrdo01,Doc,Gautreau,Doc Gautreau,1901-07-26,129,64,R,R
 gautrsi01,Sid,Gautreaux,Sid Gautreaux,1912-05-04,190,68,B,R
-gaver01,(Unknown),Gavern,(Unknown) Gavern,1000-01-01,-1,-1,,
+gaver01,{Unknown},Gavern,{Unknown} Gavern,1000-01-01,-1,-1,,
 gavigsa01,Sam,Gaviglio,Sam Gaviglio,1990-05-22,195,74,R,R
 gawch01,Chippy,Gaw,Chippy Gaw,1892-03-13,180,71,R,R
 gazelmi01,Mike,Gazella,Mike Gazella,1895-10-13,165,67,R,R
@@ -7342,7 +7342,7 @@ harrera01,Ray,Harrell,Ray Harrell,1912-02-16,185,73,R,R
 harresl01,Slim,Harrell,Slim Harrell,1890-07-31,180,75,R,R
 harrian01,Andy,Harrington,Andy Harrington,1888-11-13,193,72,R,R
 harrian02,Andy,Harrington,Andy Harrington,1903-02-12,170,71,R,R
-harribe01,(Unknown),Harrison,(Unknown) Harrison,1000-01-01,-1,-1,,
+harribe01,{Unknown},Harrison,{Unknown} Harrison,1000-01-01,-1,-1,,
 harribe02,Ben,Harris,Ben Harris,1889-12-17,220,72,R,R
 harribi01,Bill,Harris,Bill Harris,1900-06-23,180,73,R,R
 harribi02,Bill,Harrington,Bill Harrington,1927-10-03,160,71,R,R
@@ -7615,7 +7615,7 @@ helfaer01,Eric,Helfand,Eric Helfand,1969-03-25,195,72,L,R
 helfha01,Hank,Helf,Hank Helf,1913-08-26,196,73,R,R
 helfrty01,Ty,Helfrich,Ty Helfrich,1890-10-09,178,70,R,R
 hellebe01,Ben,Heller,Ben Heller,1991-08-05,205,75,R,R
-helli01,(Unknown),Hellings,(Unknown) Hellings,1000-01-01,-1,-1,,
+helli01,{Unknown},Hellings,{Unknown} Hellings,1000-01-01,-1,-1,,
 hellije01,Jeremy,Hellickson,Jeremy Hellickson,1987-04-08,190,73,R,R
 helliri01,Rick,Helling,Rick Helling,1970-12-15,215,75,R,R
 hellmto01,Tony,Hellman,Tony Hellman,1861-05-29,175,69,R,
@@ -7867,7 +7867,7 @@ hietpjo01,Joe,Hietpas,Joe Hietpas,1979-05-01,220,75,R,R
 higasky01,Kyle,Higashioka,Kyle Higashioka,1990-04-20,205,73,R,R
 higbeki01,Kirby,Higbe,Kirby Higbe,1915-04-08,190,71,R,R
 higbema01,Mahlon,Higbee,Mahlon Higbee,1901-08-16,165,71,R,R
-higby01,(Unknown),Higby,(Unknown) Higby,1000-01-01,-1,-1,,
+higby01,{Unknown},Higby,{Unknown} Higby,1000-01-01,-1,-1,,
 higdobi01,Bill,Higdon,Bill Higdon,1924-04-27,193,73,L,R
 higgibi01,Bill,Higgins,Bill Higgins,1859-12-04,155,69,,R
 higgibo01,Bob,Higgins,Bob Higgins,1886-09-23,176,68,R,R
@@ -7886,7 +7886,7 @@ highhu01,Hugh,High,Hugh High,1887-10-24,155,67,L,L
 higuete01,Teddy,Higuera,Teddy Higuera,1957-11-09,178,70,B,L
 hilanjo01,John,Hiland,John Hiland,1000-01-01,165,68,L,L
 hilchwh01,Whitey,Hilcher,Whitey Hilcher,1909-02-28,174,72,R,R
-hilde01,(Unknown),Hillebrand,(Unknown) Hillebrand,1000-01-01,-1,-1,,
+hilde01,{Unknown},Hillebrand,{Unknown} Hillebrand,1000-01-01,-1,-1,,
 hildege01,George,Hildebrand,George Hildebrand,1878-09-06,170,68,R,R
 hildeor01,Oral,Hildebrand,Oral Hildebrand,1907-04-07,175,75,R,R
 hildepa01,Palmer,Hildebrand,Palmer Hildebrand,1884-12-23,170,70,R,R
@@ -8845,8 +8845,8 @@ jokst01,Stan,Jok,Stan Jok,1926-05-03,190,72,R,R
 jollesm01,Smead,Jolley,Smead Jolley,1902-01-14,210,75,L,R
 jollyda01,Dave,Jolly,Dave Jolly,1924-10-14,160,72,R,R
 jones01,Levin,Jones,Levin Jones,1847-07-04,-1,-1,,
-jones02,(Unknown),Jones,(Unknown) Jones,1000-01-01,-1,-1,,
-jones03,(Unknown),Jones,(Unknown) Jones,1000-01-01,-1,-1,,
+jones02,{Unknown},Jones,{Unknown} Jones,1000-01-01,-1,-1,,
+jones03,{Unknown},Jones,{Unknown} Jones,1000-01-01,-1,-1,,
 jonesad01,Adam,Jones,Adam Jones,1985-08-01,215,74,R,R
 jonesal01,Alex,Jones,Alex Jones,1869-12-25,170,69,L,L
 jonesal02,Al,Jones,Al Jones,1959-02-10,210,76,R,R
@@ -10115,7 +10115,7 @@ lennoed01,Ed,Lennox,Ed Lennox,1883-11-03,174,70,R,R
 lennoed02,Ed,Lennon,Ed Lennon,1897-08-17,170,71,R,R
 lennopa01,Pat,Lennon,Pat Lennon,1968-04-27,200,74,R,R
 lentiji01,Jim,Lentine,Jim Lentine,1954-07-16,175,72,R,R
-leona01,(Unknown),Leonard,(Unknown) Leonard,1000-01-01,-1,-1,,
+leona01,{Unknown},Leonard,{Unknown} Leonard,1000-01-01,-1,-1,,
 leonaan01,Andy,Leonard,Andy Leonard,1846-06-01,168,67,R,R
 leonabu99,Buck,Leonard,Buck Leonard,1907-09-08,185,70,L,L
 leonade01,Dennis,Leonard,Dennis Leonard,1951-05-18,190,73,R,R
@@ -10176,7 +10176,7 @@ levyed01,Ed,Levy,Ed Levy,1916-10-28,190,77,R,R
 lewalde01,Dennis,Lewallyn,Dennis Lewallyn,1953-08-11,200,76,R,R
 lewanda01,Dan,Lewandowski,Dan Lewandowski,1928-01-06,180,72,R,R
 lewicar01,Artie,Lewicki,Artie Lewicki,1992-04-08,195,75,R,R
-lewis01,(Unknown),Lewis,(Unknown) Lewis,1000-01-01,-1,-1,,
+lewis01,{Unknown},Lewis,{Unknown} Lewis,1000-01-01,-1,-1,,
 lewisal01,Allan,Lewis,Allan Lewis,1941-12-12,170,72,B,R
 lewisbe01,Bert,Lewis,Bert Lewis,1895-10-03,176,74,R,R
 lewisbi01,Bill,Lewis,Bill Lewis,1904-10-15,165,69,R,R
@@ -10643,7 +10643,7 @@ macdoro01,Bob,Macdonald,Bob Macdonald,1965-04-27,200,75,L,L
 macdoha01,Harvey,MacDonald,Harvey MacDonald,1898-05-18,170,71,L,L
 macdomi01,Mike,MacDougal,Mike MacDougal,1977-03-05,180,76,B,R
 maceji01,Harry,Mace,Harry Mace,1000-01-01,185,71,,R
-macey01,(Unknown),Macey,(Unknown) Macey,1000-01-01,-1,-1,,
+macey01,{Unknown},Macey,{Unknown} Macey,1000-01-01,-1,-1,,
 macfada01,Danny,MacFayden,Danny MacFayden,1905-06-10,170,71,R,R
 macfami01,Mike,Macfarlane,Mike Macfarlane,1964-04-12,200,73,R,R
 macgaed01,Ed,MacGamwell,Ed MacGamwell,1878-01-10,-1,-1,L,L
@@ -11274,7 +11274,7 @@ mcbrial01,Algie,McBride,Algie McBride,1869-05-23,152,69,L,L
 mcbriba01,Bake,McBride,Bake McBride,1949-02-03,190,74,L,R
 mcbridi01,Dick,McBride,Dick McBride,1847-06-14,150,69,,R
 mcbrige01,George,McBride,George McBride,1880-11-20,170,71,R,R
-mcbrijo01,(Unknown),McBride,(Unknown) McBride,1000-01-01,-1,-1,,
+mcbrijo01,{Unknown},McBride,{Unknown} McBride,1000-01-01,-1,-1,,
 mcbrike01,Ken,McBride,Ken McBride,1935-08-12,190,73,R,R
 mcbrima01,Macay,McBride,Macay McBride,1982-10-24,210,71,L,L
 mcbrima02,Matt,McBride,Matt McBride,1985-05-23,215,74,R,R
@@ -11428,7 +11428,7 @@ mcdonjo02,Joe,McDonald,Joe McDonald,1888-04-09,175,71,R,R
 mcdonjo03,John,McDonald,John McDonald,1974-09-24,185,69,R,R
 mcdonke01,Keith,McDonald,Keith McDonald,1973-02-08,215,74,R,R
 mcdonte01,Tex,McDonald,Tex McDonald,1891-01-31,160,70,L,R
-mcdoo01,(Unknown),McDoolan,(Unknown) McDoolan,1000-01-01,-1,-1,,
+mcdoo01,{Unknown},McDoolan,{Unknown} McDoolan,1000-01-01,-1,-1,,
 mcdoude01,Dewey,McDougal,Dewey McDougal,1871-09-19,188,70,,R
 mcdougi01,Gil,McDougald,Gil McDougald,1928-05-19,175,72,R,R
 mcdouma01,Marshall,McDougall,Marshall McDougall,1978-12-19,200,73,R,R
@@ -11688,7 +11688,7 @@ mcraeal01,Alex,McRae,Alex McRae,1993-04-06,220,74,R,R
 mcraebr01,Brian,McRae,Brian McRae,1967-08-27,175,72,B,R
 mcraeha01,Hal,McRae,Hal McRae,1945-07-10,180,71,R,R
 mcraeno01,Norm,McRae,Norm McRae,1947-09-26,195,73,R,R
-mcrem01,(Unknown),McRemer,(Unknown) McRemer,1000-01-01,-1,-1,,
+mcrem01,{Unknown},McRemer,{Unknown} McRemer,1000-01-01,-1,-1,,
 mcreyke01,Kevin,McReynolds,Kevin McReynolds,1959-10-16,205,72,R,R
 mcshape01,Pete,McShannic,Pete McShannic,1864-03-20,160,67,B,R
 mcsortr01,Trick,McSorley,Trick McSorley,1852-12-16,142,64,R,R
@@ -12556,7 +12556,7 @@ murchti01,Tim,Murchison,Tim Murchison,1896-10-08,185,72,R,L
 murdowi01,Wilbur,Murdoch,Wilbur Murdoch,1875-03-14,-1,-1,,R
 murffre01,Red,Murff,Red Murff,1921-04-01,195,75,R,R
 murnati01,Tim,Murnane,Tim Murnane,1851-06-04,172,69,L,R
-murph01,(Unknown),Murphy,(Unknown) Murphy,1000-01-01,-1,-1,,
+murph01,{Unknown},Murphy,{Unknown} Murphy,1000-01-01,-1,-1,,
 murphbi01,Billy,Murphy,Billy Murphy,1944-05-07,190,73,R,R
 murphbi02,Bill,Murphy,Bill Murphy,1981-05-09,195,71,L,L
 murphbo01,Bob,Murphy,Bob Murphy,1866-12-26,173,72,,
@@ -13229,7 +13229,7 @@ ormege01,George,Orme,George Orme,1891-09-16,160,70,R,R
 orndoje01,Jess,Orndorff,Jess Orndorff,1881-01-15,168,72,B,R
 oropeed01,Eddie,Oropesa,Eddie Oropesa,1971-11-23,215,75,L,L
 oroscje01,Jesse,Orosco,Jesse Orosco,1957-04-21,174,74,R,L
-o'rou01,(Unknown),O'Rourke,(Unknown) O'Rourke,1000-01-01,-1,-1,,
+o'rou01,{Unknown},O'Rourke,{Unknown} O'Rourke,1000-01-01,-1,-1,,
 o'rouch01,Jim,O'Rourke,Jim O'Rourke,1937-06-22,195,74,R,R
 o'roufr01,Frank,O'Rourke,Frank O'Rourke,1893-11-28,165,70,R,R
 o'rouji01,Jim,O'Rourke,Jim O'Rourke,1850-09-01,185,68,R,R
@@ -13957,7 +13957,7 @@ pierced01,Ed,Pierce,Ed Pierce,1968-10-06,185,73,L,L
 piercgr01,Gracie,Pierce,Gracie Pierce,1000-01-01,176,71,L,R
 piercja01,Jack,Pierce,Jack Pierce,1949-06-02,210,72,L,R
 piercje01,Jeff,Pierce,Jeff Pierce,1969-06-07,187,73,R,R
-piercma01,(Unknown),Pierce,(Unknown) Pierce,1000-01-01,-1,-1,,
+piercma01,{Unknown},Pierce,{Unknown} Pierce,1000-01-01,-1,-1,,
 piercra01,Ray,Pierce,Ray Pierce,1897-06-06,156,67,L,L
 piercto01,Tony,Pierce,Tony Pierce,1946-01-29,190,73,R,L
 pierema01,Marino,Pieretti,Marino Pieretti,1920-09-23,153,67,R,R
@@ -14321,7 +14321,7 @@ quicked01,Eddie,Quick,Eddie Quick,1000-01-01,-1,71,,R
 quickha01,Hal,Quick,Hal Quick,1917-10-04,163,70,R,R
 quilifr01,Frank,Quilici,Frank Quilici,1939-05-11,170,73,R,R
 quillle01,Lee,Quillin,Lee Quillin,1882-05-05,165,70,R,R
-quinl01,(Unknown),Quinlan,(Unknown) Quinlan,1000-01-01,-1,-1,,
+quinl01,{Unknown},Quinlan,{Unknown} Quinlan,1000-01-01,-1,-1,,
 quinlfi01,Finners,Quinlan,Finners Quinlan,1887-10-21,154,68,L,L
 quinlfr01,Frank,Quinlan,Frank Quinlan,1869-03-09,180,69,,
 quinlro01,Robb,Quinlan,Robb Quinlan,1977-03-17,200,73,R,R
@@ -14333,7 +14333,7 @@ quinnjo01,Joseph,Quinn,Joseph Quinn,1000-01-01,-1,-1,,
 quinnjo02,Joe,Quinn,Joe Quinn,1862-12-24,158,67,R,R
 quinnjo03,John,Quinn,John Quinn,1885-09-12,150,71,R,R
 quinnma01,Mark,Quinn,Mark Quinn,1974-05-21,175,73,R,R
-quinnpa01,(Unknown),Quinn,(Unknown) Quinn,1000-01-01,162,68,,
+quinnpa01,{Unknown},Quinn,{Unknown} Quinn,1000-01-01,162,68,,
 quinnpa02,Paddy,Quinn,Paddy Quinn,1000-01-01,148,68,,
 quinnro01,Roman,Quinn,Roman Quinn,1993-05-14,170,70,B,R
 quinnta01,Tad,Quinn,Tad Quinn,1881-09-25,210,73,,R
@@ -14760,7 +14760,7 @@ ricele01,Len,Rice,Len Rice,1918-09-02,175,72,R,R
 ricepa01,Pat,Rice,Pat Rice,1963-11-02,200,74,R,R
 ricesa01,Sam,Rice,Sam Rice,1890-02-20,150,69,L,R
 ricesc01,Scott,Rice,Scott Rice,1981-09-21,230,78,L,L
-richa01,(Unknown),Richardson,(Unknown) Richardson,1000-01-01,136,64,,
+richa01,{Unknown},Richardson,{Unknown} Richardson,1000-01-01,136,64,,
 richaan01,Antoan,Richardson,Antoan Richardson,1983-10-08,165,68,B,R
 richabi01,Bill,Richardson,Bill Richardson,1878-01-24,200,71,R,R
 richabo01,Bobby,Richardson,Bobby Richardson,1935-08-19,170,69,R,R
@@ -15878,7 +15878,7 @@ scofflo01,Lou,Scoffic,Lou Scoffic,1913-05-20,182,70,R,R
 scoggji01,Jim,Scoggins,Jim Scoggins,1891-07-09,165,71,L,L
 sconida01,Daryl,Sconiers,Daryl Sconiers,1958-10-03,185,74,L,L
 scorehe01,Herb,Score,Herb Score,1933-06-07,185,74,L,L
-scott01,(Unknown),Scott,(Unknown) Scott,1000-01-01,-1,-1,,
+scott01,{Unknown},Scott,{Unknown} Scott,1000-01-01,-1,-1,,
 scottda01,Darryl,Scott,Darryl Scott,1968-08-06,185,73,R,R
 scottdi01,Dick,Scott,Dick Scott,1883-02-05,180,72,R,R
 scottdi02,Dick,Scott,Dick Scott,1933-03-15,185,74,R,L
@@ -16032,7 +16032,7 @@ shackke01,Kevin,Shackelford,Kevin Shackelford,1989-04-07,210,77,R,R
 shafeju01,Justin,Shafer,Justin Shafer,1992-09-18,195,74,R,R
 shafera01,Ralph,Shafer,Ralph Shafer,1894-03-17,-1,71,,
 shafeti01,Tillie,Shafer,Tillie Shafer,1889-03-22,165,70,B,R
-shaff01,(Unknown),Shaffer,(Unknown) Shaffer,1000-01-01,-1,-1,,
+shaff01,{Unknown},Shaffer,{Unknown} Shaffer,1000-01-01,-1,-1,,
 shafffr01,Frank,Shaffer,Frank Shaffer,1859-12-06,160,71,,
 shaffjo01,John,Shaffer,John Shaffer,1864-02-18,-1,70,,R
 shaffor01,Orator,Shafer,Orator Shafer,1851-10-04,165,69,L,R
@@ -16138,7 +16138,7 @@ shephro01,Ron,Shepherd,Ron Shepherd,1960-10-27,175,76,R,R
 sheppjo01,John,Sheppard,John Sheppard,1000-01-01,-1,-1,,
 sherdbi01,Bill,Sherdel,Bill Sherdel,1896-08-15,160,70,L,L
 sherfji01,Jimmie,Sherfy,Jimmie Sherfy,1991-12-27,175,72,R,R
-sheri01,(Unknown),Sheridan,(Unknown) Sheridan,1000-01-01,-1,-1,,
+sheri01,{Unknown},Sheridan,{Unknown} Sheridan,1000-01-01,-1,-1,,
 sherine01,Neill,Sheridan,Neill Sheridan,1921-11-20,195,73,R,R
 sheripa01,Pat,Sheridan,Pat Sheridan,1957-12-04,175,75,L,R
 sherire01,Red,Sheridan,Red Sheridan,1896-11-14,160,70,R,R
@@ -16407,7 +16407,7 @@ smartj.01,J. D.,Smart,J. D. Smart,1973-11-12,185,74,R,R
 smazajo01,Joe,Smaza,Joe Smaza,1923-07-07,175,71,L,L
 smilebi01,Bill,Smiley,Bill Smiley,1000-01-01,140,68,,
 smilejo01,John,Smiley,John Smiley,1965-03-17,180,76,L,L
-smith01,(Unknown),Smith,(Unknown) Smith,1000-01-01,-1,-1,,
+smith01,{Unknown},Smith,{Unknown} Smith,1000-01-01,-1,-1,,
 smithal01,Aleck,Smith,Aleck Smith,1000-01-01,-1,-1,,R
 smithal02,Al,Smith,Al Smith,1903-12-13,170,72,R,R
 smithal03,Al,Smith,Al Smith,1907-10-12,180,71,L,L
@@ -16728,7 +16728,7 @@ speiech01,Chris,Speier,Chris Speier,1950-06-28,175,73,R,R
 speieju01,Justin,Speier,Justin Speier,1973-11-06,200,76,R,R
 speiery01,Ryan,Speier,Ryan Speier,1979-07-24,210,79,R,R
 speigle01,Levale,Speigner,Levale Speigner,1980-09-24,175,71,R,R
-spenc01,(Unknown),Spencer,(Unknown) Spencer,1000-01-01,-1,-1,,
+spenc01,{Unknown},Spencer,{Unknown} Spencer,1000-01-01,-1,-1,,
 spencbe01,Ben,Spencer,Ben Spencer,1890-05-15,160,68,L,L
 spencbo01,Bob,Spence,Bob Spence,1946-02-10,215,76,L,R
 spencch01,Chet,Spencer,Chet Spencer,1883-03-04,180,72,L,R
@@ -16800,7 +16800,7 @@ stablge01,George,Stablein,George Stablein,1957-10-29,185,76,R,R
 stacked01,Eddie,Stack,Eddie Stack,1887-10-24,175,72,R,R
 staehma01,Marv,Staehle,Marv Staehle,1942-03-13,165,70,L,R
 staffbi01,Bill,Stafford,Bill Stafford,1938-08-13,188,73,R,R
-staffbo01,(Unknown),Stafford,(Unknown) Stafford,1000-01-01,-1,-1,,
+staffbo01,{Unknown},Stafford,{Unknown} Stafford,1000-01-01,-1,-1,,
 staffge01,General,Stafford,General Stafford,1868-01-30,165,68,R,R
 staffhe01,Heinie,Stafford,Heinie Stafford,1891-11-01,160,67,R,R
 staffjo01,John,Stafford,John Stafford,1870-04-08,170,70,R,R
@@ -16953,7 +16953,7 @@ stephri01,Riggs,Stephenson,Riggs Stephenson,1898-01-05,185,70,R,R
 stephro01,Robert,Stephenson,Robert Stephenson,1993-02-24,215,75,R,R
 stephve01,Vern,Stephens,Vern Stephens,1920-10-23,185,70,R,R
 stephwa01,Walter,Stephenson,Walter Stephenson,1911-03-27,180,72,R,R
-sterljo01,(Unknown),Sterling,(Unknown) Sterling,1000-01-01,-1,-1,,
+sterljo01,{Unknown},Sterling,{Unknown} Sterling,1000-01-01,-1,-1,,
 sterlra01,Randy,Sterling,Randy Sterling,1951-04-21,195,74,B,R
 sternad01,Adam,Stern,Adam Stern,1980-02-12,190,71,L,R
 sterrdu01,Dutch,Sterrett,Dutch Sterrett,1889-10-01,165,71,R,R
@@ -17025,7 +17025,7 @@ stockot01,Otis,Stocksdale,Otis Stocksdale,1871-08-07,180,70,L,R
 stockph01,Phil,Stockman,Phil Stockman,1980-01-25,240,80,R,R
 stockro01,Robert,Stock,Robert Stock,1989-11-21,214,73,L,R
 stockwe01,Wes,Stock,Wes Stock,1934-04-10,188,74,R,R
-stodd01,(Unknown),Stoddard,(Unknown) Stoddard,1000-01-01,-1,-1,,
+stodd01,{Unknown},Stoddard,{Unknown} Stoddard,1000-01-01,-1,-1,,
 stoddbo01,Bob,Stoddard,Bob Stoddard,1957-03-08,190,73,R,R
 stoddti01,Tim,Stoddard,Tim Stoddard,1953-01-24,230,79,R,R
 stokeal01,Al,Stokes,Al Stokes,1900-01-01,175,69,R,R
@@ -17187,7 +17187,7 @@ sukefcl01,Clyde,Sukeforth,Clyde Sukeforth,1901-11-30,155,70,L,R
 suklaed01,Ed,Sukla,Ed Sukla,1943-03-03,170,71,R,R
 sulargu01,Guy,Sularz,Guy Sularz,1955-11-07,165,71,R,R
 suliker01,Ernie,Sulik,Ernie Sulik,1910-07-07,178,70,L,L
-sulli01,(Unknown),Sullivan,(Unknown) Sullivan,1000-01-01,-1,-1,,
+sulli01,{Unknown},Sullivan,{Unknown} Sullivan,1000-01-01,-1,-1,,
 sullian01,Andy,Sullivan,Andy Sullivan,1884-08-30,-1,-1,,R
 sullibi01,Bill,Sullivan,Bill Sullivan,1853-07-04,-1,-1,,
 sullibi02,Bill,Sullivan,Bill Sullivan,1000-01-01,-1,-1,R,R
@@ -17315,7 +17315,7 @@ sweenro01,Rooney,Sweeney,Rooney Sweeney,1858-11-01,155,68,,
 sweenry01,Ryan,Sweeney,Ryan Sweeney,1985-02-20,225,76,L,L
 sweetle01,Les,Sweetland,Les Sweetland,1901-08-15,155,71,R,L
 sweetri01,Rick,Sweet,Rick Sweet,1952-09-07,200,73,B,R
-sweigha01,(Unknown),Sweigert,(Unknown) Sweigert,1000-01-01,-1,-1,,
+sweigha01,{Unknown},Sweigert,{Unknown} Sweigert,1000-01-01,-1,-1,,
 swentau01,Augie,Swentor,Augie Swentor,1899-11-21,185,72,R,R
 swetost01,Steve,Swetonic,Steve Swetonic,1903-08-13,185,71,R,R
 swettpo01,Pop,Swett,Pop Swett,1870-04-16,175,72,,
@@ -19062,7 +19062,7 @@ williwo01,Woody,Williams,Woody Williams,1912-08-21,175,71,R,R
 williwo02,Woody,Williams,Woody Williams,1966-08-19,180,72,R,R
 willocl01,Claude,Willoughby,Claude Willoughby,1898-11-14,165,69,R,R
 willoji01,Jim,Willoughby,Jim Willoughby,1949-01-31,185,74,R,R
-wills01,(Unknown),Wills,(Unknown) Wills,1000-01-01,-1,-1,,
+wills01,{Unknown},Wills,{Unknown} Wills,1000-01-01,-1,-1,,
 willsbu01,Bump,Wills,Bump Wills,1952-07-27,172,69,B,R
 willsda01,Dave,Wills,Dave Wills,1877-01-26,-1,-1,L,L
 willsfr01,Frank,Wills,Frank Wills,1958-10-26,200,74,R,R
@@ -19261,7 +19261,7 @@ womacdo01,Dooley,Womack,Dooley Womack,1939-08-25,170,72,L,R
 womacsi01,Sid,Womack,Sid Womack,1896-10-02,200,71,R,R
 womacto01,Tony,Womack,Tony Womack,1969-09-25,160,69,L,R
 wongko01,Kolten,Wong,Kolten Wong,1990-10-10,185,69,L,R
-wood01,(Unknown),Wood,(Unknown) Wood,1000-01-01,-1,-1,,
+wood01,{Unknown},Wood,{Unknown} Wood,1000-01-01,-1,-1,,
 woodabr01,Brad,Woodall,Brad Woodall,1969-06-25,175,72,B,L
 woodada01,Darrell,Woodard,Darrell Woodard,1956-12-10,160,71,R,R
 woodal02,Alex,Wood,Alex Wood,1991-01-12,215,76,R,L

@@ -41,9 +41,9 @@ with open(input_people_file) as f1, open(output_players_file, "w") as output:
             throws = each_person[19]
 
             if first_name == "":
-                first_name = "(Unknown)"
+                first_name = "{Unknown}"
             if last_name == "":
-                last_name = "(Unknown)"
+                last_name = "{Unknown}"
             full_name = first_name + " " + last_name;
 
             person = [ID, first_name, last_name, full_name, birthday, weight, height, bats, throws]
