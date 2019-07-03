@@ -117,7 +117,6 @@ function autoset_player_stint() {
         var query_result_obj = JSON.parse(json);
         if (query_result_obj.length == 1) {
             lock_in_player_stint(query_result_obj[0].stint);
-            return;
         }
     });
 
@@ -338,8 +337,8 @@ $(document).ready(function () {
     });
 
     // $("#search_player").bind("keyup mouseenter", autofill_player_names); //for keyup AND mouse enter/hover
-    $("#search_player").bind("keyup click focus", autofill_player_names);
+    $("#search_player").bind("keyup click", autofill_player_names);
     // $("#search_player_year").bind("keyup mouseenter", autofill_years); //for keyup AND mouse enter/hover
-    $("#search_player_year").bind("keyup click focus", autofill_player_years);
-    $("#search_player_stint").bind("keyup click focus", autofill_player_stint);
+    $("#search_player_year").bind("keyup click", autofill_player_years);
+    $("#search_player_stint").bind("keyup click", autofill_player_stint);
 });
