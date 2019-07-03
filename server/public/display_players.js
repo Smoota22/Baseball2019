@@ -173,9 +173,10 @@ function autoset_player_teamID() {
         }
 
         var query_result_obj = JSON.parse(json);
+        alert("query parsed! " + query_result_obj.length);
         if (query_result_obj.length == 1) {
+            alert("locking in ID!");
             lock_in_player_teamID(query_result_obj[0].team_ID);
-            
         }
     });
 }
