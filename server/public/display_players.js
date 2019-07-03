@@ -120,6 +120,9 @@ function autofill_player_stint() {
             return;
         }
         var query_result_obj = JSON.parse(json);
+        if (query_result_obj.length == 1) {
+            lock_in_player_stint(query_result_obj.stint);
+        }
         var $stint_suggestions = reset_html_element("#stint_suggestions", RESET_STINT_SUGGESTIONS);
 
         var num_suggestions = Math.min(query_result_obj.length, MAX_SUGGESTIONS);
@@ -143,7 +146,7 @@ function lock_in_player_stint(locked_stint) {
     $("#search_player_stint").val(locked_stint);
     curr_stint = locked_stint;
     alert("Stint locked!")
-    // $("#search_player_teamID").prop("disabled", false);TODO
+    $("#search_player_teamID").prop("disabled", false);
 }
 
 function lock_in_season(player_id, team_year) {

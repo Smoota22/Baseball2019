@@ -135,12 +135,12 @@ function autofill_player_stint(req, res) {
     if (regex != "NULL%") {
         sql = 'SELECT stint FROM (' + sql + ') AS temp WHERE temp.stint LIKE "' + regex + '"';
     }
-    res.send(sql)
-    // let query = db.query(sql, (err, results) => {
-    //     if(err) throw err;
-    //     console.log(results);
-    //     res.send(results);
-    // });
+    // res.send(sql)
+    let query = db.query(sql, (err, results) => {
+        if(err) throw err;
+        console.log(results);
+        res.send(results);
+    });
 }
 
 app.get('/ranking/:attribute/:direction', ranking);
