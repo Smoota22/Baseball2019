@@ -24,8 +24,7 @@ function autofill_player_names() {
     }
     var path = '/autofill_player_names/' + search_player_name;
 
-    $("#search_player_year").val("");
-    $("#search_player_year").prop("disabled", true);
+    disable_inputs(4);
     reset_html_element("#display_player_tables", RESET_HIDE_PLAYER_TABLES);
 
     get(path)
@@ -69,6 +68,7 @@ function autofill_player_years() {
     }
     var path = '/autofill_player_years/' + curr_player_id + '/' + search_year;
 
+    disable_inputs(3);
     reset_html_element("#display_player_tables", RESET_HIDE_PLAYER_TABLES);
 
     get(path)
@@ -108,8 +108,9 @@ function autofill_player_stint() {
     if (search_stint === "") {
         search_stint = "NULL"
     }
-    var path = '/autofill_player_stint/' + curr_player_id + '/' + search_stint;
+    var path = '/autofill_player_stint/' + curr_player_id + '/' + curr_year + '/' + search_stint;
 
+    disable_inputs(2);
     reset_html_element("#display_player_tables", RESET_HIDE_PLAYER_TABLES);
 
     get(path)
@@ -157,6 +158,36 @@ function lock_in_season(player_id, team_year) {
         // alert(query_result_obj[0]["games"]);
         display_stats(query_result_obj[0]);
     });
+}
+
+function disable_inputs(num) {
+    if (num == 0) {
+        return;
+    }
+    $("#search_player_leagueID").val("");
+    $("#search_player_leagueID").prop("disabled", true);
+
+    num -= 1;
+
+    if (num == 0) {
+        return;
+    }
+    $("#search_player_teamID").val("");
+    $("#search_player_teamID").prop("disabled", true);
+    num -= 1;
+
+    if (num == 0) {
+        return;
+    }
+    $("#search_player_stint").val("");
+    $("#search_player_stint").prop("disabled", true);
+    num -= 1;
+
+    if (num == 0) {
+        return;
+    }
+    $("#search_player_year").val("");
+    $("#search_player_year").prop("disabled", true);
 }
 
 function display_stats(season) {
