@@ -131,7 +131,7 @@ function autofill_player_years(req, res) {
 app.get('/autofill_player_stint/:playerID/:yearID/:stint', autofill_player_stint);
 function autofill_player_stint(req, res) {
     var regex = req.params.stint + "%";
-    let sql = 'SELECT stint FROM (SELECT stint,year_ID FROM pitching WHERE player_ID = "' + req.params.playerID + '" UNION SELECT stint FROM batting WHERE player_ID = "' + req.params.playerID + '" UNION SELECT stint FROM fielding WHERE player_ID = "' + req.params.playerID + '") AS temp1 WHERE temp1.year_ID = ' + req.params.yearID;
+    let sql = 'SELECT stint FROM (SELECT stint,year_ID FROM pitching WHERE player_ID = "' + req.params.playerID + '" UNION SELECT stint,year_ID FROM batting WHERE player_ID = "' + req.params.playerID + '" UNION SELECT stint,year_ID FROM fielding WHERE player_ID = "' + req.params.playerID + '") AS temp1 WHERE temp1.year_ID = ' + req.params.yearID;
     if (regex != "NULL%") {
         sql = 'SELECT stint FROM (' + sql + ') AS temp WHERE temp.stint LIKE "' + regex + '"';
     }
