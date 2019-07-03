@@ -143,9 +143,9 @@ function autofill_player_stint(req, res) {
     });
 }
 
-app.get('/autofill_player_teamID/:playerID/:yearID/:stint/:teamID', autofill_player_teamID);
+app.get('/autofill_player_teamID/:playerID/:yearID/:stint/:teamName', autofill_player_teamID);
 function autofill_player_teamID(req, res) {
-    var regex = req.params.teamID + "%";
+    var regex = format_query_string_regex(req.params.teamName);
     let sql = 'SELECT team_ID FROM (SELECT team_ID,stint FROM (SELECT team_ID,stint,year_ID FROM pitching WHERE player_ID = "' + req.params.playerID + '" UNION SELECT team_ID,stint,year_ID FROM batting WHERE player_ID = "' + req.params.playerID + '" UNION SELECT team_ID,stint,year_ID FROM fielding WHERE player_ID = "' + req.params.playerID + '") AS temp1 WHERE temp1.year_ID = ' + req.params.yearID + ') AS temp2 WHERE temp2.stint = ' + req.params.stint;
     if (regex != "NULL%") {
         sql += ' AND team_ID IN (SELECT team_ID FROM real_team WHERE team_name LIKE "' + regex + '")';
