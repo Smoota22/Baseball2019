@@ -12,7 +12,7 @@ const FIELDING_STAT_ATTRIBUTES_MYSQL = ["player_ID", "year_ID", "stint", "team_I
 var curr_player_id;
 var curr_player_name;
 var curr_year;
-var curr_team_id;
+var curr_teamID;
 var curr_stint_id;
 var curr_league_id;
 
@@ -141,14 +141,14 @@ function autofill_player_stint() {
 
         var num_suggestions = Math.min(query_result_obj.length, MAX_SUGGESTIONS);
         for (i = 0; i < num_suggestions; i++) {
-            var curr_stint = query_result_obj[i].stint;
+            var itr_stint = query_result_obj[i].stint;
 
-            if (query_result_obj[i].stint == $("#search_player_stint").val()) {
-                lock_in_player_stint(curr_stint);
+            if (itr_stint == $("#search_player_stint").val()) {
+                lock_in_player_stint(itr_stint);
                 return;
             }
 
-            var str = "<div class='stint_item' id=" + curr_stint + "><p>" + curr_stint + "</p></div>";
+            var str = "<div class='stint_item' id=" + itr_stint + "><p>" + itr_stint + "</p></div>";
             var html = $.parseHTML(str);
             $stint_suggestions.append(html);
         }
@@ -160,6 +160,65 @@ function lock_in_player_stint(locked_stint) {
     $("#search_player_stint").val(locked_stint);
     curr_stint = locked_stint;
     $("#search_player_teamID").prop("disabled", false);
+    autoset_player_teamID();
+}
+
+function autoset_player_teamID() {
+    var path = '/autofill_player_teamID/' + curr_player_id + '/' + curr_year + '/NULL';
+
+    get(path)
+    .then(function(json) {
+        if (json === undefined) {
+            return;
+        }
+
+        var query_result_obj = JSON.parse(json);
+        if (query_result_obj.length == 1) {
+            lock_in_player_teamID(query_result_obj[0].team_ID);
+        }
+    });
+}
+
+function autofill_player_teamID() {
+    var search_teamID = $("#search_player_teamID").val();
+    if (search_teamID === "") {
+        search_teamID = "NULL"
+    }
+    var path = '/autofill_player_teamID/' + curr_player_id + '/' + curr_year + '/' + search_teamID;
+
+    disable_inputs(2);
+    reset_html_element("#display_player_tables", RESET_HIDE_PLAYER_TABLES);
+
+    get(path)
+    .then(function(json) {
+        if (json === undefined) {
+            reset_html_element("#teamID_suggestions", RESET_TEAMID_SUGGESTIONS);
+            return;
+        }
+        var query_result_obj = JSON.parse(json);
+        var $teamID_suggestions = reset_html_element("#teamID_suggestions", RESET_TEAMID_SUGGESTIONS);
+
+        var num_suggestions = Math.min(query_result_obj.length, MAX_SUGGESTIONS);
+        for (i = 0; i < num_suggestions; i++) {
+            var itr_teamID = query_result_obj[i].team_ID;
+
+            if (itr_teamID == $("#search_player_teamID").val()) {
+                lock_in_player_teamID(itr_teamID);
+                return;
+            }
+
+            var str = "<div class='teamID_item' id=" + itr_teamID + "><p>" + itr_teamID + "</p></div>";
+            var html = $.parseHTML(str);
+            $teamID_suggestions.append(html);
+        }
+    });
+}
+
+function lock_in_player_teamID(locked_teamID) {
+    reset_html_element("#teamID_suggestions", RESET_TEAMID_SUGGESTIONS);
+    $("#search_player_teamID").val(locked_teamID);
+    curr_teamID = locked_teamID;
+    $("#search_player_leagueID").prop("disabled", false);
 }
 
 function lock_in_season(player_id, team_year) {
