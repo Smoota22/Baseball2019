@@ -320,4 +320,5 @@ $(document).ready(function () {
     $("#search_player").bind("keyup click", autofill_player_names);
     // $("#search_player_year").bind("keyup mouseenter", autofill_years); //for keyup AND mouse enter/hover
     $("#search_player_year").bind("keyup click", autofill_player_years);
+    $("#search_player_stint").bind("keyup click", autofill_player_stint);
 });
