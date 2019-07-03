@@ -59,7 +59,6 @@ function lock_in_full_name(locked_full_name, locked_player_ID) {
     curr_player_id = locked_player_ID;
     curr_player_name = locked_full_name;
     $("#search_player_year").prop("disabled", false);
-    $("#search_player_year").focus();
 }
 
 function autofill_player_years() {
@@ -119,8 +118,6 @@ function autoset_player_stint() {
             lock_in_player_stint(query_result_obj[0].stint);
         }
     });
-
-    $("#search_player_stint").focus();
 }
 
 function autofill_player_stint() {
@@ -163,7 +160,6 @@ function lock_in_player_stint(locked_stint) {
     $("#search_player_stint").val(locked_stint);
     curr_stint = locked_stint;
     $("#search_player_teamID").prop("disabled", false);
-    $("#search_player_teamID").focus();
 }
 
 function lock_in_season(player_id, team_year) {
