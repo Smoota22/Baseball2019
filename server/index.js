@@ -150,12 +150,12 @@ function autofill_player_teamID(req, res) {
     if (req.params.teamName != "NULL") {
         sql += ' AND team_ID IN (SELECT team_ID FROM real_team WHERE team_name LIKE "' + regex + '")';
     }
-    res.send(sql);
-    // let query = db.query(sql, (err, results) => {
-    //     if(err) throw err;
-    //     console.log(results);
-    //     res.send(results);
-    // });
+    // res.send(sql);
+    let query = db.query(sql, (err, results) => {
+        if(err) throw err;
+        console.log(results);
+        res.send(results);
+    });
 }
 
 app.get('/ranking/:attribute/:direction', ranking);
