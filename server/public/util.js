@@ -174,7 +174,6 @@ function get (path) {
     }
 }).then(function(response) {
     if (response.ok) {
-        alert(response);
         return response.text();  //To retrieve raw response data
     }
 })
