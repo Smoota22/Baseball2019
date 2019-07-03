@@ -112,12 +112,12 @@ function autoset_player_stint() {
         if (json === undefined) {
             return;
         }
-        
+
         var query_result_obj = JSON.parse(json);
         if (query_result_obj.length == 1) {
             lock_in_player_stint(query_result_obj[0].stint);
         }
-    }
+    });
 }
 
 function autofill_player_stint() {
