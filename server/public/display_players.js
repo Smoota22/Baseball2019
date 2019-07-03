@@ -101,6 +101,23 @@ function lock_in_player_year(locked_year_ID) {
     $("#search_player_year").val(locked_year_ID);
     curr_year = locked_year_ID;
     $("#search_player_stint").prop("disabled", false);
+    autoset_player_stint();
+}
+
+function autoset_player_stint() {
+    var path = '/autofill_player_stint/' + curr_player_id + '/' + curr_year + '/NULL';
+
+    get(path)
+    .then(function(json) {
+        if (json === undefined) {
+            return;
+        }
+        
+        var query_result_obj = JSON.parse(json);
+        if (query_result_obj.length == 1) {
+            lock_in_player_stint(query_result_obj[0].stint);
+        }
+    }
 }
 
 function autofill_player_stint() {
@@ -120,10 +137,6 @@ function autofill_player_stint() {
             return;
         }
         var query_result_obj = JSON.parse(json);
-        if (query_result_obj.length == 1) {
-            lock_in_player_stint(query_result_obj[0].stint);
-            return;
-        }
         var $stint_suggestions = reset_html_element("#stint_suggestions", RESET_STINT_SUGGESTIONS);
 
         var num_suggestions = Math.min(query_result_obj.length, MAX_SUGGESTIONS);
@@ -146,7 +159,6 @@ function lock_in_player_stint(locked_stint) {
     reset_html_element("#stint_suggestions", RESET_STINT_SUGGESTIONS);
     $("#search_player_stint").val(locked_stint);
     curr_stint = locked_stint;
-    alert("Stint locked!")
     $("#search_player_teamID").prop("disabled", false);
 }
 
