@@ -105,27 +105,28 @@ function autofill_player_names(req, res) {
     // let sql = 'SELECT team_ID FROM real_team WHERE team_name = "' + req.params.teamName + '"';
     // let sql = 'SELECT team_name FROM real_team WHERE team_name = "sdas"';
     let sql = 'SELECT full_name, ID FROM player WHERE full_name LIKE "' + regex + '" GROUP BY full_name, ID';
-    res.send(sql);
-    // let query = db.query(sql, (err, results) => {
-    //     if(err) throw err;
-    //     console.log(results);
-    //     res.send(results);
-    // });
-}
-
-app.get('/autofill_player_years/:playerID/:yearID', autofill_player_years);
-function autofill_player_years(req, res) {
-    var regex = req.params.yearID + "%";
-    let sql = 'SELECT year_ID FROM pitching WHERE player_ID = "' + req.params.playerID + '" UNION SELECT year_ID FROM batting WHERE player_ID = "' + req.params.playerID + '" UNION SELECT year_ID FROM fielding WHERE player_ID = "' + req.params.playerID + '"';
-    // if (regex != "NULL%") {
-    //     sql += ' AND year_ID LIKE "' + regex + '"';
-    // }
     // res.send(sql);
     let query = db.query(sql, (err, results) => {
         if(err) throw err;
         console.log(results);
         res.send(results);
     });
+}
+
+app.get('/autofill_player_years/:playerID/:yearID', autofill_player_years);
+function autofill_player_years(req, res) {
+    var regex = req.params.yearID + "%";
+    // let sql = 'SELECT year_ID FROM pitching WHERE player_ID = "' + req.params.playerID + '" UNION SELECT year_ID FROM batting WHERE player_ID = "' + req.params.playerID + '" UNION SELECT year_ID FROM fielding WHERE player_ID = "' + req.params.playerID + '"';
+    // if (regex != "NULL%") {
+    //     sql += ' AND year_ID LIKE "' + regex + '"';
+    // }
+    let sql = 'TEST';
+    res.send(sql);
+    // let query = db.query(sql, (err, results) => {
+    //     if(err) throw err;
+    //     console.log(results);
+    //     res.send(results);
+    // });
 }
 
 app.get('/autofill_player_stint/:playerID/:yearID/:stint', autofill_player_years);
