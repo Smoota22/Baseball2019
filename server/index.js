@@ -105,12 +105,12 @@ function autofill_player_names(req, res) {
     // let sql = 'SELECT team_ID FROM real_team WHERE team_name = "' + req.params.teamName + '"';
     // let sql = 'SELECT team_name FROM real_team WHERE team_name = "sdas"';
     let sql = 'SELECT full_name, ID FROM player WHERE full_name LIKE "' + regex + '" GROUP BY full_name, ID';
-    // res.send(sql);
-    let query = db.query(sql, (err, results) => {
-        if(err) throw err;
-        console.log(results);
-        res.send(results);
-    });
+    res.send(sql);
+    // let query = db.query(sql, (err, results) => {
+    //     if(err) throw err;
+    //     console.log(results);
+    //     res.send(results);
+    // });
 }
 
 app.get('/autofill_player_years/:playerID/:yearID', autofill_player_years);
