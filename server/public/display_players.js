@@ -1,6 +1,7 @@
 const RESET_PLAYER_SUGGESTIONS = '<div id="player_suggestions"></div>';
 const RESET_YEAR_SUGGESTIONS = '<div id="year_suggestions"></div>';
 const RESET_STINT_SUGGESTIONS = '<div id="stint_suggestions"></div>';
+const RESET_TEAMID_SUGGESTIONS = '<div id="teamID_suggestions"></div>';
 const MAX_SUGGESTIONS = 10;
 const RESET_DISPLAY_PLAYER_TABLES = '<div id="display_player_tables" class="container"> <div class="jumbotron" id="display_player_season"></div><div> <table id="display_player_stats_general" class="table table-striped table-hover"> <tbody ng-repeat="e in data.events" id="display_player_stats_general_body"></tbody> </table> </div><div class="row"> <div class="col-md-4"> <table id="display_player_stats_pitching" class="table table-striped table-hover"> <tbody ng-repeat="e in data.events" id="display_player_stats_pitching_body"></tbody> </table> </div><div class="col-md-4"> <table id="display_player_stats_batting" class="table table-striped table-hover"> <tbody ng-repeat="e in data.events" id="display_player_stats_batting_body"></tbody> </table> </div><div class="col-md-4"> <table id="display_player_stats_fielding" class="table table-striped table-hover"> <tbody ng-repeat="e in data.events" id="display_player_stats_fielding_body"></tbody> </table> </div></div></div>';
 const RESET_HIDE_PLAYER_TABLES = '<div id="display_player_tables" class="container"></div>';
@@ -173,9 +174,7 @@ function autoset_player_teamID() {
         }
 
         var query_result_obj = JSON.parse(json);
-        alert("query parsed! " + query_result_obj.length);
         if (query_result_obj.length == 1) {
-            alert("locking in ID!");
             lock_in_player_teamID(query_result_obj[0].team_ID);
         }
     });
