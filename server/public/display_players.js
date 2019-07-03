@@ -218,6 +218,7 @@ function lock_in_player_teamID(locked_teamID) {
     reset_html_element("#teamID_suggestions", RESET_TEAMID_SUGGESTIONS);
     $("#search_player_teamID").val(locked_teamID);
     curr_teamID = locked_teamID;
+    alert("team_ID locked!")
     $("#search_player_leagueID").prop("disabled", false);
 }
 
