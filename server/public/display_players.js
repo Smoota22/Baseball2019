@@ -175,6 +175,7 @@ function autoset_player_teamID() {
         var query_result_obj = JSON.parse(json);
         if (query_result_obj.length == 1) {
             lock_in_player_teamID(query_result_obj[0].team_ID);
+            
         }
     });
 }
