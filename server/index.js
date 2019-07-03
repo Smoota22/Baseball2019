@@ -120,12 +120,12 @@ function autofill_player_years(req, res) {
     if (regex != "NULL%") {
         sql = 'SELECT year_ID FROM (' + sql + ') AS temp WHERE temp.year_ID LIKE "' + regex + '"';
     }
-    res.send(sql);
-    // let query = db.query(sql, (err, results) => {
-    //     if(err) throw err;
-    //     console.log(results);
-    //     res.send(results);
-    // });
+    // res.send(sql);
+    let query = db.query(sql, (err, results) => {
+        if(err) throw err;
+        console.log(results);
+        res.send(results);
+    });
 }
 
 app.get('/autofill_player_stint/:playerID/:yearID/:stint', autofill_player_stint);
