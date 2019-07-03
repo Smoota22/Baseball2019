@@ -65,7 +65,7 @@ function lock_in_full_name(locked_full_name, locked_player_ID) {
 function autofill_player_years() {
     var search_year = $("#search_player_year").val();
     if (search_year === "") {
-        search_year = "NULL"
+        search_year = "NULL";
     }
     var path = '/autofill_player_years/' + curr_player_id + '/' + search_year;
 
