@@ -12,8 +12,8 @@ const FIELDING_STAT_ATTRIBUTES_MYSQL = ["player_ID", "year_ID", "stint", "team_I
 var curr_player_id;
 var curr_player_name;
 var curr_year;
+var curr_stint;
 var curr_teamID;
-var curr_stint_id;
 var curr_league_id;
 
 
@@ -184,9 +184,9 @@ function autofill_player_teamID() {
     if (search_teamID === "") {
         search_teamID = "NULL"
     }
-    var path = '/autofill_player_teamID/' + curr_player_id + '/' + curr_year + '/' + search_teamID;
+    var path = '/autofill_player_teamID/' + curr_player_id + '/' + curr_year + '/' + curr_stint + '/' + search_teamID;
 
-    disable_inputs(2);
+    disable_inputs(1);
     reset_html_element("#display_player_tables", RESET_HIDE_PLAYER_TABLES);
 
     get(path)
