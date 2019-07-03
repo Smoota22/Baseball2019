@@ -150,7 +150,7 @@ function autofill_player_teamID(req, res) {
     if (req.params.teamName != "NULL") {
         sql += ' AND team_ID IN (SELECT team_ID FROM real_team WHERE team_name LIKE "' + regex + '")';
     }
-    sql = 'SELECT team_name FROM real_team WHERE team_ID IN (' + sql + ') AND year_ID = ' + req.params.year_ID;
+    sql = 'SELECT team_name FROM real_team WHERE team_ID IN (' + sql + ') AND year_ID = ' + req.params.yearID;
     res.send(sql);
     // let query = db.query(sql, (err, results) => {
     //     if(err) throw err;
