@@ -164,7 +164,7 @@ function lock_in_player_stint(locked_stint) {
 }
 
 function autoset_player_teamID() {
-    var path = '/autofill_player_teamID/' + curr_player_id + '/' + curr_year + '/NULL';
+    var path = '/autofill_player_teamID/' + curr_player_id + '/' + curr_year + '/' + curr_stint + '/NULL';
 
     get(path)
     .then(function(json) {
@@ -396,4 +396,5 @@ $(document).ready(function () {
     // $("#search_player_year").bind("keyup mouseenter", autofill_years); //for keyup AND mouse enter/hover
     $("#search_player_year").bind("keyup click", autofill_player_years);
     $("#search_player_stint").bind("keyup click", autofill_player_stint);
+    $("#search_player_teamID").bind("keyup click", autofill_player_teamID);
 });
