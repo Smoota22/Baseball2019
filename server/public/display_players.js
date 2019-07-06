@@ -176,7 +176,7 @@ function autoset_player_teamID() {
 
         var query_result_obj = JSON.parse(json);
         if (query_result_obj.length == 1) {
-            lock_in_player_teamID(query_result_obj[0].team_ID);
+            lock_in_player_teamID(query_result_obj[0].team_name, query_result_obj[0].team_ID);
         }
     });
 }
@@ -213,7 +213,7 @@ function autofill_player_teamID() {
             var team_name_id = itr_teamName + "*" + itr_teamID;
             team_name_id = team_name_id.replace(/ /g, "_");
 
-            var str = "<div class='teamID_item' id=" + team_name_id + "><p>" + itr_teamID + "</p></div>";
+            var str = "<div class='teamID_item' id=" + team_name_id + "><p>" + itr_teamName + "</p></div>";
             var html = $.parseHTML(str);
             $teamID_suggestions.append(html);
         }
