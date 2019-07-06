@@ -166,12 +166,12 @@ function autofill_player_leagueID(req, res) {
     if (req.params.leagueID != "NULL") {
         sql = 'SELECT league_ID FROM (' + sql + ') AS temp WHERE temp.league_ID LIKE "' + regex + '"';
     }
-    res.send(sql);
-    // let query = db.query(sql, (err, results) => {
-    //     if(err) throw err;
-    //     console.log(results);
-    //     res.send(results);
-    // });
+    // res.send(sql);
+    let query = db.query(sql, (err, results) => {
+        if(err) throw err;
+        console.log(results);
+        res.send(results);
+    });
 }
 
 app.get('/ranking/:attribute/:direction', ranking);
