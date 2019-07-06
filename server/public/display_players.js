@@ -202,19 +202,6 @@ function autofill_player_teamID() {
 
         var num_suggestions = Math.min(query_result_obj.length, MAX_SUGGESTIONS);
         for (i = 0; i < num_suggestions; i++) {
-
-            if (query_result_obj[i].full_name.toLowerCase() === $("#search_player").val().toLowerCase()) {
-                lock_in_full_name(query_result_obj[i].full_name, query_result_obj[i].ID);
-                return;
-            }
-
-            var full_name_id = query_result_obj[i].full_name + "*" + query_result_obj[i].ID;
-            full_name_id = full_name_id.replace(/ /g, "_");
-
-            var str = "<div class='full_name_item' id=" + full_name_id + "><p>" + query_result_obj[i].full_name + "</p></div>";
-            var html = $.parseHTML(str);
-            $player_suggestions.append(html);
-            /////////////////////////////////////////////////
             var itr_teamID = query_result_obj[i].team_ID;
             var itr_teamName = query_result_obj[i].team_name;
 
