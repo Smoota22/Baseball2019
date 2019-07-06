@@ -251,7 +251,7 @@ function autofill_player_leagueID() {
     }
     var path = '/autofill_player_leagueID/' + curr_player_id + '/' + curr_year + '/' + curr_stint + '/' + curr_teamID + '/' + search_leagueID;
 
-    disable_inputs(1);
+    disable_inputs(0);
     reset_html_element("#display_player_tables", RESET_HIDE_PLAYER_TABLES);
 
     get(path)
@@ -443,6 +443,15 @@ $(document).ready(function () {
         lock_in_player_teamID(team_name, team_ID);
     });
 
+    $(document).on("click", ".leagueID_item", function(event) {
+        var leagueID = event.target.parentNode.id;
+        if (leagueID === "stint_suggestions") {
+            leagueID = event.target.id;
+        }
+
+        lock_in_player_leagueID(leagueID);
+    });
+
     $(document).on("click", ".stat_item", function(event) {
         var ranking_attribute_both = event.target.parentNode.id;
         var param_arr = ranking_attribute_both.split("*");
@@ -475,4 +484,5 @@ $(document).ready(function () {
     $("#search_player_year").bind("keyup click", autofill_player_years);
     $("#search_player_stint").bind("keyup click", autofill_player_stint);
     $("#search_player_teamID").bind("keyup click", autofill_player_teamID);
+    $("#search_player_leagueID").bind("keyup click", autofill_player_leagueID);
 });
