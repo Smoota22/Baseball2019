@@ -249,7 +249,7 @@ function autofill_player_leagueID() {
     if (search_leagueID === "") {
         search_leagueID = "NULL"
     }
-    var path = '/autofill_player_leagueID/' + curr_player_id + '/' + curr_year + '/' + curr_stint + '/' + curr_teamID + '/' search_leagueID;
+    var path = '/autofill_player_leagueID/' + curr_player_id + '/' + curr_year + '/' + curr_stint + '/' + curr_teamID + '/' + search_leagueID;
 
     disable_inputs(1);
     reset_html_element("#display_player_tables", RESET_HIDE_PLAYER_TABLES);
