@@ -228,81 +228,77 @@ function lock_in_player_teamID(locked_team_name, locked_teamID) {
     $("#search_player_leagueID").prop("disabled", false);
 }
 
-// function autoset_player_teamID() {
-//     var path = '/autofill_player_teamID/' + curr_player_id + '/' + curr_year + '/' + curr_stint + '/NULL';
-//
-//     get(path)
-//     .then(function(json) {
-//         if (json === undefined) {
-//             return;
-//         }
-//
-//         var query_result_obj = JSON.parse(json);
-//         if (query_result_obj.length == 1) {
-//             lock_in_player_teamID(query_result_obj[0].team_name, query_result_obj[0].team_ID);
-//         }
-//     });
-// }
+function autoset_player_teamID() {
+    var path = '/autofill_player_leagueID/' + curr_player_id + '/' + curr_year + '/' + curr_stint + '/' + curr_teamID + '/NULL';
 
-// function autofill_player_leagueID() {
-//     var search_teamID = $("#search_player_teamID").val();
-//     if (search_teamID === "") {
-//         search_teamID = "NULL"
-//     }
-//     var path = '/autofill_player_teamID/' + curr_player_id + '/' + curr_year + '/' + curr_stint + '/' + search_teamID;
-//
-//     disable_inputs(1);
-//     reset_html_element("#display_player_tables", RESET_HIDE_PLAYER_TABLES);
-//
-//     get(path)
-//     .then(function(json) {
-//         if (json === undefined) {
-//             reset_html_element("#teamID_suggestions", RESET_TEAMID_SUGGESTIONS);
-//             return;
-//         }
-//         var query_result_obj = JSON.parse(json);
-//         var $teamID_suggestions = reset_html_element("#teamID_suggestions", RESET_TEAMID_SUGGESTIONS);
-//
-//         var num_suggestions = Math.min(query_result_obj.length, MAX_SUGGESTIONS);
-//         for (i = 0; i < num_suggestions; i++) {
-//             var itr_teamID = query_result_obj[i].team_ID;
-//             var itr_teamName = query_result_obj[i].team_name;
-//
-//             if (itr_teamID == $("#search_player_teamID").val()) {
-//                 lock_in_player_teamID(itr_teamName,itr_teamID);
-//                 return;
-//             }
-//
-//             var team_name_id = itr_teamName + "*" + itr_teamID;
-//             team_name_id = team_name_id.replace(/ /g, "_");
-//
-//             var str = "<div class='teamID_item' id=" + team_name_id + "><p>" + itr_teamName + "</p></div>";
-//             var html = $.parseHTML(str);
-//             $teamID_suggestions.append(html);
-//         }
-//     });
-// }
-//
-// function lock_in_player_teamID(locked_team_name, locked_teamID) {
-//     reset_html_element("#teamID_suggestions", RESET_TEAMID_SUGGESTIONS);
-//     $("#search_player_teamID").val(locked_team_name);
-//     curr_teamID = locked_teamID;
-//     curr_team_name = locked_team_name;
-//     $("#search_player_leagueID").prop("disabled", false);
-// }
-
-function lock_in_season(player_id, team_year) {
-    var path = '/load_team_data/' + player_id + '/' + team_year;
     get(path)
     .then(function(json) {
         if (json === undefined) {
-            alert("ERROR THIS SHOULD NOT HAPPEN!!!");
+            return;
+        }
+
+        var query_result_obj = JSON.parse(json);
+        if (query_result_obj.length == 1) {
+            lock_in_player_leagueID(query_result_obj[0].league_ID);
+        }
+    });
+}
+
+function autofill_player_leagueID() {
+    var search_leagueID = $("#search_player_leagueID").val();
+    if (search_leagueID === "") {
+        search_leagueID = "NULL"
+    }
+    var path = '/autofill_player_leagueID/' + curr_player_id + '/' + curr_year + '/' + curr_stint + '/' + curr_teamID + '/' search_leagueID;
+
+    disable_inputs(1);
+    reset_html_element("#display_player_tables", RESET_HIDE_PLAYER_TABLES);
+
+    get(path)
+    .then(function(json) {
+        if (json === undefined) {
+            reset_html_element("#leagueID_suggestions", RESET_LEAGUEID_SUGGESTIONS);
             return;
         }
         var query_result_obj = JSON.parse(json);
-        // alert(query_result_obj[0]["games"]);
-        display_stats(query_result_obj[0]);
+        var $leagueID_suggestions = reset_html_element("#leagueID_suggestions", RESET_LEAGUEID_SUGGESTIONS);
+
+        var num_suggestions = Math.min(query_result_obj.length, MAX_SUGGESTIONS);
+        for (i = 0; i < num_suggestions; i++) {
+            var itr_leagueID = query_result_obj[i].league_ID;
+
+            if (itr_leagueID == $("#search_player_leagueID").val()) {
+                lock_in_player_leagueID(itr_leagueID);
+                return;
+            }
+
+            var str = "<div class='leagueID_item' id=" + itr_leagueID + "><p>" + itr_leagueID + "</p></div>";
+            var html = $.parseHTML(str);
+            $leagueID_suggestions.append(html);
+        }
     });
+}
+
+function lock_in_player_leagueID(locked_leagueID) {
+    reset_html_element("#leagueID_suggestions", RESET_LEAGUEID_SUGGESTIONS);
+    $("#search_player_leagueID").val(locked_leagueID);
+    curr_leagueID = locked_leagueID;
+    lock_in_season();
+}
+
+function lock_in_season() {
+    alert("locking in season!");
+//     var path = '/load_team_data/' + player_id + '/' + team_year;
+//     get(path)
+//     .then(function(json) {
+//         if (json === undefined) {
+//             alert("ERROR THIS SHOULD NOT HAPPEN!!!");
+//             return;
+//         }
+//         var query_result_obj = JSON.parse(json);
+//         // alert(query_result_obj[0]["games"]);
+//         display_stats(query_result_obj[0]);
+//     });
 }
 
 function disable_inputs(num) {

@@ -159,6 +159,21 @@ function autofill_player_teamID(req, res) {
     });
 }
 
+app.get('/autofill_player_leagueID/:playerID/:yearID/:stint/:teamID/:leagueID', autofill_player_leagueID);
+function autofill_player_leagueID(req, res) {
+    var regex = req.params.leagueID + "%";
+    let sql = 'SELECT league_ID FROM (SELECT team_ID,league_ID FROM (SELECT team_ID,stint,league_ID FROM (SELECT team_ID,stint,year_ID,league_ID FROM pitching WHERE player_ID = "' + req.params.playerID + '" UNION SELECT team_ID,stint,year_ID,league_ID FROM batting WHERE player_ID = "' + req.params.playerID + '" UNION SELECT team_ID,stint,year_ID,league_ID FROM fielding WHERE player_ID = "' + req.params.playerID + '") AS temp1 WHERE temp1.year_ID = ' + req.params.yearID + ') AS temp2 WHERE temp2.stint = ' + req.params.stint + ') AS temp3 WHERE temp3.team_ID = "' + req.params.team_ID + '"';
+    if (req.params.leagueID != "NULL") {
+        sql = 'SELECT league_ID FROM (' + sql + ') AS temp WHERE temp.league_ID LIKE "' + regex + '"';
+    }
+    res.send(sql);
+    // let query = db.query(sql, (err, results) => {
+    //     if(err) throw err;
+    //     console.log(results);
+    //     res.send(results);
+    // });
+}
+
 app.get('/ranking/:attribute/:direction', ranking);
 function ranking(req, res) {
     let sql = 'SELECT ' + req.params.attribute + ',team_ID,year_ID,team_name FROM real_team ORDER BY ' + req.params.attribute;
