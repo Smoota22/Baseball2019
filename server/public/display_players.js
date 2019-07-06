@@ -226,6 +226,7 @@ function lock_in_player_teamID(locked_team_name, locked_teamID) {
     curr_teamID = locked_teamID;
     curr_team_name = locked_team_name;
     $("#search_player_leagueID").prop("disabled", false);
+    autoset_player_leagueID();
 }
 
 function autoset_player_leagueID() {
