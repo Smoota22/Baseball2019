@@ -314,12 +314,14 @@ function call_load_player_stats(table) {
             alert("ERROR THIS SHOULD NOT HAPPEN!!!");
             return -1;
         }
-        return JSON.parse(json);
+
+        var curr = JSON.parse(json);
+        alert(curr);
+        alert(curr[0]);
+        alert(curr[0].player_ID);
     });
 
-    alert(curr);
-    alert(curr[0]);
-    alert(curr[0].player_ID);
+
     return curr;
 }
 
