@@ -308,7 +308,7 @@ function lock_in_season() {
 
 function call_load_player_stats(table) {
     var path = '/load_player_stats/' + table + '/' + curr_player_id + '/' + curr_year + '/' + curr_stint + '/' + curr_teamID + '/' + curr_leagueID;
-    return get(path)
+    var curr = get(path)
     .then(function(json) {
         if (json === undefined) {
             alert("ERROR THIS SHOULD NOT HAPPEN!!!");
@@ -316,6 +316,11 @@ function call_load_player_stats(table) {
         }
         return JSON.parse(json);
     });
+
+    alert(curr);
+    alert(curr[0]);
+    alert(curr[0].player_ID);
+    return curr;
 }
 
 function disable_inputs(num) {
@@ -360,12 +365,11 @@ function reconcile_tables(pitching_length, batting_length, fielding_length) {
     num_tables += batting_length;
     multipliers[2] = fielding_length;
     num_tables += fielding_length;
-    alert(multipliers[0]);
 
-    // for (i = 0; i < multipliers.length; i++) {
-    //     sizes[i] = (sum_num / num_tables) * multipliers[i];
-    //     alert(i + ", " + sizes[i] + ", " + multipliers[0]);
-    // }
+    for (i = 0; i < multipliers.length; i++) {
+        sizes[i] = (sum_num / num_tables) * multipliers[i];
+        alert(i + ", " + sizes[i] + ", " + multipliers[0]);
+    }
 
 }
 
