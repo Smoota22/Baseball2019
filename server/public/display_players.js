@@ -289,7 +289,7 @@ function lock_in_player_leagueID(locked_leagueID) {
 }
 
 function lock_in_season() {
-    var player;
+    let player;
 
     var path = '/load_player_general_data/' + curr_player_id;
     get(path)
