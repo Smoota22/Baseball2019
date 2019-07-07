@@ -437,6 +437,10 @@ function generate_table_row(item_attribute, item_stat) {
         item_stat = "Left";
     }
 
+    if (item_attribute === "birthday") {
+        item_stat = item_stat.getDate();
+    }
+
     var item_verbose = mysql_dict[item_attribute];
 
     var str = "<tr class=\"stat_item\" id=\"" + item_attribute + "*" + item_verbose + "\">";
