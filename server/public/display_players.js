@@ -320,7 +320,7 @@ async function call_load_player_stats(table) {
     });
 
     alert(curr[0].player_ID);
-    return curr[0];
+    return curr[0].player_ID;
 }
 
 function disable_inputs(num) {
