@@ -289,18 +289,35 @@ function lock_in_player_leagueID(locked_leagueID) {
 }
 
 function lock_in_season() {
-    alert("locking in season!");
-//     var path = '/load_team_data/' + player_id + '/' + team_year;
-//     get(path)
-//     .then(function(json) {
-//         if (json === undefined) {
-//             alert("ERROR THIS SHOULD NOT HAPPEN!!!");
-//             return;
-//         }
-//         var query_result_obj = JSON.parse(json);
-//         // alert(query_result_obj[0]["games"]);
-//         display_stats(query_result_obj[0]);
-//     });
+    var player;
+
+    var path = '/load_player_general_data/' + curr_player_id;
+    get(path)
+    .then(function(json) {
+        if (json === undefined) {
+            alert("ERROR THIS SHOULD NOT HAPPEN!!!");
+            return;
+        }
+        player = JSON.parse(json);
+    });
+
+    var pitching = call_load_player_stats('pitching');
+    var batting = call_load_player_stats('batting');
+    var fielding = call_load_player_stats('fielding');
+
+    display_stats(player, pitching, batting, fielding);
+}
+
+function call_load_player_stats(table) {
+    var path = '/load_player_stats/' + table + '/' + curr_player_id + '/' + curr_year + '/' + curr_stint + '/' + curr_teamID + '/' + curr_leagueID;
+    get(path)
+    .then(function(json) {
+        if (json === undefined) {
+            alert("ERROR THIS SHOULD NOT HAPPEN!!!");
+            return -1;
+        }
+        return JSON.parse(json);
+    });
 }
 
 function disable_inputs(num) {
@@ -333,45 +350,88 @@ function disable_inputs(num) {
     $("#search_player_year").prop("disabled", true);
 }
 
-function display_stats(season) {
+function reconcile_tables(pitching_length, batting_length. fielding_length) {
+    var sum_num = 12;
+    var num_tables = 0;
+    var multipliers = [0, 0, 0];
+    var sizes = [0, 0, 0];
+
+    multipliers[0] = pitching_length;
+    num_tables += pitching_length;
+    multipliers[1] = batting_length;
+    num_tables += batting_length;
+    multipliers[2] = fielding_length;
+    num_tables += fielding_length;
+
+    for (i = 0; i < multipliers.length; i++) {
+        sizes[i] = (sum_num / num_tables) * multipliers[i];
+        alert(i + ", " + sizes[i]);
+    }
+
+}
+
+function display_stats(player, pitching, batting, fielding) {
+    var curr_player = player[0];
+
     //Reset table
-    var $display_player_tables = reset_html_element("#display_player_tables", RESET_display_player_tables);
+    var $display_player_tables = reset_html_element("#display_player_tables", RESET_DISPLAY_PLAYER_TABLES);
 
     //Display Team name and Season
     var $display_player_season = $("#display_player_season");
-    var player_season = "<div><h1>" + season.full_name + "'s " + season.year_ID + " Season Statistics </h1></div>";
+    var player_season = "<div><h1>" + player.full_name + "'s " + pitching.year_ID + " Season Statistics </h1></div>";
     $display_player_season.append($.parseHTML(player_season));
 
     //Display General Statistics
-    var $display_team_stats_general_body = $("#display_team_stats_general_body");
-    for (i = TEAM_STAT_GENERAL_START_INDEX; i < TEAM_STAT_OFFENSE_START_INDEX; i++) {
-        var row = generate_table_row(TEAM_STAT_ATTRIBUTES_MYSQL[i], season[TEAM_STAT_ATTRIBUTES_MYSQL[i]]);
-        var html = $.parseHTML(row);
-        $display_team_stats_general_body.append(html);
+    var $display_player_stats_general_body = $("#display_player_stats_general_body");
+    for (i = 0; i < PLAYER_STAT_ATTRIBUTES_MYSQL.length; i++) {
+        var curr_attr = PLAYER_STAT_ATTRIBUTES_MYSQL[i];
+        var row = generate_table_row(curr_attr, player[curr_attr]);
+        $display_player_stats_general_body.append($.parseHTML(row));
     }
 
-    //Display Offense Statistics
-    var $display_team_stats_offense_body = $("#display_team_stats_offense_body");
-    for (i = TEAM_STAT_OFFENSE_START_INDEX; i < TEAM_STAT_DEFENSE_START_INDEX; i++) {
-        var row = generate_table_row(TEAM_STAT_ATTRIBUTES_MYSQL[i], season[TEAM_STAT_ATTRIBUTES_MYSQL[i]]);
-        var html = $.parseHTML(row);
-        $display_team_stats_offense_body.append(html);
+    //Decide which tables are needed
+    reconcile_tables(pitching.length, batting.length, batting.length);
+
+    //Display Pitching Statistics
+    if (pitching.length === 1) {
+        var curr_pitching = pitching[0];
+        var $display_player_stats_pitching_body = $("#display_player_stats_pitching_body");
+        for (i = 0; i < PITCHING_STAT_ATTRIBUTES_MYSQL.length; i++) {
+            var curr_attr = PITCHING_STAT_ATTRIBUTES_MYSQL[i];
+            var row = generate_table_row(curr_attr, player[curr_attr]);
+            $display_player_stats_pitching_body.append($.parseHTML(row));
+        }
     }
 
-    //Display Defense Statistics
-    var $display_team_stats_defense_body = $("#display_team_stats_defense_body");
-    for (i = TEAM_STAT_DEFENSE_START_INDEX; i < TEAM_STAT_ATTRIBUTES_MYSQL.length; i++) {
-        var row = generate_table_row(TEAM_STAT_ATTRIBUTES_MYSQL[i], season[TEAM_STAT_ATTRIBUTES_MYSQL[i]]);
-        var html = $.parseHTML(row);
-        $display_team_stats_defense_body.append(html);
+    //Display Batting Statistics
+    if (batting.length === 1) {
+        var curr_batting = batting[0];
+        var $display_player_stats_batting_body = $("#display_player_stats_batting_body");
+        for (i = 0; i < BATTING_STAT_ATTRIBUTES_MYSQL.length; i++) {
+            var curr_attr = BATTING_STAT_ATTRIBUTES_MYSQL[i];
+            var row = generate_table_row(curr_attr, player[curr_attr]);
+            $display_player_stats_batting_body.append($.parseHTML(row));
+        }
     }
+
+    //Display Fielding Statistics
+    if (fielding.length === 1) {
+        var curr_fielding = fielding[0];
+        var $display_player_stats_fielding_body = $("#display_player_stats_fielding_body");
+        for (i = 0; i < FIELDING_STAT_ATTRIBUTES_MYSQL.length; i++) {
+            var curr_attr = FIELDING_STAT_ATTRIBUTES_MYSQL[i];
+            var row = generate_table_row(curr_attr, player[curr_attr]);
+            $display_player_stats_fielding_body.append($.parseHTML(row));
+        }
+    }
+
 }
 
 function generate_table_row(item_attribute, item_stat) {
-    if (item_stat === -1) {
+    if (item_stat === -1 || item_stat === NULL || item_stat === "1000-01-01") {
         item_stat = "N/A";
     }
-    item_verbose = sql_dict[item_attribute];
+    var item_verbose = mysql_dict[item_attribute];
 
     var str = "<tr class=\"stat_item\" id=\"" + item_attribute + "*" + item_verbose + "\">";
     str += "<td>" + item_verbose + "</td>";
@@ -381,7 +441,7 @@ function generate_table_row(item_attribute, item_stat) {
 }
 
 $(document).ready(function () {
-    // sql_dict = localStorage.getItem("sql_dict");
+    // mysql_dict = localStorage.getItem("mysql_dict");
     // sql_ranking_dict = localStorage.getItem("sql_ranking_dict");
     curr_player_id = localStorage.getItem("curr_player_id");
     curr_year = localStorage.getItem("curr_year");

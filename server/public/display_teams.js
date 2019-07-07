@@ -147,10 +147,10 @@ function display_stats(season) {
 }
 
 function generate_table_row(item_attribute, item_stat) {
-    if (item_stat === -1) {
+    if (item_stat === -1 || item_stat === NULL) {
         item_stat = "N/A";
     }
-    item_verbose = mysql_dict[item_attribute];
+    var item_verbose = mysql_dict[item_attribute];
 
     var str = "<tr class=\"stat_item\" id=\"" + item_attribute + "*" + item_verbose + "\">";
     str += "<td>" + item_verbose + "</td>";
