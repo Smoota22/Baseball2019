@@ -439,7 +439,8 @@ function generate_table_row(item_attribute, item_stat) {
 
     if (item_attribute === "birthday") {
         var arr = item_stat.split("T");
-        item_stat = arr[0];
+        var date = arr[0].split("-");
+        item_stat = date[1] + "-" + date[2] + "-" + date[0];
         alert(item_stat);
     }
 
