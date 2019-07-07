@@ -48,7 +48,16 @@ const mysql_dict = {
 "putouts": "Putouts",
 "assists": "Assists",
 "catcher_stolen": "Stolen Bases (Catcher)",
-"catcher_caught": "Caught Stealing (Catcher)"
+"catcher_caught": "Caught Stealing (Catcher)",
+"ID": "Player ID",
+"first_name": "First Name",
+"last_name": "Last Name",
+"full_name": "Full Name",
+"birthday": "Birthdate",
+"weight": "Weight (lbs)",
+"height": "Height (in)",
+"bats": "Batting Hand",
+"throws": "Throwing Hand"
 };
 
 //  0: don't rank
@@ -88,6 +97,18 @@ const teams_mysql_ranking_dict = {
     "park": 0,
     "attendance_total": -1
 };
+
+const player_mysql_ranking_dict = {
+"ID": 0,
+"first_name": 0,
+"last_name": 0,
+"full_name": 0,
+"birthday": 1,
+"weight": -1,
+"height": -1,
+"bats": 0,
+"throws": 0
+}
 
 const pitching_mysql_ranking_dict = {
 "player_ID": 0,
