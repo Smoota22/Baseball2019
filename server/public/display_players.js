@@ -288,16 +288,16 @@ function lock_in_player_leagueID(locked_leagueID) {
     lock_in_season();
 }
 
-function lock_in_season() {
-    // var path = '/load_player_general_data/' + curr_player_id;
-    // var player = await get(path)
-    // .then(function(json) {
-    //     if (json === undefined) {
-    //         alert("ERROR THIS SHOULD NOT HAPPEN!!!");
-    //         return;
-    //     }
-    //     return JSON.parse(json);
-    // });
+async function lock_in_season() {
+    var path = '/load_player_general_data/' + curr_player_id;
+    var player = await get(path)
+    .then(function(json) {
+        if (json === undefined) {
+            alert("ERROR THIS SHOULD NOT HAPPEN!!!");
+            return;
+        }
+        return JSON.parse(json);
+    });
 
     var pitching = call_load_player_stats('pitching');
     alert("outside, " + pitching[0].player_ID);
@@ -309,7 +309,7 @@ function lock_in_season() {
 
 async function call_load_player_stats(table) {
     var path = '/load_player_stats/' + table + '/' + curr_player_id + '/' + curr_year + '/' + curr_stint + '/' + curr_teamID + '/' + curr_leagueID;
-    return await get(path)
+    var curr = await get(path)
     .then(function(json) {
         if (json === undefined) {
             alert("ERROR THIS SHOULD NOT HAPPEN!!!");
@@ -318,6 +318,9 @@ async function call_load_player_stats(table) {
 
         return JSON.parse(json);
     });
+
+    alert(curr[0].player_ID);
+    return curr[0];
 }
 
 function disable_inputs(num) {
