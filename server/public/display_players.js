@@ -300,16 +300,15 @@ async function lock_in_season() {
     });
 
     var pitching = await call_load_player_stats('pitching');
-    alert("outside, " + pitching[0].player_ID);
     var batting = await call_load_player_stats('batting');
     var fielding = await call_load_player_stats('fielding');
 
     display_stats(player, pitching, batting, fielding);
 }
 
-async function call_load_player_stats(table) {
+function call_load_player_stats(table) {
     var path = '/load_player_stats/' + table + '/' + curr_player_id + '/' + curr_year + '/' + curr_stint + '/' + curr_teamID + '/' + curr_leagueID;
-    return await get(path)
+    return get(path)
     .then(function(json) {
         if (json === undefined) {
             alert("ERROR THIS SHOULD NOT HAPPEN!!!");
