@@ -397,7 +397,7 @@ function display_stats(player, pitching, batting, fielding) {
         var $display_player_stats_pitching_body = $("#display_player_stats_pitching_body");
         for (i = 0; i < PITCHING_STAT_ATTRIBUTES_MYSQL.length; i++) {
             var curr_attr = PITCHING_STAT_ATTRIBUTES_MYSQL[i];
-            var row = generate_table_row(curr_attr, player[curr_attr]);
+            var row = generate_table_row(curr_attr, curr_pitching[curr_attr]);
             $display_player_stats_pitching_body.append($.parseHTML(row));
         }
     }
@@ -408,7 +408,7 @@ function display_stats(player, pitching, batting, fielding) {
         var $display_player_stats_batting_body = $("#display_player_stats_batting_body");
         for (i = 0; i < BATTING_STAT_ATTRIBUTES_MYSQL.length; i++) {
             var curr_attr = BATTING_STAT_ATTRIBUTES_MYSQL[i];
-            var row = generate_table_row(curr_attr, player[curr_attr]);
+            var row = generate_table_row(curr_attr, curr_batting[curr_attr]);
             $display_player_stats_batting_body.append($.parseHTML(row));
         }
     }
@@ -419,7 +419,7 @@ function display_stats(player, pitching, batting, fielding) {
         var $display_player_stats_fielding_body = $("#display_player_stats_fielding_body");
         for (i = 0; i < FIELDING_STAT_ATTRIBUTES_MYSQL.length; i++) {
             var curr_attr = FIELDING_STAT_ATTRIBUTES_MYSQL[i];
-            var row = generate_table_row(curr_attr, player[curr_attr]);
+            var row = generate_table_row(curr_attr, curr_fielding[curr_attr]);
             $display_player_stats_fielding_body.append($.parseHTML(row));
         }
     }
