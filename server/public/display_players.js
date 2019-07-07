@@ -438,7 +438,8 @@ function generate_table_row(item_attribute, item_stat) {
     }
 
     if (item_attribute === "birthday") {
-        alert(typeof item_stat);
+        var arr = item_stat.split("T");
+        item_stat = arr[0];
         alert(item_stat);
     }
 
