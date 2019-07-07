@@ -7,9 +7,9 @@ const MAX_SUGGESTIONS = 10;
 const RESET_DISPLAY_PLAYER_TABLES = '<div id="display_player_tables" class="container"> <div class="jumbotron" id="display_player_season"></div><div> <table id="display_player_stats_general" class="table table-striped table-hover"> <tbody ng-repeat="e in data.events" id="display_player_stats_general_body"></tbody> </table> </div><div class="row"> <div id="pitching_table_div"> <table id="display_player_stats_pitching" class="table table-striped table-hover"> <tbody ng-repeat="e in data.events" id="display_player_stats_pitching_body"></tbody> </table> </div><div id="batting_table_div"> <table id="display_player_stats_batting" class="table table-striped table-hover"> <tbody ng-repeat="e in data.events" id="display_player_stats_batting_body"></tbody> </table> </div><div id="fielding_table_div"> <table id="display_player_stats_fielding" class="table table-striped table-hover"> <tbody ng-repeat="e in data.events" id="display_player_stats_fielding_body"></tbody> </table> </div></div></div>';
 const RESET_HIDE_PLAYER_TABLES = '<div id="display_player_tables" class="container"></div>';
 const PLAYER_STAT_ATTRIBUTES_MYSQL = ["ID", "first_name", "last_name", "birthday", "weight", "height", "bats", "throws"];
-const PITCHING_STAT_ATTRIBUTES_MYSQL = ["player_ID", "year_ID", "stint", "team_ID", "league_ID", "wins", "losses", "games", "games_started", "complete_games", "shutouts", "saves", "total_outs", "hits", "earned_runs", "homeruns", "walks", "strikeouts", "opp_ba", "earned_run_avg", "intentional_walks", "runs_allowed", "batters_hit", "balks"];
-const BATTING_STAT_ATTRIBUTES_MYSQL = ["player_ID", "year_ID", "stint", "team_ID", "league_ID", "games", "at_bats", "runs", "hits", "doubles", "triples", "homeruns", "rbis", "stolen_bases", "caught_stealing", "strikeouts", "intentional_walks", "hit_by_pitch"];
-const FIELDING_STAT_ATTRIBUTES_MYSQL = ["player_ID", "year_ID", "stint", "team_ID", "league_ID", "position", "games", "games_started", "putouts", "assists", "errors", "double_plays", "catcher_stolen", "catcher_caught"];
+const PITCHING_STAT_ATTRIBUTES_MYSQL = ["wins", "losses", "games", "games_started", "complete_games", "shutouts", "saves", "total_outs", "hits", "earned_runs", "homeruns", "walks", "strikeouts", "opp_ba", "earned_run_avg", "intentional_walks", "runs_allowed", "batters_hit", "balks"];
+const BATTING_STAT_ATTRIBUTES_MYSQL = ["games", "at_bats", "runs", "hits", "doubles", "triples", "homeruns", "rbis", "stolen_bases", "caught_stealing", "strikeouts", "intentional_walks", "hit_by_pitch"];
+const FIELDING_STAT_ATTRIBUTES_MYSQL = ["position", "games", "games_started", "putouts", "assists", "errors", "double_plays", "catcher_stolen", "catcher_caught"];
 
 var curr_player_id;
 var curr_player_name;
@@ -17,7 +17,7 @@ var curr_year;
 var curr_stint;
 var curr_teamID;
 var curr_team_name;
-var curr_league_id;
+var curr_leagueID;
 
 
 function autofill_player_names() {
@@ -377,7 +377,7 @@ function display_stats(player, pitching, batting, fielding) {
 
     //Display Team name and Season
     var $display_player_season = $("#display_player_season");
-    var player_season = "<div><h1>" + curr_player.full_name + "'s " + curr_year + " Season Statistics </h1></div>";
+    var player_season = "<div><h1>" + curr_player_name + "'s " + curr_year + " Season Statistics With The " + curr_team_name + "</h1><p>Stint: " + curr_stint + "</p><p>League: " + curr_leagueID + "</p></div>";
     $display_player_season.append($.parseHTML(player_season));
 
     //Display General Statistics
