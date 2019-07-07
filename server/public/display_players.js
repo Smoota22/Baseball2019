@@ -298,8 +298,7 @@ function lock_in_season() {
             alert("ERROR THIS SHOULD NOT HAPPEN!!!");
             return;
         }
-        player = JSON.parse(json);
-        alert(player[0]);
+        return JSON.parse(json);
     });
 
     var pitching = call_load_player_stats('pitching');
