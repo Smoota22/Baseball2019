@@ -288,9 +288,9 @@ function lock_in_player_leagueID(locked_leagueID) {
     lock_in_season();
 }
 
-function lock_in_season() {
+async function lock_in_season() {
     var path = '/load_player_general_data/' + curr_player_id;
-    var player = get(path)
+    var player = await get(path)
     .then(function(json) {
         if (json === undefined) {
             alert("ERROR THIS SHOULD NOT HAPPEN!!!");
@@ -317,11 +317,6 @@ async function call_load_player_stats(table) {
 
         return JSON.parse(json);
     });
-
-    alert(curr);
-    alert(curr[0]);
-    alert(curr[0].player_ID);
-
 
     return curr;
 }
