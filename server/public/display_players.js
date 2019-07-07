@@ -379,14 +379,14 @@ function display_stats(player, pitching, batting, fielding) {
 
     //Display Team name and Season
     var $display_player_season = $("#display_player_season");
-    var player_season = "<div><h1>" + player.full_name + "'s " + pitching.year_ID + " Season Statistics </h1></div>";
+    var player_season = "<div><h1>" + curr_player.full_name + "'s " + curr_year + " Season Statistics </h1></div>";
     $display_player_season.append($.parseHTML(player_season));
 
     //Display General Statistics
     var $display_player_stats_general_body = $("#display_player_stats_general_body");
     for (i = 0; i < PLAYER_STAT_ATTRIBUTES_MYSQL.length; i++) {
         var curr_attr = PLAYER_STAT_ATTRIBUTES_MYSQL[i];
-        var row = generate_table_row(curr_attr, player[curr_attr]);
+        var row = generate_table_row(curr_attr, curr_player[curr_attr]);
         $display_player_stats_general_body.append($.parseHTML(row));
     }
 
