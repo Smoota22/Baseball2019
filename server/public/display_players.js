@@ -4,7 +4,7 @@ const RESET_STINT_SUGGESTIONS = '<div id="stint_suggestions"></div>';
 const RESET_TEAMID_SUGGESTIONS = '<div id="teamID_suggestions"></div>';
 const RESET_LEAGUEID_SUGGESTIONS = '<div id="leagueID_suggestions"></div>';
 const MAX_SUGGESTIONS = 10;
-const RESET_DISPLAY_PLAYER_TABLES = '<div id="display_player_tables" class="container"> <div class="jumbotron" id="display_player_season"></div><div> <table id="display_player_stats_general" class="table table-striped table-hover"> <tbody ng-repeat="e in data.events" id="display_player_stats_general_body"></tbody> </table> </div><div class="row"> <div class="col-md-4"> <table id="display_player_stats_pitching" class="table table-striped table-hover"> <tbody ng-repeat="e in data.events" id="display_player_stats_pitching_body"></tbody> </table> </div><div class="col-md-4"> <table id="display_player_stats_batting" class="table table-striped table-hover"> <tbody ng-repeat="e in data.events" id="display_player_stats_batting_body"></tbody> </table> </div><div class="col-md-4"> <table id="display_player_stats_fielding" class="table table-striped table-hover"> <tbody ng-repeat="e in data.events" id="display_player_stats_fielding_body"></tbody> </table> </div></div></div>';
+const RESET_DISPLAY_PLAYER_TABLES = '<div id="display_player_tables" class="container"> <div class="jumbotron" id="display_player_season"></div><div> <table id="display_player_stats_general" class="table table-striped table-hover"> <tbody ng-repeat="e in data.events" id="display_player_stats_general_body"></tbody> </table> </div><div class="row"> <div id="pitching_table_div"> <table id="display_player_stats_pitching" class="table table-striped table-hover"> <tbody ng-repeat="e in data.events" id="display_player_stats_pitching_body"></tbody> </table> </div><div id="batting_table_div"> <table id="display_player_stats_batting" class="table table-striped table-hover"> <tbody ng-repeat="e in data.events" id="display_player_stats_batting_body"></tbody> </table> </div><div id="fielding_table_div"> <table id="display_player_stats_fielding" class="table table-striped table-hover"> <tbody ng-repeat="e in data.events" id="display_player_stats_fielding_body"></tbody> </table> </div></div></div>';
 const RESET_HIDE_PLAYER_TABLES = '<div id="display_player_tables" class="container"></div>';
 const PLAYER_STAT_ATTRIBUTES_MYSQL = ["ID", "first_name", "last_name", "birthday", "weight", "height", "bats", "throws"];
 const PITCHING_STAT_ATTRIBUTES_MYSQL = ["player_ID", "year_ID", "stint", "team_ID", "league_ID", "wins", "losses", "games", "games_started", "complete_games", "shutouts", "saves", "total_outs", "hits", "earned_runs", "homeruns", "walks", "strikeouts", "opp_ba", "earned_run_avg", "intentional_walks", "runs_allowed", "batters_hit", "balks"];
@@ -288,6 +288,36 @@ function lock_in_player_leagueID(locked_leagueID) {
     lock_in_season();
 }
 
+function disable_inputs(num) {
+    if (num == 0) {
+        return;
+    }
+    $("#search_player_leagueID").val("");
+    $("#search_player_leagueID").prop("disabled", true);
+
+    num -= 1;
+
+    if (num == 0) {
+        return;
+    }
+    $("#search_player_teamID").val("");
+    $("#search_player_teamID").prop("disabled", true);
+    num -= 1;
+
+    if (num == 0) {
+        return;
+    }
+    $("#search_player_stint").val("");
+    $("#search_player_stint").prop("disabled", true);
+    num -= 1;
+
+    if (num == 0) {
+        return;
+    }
+    $("#search_player_year").val("");
+    $("#search_player_year").prop("disabled", true);
+}
+
 async function lock_in_season() {
     var path = '/load_player_general_data/' + curr_player_id;
     var player = await get(path)
@@ -319,54 +349,24 @@ function call_load_player_stats(table) {
     });
 }
 
-function disable_inputs(num) {
-    if (num == 0) {
-        return;
-    }
-    $("#search_player_leagueID").val("");
-    $("#search_player_leagueID").prop("disabled", true);
-
-    num -= 1;
-
-    if (num == 0) {
-        return;
-    }
-    $("#search_player_teamID").val("");
-    $("#search_player_teamID").prop("disabled", true);
-    num -= 1;
-
-    if (num == 0) {
-        return;
-    }
-    $("#search_player_stint").val("");
-    $("#search_player_stint").prop("disabled", true);
-    num -= 1;
-
-    if (num == 0) {
-        return;
-    }
-    $("#search_player_year").val("");
-    $("#search_player_year").prop("disabled", true);
-}
-
 function reconcile_tables(pitching_length, batting_length, fielding_length) {
     var sum_num = 12;
-    var num_tables = 0;
+    var num_tables = pitching_length + batting_length + fielding_length;
     var multipliers = [0, 0, 0];
-    var sizes = [0, 0, 0];
+    var attributes = ["pitching", "batting", "fielding"];
 
     multipliers[0] = pitching_length;
-    num_tables += pitching_length;
     multipliers[1] = batting_length;
-    num_tables += batting_length;
     multipliers[2] = fielding_length;
-    num_tables += fielding_length;
 
     for (i = 0; i < multipliers.length; i++) {
-        sizes[i] = (sum_num / num_tables) * multipliers[i];
-        alert(i + ", " + sizes[i] + ", " + multipliers[0]);
-    }
+        var size = (sum_num / num_tables) * multipliers[i];
 
+        var curr_id = "#" + attributes[i] + "_table_div";
+        var curr_class = "col-md-" + sizes[i];
+
+        $(curr_id).addclass(curr_class);
+    }
 }
 
 function display_stats(player, pitching, batting, fielding) {
