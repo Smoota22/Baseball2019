@@ -438,7 +438,7 @@ function generate_table_row(item_attribute, item_stat) {
     }
 
     if (item_attribute === "birthday") {
-        item_stat = item_stat.getDate();
+        alert(typeof item_stat);
     }
 
     var item_verbose = mysql_dict[item_attribute];
