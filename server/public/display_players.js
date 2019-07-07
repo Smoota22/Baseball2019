@@ -49,7 +49,7 @@ function autofill_player_names() {
             var full_name_id = query_result_obj[i].full_name + "*" + query_result_obj[i].ID;
             full_name_id = full_name_id.replace(/ /g, "_");
 
-            var str = "<div class='full_name_item' id=" + full_name_id + "><p>" + query_result_obj[i].full_name + "</p></div>";
+            var str = "<div class='full_name_item' id=" + full_name_id + ">" + query_result_obj[i].full_name + "</div>";
             var html = $.parseHTML(str);
             $player_suggestions.append(html);
         }
