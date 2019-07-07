@@ -432,6 +432,13 @@ function generate_table_row(item_attribute, item_stat) {
     if (item_stat === -1 || item_stat === "" || item_stat === "1000-01-01") {
         item_stat = "N/A";
     }
+
+    if (item_stat === "R") {
+        item_stat = "Right";
+    } else if (item_stat === "L") {
+        item_stat = "Left";
+    }
+    
     var item_verbose = mysql_dict[item_attribute];
 
     var str = "<tr class=\"stat_item\" id=\"" + item_attribute + "*" + item_verbose + "\">";
