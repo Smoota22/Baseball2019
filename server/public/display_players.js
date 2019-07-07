@@ -377,7 +377,7 @@ function display_stats(player, pitching, batting, fielding) {
 
     //Display Team name and Season
     var $display_player_season = $("#display_player_season");
-    var player_season = "<div><h1>" + curr_player_name + "'s " + curr_year + " Season Statistics With The " + curr_team_name + "</h1><p>Stint: " + curr_stint + "</p><p>League: " + curr_leagueID + "</p></div>";
+    var player_season = "<div><h1>" + curr_player_name + "'s " + curr_year + " Season Statistics With The " + curr_team_name + "</h1><h2>Stint: " + curr_stint + "</h2><h2>League: " + curr_leagueID + "</h2></div>";
     $display_player_season.append($.parseHTML(player_season));
 
     //Display General Statistics
