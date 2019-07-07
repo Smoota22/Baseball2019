@@ -176,7 +176,7 @@ function autofill_player_leagueID(req, res) {
 
 app.get('/load_player_general_data/:playerID', load_player_general_data);
 function load_player_general_data(req, res) {
-    let sql = 'SELECT * FROM player WHERE player_ID = "' + req.params.playerID + '"';
+    let sql = 'SELECT * FROM player WHERE ID = "' + req.params.playerID + '"';
     // res.send(sql)
     let query = db.query(sql, (err, results) => {
         if(err) throw err;
