@@ -299,13 +299,14 @@ function lock_in_season() {
             return;
         }
         player = JSON.parse(json);
+        alert(player[0]);
     });
 
     var pitching = call_load_player_stats('pitching');
     var batting = call_load_player_stats('batting');
     var fielding = call_load_player_stats('fielding');
 
-    display_stats(player[0], pitching, batting, fielding);
+    display_stats(player, pitching, batting, fielding);
 }
 
 function call_load_player_stats(table) {
