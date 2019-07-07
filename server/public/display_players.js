@@ -531,14 +531,21 @@ $(document).ready(function () {
         var param_arr = ranking_attribute_both.split("*");
         var ranking_attribute_mysql = param_arr[0];
         var ranking_attribute_verbose = param_arr[1];
-        if (sql_ranking_dict[ranking_attribute_mysql] == 0) {
+        if (player_mysql_ranking_dict[ranking_attribute_mysql] === 0 ||
+            pitching_mysql_ranking_dict[ranking_attribute_mysql] === 0 ||
+            batting_mysql_ranking_dict[ranking_attribute_mysql] === 0 ||
+            fielding_mysql_ranking_dict[ranking_attribute_mysql] === 0) {
             alert("NOT RANKABLE");
             return;
         }
 
         localStorage.setItem("curr_player_id", curr_player_id);
-        localStorage.setItem("curr_year", curr_year);
         localStorage.setItem("curr_player_name", curr_player_name);
+        localStorage.setItem("curr_year", curr_year);
+        localStorage.setItem("curr_stint", curr_stint);
+        localStorage.setItem("curr_teamID", curr_teamID);
+        localStorage.setItem("curr_team_name", curr_team_name);
+        localStorage.setItem("curr_leagueID", curr_leagueID);
         localStorage.setItem("ranking_attribute_mysql", ranking_attribute_mysql);
         localStorage.setItem("ranking_attribute_verbose", ranking_attribute_verbose);
         location.href = "ranking.html";
