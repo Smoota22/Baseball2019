@@ -363,7 +363,7 @@ function reconcile_tables(pitching_length, batting_length, fielding_length) {
 
     for (i = 0; i < multipliers.length; i++) {
         sizes[i] = (sum_num / num_tables) * multipliers[i];
-        alert(i + ", " + sizes[i]);
+        alert(i + ", " + sizes[i] + ", " + multipliers[0]);
     }
 
 }
