@@ -300,7 +300,7 @@ async function lock_in_season() {
     });
 
     var pitching = await call_load_player_stats('pitching');
-    alert("outside, " + pitching);
+    alert("outside, " + pitching[0].player_ID);
     var batting = await call_load_player_stats('batting');
     var fielding = await call_load_player_stats('fielding');
 
