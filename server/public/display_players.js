@@ -300,6 +300,7 @@ async function lock_in_season() {
     });
 
     var pitching = call_load_player_stats('pitching');
+    alert("outside, " + pitching[0].player_ID);
     var batting = call_load_player_stats('batting');
     var fielding = call_load_player_stats('fielding');
 
@@ -318,6 +319,7 @@ async function call_load_player_stats(table) {
         return JSON.parse(json);
     });
 
+    alert(curr[0].player_ID);
     return curr;
 }
 
@@ -438,7 +440,7 @@ function generate_table_row(item_attribute, item_stat) {
     } else if (item_stat === "L") {
         item_stat = "Left";
     }
-    
+
     var item_verbose = mysql_dict[item_attribute];
 
     var str = "<tr class=\"stat_item\" id=\"" + item_attribute + "*" + item_verbose + "\">";
