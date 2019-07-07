@@ -288,16 +288,16 @@ function lock_in_player_leagueID(locked_leagueID) {
     lock_in_season();
 }
 
-async function lock_in_season() {
-    var path = '/load_player_general_data/' + curr_player_id;
-    var player = await get(path)
-    .then(function(json) {
-        if (json === undefined) {
-            alert("ERROR THIS SHOULD NOT HAPPEN!!!");
-            return;
-        }
-        return JSON.parse(json);
-    });
+function lock_in_season() {
+    // var path = '/load_player_general_data/' + curr_player_id;
+    // var player = await get(path)
+    // .then(function(json) {
+    //     if (json === undefined) {
+    //         alert("ERROR THIS SHOULD NOT HAPPEN!!!");
+    //         return;
+    //     }
+    //     return JSON.parse(json);
+    // });
 
     var pitching = call_load_player_stats('pitching');
     alert("outside, " + pitching[0].player_ID);
