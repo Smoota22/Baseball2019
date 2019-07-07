@@ -365,7 +365,7 @@ function reconcile_tables(pitching_length, batting_length, fielding_length) {
         var curr_id = "#" + attributes[i] + "_table_div";
         var curr_class = "col-md-" + size;
 
-        $(curr_id).addclass(curr_class);
+        $(curr_id).addClass(curr_class);
     }
 }
 
