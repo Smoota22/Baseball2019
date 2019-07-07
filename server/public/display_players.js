@@ -306,9 +306,9 @@ function lock_in_season() {
     display_stats(player, pitching, batting, fielding);
 }
 
-async function call_load_player_stats(table) {
+function call_load_player_stats(table) {
     var path = '/load_player_stats/' + table + '/' + curr_player_id + '/' + curr_year + '/' + curr_stint + '/' + curr_teamID + '/' + curr_leagueID;
-    var curr = await get(path)
+    var curr = get(path)
     .then(function(json) {
         if (json === undefined) {
             alert("ERROR THIS SHOULD NOT HAPPEN!!!");
