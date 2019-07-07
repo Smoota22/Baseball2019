@@ -360,11 +360,12 @@ function reconcile_tables(pitching_length, batting_length, fielding_length) {
     num_tables += batting_length;
     multipliers[2] = fielding_length;
     num_tables += fielding_length;
+    alert(multipliers[0]);
 
-    for (i = 0; i < multipliers.length; i++) {
-        sizes[i] = (sum_num / num_tables) * multipliers[i];
-        alert(i + ", " + sizes[i] + ", " + multipliers[0]);
-    }
+    // for (i = 0; i < multipliers.length; i++) {
+    //     sizes[i] = (sum_num / num_tables) * multipliers[i];
+    //     alert(i + ", " + sizes[i] + ", " + multipliers[0]);
+    // }
 
 }
 
