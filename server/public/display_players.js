@@ -305,7 +305,7 @@ function lock_in_season() {
     var batting = call_load_player_stats('batting');
     var fielding = call_load_player_stats('fielding');
 
-    display_stats(player, pitching, batting, fielding);
+    display_stats(player[0], pitching, batting, fielding);
 }
 
 function call_load_player_stats(table) {
@@ -371,7 +371,7 @@ function reconcile_tables(pitching_length, batting_length, fielding_length) {
 }
 
 function display_stats(player, pitching, batting, fielding) {
-    var curr_player = player[0];
+    // var curr_player = player[0];
 
     //Reset table
     var $display_player_tables = reset_html_element("#display_player_tables", RESET_DISPLAY_PLAYER_TABLES);
