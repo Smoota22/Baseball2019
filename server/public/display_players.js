@@ -308,7 +308,7 @@ function lock_in_season() {
 
 function call_load_player_stats(table) {
     var path = '/load_player_stats/' + table + '/' + curr_player_id + '/' + curr_year + '/' + curr_stint + '/' + curr_teamID + '/' + curr_leagueID;
-    get(path)
+    return get(path)
     .then(function(json) {
         if (json === undefined) {
             alert("ERROR THIS SHOULD NOT HAPPEN!!!");
