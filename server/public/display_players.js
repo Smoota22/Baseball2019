@@ -441,7 +441,6 @@ function generate_table_row(item_attribute, item_stat) {
         var arr = item_stat.split("T");
         var date = arr[0].split("-");
         item_stat = date[1] + "-" + date[2] + "-" + date[0];
-        alert(item_stat);
     }
 
     var item_verbose = mysql_dict[item_attribute];
