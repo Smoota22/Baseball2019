@@ -350,7 +350,7 @@ function disable_inputs(num) {
     $("#search_player_year").prop("disabled", true);
 }
 
-function reconcile_tables(pitching_length, batting_length. fielding_length) {
+function reconcile_tables(pitching_length, batting_length, fielding_length) {
     var sum_num = 12;
     var num_tables = 0;
     var multipliers = [0, 0, 0];
