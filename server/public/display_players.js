@@ -306,18 +306,17 @@ function lock_in_season() {
     display_stats(player, pitching, batting, fielding);
 }
 
-function call_load_player_stats(table) {
+async function call_load_player_stats(table) {
     var path = '/load_player_stats/' + table + '/' + curr_player_id + '/' + curr_year + '/' + curr_stint + '/' + curr_teamID + '/' + curr_leagueID;
-    var curr = get(path)
+    var curr = await get(path)
     .then(function(json) {
         if (json === undefined) {
             alert("ERROR THIS SHOULD NOT HAPPEN!!!");
             return -1;
         }
 
-        var curr = JSON.parse(json);
+        return JSON.parse(json);
     });
-
 
     alert(curr);
     alert(curr[0]);
