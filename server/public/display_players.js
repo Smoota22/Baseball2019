@@ -426,7 +426,7 @@ function display_stats(player, pitching, batting, fielding) {
 }
 
 function generate_table_row(item_attribute, item_stat) {
-    if (item_stat === -1 || item_stat === NULL || item_stat === "1000-01-01") {
+    if (item_stat === -1 || item_stat === "" || item_stat === "1000-01-01") {
         item_stat = "N/A";
     }
     var item_verbose = mysql_dict[item_attribute];
