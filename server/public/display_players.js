@@ -289,10 +289,8 @@ function lock_in_player_leagueID(locked_leagueID) {
 }
 
 function lock_in_season() {
-    let player;
-
     var path = '/load_player_general_data/' + curr_player_id;
-    get(path)
+    var player = get(path)
     .then(function(json) {
         if (json === undefined) {
             alert("ERROR THIS SHOULD NOT HAPPEN!!!");
@@ -371,7 +369,7 @@ function reconcile_tables(pitching_length, batting_length, fielding_length) {
 }
 
 function display_stats(player, pitching, batting, fielding) {
-    // var curr_player = player[0];
+    var curr_player = player[0];
 
     //Reset table
     var $display_player_tables = reset_html_element("#display_player_tables", RESET_DISPLAY_PLAYER_TABLES);
