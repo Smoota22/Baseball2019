@@ -22,7 +22,8 @@ var curr_leagueID;
 var curr_suggestion_id;
 
 
-function autofill_player_names() {
+function autofill_player_names(event) {
+    alert(event);
     var search_player_name = $("#search_player").val();
     if (search_player_name === "") {
         return;
