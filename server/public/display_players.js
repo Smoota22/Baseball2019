@@ -65,7 +65,8 @@ function autofill_player_names(event) {
 
         var num_suggestions = Math.min(query_result_obj.length, MAX_SUGGESTIONS);
         for (i = 0; i < num_suggestions; i++) {
-            create_id_helper(PLAYER_NAME_FUNC, query_result_obj[i]);
+            var itr_full_name = query_result_obj[i].full_name;
+            var itr_full_name_id = create_id_helper(PLAYER_NAME_FUNC, query_result_obj[i]);
 
             if (itr_full_name.toLowerCase() === $("#search_player").val().toLowerCase()) {
                 lock_in_helper(PLAYER_NAME_FUNC, itr_full_name_id);
@@ -120,7 +121,7 @@ function autofill_player_years() {
 
         var num_suggestions = Math.min(query_result_obj.length, MAX_SUGGESTIONS);
         for (i = 0; i < num_suggestions; i++) {
-            create_id_helper(PLAYER_YEAR_FUNC, query_result_obj[i]);
+            var itr_year_id = create_id_helper(PLAYER_YEAR_FUNC, query_result_obj[i]);
 
             if (itr_year_id == $("#search_player_year").val()) {
                 lock_in_helper(PLAYER_YEAR_FUNC, itr_year_id);
@@ -191,7 +192,7 @@ function autofill_player_stint() {
 
         var num_suggestions = Math.min(query_result_obj.length, MAX_SUGGESTIONS);
         for (i = 0; i < num_suggestions; i++) {
-            create_id_helper(PLAYER_STINT_FUNC, query_result_obj[i]);
+            var itr_stint = create_id_helper(PLAYER_STINT_FUNC, query_result_obj[i]);
 
             if (itr_stint == $("#search_player_stint").val()) {
                 lock_in_helper(PLAYER_STINT_FUNC, itr_stint);
@@ -262,7 +263,8 @@ function autofill_player_teamID() {
 
         var num_suggestions = Math.min(query_result_obj.length, MAX_SUGGESTIONS);
         for (i = 0; i < num_suggestions; i++) {
-            create_id_helper(PLAYER_TEAM_FUNC, query_result_obj[i]);
+            var itr_teamName = query_result_obj[i].full_name;
+            var itr_team_name_id = create_id_helper(PLAYER_TEAM_FUNC, query_result_obj[i]);
 
             if (itr_teamName.toLowerCase() === $("#search_player_teamID").val().toLowerCase()) {
                 lock_in_helper(PLAYER_TEAM_FUNC, itr_team_name_id);
@@ -334,7 +336,7 @@ function autofill_player_leagueID() {
 
         var num_suggestions = Math.min(query_result_obj.length, MAX_SUGGESTIONS);
         for (i = 0; i < num_suggestions; i++) {
-            create_id_helper(PLAYER_LEAGUE_FUNC, query_result_obj[i]);
+            var itr_leagueID = create_id_helper(PLAYER_LEAGUE_FUNC, query_result_obj[i]);
 
             if (itr_leagueID == $("#search_player_leagueID").val()) {
                 lock_in_helper(PLAYER_LEAGUE_FUNC, itr_leagueID);
