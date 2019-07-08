@@ -69,13 +69,10 @@ function autofill_player_names(event) {
             $player_suggestions.append(html);
 
             if (i === 0) {
-                update_curr_selection(itr_full_name_id);
+                $(".full_name_item").addClass(HIGHLIGHTED_SELECTION_CLASS);
             }
-            alert(itr_full_name_id);
         }
-        alert("TEST");
     });
-    alert("TEST2");
 }
 
 function lock_in_full_name(locked_full_name, locked_player_ID) {
@@ -124,7 +121,7 @@ function autofill_player_years() {
             $year_suggestions.append(html);
 
             if (i === 0) {
-                update_curr_selection(itr_year_id);
+                $(".year_item").addClass(HIGHLIGHTED_SELECTION_CLASS);
             }
         }
     });
@@ -192,7 +189,7 @@ function autofill_player_stint() {
             $stint_suggestions.append(html);
 
             if (i === 0) {
-                update_curr_selection(itr_stint);
+                $(".stint_item").addClass(HIGHLIGHTED_SELECTION_CLASS);
             }
         }
     });
@@ -262,7 +259,7 @@ function autofill_player_teamID() {
             $teamID_suggestions.append(html);
 
             if (i === 0) {
-                update_curr_selection(itr_team_name_id);
+                $(".teamID_item").addClass(HIGHLIGHTED_SELECTION_CLASS);
             }
         }
     });
@@ -331,7 +328,7 @@ function autofill_player_leagueID() {
             $leagueID_suggestions.append(html);
 
             if (i === 0) {
-                update_curr_selection(itr_leagueID);
+                $(".leagueID_item").addClass(HIGHLIGHTED_SELECTION_CLASS);
             }
         }
     });
@@ -396,15 +393,13 @@ function lock_in_helper(func_const, item_stat) {
 
 function update_curr_selection(new_suggestion_id) {
     if (curr_suggestion_id != -1) {
-        var curr_id = "#" + curr_suggestion_id;
-        $(curr_id).removeClass(HIGHLIGHTED_SELECTION_CLASS);
+        $(("#" + curr_suggestion_id)).removeClass(HIGHLIGHTED_SELECTION_CLASS);
     }
 
     curr_suggestion_id = new_suggestion_id;
 
     if (curr_suggestion_id != -1) {
-        var curr_id = "#" + curr_suggestion_id;
-        $(curr_id).addClass(HIGHLIGHTED_SELECTION_CLASS);
+        $(("#" + curr_suggestion_id)).addClass(HIGHLIGHTED_SELECTION_CLASS);
     }
 }
 
