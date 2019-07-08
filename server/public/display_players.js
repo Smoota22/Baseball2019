@@ -220,7 +220,7 @@ function autofill_player_teamID() {
             var itr_teamID = query_result_obj[i].team_ID;
             var itr_teamName = query_result_obj[i].team_name;
 
-            if (itr_teamID == $("#search_player_teamID").val()) {
+            if (itr_teamName.toLowerCase() === $("#search_player_teamID").val().toLowerCase()) {
                 lock_in_player_teamID(itr_teamName,itr_teamID);
                 return;
             }
