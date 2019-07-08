@@ -10,6 +10,12 @@ const PLAYER_STAT_ATTRIBUTES_MYSQL = ["ID", "first_name", "last_name", "birthday
 const PITCHING_STAT_ATTRIBUTES_MYSQL = ["wins", "losses", "games", "games_started", "complete_games", "shutouts", "saves", "total_outs", "hits", "earned_runs", "homeruns", "walks", "strikeouts", "opp_ba", "earned_run_avg", "intentional_walks", "runs_allowed", "batters_hit", "balks"];
 const BATTING_STAT_ATTRIBUTES_MYSQL = ["games", "at_bats", "runs", "hits", "doubles", "triples", "homeruns", "rbis", "stolen_bases", "caught_stealing", "strikeouts", "intentional_walks", "hit_by_pitch"];
 const FIELDING_STAT_ATTRIBUTES_MYSQL = ["position", "games", "games_started", "putouts", "assists", "errors", "double_plays", "catcher_stolen", "catcher_caught"];
+const ENTER_KEY_ASCII = 13;
+const PLAYER_NAME_FUNC = 101;
+const PLAYER_YEAR_FUNC = 102;
+const PLAYER_STINT_FUNC = 103;
+const PLAYER_TEAM_FUNC = 104;
+const PLAYER_LEAGUE_FUNC = 105;
 
 var curr_player_id;
 var curr_player_name;
@@ -23,7 +29,11 @@ var curr_suggestion_id;
 
 
 function autofill_player_names(event) {
-    alert(event.which);
+    if (event.which === ENTER_KEY_ASCII && curr_suggestion_id != -1) {
+        lock_in_helper(PLAYER_NAME_FUNC, curr_suggestion_id);
+        return;
+    }
+
     var search_player_name = $("#search_player").val();
     if (search_player_name === "") {
         return;
@@ -44,20 +54,21 @@ function autofill_player_names(event) {
 
         var num_suggestions = Math.min(query_result_obj.length, MAX_SUGGESTIONS);
         for (i = 0; i < num_suggestions; i++) {
-            if (query_result_obj[i].full_name.toLowerCase() === $("#search_player").val().toLowerCase()) {
-                lock_in_full_name(query_result_obj[i].full_name, query_result_obj[i].ID);
+            var itr_full_name = query_result_obj[i].full_name;
+            var itr_full_name_id = itr_full_name + "*" + query_result_obj[i].ID;
+            itr_full_name_id = itr_full_name_id.replace(/ /g, "_");
+
+            if (itr_full_name.toLowerCase() === $("#search_player").val().toLowerCase()) {
+                lock_in_helper(PLAYER_NAME_FUNC, itr_full_name_id);
                 return;
             }
 
-            var full_name_id = query_result_obj[i].full_name + "*" + query_result_obj[i].ID;
-            full_name_id = full_name_id.replace(/ /g, "_");
-
-            var str = "<div class='full_name_item' id=" + full_name_id + "><p>" + query_result_obj[i].full_name + "</p></div>";
+            var str = "<div class='full_name_item' id=" + itr_full_name_id + "><p>" + itr_full_name + "</p></div>";
             var html = $.parseHTML(str);
             $player_suggestions.append(html);
 
             if (i === 0) {
-                curr_suggestion_id = full_name_id;
+                curr_suggestion_id = itr_full_name_id;
             }
         }
     });
@@ -72,6 +83,11 @@ function lock_in_full_name(locked_full_name, locked_player_ID) {
 }
 
 function autofill_player_years() {
+    if (event.which === ENTER_KEY_ASCII && curr_suggestion_id != -1) {
+        lock_in_helper(PLAYER_YEAR_FUNC, curr_suggestion_id);
+        return;
+    }
+
     var search_year = $("#search_player_year").val();
     if (search_year === "") {
         search_year = "NULL";
@@ -92,19 +108,19 @@ function autofill_player_years() {
 
         var num_suggestions = Math.min(query_result_obj.length, MAX_SUGGESTIONS);
         for (i = 0; i < num_suggestions; i++) {
-            if (query_result_obj[i].year_ID == $("#search_player_year").val()) {
-                lock_in_player_year(query_result_obj[i].year_ID);
+            var itr_year_id = query_result_obj[i].year_ID;
+
+            if (itr_year_id == $("#search_player_year").val()) {
+                lock_in_helper(PLAYER_YEAR_FUNC, itr_year_id);
                 return;
             }
 
-            var year_id = query_result_obj[i].year_ID;
-
-            var str = "<div class='year_item' id=" + year_id + "><p>" + query_result_obj[i].year_ID + "</p></div>";
+            var str = "<div class='year_item' id=" + itr_year_id + "><p>" + itr_year_id + "</p></div>";
             var html = $.parseHTML(str);
             $year_suggestions.append(html);
 
             if (i === 0) {
-                curr_suggestion_id = year_id;
+                curr_suggestion_id = itr_year_id;
             }
         }
     });
@@ -135,6 +151,11 @@ function autoset_player_stint() {
 }
 
 function autofill_player_stint() {
+    if (event.which === ENTER_KEY_ASCII && curr_suggestion_id != -1) {
+        lock_in_helper(PLAYER_STINT_FUNC, curr_suggestion_id);
+        return;
+    }
+
     var search_stint = $("#search_player_stint").val();
     if (search_stint === "") {
         search_stint = "NULL"
@@ -158,7 +179,7 @@ function autofill_player_stint() {
             var itr_stint = query_result_obj[i].stint;
 
             if (itr_stint == $("#search_player_stint").val()) {
-                lock_in_player_stint(itr_stint);
+                lock_in_helper(PLAYER_STINT_FUNC, itr_stint);
                 return;
             }
 
@@ -198,6 +219,11 @@ function autoset_player_teamID() {
 }
 
 function autofill_player_teamID() {
+    if (event.which === ENTER_KEY_ASCII && curr_suggestion_id != -1) {
+        lock_in_helper(PLAYER_TEAM_FUNC, curr_suggestion_id);
+        return;
+    }
+
     var search_teamID = $("#search_player_teamID").val();
     if (search_teamID === "") {
         search_teamID = "NULL"
@@ -218,23 +244,21 @@ function autofill_player_teamID() {
 
         var num_suggestions = Math.min(query_result_obj.length, MAX_SUGGESTIONS);
         for (i = 0; i < num_suggestions; i++) {
-            var itr_teamID = query_result_obj[i].team_ID;
             var itr_teamName = query_result_obj[i].team_name;
+            var itr_team_name_id = itr_teamName + "*" + query_result_obj[i].team_ID;
+            itr_team_name_id = itr_team_name_id.replace(/ /g, "_");
 
             if (itr_teamName.toLowerCase() === $("#search_player_teamID").val().toLowerCase()) {
-                lock_in_player_teamID(itr_teamName,itr_teamID);
+                lock_in_helper(PLAYER_TEAM_FUNC, itr_team_name_id);
                 return;
             }
 
-            var team_name_id = itr_teamName + "*" + itr_teamID;
-            team_name_id = team_name_id.replace(/ /g, "_");
-
-            var str = "<div class='teamID_item' id=" + team_name_id + "><p>" + itr_teamName + "</p></div>";
+            var str = "<div class='teamID_item' id=" + itr_team_name_id + "><p>" + itr_teamName + "</p></div>";
             var html = $.parseHTML(str);
             $teamID_suggestions.append(html);
 
             if (i === 0) {
-                curr_suggestion_id = team_name_id;
+                curr_suggestion_id = itr_team_name_id;
             }
         }
     });
@@ -266,6 +290,11 @@ function autoset_player_leagueID() {
 }
 
 function autofill_player_leagueID() {
+    if (event.which === ENTER_KEY_ASCII && curr_suggestion_id != -1) {
+        lock_in_helper(PLAYER_LEAGUE_FUNC, curr_suggestion_id);
+        return;
+    }
+
     var search_leagueID = $("#search_player_leagueID").val();
     if (search_leagueID === "") {
         search_leagueID = "NULL"
@@ -289,7 +318,7 @@ function autofill_player_leagueID() {
             var itr_leagueID = query_result_obj[i].league_ID;
 
             if (itr_leagueID == $("#search_player_leagueID").val()) {
-                lock_in_player_leagueID(itr_leagueID);
+                lock_in_helper(PLAYER_LEAGUE_FUNC, itr_leagueID);
                 return;
             }
 
@@ -312,12 +341,13 @@ function lock_in_player_leagueID(locked_leagueID) {
 }
 
 function disable_inputs(num) {
+    curr_suggestion_id = -1;
     if (num == 0) {
         return;
     }
     $("#search_player_leagueID").val("");
     $("#search_player_leagueID").prop("disabled", true);
-
+    reset_html_element("#leagueID_suggestions", RESET_LEAGUEID_SUGGESTIONS);
     num -= 1;
 
     if (num == 0) {
@@ -325,6 +355,7 @@ function disable_inputs(num) {
     }
     $("#search_player_teamID").val("");
     $("#search_player_teamID").prop("disabled", true);
+    reset_html_element("#teamID_suggestions", RESET_TEAMID_SUGGESTIONS);
     num -= 1;
 
     if (num == 0) {
@@ -332,6 +363,7 @@ function disable_inputs(num) {
     }
     $("#search_player_stint").val("");
     $("#search_player_stint").prop("disabled", true);
+    reset_html_element("#stint_suggestions", RESET_STINT_SUGGESTIONS);
     num -= 1;
 
     if (num == 0) {
@@ -339,6 +371,23 @@ function disable_inputs(num) {
     }
     $("#search_player_year").val("");
     $("#search_player_year").prop("disabled", true);
+    reset_html_element("#year_suggestions", RESET_YEAR_SUGGESTIONS);
+}
+
+function lock_in_helper(func_const, item_stat) {
+    if (func_const === PLAYER_NAME_FUNC) {
+        handle_full_name_item(item_stat);
+    } else if (func_const === PLAYER_YEAR_FUNC) {
+        lock_in_player_year(item_stat);
+    } else if (func_const === PLAYER_STINT_FUNC) {
+        lock_in_player_stint(item_stat);
+    } else if (func_const === PLAYER_TEAM_FUNC) {
+        handle_team_item(item_stat);
+    } else if (func_const === PLAYER_LEAGUE_FUNC) {
+        lock_in_player_leagueID(item_stat);
+    }
+
+    curr_suggestion_id = -1;
 }
 
 async function lock_in_season() {
@@ -517,7 +566,7 @@ $(document).ready(function () {
         if (div_elem === "player_suggestions") {
             div_elem = event.target.id;
         }
-        handle_full_name_item(div_elem);
+        lock_in_helper(PLAYER_NAME_FUNC, div_elem);
     });
 
     $(document).on("click", ".year_item", function(event) {
@@ -525,7 +574,7 @@ $(document).ready(function () {
         if (year_ID === "year_suggestions") {
             year_ID = event.target.id;
         }
-        lock_in_player_year(year_ID);
+        lock_in_helper(PLAYER_YEAR_FUNC, year_ID);
     });
 
     $(document).on("click", ".stint_item", function(event) {
@@ -533,7 +582,7 @@ $(document).ready(function () {
         if (stint === "stint_suggestions") {
             stint = event.target.id;
         }
-        lock_in_player_stint(stint);
+        lock_in_helper(PLAYER_STINT_FUNC, stint);
     });
 
     $(document).on("click", ".teamID_item", function(event) {
@@ -541,7 +590,7 @@ $(document).ready(function () {
         if (div_elem === "teamID_suggestions") {
             div_elem = event.target.id;
         }
-        handle_team_item(div_elem);
+        lock_in_helper(PLAYER_TEAM_FUNC, div_elem);
     });
 
     $(document).on("click", ".leagueID_item", function(event) {
@@ -549,7 +598,7 @@ $(document).ready(function () {
         if (leagueID === "stint_suggestions") {
             leagueID = event.target.id;
         }
-        lock_in_player_leagueID(leagueID);
+        lock_in_helper(PLAYER_LEAGUE_FUNC, leagueID);
     });
 
     $(document).on("click", ".stat_item", function(event) {
