@@ -393,12 +393,14 @@ function lock_in_helper(func_const, item_stat) {
 
 function update_curr_selection(new_suggestion_id) {
     if (curr_suggestion_id != -1) {
+        alert(curr_suggestion_id);
         $(('#' + curr_suggestion_id)).removeClass(HIGHLIGHTED_SELECTION_CLASS);
     }
 
     curr_suggestion_id = new_suggestion_id;
 
     if (curr_suggestion_id != -1) {
+        alert(curr_suggestion_id);
         $(('#' + curr_suggestion_id)).addClass(HIGHLIGHTED_SELECTION_CLASS);
     }
 }
