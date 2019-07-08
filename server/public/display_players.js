@@ -393,14 +393,15 @@ function lock_in_helper(func_const, item_stat) {
 
 function update_curr_selection(new_suggestion_id) {
     if (curr_suggestion_id != -1) {
-        var curr_id = '#' + curr_suggestion_id;
+        var curr_id = "#" + curr_suggestion_id;
         $(curr_id).removeClass(HIGHLIGHTED_SELECTION_CLASS);
     }
 
     curr_suggestion_id = new_suggestion_id;
 
     if (curr_suggestion_id != -1) {
-        var curr_id = '#' + curr_suggestion_id;
+        var curr_id = "#" + curr_suggestion_id;
+        alert(curr_id);
         $(curr_id).addClass(HIGHLIGHTED_SELECTION_CLASS);
     }
 }
