@@ -16,6 +16,7 @@ const PLAYER_YEAR_FUNC = 102;
 const PLAYER_STINT_FUNC = 103;
 const PLAYER_TEAM_FUNC = 104;
 const PLAYER_LEAGUE_FUNC = 105;
+const HIGHLIGHTED_SELECTION_CLASS = "p-3 mb-2 bg-primary text-white";
 
 var curr_player_id;
 var curr_player_name;
@@ -68,7 +69,7 @@ function autofill_player_names(event) {
             $player_suggestions.append(html);
 
             if (i === 0) {
-                curr_suggestion_id = itr_full_name_id;
+                update_curr_selection(itr_full_name_id);
             }
         }
     });
@@ -120,7 +121,7 @@ function autofill_player_years() {
             $year_suggestions.append(html);
 
             if (i === 0) {
-                curr_suggestion_id = itr_year_id;
+                update_curr_selection(itr_year_id);
             }
         }
     });
@@ -188,7 +189,7 @@ function autofill_player_stint() {
             $stint_suggestions.append(html);
 
             if (i === 0) {
-                curr_suggestion_id = itr_stint;
+                update_curr_selection(itr_stint);
             }
         }
     });
@@ -258,7 +259,7 @@ function autofill_player_teamID() {
             $teamID_suggestions.append(html);
 
             if (i === 0) {
-                curr_suggestion_id = itr_team_name_id;
+                update_curr_selection(itr_team_name_id);
             }
         }
     });
@@ -327,7 +328,7 @@ function autofill_player_leagueID() {
             $leagueID_suggestions.append(html);
 
             if (i === 0) {
-                curr_suggestion_id = itr_leagueID;
+                update_curr_selection(itr_leagueID);
             }
         }
     });
@@ -341,7 +342,7 @@ function lock_in_player_leagueID(locked_leagueID) {
 }
 
 function disable_inputs(num) {
-    curr_suggestion_id = -1;
+    update_curr_selection(-1);
     if (num == 0) {
         return;
     }
@@ -387,7 +388,19 @@ function lock_in_helper(func_const, item_stat) {
         lock_in_player_leagueID(item_stat);
     }
 
-    curr_suggestion_id = -1;
+    update_curr_selection(-1);
+}
+
+function update_curr_selection(new_suggestion_id) {
+    if (curr_suggestion_id != -1) {
+        $(('#' + curr_suggestion_id)).removeClass(HIGHLIGHTED_SELECTION_CLASS);
+    }
+
+    curr_suggestion_id = new_suggestion_id;
+
+    if (curr_suggestion_id != -1) {
+        $(('#' + curr_suggestion_id)).addClass(HIGHLIGHTED_SELECTION_CLASS);
+    }
 }
 
 async function lock_in_season() {
