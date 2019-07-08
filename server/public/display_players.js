@@ -16,7 +16,7 @@ const PLAYER_YEAR_FUNC = 102;
 const PLAYER_STINT_FUNC = 103;
 const PLAYER_TEAM_FUNC = 104;
 const PLAYER_LEAGUE_FUNC = 105;
-const HIGHLIGHTED_SELECTION_CLASS = "p-3 mb-2 bg-primary text-white";
+const HIGHLIGHTED_SELECTION_CLASS = "p-1 bg-primary text-white";
 
 var curr_player_id;
 var curr_player_name;
@@ -393,15 +393,15 @@ function lock_in_helper(func_const, item_stat) {
 
 function update_curr_selection(new_suggestion_id) {
     if (curr_suggestion_id != -1) {
-        alert(curr_suggestion_id);
-        $(('#' + curr_suggestion_id)).removeClass(HIGHLIGHTED_SELECTION_CLASS);
+        var curr_id = '#' + curr_suggestion_id;
+        $(curr_id).removeClass(HIGHLIGHTED_SELECTION_CLASS);
     }
 
     curr_suggestion_id = new_suggestion_id;
 
     if (curr_suggestion_id != -1) {
-        alert(curr_suggestion_id);
-        $(('#' + curr_suggestion_id)).addClass(HIGHLIGHTED_SELECTION_CLASS);
+        var curr_id = '#' + curr_suggestion_id;
+        $(curr_id).addClass(HIGHLIGHTED_SELECTION_CLASS);
     }
 }
 
