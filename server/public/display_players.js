@@ -11,6 +11,8 @@ const PITCHING_STAT_ATTRIBUTES_MYSQL = ["wins", "losses", "games", "games_starte
 const BATTING_STAT_ATTRIBUTES_MYSQL = ["games", "at_bats", "runs", "hits", "doubles", "triples", "homeruns", "rbis", "stolen_bases", "caught_stealing", "strikeouts", "intentional_walks", "hit_by_pitch"];
 const FIELDING_STAT_ATTRIBUTES_MYSQL = ["position", "games", "games_started", "putouts", "assists", "errors", "double_plays", "catcher_stolen", "catcher_caught"];
 const ENTER_KEY_ASCII = 13;
+const UP_KEY_ASCII = 13;
+const DOWN_KEY_ASCII = 13;
 const PLAYER_NAME_FUNC = 101;
 const PLAYER_YEAR_FUNC = 102;
 const PLAYER_STINT_FUNC = 103;
@@ -30,10 +32,13 @@ var curr_suggestion_id;
 
 
 function autofill_player_names(event) {
+    alert(event.which);
     if (event.which === ENTER_KEY_ASCII && curr_suggestion_id != -1) {
         lock_in_helper(PLAYER_NAME_FUNC, curr_suggestion_id);
         return;
     }
+
+    if (event.whic === )
 
     var search_player_name = $("#search_player").val();
     if (search_player_name === "") {
@@ -68,7 +73,7 @@ function autofill_player_names(event) {
             var html = $.parseHTML(str);
             $player_suggestions.append(html);
 
-            if (i === 3) {
+            if (i === 0) {
                 $(".full_name_item").addClass(HIGHLIGHTED_SELECTION_CLASS);
                 curr_suggestion_id = itr_full_name_id;
             }
