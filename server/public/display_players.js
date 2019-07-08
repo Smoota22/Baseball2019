@@ -240,6 +240,7 @@ function autofill_player_teamID() {
 }
 
 function lock_in_player_teamID(locked_team_name, locked_teamID) {
+    alert("locking");
     reset_html_element("#teamID_suggestions", RESET_TEAMID_SUGGESTIONS);
     $("#search_player_teamID").val(locked_team_name);
     curr_teamID = locked_teamID;
@@ -488,6 +489,7 @@ function handle_team_item(team_item) {
     var param_arr = team_item.split("*");
     var team_name = param_arr[0];
     var team_ID = param_arr[1];
+    alert(team_name);
 
     lock_in_player_teamID(team_name, team_ID);
 }
