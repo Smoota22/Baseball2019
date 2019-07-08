@@ -30,7 +30,6 @@ var curr_suggestion_id;
 
 
 function autofill_player_names(event) {
-    alert(event.which + ", " + curr_suggestion_id);
     if (event.which === ENTER_KEY_ASCII && curr_suggestion_id != -1) {
         lock_in_helper(PLAYER_NAME_FUNC, curr_suggestion_id);
         return;
@@ -71,6 +70,7 @@ function autofill_player_names(event) {
 
             if (i === 0) {
                 $(".full_name_item").addClass(HIGHLIGHTED_SELECTION_CLASS);
+                curr_suggestion_id = itr_full_name_id;
             }
         }
     });
@@ -123,6 +123,7 @@ function autofill_player_years() {
 
             if (i === 0) {
                 $(".year_item").addClass(HIGHLIGHTED_SELECTION_CLASS);
+                curr_suggestion_id = itr_year_id;
             }
         }
     });
@@ -191,6 +192,7 @@ function autofill_player_stint() {
 
             if (i === 0) {
                 $(".stint_item").addClass(HIGHLIGHTED_SELECTION_CLASS);
+                curr_suggestion_id = itr_stint;
             }
         }
     });
@@ -261,6 +263,7 @@ function autofill_player_teamID() {
 
             if (i === 0) {
                 $(".teamID_item").addClass(HIGHLIGHTED_SELECTION_CLASS);
+                curr_suggestion_id = itr_team_name_id;
             }
         }
     });
@@ -330,6 +333,7 @@ function autofill_player_leagueID() {
 
             if (i === 0) {
                 $(".leagueID_item").addClass(HIGHLIGHTED_SELECTION_CLASS);
+                curr_suggestion_id = itr_leagueID;
             }
         }
     });
