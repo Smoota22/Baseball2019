@@ -42,6 +42,7 @@ function autofill_player_names(event) {
 
     if (pressed_key >= 37 && pressed_key <= 40) {
         scroll_suggestions(PLAYER_NAME_FUNC, pressed_key);
+        alert("SCROLLED");
         return;
     }
 
