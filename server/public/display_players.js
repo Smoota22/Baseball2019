@@ -402,7 +402,7 @@ function update_curr_selection(new_suggestion_id) {
     if (curr_suggestion_id != -1) {
         var curr_id = "#" + curr_suggestion_id;
         alert(curr_id);
-        $(curr_id).append(HIGHLIGHTED_SELECTION_CLASS);
+        $(".full_name_item").append(HIGHLIGHTED_SELECTION_CLASS);
     }
 }
 
