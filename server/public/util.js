@@ -41,6 +41,7 @@ const mysql_dict = {
 "opp_ba": "Opponent Batting Average",
 "earned_run_avg": "Earned Run Average",
 "intentional_walks": "Intentional Walks",
+"hit_by_pitch": "Hit By Pitch",
 "runs_allowed": "Runs Allowed",
 "batters_hit": "Batters Hit",
 "balks": "Balks",
