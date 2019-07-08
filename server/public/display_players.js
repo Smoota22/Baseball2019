@@ -30,6 +30,7 @@ var curr_suggestion_id;
 
 
 function autofill_player_names(event) {
+    alert(event.which + ", " + curr_suggestion_id);
     if (event.which === ENTER_KEY_ASCII && curr_suggestion_id != -1) {
         lock_in_helper(PLAYER_NAME_FUNC, curr_suggestion_id);
         return;
