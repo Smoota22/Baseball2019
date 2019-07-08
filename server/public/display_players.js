@@ -71,9 +71,11 @@ function autofill_player_names(event) {
             if (i === 0) {
                 update_curr_selection(itr_full_name_id);
             }
-            alert(itr_full_name_id)
+            alert(itr_full_name_id);
         }
+        alert("TEST");
     });
+    alert("TEST2");
 }
 
 function lock_in_full_name(locked_full_name, locked_player_ID) {
