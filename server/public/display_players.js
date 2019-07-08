@@ -68,7 +68,7 @@ function autofill_player_names(event) {
             var html = $.parseHTML(str);
             $player_suggestions.append(html);
 
-            if (i === 0) {
+            if (i === 2) {
                 $(".full_name_item").addClass(HIGHLIGHTED_SELECTION_CLASS);
                 curr_suggestion_id = itr_full_name_id;
             }
