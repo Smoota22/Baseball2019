@@ -42,7 +42,6 @@ function autofill_player_names(event) {
 
     if (pressed_key >= 37 && pressed_key <= 40) {
         scroll_suggestions(PLAYER_NAME_FUNC, pressed_key);
-        alert("SCROLLED");
         return;
     }
 
@@ -439,12 +438,14 @@ function create_id_helper(func_const, curr_suggestion) {
 
 function update_curr_selection(new_suggestion_id) {
     if (curr_suggestion_id != -1) {
+        alert(("#" + curr_suggestion_id));
         $(("#" + curr_suggestion_id)).removeClass(HIGHLIGHTED_SELECTION_CLASS);
     }
 
     curr_suggestion_id = new_suggestion_id;
 
     if (curr_suggestion_id != -1) {
+        alert(("#" + curr_suggestion_id));
         $(("#" + curr_suggestion_id)).addClass(HIGHLIGHTED_SELECTION_CLASS);
     }
 }
