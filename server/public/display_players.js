@@ -23,7 +23,7 @@ var curr_suggestion_id;
 
 
 function autofill_player_names(event) {
-    alert(event);
+    alert(event.which);
     var search_player_name = $("#search_player").val();
     if (search_player_name === "") {
         return;
