@@ -38,7 +38,7 @@ function autofill_player_names(event) {
         return;
     }
 
-    if (event.whic === )
+    // if (event.whic === )
 
     var search_player_name = $("#search_player").val();
     if (search_player_name === "") {
