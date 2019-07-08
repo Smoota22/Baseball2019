@@ -71,6 +71,7 @@ function autofill_player_names(event) {
             if (i === 0) {
                 update_curr_selection(itr_full_name_id);
             }
+            alert(itr_full_name_id)
         }
     });
 }
@@ -401,7 +402,6 @@ function update_curr_selection(new_suggestion_id) {
 
     if (curr_suggestion_id != -1) {
         var curr_id = "#" + curr_suggestion_id;
-        alert(curr_id);
         $(curr_id).addClass(HIGHLIGHTED_SELECTION_CLASS);
     }
 }
