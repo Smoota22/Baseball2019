@@ -40,8 +40,7 @@ function autofill_player_names(event) {
         return;
     }
 
-    if (pressed_key >= 37 && pressed_key <= 40) {
-        alert(pressed_key);
+    if (pressed_key == UP_KEY_ASCII || pressed_key == DOWN_KEY_ASCII) {
         scroll_suggestions(PLAYER_NAME_FUNC, pressed_key);
         return;
     }
@@ -454,7 +453,7 @@ function update_curr_selection(new_suggestion_id) {
 }
 
 function scroll_suggestions(curr_func, pressed_key) {
-    if (pressed_key <= UP_KEY_ASCII) {
+    if (pressed_key == UP_KEY_ASCII) {
         curr_suggestion_index = Math.max(curr_suggestion_index - 1, 0);
     } else {
         var num_suggestions = Math.min(curr_suggestion_object.length, MAX_SUGGESTIONS);
