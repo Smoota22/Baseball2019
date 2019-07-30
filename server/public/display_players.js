@@ -48,6 +48,7 @@ function autofill_player_names(event) {
 
     var search_player_name = $("#search_player").val();
     if (search_player_name === "") {
+        reset_html_element("#player_suggestions", RESET_PLAYER_SUGGESTIONS);
         return;
     }
     var path = '/autofill_player_names/' + search_player_name;
