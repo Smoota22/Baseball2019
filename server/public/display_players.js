@@ -514,8 +514,8 @@ function reconcile_tables(pitching_length, batting_length, fielding_length) {
         var curr_id = "#" + attributes[i] + "_table_div";
         var curr_class = "col-md-" + size;
         var curr_label = "#" + attributes[i] + "_label";
-        if (multipliers[i] == 0) {
-            $(curr_label).val("");
+        if (multipliers[i] != 0) {
+            $(curr_label).val(attributes[i]);
         }
 
         $(curr_id).addClass(curr_class);
