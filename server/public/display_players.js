@@ -452,7 +452,6 @@ function update_curr_selection(new_suggestion_id) {
 }
 
 function scroll_suggestions(curr_func, pressed_key) {
-    var new_suggestion_index;
     if (pressed_key <= UP_KEY_ASCII) {
         curr_suggestion_index = Math.max(curr_suggestion_index - 1, 0);
     } else {
