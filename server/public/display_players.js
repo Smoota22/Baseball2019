@@ -80,7 +80,7 @@ function autofill_player_names(event) {
             $player_suggestions.append(html);
 
             if (i === 0) {
-                $("#" + itr_full_name_id).addClass(HIGHLIGHTED_SELECTION_CLASS);
+                $(".full_name_item").addClass(HIGHLIGHTED_SELECTION_CLASS);
                 curr_suggestion_id = itr_full_name_id;
                 curr_suggestion_index = 0;
                 curr_suggestion_object = query_result_obj;
@@ -443,7 +443,7 @@ function update_curr_selection(new_suggestion_id) {
         alert(("PRE      #" + curr_suggestion_id));
         $(("#" + curr_suggestion_id)).removeClass(HIGHLIGHTED_SELECTION_CLASS);
         $("#" + curr_suggestion_id).val("");
-        $(".full_name_item").val("");
+        alert($("#" + curr_suggestion_id).val());
     }
 
     curr_suggestion_id = new_suggestion_id;
