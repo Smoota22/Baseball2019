@@ -443,6 +443,7 @@ function update_curr_selection(new_suggestion_id) {
         alert(("PRE      #" + curr_suggestion_id));
         $(("#" + curr_suggestion_id)).removeClass(HIGHLIGHTED_SELECTION_CLASS);
         $("#" + curr_suggestion_id).val("");
+        $(".full_name_item").val("");
     }
 
     curr_suggestion_id = new_suggestion_id;
