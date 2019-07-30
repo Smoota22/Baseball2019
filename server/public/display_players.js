@@ -28,7 +28,7 @@ var curr_teamID;
 var curr_team_name;
 var curr_leagueID;
 
-var curr_suggestion_id;
+var curr_suggestion_id = -1;
 var curr_suggestion_index;
 var curr_suggestion_object;
 
@@ -453,12 +453,10 @@ function update_curr_selection(new_suggestion_id) {
 function scroll_suggestions(curr_func, pressed_key) {
     var new_suggestion_index;
     if (pressed_key <= UP_KEY_ASCII) {
+        curr_suggestion_index = Math.max(curr_suggestion_index - 1, 0);
+    } else {
         var num_suggestions = Math.min(curr_suggestion_object.length, MAX_SUGGESTIONS);
         curr_suggestion_index = Math.min(curr_suggestion_index + 1, num_suggestions - 1);
-        alert("FORWARD");
-    } else {
-        curr_suggestion_index = Math.max(curr_suggestion_index - 1, 0);
-        alert("BACK");
     }
 
     var new_suggestion_id = create_id_helper(curr_func, curr_suggestion_object[curr_suggestion_index]);
