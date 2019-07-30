@@ -442,6 +442,7 @@ function update_curr_selection(new_suggestion_id) {
     if (curr_suggestion_id != -1) {
         alert(("PRE      #" + curr_suggestion_id));
         $(("#" + curr_suggestion_id)).removeClass(HIGHLIGHTED_SELECTION_CLASS);
+        $("#" + curr_suggestion_id).val("");
     }
 
     curr_suggestion_id = new_suggestion_id;
