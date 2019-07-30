@@ -62,12 +62,9 @@ app.post('/login', (req, res) => {
 app.get('/autofill_team_names/:teamName', autofill_team_names);
 function autofill_team_names(req, res) {
     var regex = format_query_string_regex(req.params.teamName);
-    let sql = "";
     // let sql = 'SELECT team_ID FROM real_team WHERE team_name = "' + req.params.teamName + '"';
     // let sql = 'SELECT team_name FROM real_team WHERE team_name = "sdas"';
-    if (req.params.teamName != "NULL") {
-        sql += 'SELECT team_name, team_ID FROM real_team WHERE team_name LIKE "' + regex + '" GROUP BY team_name, team_ID';
-    }
+    let sql = 'SELECT team_name, team_ID FROM real_team WHERE team_name LIKE "' + regex + '" GROUP BY team_name, team_ID';
     // res.send(sql);
     let query = db.query(sql, (err, results) => {
         if(err) throw err;
